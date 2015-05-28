@@ -15,6 +15,8 @@ class StartViewController: UIViewController {
             return self.view as! StartView
         }
     }
+    
+    let challengesVC = ChallengesViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class StartViewController: UIViewController {
     
     func photoClicked() {
         // to camera roll
+        self.presentViewController(self.challengesVC, animated: true, completion: nil)
     }
     
 
