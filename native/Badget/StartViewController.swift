@@ -43,7 +43,7 @@ class StartViewController: UIViewController {
     }
     
     func photoClicked() {
-        // to camera roll
+        // TODO: to camera roll, for now: present the challenges vc
         self.presentViewController(self.challengesVC, animated: true, completion: nil)
     }
     

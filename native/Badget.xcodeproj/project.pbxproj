@@ -15,6 +15,7 @@
 		A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* StartViewController.swift */; };
 		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
 		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
+		A4AD98A51B17AEAF009ED7AE /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */; };
 		E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5D2CC95AD2501AB8C96E3A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
+		A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
 		FB5D2CC95AD2501AB8C96E3A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 		A4AD989D1B179F14009ED7AE /* Badges */ = {
 			isa = PBXGroup;
 			children = (
+				A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */,
 			);
 			name = Badges;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
 				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
+				A4AD98A51B17AEAF009ED7AE /* BadgesViewController.swift in Sources */,
 				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

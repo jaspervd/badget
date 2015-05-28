@@ -1,5 +1,5 @@
 //
-//  ChallengesViewController.swift
+//  BadgesViewController.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 28/05/15.
@@ -8,22 +8,12 @@
 
 import UIKit
 
-class ChallengesViewController: UIViewController {
-    
+class BadgesViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.redColor()
-        
         // Do any additional setup after loading the view.
-    }
-    
-    override func loadView() {
-        var bounds = UIScreen.mainScreen().bounds
-        let scrollView = UIScrollView(frame:bounds)
-        scrollView.pagingEnabled = true
-        
-        self.view.addSubview(scrollView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +21,7 @@ class ChallengesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     /*
     // MARK: - Navigation
 
