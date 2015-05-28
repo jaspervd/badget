@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13DC1B1667A9008B3823 /* AppDelegate.swift */; };
 		A43E13E01B1667A9008B3823 /* Badget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A43E13DE1B1667A9008B3823 /* Badget.xcdatamodeld */; };
-		A43E13E21B1667A9008B3823 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13E11B1667A9008B3823 /* ViewController.swift */; };
 		A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E31B1667A9008B3823 /* Images.xcassets */; };
 		A43E13E71B1667A9008B3823 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E51B1667A9008B3823 /* LaunchScreen.xib */; };
 		A43E13F31B1667A9008B3823 /* BadgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13F21B1667A9008B3823 /* BadgetTests.swift */; };
+		A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* StartViewController.swift */; };
+		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
 		E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5D2CC95AD2501AB8C96E3A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -33,12 +34,13 @@
 		A43E13DB1B1667A9008B3823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43E13DC1B1667A9008B3823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A43E13DF1B1667A9008B3823 /* Badget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Badget.xcdatamodel; sourceTree = "<group>"; };
-		A43E13E11B1667A9008B3823 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A43E13E31B1667A9008B3823 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A43E13E61B1667A9008B3823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A43E13EC1B1667A9008B3823 /* BadgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BadgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43E13F11B1667A9008B3823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43E13F21B1667A9008B3823 /* BadgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgetTests.swift; sourceTree = "<group>"; };
+		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		FB5D2CC95AD2501AB8C96E3A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,8 +86,10 @@
 		A43E13D91B1667A9008B3823 /* Badget */ = {
 			isa = PBXGroup;
 			children = (
+				A4AD989D1B179F14009ED7AE /* Badges */,
+				A4AD989C1B179F0D009ED7AE /* Challenges */,
+				A4AD989B1B179EF7009ED7AE /* Start */,
 				A43E13DC1B1667A9008B3823 /* AppDelegate.swift */,
-				A43E13E11B1667A9008B3823 /* ViewController.swift */,
 				A43E13E31B1667A9008B3823 /* Images.xcassets */,
 				A43E13E51B1667A9008B3823 /* LaunchScreen.xib */,
 				A43E13DE1B1667A9008B3823 /* Badget.xcdatamodeld */,
@@ -117,6 +121,29 @@
 				A43E13F11B1667A9008B3823 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4AD989B1B179EF7009ED7AE /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				A4AD989E1B17A358009ED7AE /* StartViewController.swift */,
+				A4AD98A01B17A3BA009ED7AE /* StartView.swift */,
+			);
+			name = Start;
+			sourceTree = "<group>";
+		};
+		A4AD989C1B179F0D009ED7AE /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Challenges;
+			sourceTree = "<group>";
+		};
+		A4AD989D1B179F14009ED7AE /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Badges;
 			sourceTree = "<group>";
 		};
 		CA53C15DB4BCA9FC63D08228 /* Pods */ = {
@@ -286,9 +313,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A43E13E21B1667A9008B3823 /* ViewController.swift in Sources */,
 				A43E13E01B1667A9008B3823 /* Badget.xcdatamodeld in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
+				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
+				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
