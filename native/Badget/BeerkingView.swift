@@ -10,10 +10,21 @@ import UIKit
 
 class BeerkingView: UIView {
     
+    let device: UIDevice
+    
     override init(frame: CGRect) {
+        self.device = UIDevice.currentDevice()
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.grayColor()
+        self.device.proximityMonitoringEnabled = true
+        if(self.device.proximityMonitoringEnabled) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged:", name: "UIDeviceProximityStateDidChangeNotification", object: nil)
+        }
+    }
+    
+    func proximityChanged(notification: NSNotification) {
+        println(self.device.proximityState)
     }
     
     required init(coder aDecoder: NSCoder) {
