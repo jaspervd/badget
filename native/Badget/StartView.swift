@@ -14,6 +14,7 @@ class StartView: UIView {
     let btnContinue:UIButton!
     let inputName:UITextField!
     let btnPhoto:UIButton!
+    let btnSave:UIButton!
     
     override init(frame: CGRect) {
         self.campaignText = UITextView(frame: CGRect(x: 10, y: 50, width: 300, height: 400))
@@ -31,6 +32,10 @@ class StartView: UIView {
         self.btnPhoto.setTitle("Foto", forState: UIControlState.Normal)
         self.btnPhoto.hidden = true
         
+        self.btnSave = UIButton(frame: CGRect(x: 10, y: self.btnPhoto.frame.origin.y + self.btnPhoto.frame.height + 10, width: 300, height: 40))
+        self.btnSave.setTitle("Oké!", forState: UIControlState.Normal)
+        self.btnSave.hidden = true
+        
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.blueColor()
@@ -39,6 +44,7 @@ class StartView: UIView {
         self.addSubview(self.btnContinue)
         self.addSubview(self.inputName)
         self.addSubview(self.btnPhoto)
+        self.addSubview(self.btnSave)
     }
     
     func showCredentials() {
@@ -47,6 +53,7 @@ class StartView: UIView {
         
         self.inputName.hidden = false
         self.btnPhoto.hidden = false
+        self.btnSave.hidden = false
     }
     
     required init(coder aDecoder: NSCoder) {
