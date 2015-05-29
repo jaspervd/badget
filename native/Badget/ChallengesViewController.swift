@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreMotion
+import MapKit
 
-class ChallengesViewController: UIViewController, UIScrollViewDelegate {
+class ChallengesViewController: UIViewController, UIScrollViewDelegate, MKMapViewDelegate {
     
     let motionManager = CMMotionManager()
     let device = UIDevice.currentDevice()
     var motionLastRoll:Double! = 0
+    let locationManager = CLLocationManager()
     
     var sliderView:SliderView! {
         get {
@@ -30,13 +32,17 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged:", name: "UIDeviceProximityStateDidChangeNotification", object: nil)
         }
         
+        self.locationManager.requestWhenInUseAuthorization()
         self.sliderView.grouphuggerView.btnContinue.addTarget(self, action: "grouphuggerChallenge", forControlEvents: UIControlEvents.TouchUpInside)
         self.sliderView.masterscoutView.btnContinue.addTarget(self, action: "masterscoutChallenge", forControlEvents: UIControlEvents.TouchUpInside)
         self.sliderView.beerkingView.btnContinue.addTarget(self, action: "beerkingChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        // if beerkingView isn't in view (anymore)
+        if(!CGRectIntersectsRect(scrollView.bounds, self.sliderView.masterscoutView.frame)) {
+            self.sliderView.masterscoutView.showStart()
+        }
+        
         if(!CGRectIntersectsRect(scrollView.bounds, self.sliderView.beerkingView.frame)) {
             self.sliderView.beerkingView.showStart()
             if(self.motionManager.deviceMotionActive) {
@@ -47,6 +53,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     
     func proximityChanged(notification: NSNotification) {
         println("Proximity changed", self.device.proximityState)
+        
     }
     
     func grouphuggerChallenge() {
@@ -54,7 +61,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func masterscoutChallenge() {
-        
+        self.sliderView.masterscoutView.showChallenge()
     }
     
     func beerkingChallenge() {

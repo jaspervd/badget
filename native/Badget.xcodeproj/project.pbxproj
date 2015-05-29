@@ -16,6 +16,7 @@
 		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
 		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
 		A4AD98A51B17AEAF009ED7AE /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */; };
+		A4DFB0C31B1914D6005FCF13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DFB0C21B1914D6005FCF13 /* MapKit.framework */; };
 		A4E6ECAC1B188D9F00B20927 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAB1B188D9F00B20927 /* SliderView.swift */; };
 		A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */; };
 		A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */; };
@@ -49,6 +50,7 @@
 		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
+		A4DFB0C21B1914D6005FCF13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A4E6ECAB1B188D9F00B20927 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerView.swift; sourceTree = "<group>"; };
 		A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4DFB0C31B1914D6005FCF13 /* MapKit.framework in Frameworks */,
 				E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +179,7 @@
 		E79CD02054F09183C6B1EC8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4DFB0C21B1914D6005FCF13 /* MapKit.framework */,
 				FB5D2CC95AD2501AB8C96E3A /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -233,6 +237,11 @@
 				TargetAttributes = {
 					A43E13D61B1667A9008B3823 = {
 						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A43E13EB1B1667A9008B3823 = {
 						CreatedOnToolsVersion = 6.3.2;
