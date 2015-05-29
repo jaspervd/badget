@@ -10,20 +10,21 @@ import UIKit
 
 class ChallengesViewController: UIViewController {
     
+    var sliderView:SliderView! {
+        get {
+            return self.view as! SliderView
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = UIColor.redColor()
         
         // Do any additional setup after loading the view.
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        let scrollView = UIScrollView(frame:bounds)
-        scrollView.pagingEnabled = true
-        
-        self.view.addSubview(scrollView)
+        self.view = SliderView(frame:bounds);
     }
 
     override func didReceiveMemoryWarning() {

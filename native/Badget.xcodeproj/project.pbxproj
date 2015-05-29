@@ -16,6 +16,10 @@
 		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
 		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
 		A4AD98A51B17AEAF009ED7AE /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */; };
+		A4E6ECAC1B188D9F00B20927 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAB1B188D9F00B20927 /* SliderView.swift */; };
+		A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */; };
+		A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */; };
+		A4E6ECB21B188FA300B20927 /* BeerkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECB11B188FA300B20927 /* BeerkingView.swift */; };
 		E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5D2CC95AD2501AB8C96E3A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -45,6 +49,10 @@
 		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
+		A4E6ECAB1B188D9F00B20927 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerView.swift; sourceTree = "<group>"; };
+		A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutView.swift; sourceTree = "<group>"; };
+		A4E6ECB11B188FA300B20927 /* BeerkingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingView.swift; sourceTree = "<group>"; };
 		FB5D2CC95AD2501AB8C96E3A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,6 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */,
+				A4E6ECAB1B188D9F00B20927 /* SliderView.swift */,
+				A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */,
+				A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */,
+				A4E6ECB11B188FA300B20927 /* BeerkingView.swift */,
 			);
 			name = Challenges;
 			sourceTree = "<group>";
@@ -320,11 +332,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A43E13E01B1667A9008B3823 /* Badget.xcdatamodeld in Sources */,
+				A4E6ECB21B188FA300B20927 /* BeerkingView.swift in Sources */,
 				A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */,
+				A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */,
+				A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
 				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
 				A4AD98A51B17AEAF009ED7AE /* BadgesViewController.swift in Sources */,
 				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
+				A4E6ECAC1B188D9F00B20927 /* SliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
