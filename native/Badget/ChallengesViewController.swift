@@ -30,13 +30,18 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged:", name: "UIDeviceProximityStateDidChangeNotification", object: nil)
         }
         
-        // Do any additional setup after loading the view.
+        self.sliderView.grouphuggerView.btnContinue.addTarget(self, action: "grouphuggerChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.sliderView.masterscoutView.btnContinue.addTarget(self, action: "masterscoutChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.sliderView.beerkingView.btnContinue.addTarget(self, action: "beerkingChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        // if beerkingView is in view
-        if(CGRectIntersectsRect(scrollView.bounds, self.sliderView.beerkingView.frame)) {
-            beerkingVisible()
+        // if beerkingView isn't in view (anymore)
+        if(!CGRectIntersectsRect(scrollView.bounds, self.sliderView.beerkingView.frame)) {
+            self.sliderView.beerkingView.showStart()
+            if(self.motionManager.deviceMotionActive) {
+                self.motionManager.stopDeviceMotionUpdates()
+            }
         }
     }
     
@@ -44,8 +49,17 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         println("Proximity changed", self.device.proximityState)
     }
     
-    func beerkingVisible() {
-        if (self.motionManager.gyroAvailable) {
+    func grouphuggerChallenge() {
+        
+    }
+    
+    func masterscoutChallenge() {
+        
+    }
+    
+    func beerkingChallenge() {
+        self.sliderView.beerkingView.showChallenge()
+        if (self.motionManager.deviceMotionAvailable) {
             self.motionManager.deviceMotionUpdateInterval = 0.2;
             self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: { (data: CMDeviceMotion!, error: NSError!) -> Void in
                 var quat:CMQuaternion = data.attitude.quaternion
@@ -64,7 +78,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
                     angle = yaw
                 }
                 
-                self.sliderView.beerkingView.angleText.text = String(stringInterpolationSegment: round(angle)) + "°"
+                self.sliderView.beerkingView.angleText.text = String(format: "%.f", round(angle)) + "°"
             })
         }
     }

@@ -11,16 +11,34 @@ import UIKit
 class BeerkingView: UIView {
     
     let angleText: UILabel
+    let btnContinue: UIButton
     
     override init(frame: CGRect) {
         self.angleText = UILabel(frame: CGRectMake(10, frame.height / 2, 300, 40))
+        self.btnContinue = UIButton(frame: CGRectMake(10, 440, 300, 40))
         super.init(frame: frame)
-        
         self.backgroundColor = UIColor.grayColor()
         
-        self.angleText.text = "0.0°"
+        self.btnContinue.setTitle("Let's do this!", forState: UIControlState.Normal)
+        
+        self.angleText.text = "0°"
         self.angleText.textAlignment = .Center
+        self.angleText.hidden = true
+        
+        self.addSubview(self.btnContinue)
         self.addSubview(self.angleText)
+    }
+    
+    func showChallenge() {
+        self.btnContinue.hidden = true
+        
+        self.angleText.hidden = false
+    }
+    
+    func showStart() {
+        self.btnContinue.hidden = false
+        
+        self.angleText.hidden = true
     }
     
     required init(coder aDecoder: NSCoder) {

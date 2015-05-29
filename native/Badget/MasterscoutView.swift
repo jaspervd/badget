@@ -10,10 +10,16 @@ import UIKit
 
 class MasterscoutView: UIView {
     
+    let btnContinue: UIButton
+    
     override init(frame: CGRect) {
+        self.btnContinue = UIButton(frame: CGRectMake(10, 440, 300, 40))
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.redColor()
+        
+        self.btnContinue.setTitle("Let's do this!", forState: UIControlState.Normal)
+        self.addSubview(self.btnContinue)
     }
     
     required init(coder aDecoder: NSCoder) {
