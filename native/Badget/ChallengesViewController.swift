@@ -48,34 +48,21 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         if (self.motionManager.gyroAvailable) {
             self.motionManager.deviceMotionUpdateInterval = 0.2;
             self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: { (data: CMDeviceMotion!, error: NSError!) -> Void in
-        
                 var quat:CMQuaternion = data.attitude.quaternion
-                var pitch = atan2(2*(quat.y*quat.z + quat.w*quat.x), quat.w*quat.w - quat.x*quat.x - quat.y*quat.y + quat.z*quat.z)
-                var roll = atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z)
-                var yaw = asin(2*(quat.x*quat.z - quat.w*quat.y))
-                myRoll = radiansToDegrees(atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z)) ;
-                myPitch = radiansToDegrees(atan2(2*(quat.x*quat.w + quat.y*quat.z), 1 - 2*quat.x*quat.x - 2*quat.z*quat.z));
-                myYaw = radiansToDegrees(2*(quat.x*quat.y + quat.w*quat.z));
+                var pitch = atan2(2*(quat.y*quat.z + quat.w*quat.x), quat.w*quat.w - quat.x*quat.x - quat.y*quat.y + quat.z*quat.z) * 180/M_PI
+                var roll = atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z) * 180/M_PI
+                var yaw = asin(2*(quat.x*quat.z - quat.w*quat.y)) * 180/M_PI
                 
-                /* Smoothing, probably not needed
-                if (self.motionLastRoll == 0) {
-                    self.motionLastRoll = Double(roll)
+                var angle:Double = 0
+                let minimum:Double = 10
+                
+                if(pitch > minimum || pitch < -minimum) {
+                    angle = pitch
+                } else if (roll > minimum || roll < -minimum) {
+                    angle = roll
+                } else if (yaw > minimum || yaw < -minimum) {
+                    angle = yaw
                 }
-                
-                // kalman filtering
-                var q = 0.1; // process noise
-                var r = 0.1; // sensor noise
-                var p = 0.1; // estimated error
-                var k = 0.5; // kalman filter gain
-                
-                var x = Double(self.motionLastRoll)
-                p = p + q
-                k = p / (p + r)
-                x += Double(k * (roll - x))
-                p = (1 - k) * p
-                self.motionLastRoll = Double(x)*/
-                
-                let angle = pitch * roll * yaw * 180/M_PI
                 
                 self.sliderView.beerkingView.angleText.text = String(stringInterpolationSegment: round(angle)) + "°"
             })
