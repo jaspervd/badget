@@ -30,7 +30,6 @@ class GrouphuggerViewController: UIViewController, UITableViewDelegate, CBCentra
         self.centralManager.delegate = self
         super.viewDidLoad()
         
-        self.view.addSubview(self.detailView)
         self.detailView.delegate = self
         
         self.detailView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
