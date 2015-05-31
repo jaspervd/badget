@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A43E0E611B1B50C40020713F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* TableViewController.swift */; };
+		A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */; };
 		A43E0E631B1B50CF0020713F /* PeripheralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E621B1B50CF0020713F /* PeripheralCell.swift */; };
+		A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BeerkingViewController.swift */; };
+		A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */; };
 		A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13DC1B1667A9008B3823 /* AppDelegate.swift */; };
 		A43E13E01B1667A9008B3823 /* Badget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A43E13DE1B1667A9008B3823 /* Badget.xcdatamodeld */; };
 		A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E31B1667A9008B3823 /* Images.xcassets */; };
@@ -19,7 +21,6 @@
 		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
 		A4AD98A51B17AEAF009ED7AE /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */; };
 		A4DFB0C31B1914D6005FCF13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DFB0C21B1914D6005FCF13 /* MapKit.framework */; };
-		A4E6ECAC1B188D9F00B20927 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAB1B188D9F00B20927 /* SliderView.swift */; };
 		A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */; };
 		A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */; };
 		A4E6ECB21B188FA300B20927 /* BeerkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECB11B188FA300B20927 /* BeerkingView.swift */; };
@@ -39,8 +40,10 @@
 /* Begin PBXFileReference section */
 		335ACF075B77FCACEBBAD971 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6F6500C793CF27A14A745F40 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A43E0E601B1B50C40020713F /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerViewController.swift; sourceTree = "<group>"; };
 		A43E0E621B1B50CF0020713F /* PeripheralCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralCell.swift; sourceTree = "<group>"; };
+		A43E0E641B1B93860020713F /* BeerkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingViewController.swift; sourceTree = "<group>"; };
+		A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutViewController.swift; sourceTree = "<group>"; };
 		A43E13D71B1667A9008B3823 /* Badget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Badget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43E13DB1B1667A9008B3823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43E13DC1B1667A9008B3823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +58,6 @@
 		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		A4AD98A41B17AEAF009ED7AE /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
 		A4DFB0C21B1914D6005FCF13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		A4E6ECAB1B188D9F00B20927 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerView.swift; sourceTree = "<group>"; };
 		A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutView.swift; sourceTree = "<group>"; };
 		A4E6ECB11B188FA300B20927 /* BeerkingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingView.swift; sourceTree = "<group>"; };
@@ -156,8 +158,9 @@
 			children = (
 				A43E0E621B1B50CF0020713F /* PeripheralCell.swift */,
 				A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */,
-				A43E0E601B1B50C40020713F /* TableViewController.swift */,
-				A4E6ECAB1B188D9F00B20927 /* SliderView.swift */,
+				A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */,
+				A43E0E641B1B93860020713F /* BeerkingViewController.swift */,
+				A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */,
 				A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */,
 				A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */,
 				A4E6ECB11B188FA300B20927 /* BeerkingView.swift */,
@@ -352,12 +355,13 @@
 				A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */,
 				A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
-				A43E0E611B1B50C40020713F /* TableViewController.swift in Sources */,
+				A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */,
+				A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */,
 				A43E0E631B1B50CF0020713F /* PeripheralCell.swift in Sources */,
+				A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */,
 				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
 				A4AD98A51B17AEAF009ED7AE /* BadgesViewController.swift in Sources */,
 				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
-				A4E6ECAC1B188D9F00B20927 /* SliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

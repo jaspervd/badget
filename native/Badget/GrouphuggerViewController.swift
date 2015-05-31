@@ -9,31 +9,52 @@
 import UIKit
 import CoreBluetooth
 
-class TableViewController: UITableViewController, CBCentralManagerDelegate {
+class GrouphuggerViewController: UIViewController, UITableViewDelegate, CBCentralManagerDelegate {
     let centralManager = CBCentralManager(delegate: nil, queue: nil)
     var peripheralsArray:Array<CBPeripheral> = []
+    let detailView = UITableView()
+    
+    var grouphuggerView:GrouphuggerView! {
+        get {
+            return self.view as! GrouphuggerView
+        }
+    }
+    
+    override func loadView() {
+        var bounds = UIScreen.mainScreen().bounds
+        self.view = GrouphuggerView(frame: bounds)
+        self.detailView.frame = bounds
+    }
 
     override func viewDidLoad() {
         self.centralManager.delegate = self
         super.viewDidLoad()
         
-        self.tableView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
+        self.view.addSubview(self.detailView)
+        self.detailView.delegate = self
+        
+        self.detailView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
+        self.grouphuggerView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    func startChallenge() {
+        self.view = self.detailView
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
         var arr = peripheralsArray.filter( { return $0.identifier == peripheral.identifier } )
         if(arr.count == 0) {
             self.peripheralsArray.append(peripheral)
-            self.tableView.reloadData()
+            self.detailView.reloadData()
         }
     }
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
-        self.tableView.reloadData()
+        self.detailView.reloadData()
     }
     
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
-        self.tableView.reloadData()
+        self.detailView.reloadData()
     }
     
     func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
@@ -67,20 +88,20 @@ class TableViewController: UITableViewController, CBCentralManagerDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.peripheralsArray.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("peripheralCell", forIndexPath: indexPath) as! UITableViewCell
         
         var peripheral = self.peripheralsArray[indexPath.row]
@@ -101,7 +122,7 @@ class TableViewController: UITableViewController, CBCentralManagerDelegate {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var peripheral = self.peripheralsArray[indexPath.row]
         
         self.centralManager.connectPeripheral(peripheral, options: nil)

@@ -7,92 +7,79 @@
 //
 
 import UIKit
-import CoreMotion
 import MapKit
 
-class ChallengesViewController: UIViewController, UIScrollViewDelegate, MKMapViewDelegate {
+class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     
-    let motionManager = CMMotionManager()
+    let grouphuggerVC = GrouphuggerViewController()
+    let masterscoutVC = MasterscoutViewController()
+    let beerkingVC = BeerkingViewController()
     let device = UIDevice.currentDevice()
     var motionLastRoll:Double! = 0
     let locationManager = CLLocationManager()
     
-    var sliderView:SliderView! {
+    var scrollView:UIScrollView! {
         get {
-            return self.view as! SliderView
+            return self.view as! UIScrollView
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sliderView.scrollView.delegate = self
+        createChallenges()
+        
         self.device.proximityMonitoringEnabled = true
         if(self.device.proximityMonitoringEnabled) {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged:", name: "UIDeviceProximityStateDidChangeNotification", object: nil)
         }
         
         self.locationManager.requestWhenInUseAuthorization()
-        self.sliderView.grouphuggerView.btnContinue.addTarget(self, action: "grouphuggerChallenge", forControlEvents: UIControlEvents.TouchUpInside)
-        self.sliderView.masterscoutView.btnContinue.addTarget(self, action: "masterscoutChallenge", forControlEvents: UIControlEvents.TouchUpInside)
-        self.sliderView.beerkingView.btnContinue.addTarget(self, action: "beerkingChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if(!CGRectIntersectsRect(scrollView.bounds, self.sliderView.masterscoutView.frame)) {
-            self.sliderView.masterscoutView.showStart()
+    override func loadView() {
+        var bounds = UIScreen.mainScreen().bounds
+        self.view = UIScrollView(frame: bounds);
+    }
+    
+    func createChallenges() {
+        self.addChildViewController(self.grouphuggerVC)
+        self.addChildViewController(self.masterscoutVC)
+        self.addChildViewController(self.beerkingVC)
+        
+        self.view.addSubview(self.grouphuggerVC.view)
+        self.view.addSubview(self.masterscoutVC.view)
+        self.view.addSubview(self.beerkingVC.view)
+        
+        var xPos:CGFloat = 0
+        for view in self.view.subviews {
+            //view.frame.origin.x = xPos
+            xPos += view.frame.width
         }
         
-        if(!CGRectIntersectsRect(scrollView.bounds, self.sliderView.beerkingView.frame)) {
-            self.sliderView.beerkingView.showStart()
-            if(self.motionManager.deviceMotionActive) {
-                self.motionManager.stopDeviceMotionUpdates()
+        self.masterscoutVC.view.frame.origin.x = 320
+        self.beerkingVC.view.frame.origin.x = 640
+        
+        self.scrollView.pagingEnabled = true
+        self.scrollView.contentSize = CGSizeMake(xPos, 0)
+    }
+    
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        if(!CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
+            self.masterscoutVC.masterscoutView.showStart()
+        }
+        
+        if(!CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
+            self.beerkingVC.beerkingView.showStart()
+            if(self.beerkingVC.motionManager.deviceMotionActive) {
+                self.beerkingVC.motionManager.stopDeviceMotionUpdates()
             }
         }
     }
     
     func proximityChanged(notification: NSNotification) {
         println("Proximity changed", self.device.proximityState)
-        
-    }
-    
-    func grouphuggerChallenge() {
-        
-    }
-    
-    func masterscoutChallenge() {
-        self.sliderView.masterscoutView.showChallenge()
-    }
-    
-    func beerkingChallenge() {
-        self.sliderView.beerkingView.showChallenge()
-        if (self.motionManager.deviceMotionAvailable) {
-            self.motionManager.deviceMotionUpdateInterval = 0.2;
-            self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: { (data: CMDeviceMotion!, error: NSError!) -> Void in
-                var quat:CMQuaternion = data.attitude.quaternion
-                var pitch = atan2(2*(quat.y*quat.z + quat.w*quat.x), quat.w*quat.w - quat.x*quat.x - quat.y*quat.y + quat.z*quat.z) * 180/M_PI
-                var roll = atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z) * 180/M_PI
-                var yaw = asin(2*(quat.x*quat.z - quat.w*quat.y)) * 180/M_PI
-                
-                var angle:Double = 0
-                let minimum:Double = 10
-                
-                if(pitch > minimum || pitch < -minimum) {
-                    angle = pitch
-                } else if (roll > minimum || roll < -minimum) {
-                    angle = roll
-                } else if (yaw > minimum || yaw < -minimum) {
-                    angle = yaw
-                }
-                
-                self.sliderView.beerkingView.angleText.text = String(format: "%.f", round(angle)) + "°"
-            })
-        }
-    }
-    
-    override func loadView() {
-        var bounds = UIScreen.mainScreen().bounds
-        self.view = SliderView(frame:bounds);
     }
 
     override func didReceiveMemoryWarning() {
