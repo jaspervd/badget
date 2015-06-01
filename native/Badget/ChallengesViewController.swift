@@ -46,13 +46,22 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         self.masterscoutVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width
         self.beerkingVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width + self.masterscoutVC.view.frame.origin.x
         
+        self.scrollView.delegate = self
         self.scrollView.pagingEnabled = true
         self.scrollView.contentSize = CGSizeMake(self.beerkingVC.view.frame.width + self.beerkingVC.view.frame.origin.x, 0)
     }
     
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        //if(!CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
+        if(!CGRectIntersectsRect(scrollView.bounds, self.grouphuggerVC.view.frame)) {
+            self.grouphuggerVC.stopChallenge()
+        }
+        if(!CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
+            self.masterscoutVC.stopChallenge()
+        }
+        if(!CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
+            self.beerkingVC.stopChallenge()
+        }
     }
 
     override func didReceiveMemoryWarning() {
