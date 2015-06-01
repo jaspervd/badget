@@ -84,6 +84,11 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
             println("Resetting")
         case .PoweredOff:
             println("PoweredOff")
+            let alertController = UIAlertController(title: "Bluetooth staat uit", message:
+                "Om te kunnen verbinden met je vrienden moet je bluetooth aan staan.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Oké", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         case .PoweredOn:
             println("PoweredOn")
             central.scanForPeripheralsWithServices(nil, options: nil)

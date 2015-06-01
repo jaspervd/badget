@@ -13,6 +13,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
     let detailView = UIView()
     let device = UIDevice.currentDevice()
+    var anglesArray:Array<Double> = []
     
     var beerkingView:BeerkingView! {
         get {
@@ -37,6 +38,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     }
     
     func startChallenge() {
+        self.anglesArray = []
         self.detailView.hidden = false
         self.detailView.addSubview(self.beerkingView.angleText)
         
@@ -67,12 +69,20 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
                 }
                 
                 self.beerkingView.angleText.text = String(format: "%.f", round(angle)) + "°"
+                self.anglesArray.append(angle)
             })
         }
     }
     
     func stopChallenge() {
+        self.device.proximityMonitoringEnabled = false
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "UIDeviceProximityStateDidChangeNotification", object: nil)
         self.detailView.hidden = true
+        
+        if(self.anglesArray.count > 0) {
+            var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
+            println(avg)
+        }
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()
         }
