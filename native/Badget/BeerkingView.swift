@@ -23,7 +23,6 @@ class BeerkingView: UIView {
         
         self.angleText.text = "0°"
         self.angleText.textAlignment = .Center
-        self.angleText.hidden = true
         
         self.addSubview(self.btnContinue)
     }

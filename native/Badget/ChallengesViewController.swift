@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import MapKit
+import CoreLocation
 
 class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     
     let grouphuggerVC = GrouphuggerViewController()
     let masterscoutVC = MasterscoutViewController()
     let beerkingVC = BeerkingViewController()
-    let device = UIDevice.currentDevice()
     let locationManager = CLLocationManager()
     
     var scrollView:UIScrollView! {
@@ -27,12 +26,6 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         createChallenges()
-        
-        self.device.proximityMonitoringEnabled = true
-        if(self.device.proximityMonitoringEnabled) {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged:", name: "UIDeviceProximityStateDidChangeNotification", object: nil)
-        }
-        
         self.locationManager.requestWhenInUseAuthorization()
     }
     
@@ -50,27 +43,16 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.masterscoutVC.view)
         self.view.addSubview(self.beerkingVC.view)
         
-        var xPos:CGFloat = 0
-        for view in self.view.subviews {
-            println(view)
-            //view.frame = CGRectMake(xPos, 0, self.view.frame.width, self.view.frame.height)
-            xPos += view.frame.width
-        }
-        
-        self.masterscoutVC.view.frame.origin.x = 320
-        self.beerkingVC.view.frame.origin.x = 640
+        self.masterscoutVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width
+        self.beerkingVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width + self.masterscoutVC.view.frame.origin.x
         
         self.scrollView.pagingEnabled = true
-        self.scrollView.contentSize = CGSizeMake(xPos, 0)
+        self.scrollView.contentSize = CGSizeMake(self.beerkingVC.view.frame.width + self.beerkingVC.view.frame.origin.x, 0)
     }
     
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         //if(!CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
-    }
-    
-    func proximityChanged(notification: NSNotification) {
-        println("Proximity changed", self.device.proximityState)
     }
 
     override func didReceiveMemoryWarning() {

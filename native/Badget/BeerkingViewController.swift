@@ -12,6 +12,7 @@ import CoreMotion
 class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
     let detailView = UIView()
+    let device = UIDevice.currentDevice()
     
     var beerkingView:BeerkingView! {
         get {
@@ -23,6 +24,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         var bounds = UIScreen.mainScreen().bounds
         self.view = BeerkingView(frame: bounds)
         self.detailView.frame = bounds
+        self.detailView.backgroundColor = UIColor.whiteColor()
     }
 
     override func viewDidLoad() {
@@ -35,8 +37,16 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     }
     
     func startChallenge() {
-        self.detailView.addSubview(self.beerkingView.angleText)
         self.detailView.hidden = false
+        self.detailView.addSubview(self.beerkingView.angleText)
+        
+        self.device.proximityMonitoringEnabled = true
+        if(self.device.proximityMonitoringEnabled) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged:", name: "UIDeviceProximityStateDidChangeNotification", object: nil)
+        }
+    }
+    
+    func startMotion() {
         if (self.motionManager.deviceMotionAvailable) {
             self.motionManager.deviceMotionUpdateInterval = 0.2;
             self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: { (data: CMDeviceMotion!, error: NSError!) -> Void in
@@ -65,6 +75,15 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         self.detailView.hidden = true
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()
+        }
+    }
+    
+    func proximityChanged(notification: NSNotification) {
+        println("Proximity changed", self.device.proximityState)
+        if(self.device.proximityState) {
+            self.startMotion()
+        } else {
+            self.stopChallenge()
         }
     }
 

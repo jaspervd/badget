@@ -9,8 +9,8 @@
 import UIKit
 import CoreBluetooth
 
-class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableViewDelegate, CBCentralManagerDelegate {
-    let centralManager = CBCentralManager(delegate: nil, queue: nil)
+class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableViewDelegate, CBCentralManagerDelegate, UITableViewDataSource {
+    var centralManager:CBCentralManager!
     var peripheralsArray:Array<CBPeripheral> = []
     let detailView = UITableView()
     
@@ -27,12 +27,14 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     }
 
     override func viewDidLoad() {
+        self.centralManager = CBCentralManager(delegate: nil, queue: nil)
         self.centralManager.delegate = self
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
         self.detailView.hidden = true
         self.detailView.delegate = self
+        self.detailView.dataSource = self
         
         self.detailView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
         self.grouphuggerView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
@@ -40,6 +42,9 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     
     func startChallenge() {
         self.detailView.hidden = false
+        if(self.centralManager.state == .PoweredOn) {
+            self.centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        }
     }
     
     func stopChallenge() {
@@ -52,6 +57,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
             self.peripheralsArray.append(peripheral)
             self.detailView.reloadData()
         }
+        println(peripheral)
     }
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
@@ -111,6 +117,8 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         
         var peripheral = self.peripheralsArray[indexPath.row]
         cell.textLabel?.text = peripheral.name
+        
+        println(peripheral.name)
         
         var state = "Unknown"
         switch(peripheral.state) {

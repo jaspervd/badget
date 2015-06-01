@@ -35,6 +35,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, MKMapViewD
     }
     
     func startChallenge() {
+        self.detailView.hidden = false
         self.detailView.showsUserLocation = true
         self.detailView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
             
