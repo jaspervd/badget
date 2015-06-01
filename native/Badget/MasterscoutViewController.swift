@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class MasterscoutViewController: UIViewController, MKMapViewDelegate {
+    let detailView = MKMapView()
     
     var masterscoutView:MasterscoutView! {
         get {
@@ -20,16 +21,24 @@ class MasterscoutViewController: UIViewController, MKMapViewDelegate {
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = MasterscoutView(frame: bounds)
+        self.detailView.frame = bounds
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addSubview(self.detailView)
+        self.detailView.hidden = true
+        self.detailView.delegate = self
+        
         self.masterscoutView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func startChallenge() {
-        self.masterscoutView.showChallenge()
+        self.detailView.showsUserLocation = true
+        self.detailView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
+            
+        self.detailView.setRegion(MKCoordinateRegionMakeWithDistance(self.detailView.userLocation.coordinate, 500, 500), animated: true)
     }
 
     override func didReceiveMemoryWarning() {

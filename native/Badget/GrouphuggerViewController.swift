@@ -30,6 +30,8 @@ class GrouphuggerViewController: UIViewController, UITableViewDelegate, CBCentra
         self.centralManager.delegate = self
         super.viewDidLoad()
         
+        self.view.addSubview(self.detailView)
+        self.detailView.hidden = true
         self.detailView.delegate = self
         
         self.detailView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
@@ -37,7 +39,7 @@ class GrouphuggerViewController: UIViewController, UITableViewDelegate, CBCentra
     }
     
     func startChallenge() {
-        self.view = self.detailView
+        self.detailView.hidden = false
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {

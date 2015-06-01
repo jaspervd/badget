@@ -26,19 +26,6 @@ class BeerkingView: UIView {
         self.angleText.hidden = true
         
         self.addSubview(self.btnContinue)
-        self.addSubview(self.angleText)
-    }
-    
-    func showChallenge() {
-        self.btnContinue.hidden = true
-        
-        self.angleText.hidden = false
-    }
-    
-    func showStart() {
-        self.btnContinue.hidden = false
-        
-        self.angleText.hidden = true
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -11,6 +11,7 @@ import CoreMotion
 
 class BeerkingViewController: UIViewController {
     let motionManager = CMMotionManager()
+    let detailView = UIView()
     
     var beerkingView:BeerkingView! {
         get {
@@ -21,15 +22,21 @@ class BeerkingViewController: UIViewController {
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = BeerkingView(frame: bounds)
+        self.detailView.frame = bounds
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.detailView)
+        self.detailView.hidden = true
+        
         self.beerkingView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func startChallenge() {
-        self.beerkingView.showChallenge()
+        self.detailView.addSubview(self.beerkingView.angleText)
+        self.detailView.hidden = false
         if (self.motionManager.deviceMotionAvailable) {
             self.motionManager.deviceMotionUpdateInterval = 0.2;
             self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: { (data: CMDeviceMotion!, error: NSError!) -> Void in

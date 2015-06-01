@@ -28,26 +28,6 @@ class MasterscoutView: UIView {
         self.addSubview(self.mapView)
     }
     
-    func showChallenge() {
-        self.btnContinue.hidden = true
-        
-        self.mapView.hidden = false
-        initMap()
-    }
-    
-    func initMap() {
-        self.mapView.showsUserLocation = true
-        self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
-        
-        self.mapView.setRegion(MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 500, 500), animated: true)
-    }
-    
-    func showStart() {
-        self.btnContinue.hidden = false
-        
-        self.mapView.hidden = true
-    }
-    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
