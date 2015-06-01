@@ -9,7 +9,7 @@
 import UIKit
 import CoreMotion
 
-class BeerkingViewController: UIViewController {
+class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
     let detailView = UIView()
     
@@ -58,6 +58,13 @@ class BeerkingViewController: UIViewController {
                 
                 self.beerkingView.angleText.text = String(format: "%.f", round(angle)) + "°"
             })
+        }
+    }
+    
+    func stopChallenge() {
+        self.detailView.hidden = true
+        if(self.motionManager.deviceMotionActive) {
+            self.motionManager.stopDeviceMotionUpdates()
         }
     }
 

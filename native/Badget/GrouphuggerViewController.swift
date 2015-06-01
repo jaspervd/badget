@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class GrouphuggerViewController: UIViewController, UITableViewDelegate, CBCentralManagerDelegate {
+class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableViewDelegate, CBCentralManagerDelegate {
     let centralManager = CBCentralManager(delegate: nil, queue: nil)
     var peripheralsArray:Array<CBPeripheral> = []
     let detailView = UITableView()
@@ -40,6 +40,10 @@ class GrouphuggerViewController: UIViewController, UITableViewDelegate, CBCentra
     
     func startChallenge() {
         self.detailView.hidden = false
+    }
+    
+    func stopChallenge() {
+        self.detailView.hidden = true
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {

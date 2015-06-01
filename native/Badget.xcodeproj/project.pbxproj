@@ -16,6 +16,7 @@
 		A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E31B1667A9008B3823 /* Images.xcassets */; };
 		A43E13E71B1667A9008B3823 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E51B1667A9008B3823 /* LaunchScreen.xib */; };
 		A43E13F31B1667A9008B3823 /* BadgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13F21B1667A9008B3823 /* BadgetTests.swift */; };
+		A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */; };
 		A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* StartViewController.swift */; };
 		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
 		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
@@ -53,6 +54,7 @@
 		A43E13EC1B1667A9008B3823 /* BadgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BadgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43E13F11B1667A9008B3823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43E13F21B1667A9008B3823 /* BadgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgetTests.swift; sourceTree = "<group>"; };
+		A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */,
 				A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */,
 				A4E6ECB11B188FA300B20927 /* BeerkingView.swift */,
+				A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */,
 			);
 			name = Challenges;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				A43E13E01B1667A9008B3823 /* Badget.xcdatamodeld in Sources */,
 				A4E6ECB21B188FA300B20927 /* BeerkingView.swift in Sources */,
 				A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */,
+				A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */,
 				A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */,
 				A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,

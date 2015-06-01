@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MasterscoutViewController: UIViewController, MKMapViewDelegate {
+class MasterscoutViewController: UIViewController, ChallengeProtocol, MKMapViewDelegate {
     let detailView = MKMapView()
     
     var masterscoutView:MasterscoutView! {
@@ -39,6 +39,10 @@ class MasterscoutViewController: UIViewController, MKMapViewDelegate {
         self.detailView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
             
         self.detailView.setRegion(MKCoordinateRegionMakeWithDistance(self.detailView.userLocation.coordinate, 500, 500), animated: true)
+    }
+    
+    func stopChallenge() {
+        self.detailView.hidden = true
     }
 
     override func didReceiveMemoryWarning() {

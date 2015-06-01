@@ -15,7 +15,6 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     let masterscoutVC = MasterscoutViewController()
     let beerkingVC = BeerkingViewController()
     let device = UIDevice.currentDevice()
-    var motionLastRoll:Double! = 0
     let locationManager = CLLocationManager()
     
     var scrollView:UIScrollView! {
@@ -53,7 +52,8 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         
         var xPos:CGFloat = 0
         for view in self.view.subviews {
-            //view.frame.origin.x = xPos
+            println(view)
+            //view.frame = CGRectMake(xPos, 0, self.view.frame.width, self.view.frame.height)
             xPos += view.frame.width
         }
         
@@ -66,16 +66,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if(!CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
-            self.masterscoutVC.masterscoutView.showStart()
-        }
-        
-        if(!CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
-            self.beerkingVC.beerkingView.showStart()
-            if(self.beerkingVC.motionManager.deviceMotionActive) {
-                self.beerkingVC.motionManager.stopDeviceMotionUpdates()
-            }
-        }
+        //if(!CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
     }
     
     func proximityChanged(notification: NSNotification) {
