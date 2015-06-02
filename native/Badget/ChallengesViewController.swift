@@ -15,6 +15,8 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     let masterscoutVC = MasterscoutViewController()
     let beerkingVC = BeerkingViewController()
     let locationManager = CLLocationManager()
+    var badgesBtn = UIButton()
+    let badgesVC = BadgesViewController()
     
     var scrollView:UIScrollView! {
         get {
@@ -27,6 +29,11 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         
         createChallenges()
         self.locationManager.requestWhenInUseAuthorization()
+        
+        self.badgesBtn = UIButton(frame: CGRectMake(10, 460, 44, 44))
+        self.badgesBtn.backgroundColor = UIColor.yellowColor()
+        self.badgesBtn.addTarget(self, action: "showBadges", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(self.badgesBtn)
     }
     
     override func loadView() {
@@ -51,17 +58,24 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.contentSize = CGSizeMake(self.beerkingVC.view.frame.width + self.beerkingVC.view.frame.origin.x, 0)
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.badgesBtn.frame.origin.x = 10 + scrollView.contentOffset.x
+    }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if(!CGRectIntersectsRect(scrollView.bounds, self.grouphuggerVC.view.frame)) {
+        if(self.grouphuggerVC.started && !CGRectIntersectsRect(scrollView.bounds, self.grouphuggerVC.view.frame)) {
             self.grouphuggerVC.stopChallenge()
         }
-        if(!CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
+        if(self.masterscoutVC.started && !CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
             self.masterscoutVC.stopChallenge()
         }
-        if(!CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
+        if(self.beerkingVC.started && !CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
             self.beerkingVC.stopChallenge()
         }
+    }
+    
+    func showBadges() {
+        self.presentViewController(self.badgesVC, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

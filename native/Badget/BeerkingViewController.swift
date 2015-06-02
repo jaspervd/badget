@@ -15,6 +15,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     let device = UIDevice.currentDevice()
     var startTime = NSDate()
     var anglesArray:Array<Double> = []
+    var started:Bool = false
     
     var beerkingView:BeerkingView! {
         get {
@@ -43,6 +44,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         self.startTime = NSDate()
         self.detailView.hidden = false
         self.detailView.addSubview(self.beerkingView.angleText)
+        self.started = true
         
         self.device.proximityMonitoringEnabled = true
         if(self.device.proximityMonitoringEnabled) {
@@ -78,6 +80,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     
     func stopChallenge() {
         self.device.proximityMonitoringEnabled = false
+        self.started = false
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "UIDeviceProximityStateDidChangeNotification", object: nil)
         self.detailView.hidden = true
         
@@ -94,7 +97,6 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     }
     
     func proximityChanged(notification: NSNotification) {
-        println("Proximity changed", self.device.proximityState)
         if(self.device.proximityState) {
             self.startMotion()
         } else {

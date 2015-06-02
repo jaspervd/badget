@@ -11,6 +11,7 @@ import MapKit
 
 class MasterscoutViewController: UIViewController, ChallengeProtocol, MKMapViewDelegate {
     let detailView = MKMapView()
+    var started:Bool = false
     
     var masterscoutView:MasterscoutView! {
         get {
@@ -38,12 +39,14 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, MKMapViewD
         self.detailView.hidden = false
         self.detailView.showsUserLocation = true
         self.detailView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
+        self.started = true
             
         self.detailView.setRegion(MKCoordinateRegionMakeWithDistance(self.detailView.userLocation.coordinate, 500, 500), animated: true)
     }
     
     func stopChallenge() {
         self.detailView.hidden = true
+        self.started = false
     }
 
     override func didReceiveMemoryWarning() {

@@ -12,7 +12,9 @@ import CoreBluetooth
 class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableViewDelegate, CBCentralManagerDelegate, UITableViewDataSource {
     var centralManager:CBCentralManager!
     var peripheralsArray:Array<CBPeripheral> = []
+    var connectedFriends:Array<CBPeripheral> = []
     let detailView = UITableView()
+    var started:Bool = false
     
     var grouphuggerView:GrouphuggerView! {
         get {
@@ -42,6 +44,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     
     func startChallenge() {
         self.detailView.hidden = false
+        self.started = true
         if(self.centralManager.state == .PoweredOn) {
             self.centralManager.scanForPeripheralsWithServices(nil, options: nil)
         }
@@ -49,10 +52,12 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     
     func stopChallenge() {
         self.detailView.hidden = true
+        self.started = false
+        println("Wauw je had \(self.connectedFriends.count) vrienden bij je!")
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        var arr = peripheralsArray.filter( { return $0.identifier == peripheral.identifier } )
+        var arr = self.peripheralsArray.filter( { return $0.identifier == peripheral.identifier } )
         if(arr.count == 0) {
             self.peripheralsArray.append(peripheral)
             self.detailView.reloadData()
@@ -61,10 +66,13 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     }
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+        self.connectedFriends.append(peripheral)
         self.detailView.reloadData()
     }
     
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+        self.peripheralsArray.removeAtIndex(find(self.peripheralsArray, peripheral)!)
+        self.connectedFriends.removeAtIndex(find(self.connectedFriends, peripheral)!)
         self.detailView.reloadData()
     }
     
