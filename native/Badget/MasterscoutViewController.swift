@@ -9,9 +9,10 @@
 import UIKit
 import MapKit
 
-class MasterscoutViewController: UIViewController, ChallengeProtocol, MKMapViewDelegate {
-    let detailView = MKMapView()
+class MasterscoutViewController: UIViewController, ChallengeProtocol {
+    let detailView = UIView()
     var started:Bool = false
+    var milliseconds:CGFloat = 60*60-40
     
     var masterscoutView:MasterscoutView! {
         get {
@@ -29,19 +30,28 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, MKMapViewD
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
+        self.detailView.addSubview(self.masterscoutView.timerText)
         self.detailView.hidden = true
-        self.detailView.delegate = self
         
         self.masterscoutView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func startChallenge() {
+        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
         self.detailView.hidden = false
-        self.detailView.showsUserLocation = true
-        self.detailView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
         self.started = true
-            
-        self.detailView.setRegion(MKCoordinateRegionMakeWithDistance(self.detailView.userLocation.coordinate, 500, 500), animated: true)
+    }
+    
+    func timerHandler() {
+        self.milliseconds += 0.01
+        var formatter = NSNumberFormatter()
+        formatter.minimumIntegerDigits = 2
+        var sec = Int(self.milliseconds)
+        var hours:Int = sec / (60 * 60)
+        var minutes:Int = sec / 60 - hours * 60
+        var seconds:Int = sec - (minutes * 60 + hours * 60)
+        var ms = Int((self.milliseconds - CGFloat(sec)) * 100)
+        self.masterscoutView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
     }
     
     func stopChallenge() {
