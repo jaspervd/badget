@@ -4,9 +4,58 @@ date_default_timezone_set('Europe/Brussels');
 define("WWW_ROOT", dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 require_once WWW_ROOT . 'api' . DIRECTORY_SEPARATOR . 'Slim' . DIRECTORY_SEPARATOR . 'Slim.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'UsersDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'GrouphuggerDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'MasterscoutDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'BeerkingDAO.php';
 
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
+$usersDAO = new UsersDAO();
+$grouphuggerDAO = new GrouphuggerDAO();
+$masterscoutDAO = new MasterscoutDAO();
+$beerkingDAO = new BeerkingDAO();
+
+$app->post('/users/?', function () use ($app, $usersDAO) {
+    header('Content-Type: application/json');
+    $post = $app->request->post();
+    if (empty($post)) {
+        $post = (array)json_decode($app->request()->getBody());
+    }
+    $photo_url = 'temp.png';
+    echo json_encode($usersDAO->register($post['name'], $photo_url));
+    exit();
+});
+
+$app->post('/grouphugger/?', function () use ($app, $grouphuggerDAO) {
+    header('Content-Type: application/json');
+    $post = $app->request->post();
+    if (empty($post)) {
+        $post = (array)json_decode($app->request()->getBody());
+    }
+    echo json_encode($grouphuggerDAO->insert($post['user_id'], $post['friends']));
+    exit();
+});
+
+$app->post('/masterscout/?', function () use ($app, $masterscoutDAO) {
+    header('Content-Type: application/json');
+    $post = $app->request->post();
+    if (empty($post)) {
+        $post = (array)json_decode($app->request()->getBody());
+    }
+    echo json_encode($grouphuggerDAO->insert($post['user_id'], $post['time'], $post['distance']));
+    exit();
+});
+
+$app->post('/beerking/?', function () use ($app, $beerkingDAO) {
+    header('Content-Type: application/json');
+    $post = $app->request->post();
+    if (empty($post)) {
+        $post = (array)json_decode($app->request()->getBody());
+    }
+    echo json_encode($grouphuggerDAO->insert($post['user_id'], $post['angle'], $post['time']));
+    exit();
+});
 
 $app->run();
