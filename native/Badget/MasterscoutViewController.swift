@@ -12,7 +12,9 @@ import MapKit
 class MasterscoutViewController: UIViewController, ChallengeProtocol {
     let detailView = UIView()
     var started:Bool = false
-    var milliseconds:CGFloat = 60*60-40
+    var timer:NSTimer = NSTimer()
+    var milliseconds:CGFloat = 0
+    var locations = Dictionary<String, Int>() // CLLocationCoordinate2D
     
     var masterscoutView:MasterscoutView! {
         get {
@@ -30,6 +32,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
+        self.detailView.addSubview(self.masterscoutView.instructionText)
         self.detailView.addSubview(self.masterscoutView.timerText)
         self.detailView.hidden = true
         
@@ -37,9 +40,21 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
     }
     
     func startChallenge() {
-        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
         self.detailView.hidden = false
         self.started = true
+        
+        self.locations = ["Mainstage": 13, "Dance Hall": 4, "Boiler Room": 6, "Chateau": 3, "Marquee": 80, "Petit Bazar": 43, "Arabian Tea Site": 2, "Salon Fou": 73, "The Shelter": 56, "WC naast de Chateau": 30]
+        
+        var loc = getRandomLocation()
+        self.masterscoutView.instructionText.text = "Ga naar de \(loc)"
+    }
+    
+    func getRandomLocation() -> String {
+        let index:Int = Int(arc4random_uniform(UInt32(self.locations.count)))
+        let key = Array(self.locations.keys)[index]
+        self.locations.removeValueForKey(key)
+        return key
     }
     
     func timerHandler() {
@@ -57,6 +72,8 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
     func stopChallenge() {
         self.detailView.hidden = true
         self.started = false
+        timer.invalidate()
+        self.milliseconds = 0
     }
 
     override func didReceiveMemoryWarning() {

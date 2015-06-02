@@ -13,15 +13,22 @@ class MasterscoutView: UIView {
     
     let btnContinue:UIButton
     let timerText:UILabel
+    let instructionText:UILabel
     
     override init(frame: CGRect) {
         self.btnContinue = UIButton(frame: CGRectMake(10, 440, 300, 40))
+        self.instructionText = UILabel(frame: CGRectMake(10, 240, 300, 30))
         self.timerText = UILabel(frame: CGRectMake(10, 300, 300, 40))
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.redColor()
         
-        self.timerText.text = "00:00:00"
+        self.instructionText.textAlignment = .Center
+        self.instructionText.textColor = UIColor.whiteColor()
+        self.instructionText.font = UIFont.systemFontOfSize(25)
+        
+        self.timerText.textAlignment = .Center
+        self.timerText.text = "00:00:00.00"
         
         self.btnContinue.setTitle("Let's do this!", forState: UIControlState.Normal)
         self.addSubview(self.btnContinue)
