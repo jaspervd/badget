@@ -13,6 +13,7 @@ class StartView: UIView {
     let campaignText:UITextView!
     let btnContinue:UIButton!
     let inputName:UITextField!
+    let inputEmail:UITextField!
     let btnPhoto:UIButton!
     let btnSave:UIButton!
     
@@ -26,9 +27,14 @@ class StartView: UIView {
         
         self.inputName = UITextField(frame: CGRect(x: 10, y: 50, width: 300, height: 40))
         self.inputName.hidden = true
-        self.inputName.text = "Je naam"
+        self.inputName.placeholder = "Chokri Mahassine"
         
-        self.btnPhoto = UIButton(frame: CGRect(x: 10, y: self.inputName.frame.origin.y + self.inputName.frame.height + 10, width: 300, height: 40))
+        self.inputEmail = UITextField(frame: CGRect(x: 10, y: self.inputName.frame.origin.y + self.inputName.frame.height + 10, width: 300, height: 40))
+        self.inputEmail.hidden = true
+        self.inputEmail.placeholder = "chokri.mahassine@pukkelpop.be"
+        self.inputEmail.keyboardType = .EmailAddress
+        
+        self.btnPhoto = UIButton(frame: CGRect(x: 10, y: self.inputEmail.frame.origin.y + self.inputEmail.frame.height + 10, width: 300, height: 40))
         self.btnPhoto.setTitle("Foto", forState: UIControlState.Normal)
         self.btnPhoto.hidden = true
         
@@ -43,6 +49,7 @@ class StartView: UIView {
         self.addSubview(self.campaignText)
         self.addSubview(self.btnContinue)
         self.addSubview(self.inputName)
+        self.addSubview(self.inputEmail)
         self.addSubview(self.btnPhoto)
         self.addSubview(self.btnSave)
     }
@@ -52,6 +59,7 @@ class StartView: UIView {
         self.campaignText.hidden = true
         
         self.inputName.hidden = false
+        self.inputEmail.hidden = false
         self.btnPhoto.hidden = false
         self.btnSave.hidden = false
     }
