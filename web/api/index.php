@@ -23,8 +23,18 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    $photo_url = 'temp.png';
-    echo json_encode($usersDAO->register($post['name'], $photo_url));
+
+    $photo_url = '';
+    if(!empty($_FILES['photo'])) {
+        $fileTmp = $_FILES['photo'][0];
+        $fileName = time() . '_' . mt_rand(0, 99) . '.' . pathinfo($fileTmp['name'], PATHINFO_EXTENSION);
+        $uploadfile = '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $fileName;
+        if (move_uploaded_file($fileTmp['tmp_name'], $uploadfile)) {
+            $photo_url = $fileName;
+        }
+    }
+
+    echo json_encode($usersDAO->register($post['name'], $post['email'], $photo_url));
     exit();
 });
 
