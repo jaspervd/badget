@@ -38,9 +38,14 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = StartView(frame:bounds)
+        
+        if(NSUserDefaults.standardUserDefaults().boolForKey("readCampaign")) {
+            self.startView.showCredentials()
+        }
     }
     
     func continueClicked() {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "readCampaign")
         self.startView.showCredentials()
     }
     
@@ -113,7 +118,14 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         fileUploader.setValue(self.startView.inputEmail.text, forParameter: "email")
         var request = NSMutableURLRequest(URL: NSURL(string: Settings.apiUrl + "/users")!)
         request.HTTPMethod = "POST"
-        fileUploader.uploadFile(request: request)
+        fileUploader.uploadFile(request: request)?.responseJSON { (_, _, data, _) in
+            let jsonData = JSON(data!)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
+            NSUserDefaults.standardUserDefaults().setObject(jsonData["id"].string, forKey: "userId")
+            NSUserDefaults.standardUserDefaults().setObject(jsonData["name"].string, forKey: "name")
+            NSUserDefaults.standardUserDefaults().setObject(jsonData["email"].string, forKey: "email")
+            NSUserDefaults.standardUserDefaults().setObject(jsonData["photo_url"].string, forKey: "photoUrl")
+        }
     }
     /*
     // MARK: - Navigation

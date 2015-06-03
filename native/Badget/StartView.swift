@@ -28,10 +28,12 @@ class StartView: UIView {
         self.inputName = UITextField(frame: CGRect(x: 10, y: 50, width: 300, height: 40))
         self.inputName.hidden = true
         self.inputName.placeholder = "Chokri Mahassine"
+        self.inputName.autocapitalizationType = .Words
         
         self.inputEmail = UITextField(frame: CGRect(x: 10, y: self.inputName.frame.origin.y + self.inputName.frame.height + 10, width: 300, height: 40))
         self.inputEmail.hidden = true
         self.inputEmail.placeholder = "chokri.mahassine@pukkelpop.be"
+        self.inputEmail.autocapitalizationType = .None
         self.inputEmail.keyboardType = .EmailAddress
         
         self.btnPhoto = UIButton(frame: CGRect(x: 10, y: self.inputEmail.frame.origin.y + self.inputEmail.frame.height + 10, width: 300, height: 40))

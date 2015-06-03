@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window.rootViewController = StartViewController()
+        if(NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")) {
+            self.window.rootViewController = ChallengesViewController()
+        } else {
+            self.window.rootViewController = StartViewController()
+        }
         self.window.makeKeyAndVisible()
         
         return true
