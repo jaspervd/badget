@@ -1,4 +1,6 @@
 <?php
+ini_set("display_errors", "1");
+error_reporting(E_ALL);
 session_start();
 date_default_timezone_set('Europe/Brussels');
 define("WWW_ROOT", dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
@@ -26,7 +28,7 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
 
     $photo_url = '';
     if(!empty($_FILES['photo'])) {
-        $fileTmp = $_FILES['photo'][0];
+        $fileTmp = $_FILES['photo'];
         $fileName = time() . '_' . mt_rand(0, 99) . '.' . pathinfo($fileTmp['name'], PATHINFO_EXTENSION);
         $uploadfile = '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $fileName;
         if (move_uploaded_file($fileTmp['tmp_name'], $uploadfile)) {
