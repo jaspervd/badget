@@ -29,7 +29,11 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
     $photo_url = '';
     if(!empty($_FILES['photo'])) {
         $fileTmp = $_FILES['photo'];
-        $fileName = time() . '_' . mt_rand(0, 99) . '.' . pathinfo($fileTmp['name'], PATHINFO_EXTENSION);
+        $ext = pathinfo($fileTmp['name'], PATHINFO_EXTENSION);
+        if($ext == '') {
+            $ext = 'jpg';
+        }
+        $fileName = time() . '_' . mt_rand(0, 99) . '.' . $ext;
         $uploadfile = '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $fileName;
         if (move_uploaded_file($fileTmp['tmp_name'], $uploadfile)) {
             $photo_url = $fileName;
