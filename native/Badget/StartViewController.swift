@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class StartViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -23,7 +24,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         
         self.startView.btnContinue.addTarget(self, action: "continueClicked", forControlEvents: UIControlEvents.TouchUpInside)
-            self.startView.btnPhoto.addTarget(self, action: "photoClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        self.startView.btnPhoto.addTarget(self, action: "photoClicked", forControlEvents: UIControlEvents.TouchUpInside)
         self.startView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
 
         // Do any additional setup after loading the view.
@@ -44,7 +45,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func saveClicked() {
-        // upload data to api (if online) / otherwise store offline
         var alertController = UIAlertController()
         var errors = false
         if(count(self.startView.inputName.text) < 1) {
@@ -65,6 +65,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             alertController.addAction(UIAlertAction(title: "Oké mama", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
         } else {
+            saveUser()
             self.presentViewController(self.challengesVC, animated: true, completion: nil)
         }
     }
@@ -94,7 +95,16 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return emailTest.evaluateWithObject(email)
     }
     
-
+    func saveUser() {
+        let fileUploader = FileUploader()
+        let data = self.image
+        fileUploader.addFileData(UIImageJPEGRepresentation(data, 0.8), withName: "photo", withMimeType: "image/jpeg")
+        fileUploader.setValue(self.startView.inputName.text, forParameter: "name")
+        fileUploader.setValue(self.startView.inputEmail.text, forParameter: "email")
+        var request = NSMutableURLRequest(URL: NSURL(string: Settings.apiUrl + "/users")!)
+        request.HTTPMethod = "POST"
+        fileUploader.uploadFile(request: request)
+    }
     /*
     // MARK: - Navigation
 
