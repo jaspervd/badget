@@ -95,9 +95,19 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return emailTest.evaluateWithObject(email)
     }
     
+    func resizeImage(image: UIImage, scale: CGFloat) -> UIImage {
+        let rect = CGRectMake(0.0, 0.0, image.size.width * scale, image.size.height * scale);
+        UIGraphicsBeginImageContext(rect.size);
+        image.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
     func saveUser() {
         let fileUploader = FileUploader()
-        let data = self.image
+        let data = resizeImage(self.image!, scale: 0.5)
+        
         fileUploader.addFileData(UIImageJPEGRepresentation(data, 0.8), withName: "photo", withMimeType: "image/jpeg")
         fileUploader.setValue(self.startView.inputName.text, forParameter: "name")
         fileUploader.setValue(self.startView.inputEmail.text, forParameter: "email")
