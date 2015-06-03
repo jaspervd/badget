@@ -32,6 +32,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
+        self.detailView.backgroundColor = UIColor.redColor()
         self.detailView.addSubview(self.masterscoutView.instructionText)
         self.detailView.addSubview(self.masterscoutView.timerText)
         self.detailView.hidden = true
