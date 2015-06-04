@@ -90,6 +90,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
             
             let parameters = [
                 "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+                "day": Settings.currentDate,
                 "angle": beerking.angle,
                 "seconds": beerking.seconds
             ]

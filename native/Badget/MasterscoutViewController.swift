@@ -71,11 +71,12 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         var masterscout = Masterscout(time: self.visualView.timerText.text!, distance: 420)
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+            "day": Settings.currentDate,
             "time": masterscout.time,
             "distance": masterscout.distance
         ]
         self.scoreView.timerText.text = masterscout.time
-        Alamofire.request(.POST, Settings.apiUrl + "/masterscout", parameters: (parameters as! [String : AnyObject]))
+        Alamofire.request(.POST, Settings.apiUrl + "/masterscout", parameters: parameters)
         timer.invalidate()
         self.milliseconds = 0
     }

@@ -55,6 +55,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         var grouphugger = Grouphugger(friends: self.connectedFriends.count)
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+            "day": Settings.currentDate,
             "friends": grouphugger.friends
         ]
         Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters)
