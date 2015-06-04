@@ -84,7 +84,10 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             imagePicker.sourceType = .PhotoLibrary
         }
         imagePicker.mediaTypes = mediatypes
+        imagePicker.allowsEditing = true
         imagePicker.delegate = self
+        imagePicker.modalTransitionStyle = .CrossDissolve
+        imagePicker.modalPresentationStyle = .CurrentContext
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
