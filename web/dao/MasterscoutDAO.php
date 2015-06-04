@@ -6,9 +6,9 @@ class MasterscoutDAO extends DAO {
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id);
         if($stmt->execute()) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!empty($user)) {
-                return $user;
+            $masterscout = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!empty($masterscout)) {
+                return $masterscout;
             }
         }
 
@@ -20,9 +20,9 @@ class MasterscoutDAO extends DAO {
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         if($stmt->execute()) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!empty($user)) {
-                return $user;
+            $masterscout = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!empty($masterscout)) {
+                return $masterscout;
             }
         }
 

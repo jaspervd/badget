@@ -6,9 +6,9 @@ class GrouphuggerDAO extends DAO {
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id);
         if($stmt->execute()) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!empty($user)) {
-                return $user;
+            $grouphugger = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!empty($grouphugger)) {
+                return $grouphugger;
             }
         }
 
@@ -20,9 +20,9 @@ class GrouphuggerDAO extends DAO {
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         if($stmt->execute()) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!empty($user)) {
-                return $user;
+            $grouphugger = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!empty($grouphugger)) {
+                return $grouphugger;
             }
         }
 

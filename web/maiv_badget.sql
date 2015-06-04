@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost:8889
--- Gegenereerd op: 04 jun 2015 om 19:31
+-- Gegenereerd op: 04 jun 2015 om 22:58
 -- Serverversie: 5.5.38
 -- PHP-versie: 5.6.2
 
@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Databank: `maiv_badget`
 --
-CREATE DATABASE IF NOT EXISTS `maiv_badget` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `maiv_badget`;
+USE `jaspervandahch7i`;
 
 -- --------------------------------------------------------
 
@@ -62,6 +61,23 @@ CREATE TABLE `bg_masterscout` (
   `time` time NOT NULL,
   `distance` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `bg_settings`
+--
+
+CREATE TABLE `bg_settings` (
+  `current_day` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `bg_settings`
+--
+
+INSERT INTO `bg_settings` (`current_day`) VALUES
+('2015-08-21 10:13:31');
 
 -- --------------------------------------------------------
 

@@ -18,7 +18,12 @@ $usersDAO = new UsersDAO();
 $grouphuggerDAO = new GrouphuggerDAO();
 $masterscoutDAO = new MasterscoutDAO();
 $beerkingDAO = new BeerkingDAO();
-define("_DAY", date("Y-m-d H:i:s"));
+$settingsDAO = new SettingsDAO();
+
+$app->get('/day/?', function() use ($settingsDAO) {
+    header('Content-Type: application/json');
+    return json_encode($settingsDAO->getCurrentDay());
+});
 
 $app->post('/users/?', function () use ($app, $usersDAO) {
     header('Content-Type: application/json');
