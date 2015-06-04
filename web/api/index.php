@@ -23,7 +23,8 @@ $settingsDAO = new SettingsDAO();
 
 $app->get('/day/?', function() use ($settingsDAO) {
     header('Content-Type: application/json');
-    return json_encode($settingsDAO->getCurrentDay());
+    echo json_encode($settingsDAO->getCurrentDay());
+    exit;
 });
 
 $app->post('/users/?', function () use ($app, $usersDAO) {
