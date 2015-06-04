@@ -76,16 +76,16 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func photoClicked() {
+        var mediatypes = ["public.image"] as Array
+        let imagePicker = UIImagePickerController()
         if(UIImagePickerController.isSourceTypeAvailable(.Camera)) {
-            var mediatypes = ["public.image"] as Array
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-            imagePicker.mediaTypes = mediatypes
-            imagePicker.delegate = self
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            imagePicker.sourceType = .Camera
         } else {
-            println("Geen camera beschikbaar")
+            imagePicker.sourceType = .PhotoLibrary
         }
+        imagePicker.mediaTypes = mediatypes
+        imagePicker.delegate = self
+        self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
