@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 struct Settings {
     static let apiUrl = "http://student.howest.be/jasper.van.damme/20142015/MA4/BADGET/api"
