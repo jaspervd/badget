@@ -15,26 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
-        self.window.makeKeyAndVisible()
-        self.window.backgroundColor = UIColor.lightGrayColor()
         
-        return true
-    }
-    
-    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dateHandler:", name: "didUpdateDate", object: nil)
-        Settings.getDate()
-        
-        return true
-    }
-    
-    func dateHandler(notification: NSNotification) {
         if(NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")) {
             self.window.rootViewController = ChallengesViewController()
         } else {
             self.window.rootViewController = StartViewController()
         }
+
+        self.window.makeKeyAndVisible()
+        self.window.backgroundColor = UIColor.lightGrayColor()
+        
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

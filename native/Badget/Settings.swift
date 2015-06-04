@@ -14,17 +14,5 @@ struct Settings {
     static let startDate = NSDate(timeIntervalSince1970: 1440057600) // 1440057600: 20/08/15 08:00
     static let secondsEndDay = 64800 // 64800: 18h
     static let endDate = NSDate(timeIntervalSince1970: 1440266400) // 1440266400: 22/08/15 18:00
-    static var currentDate = NSDate()
-    
-    static func getDate() {
-        Alamofire.request(.GET, self.apiUrl + "/day").responseJSON { (_, _, data, _) in
-            let json = JSON(data!)
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            if let day = json["current_day"].string {
-                self.currentDate = formatter.dateFromString(day)!
-            }
-            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "didUpdateDate", object: self.currentDate))
-        }
-    }
+    static var currentDate = NSDate(timeIntervalSince1970: 1440168960) // 1440168981: 21/08/15 14:56
 }
