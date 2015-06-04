@@ -34,7 +34,7 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
         if($ext == '') {
             $ext = 'jpg';
         }
-        $fileName = time() . '_' . mt_rand(0, 99) . '.' . $ext;
+        $fileName = time() . '_' . mt_rand(100, 999) . '.' . $ext;
         $uploadfile = '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $fileName;
         if (move_uploaded_file($fileTmp['tmp_name'], $uploadfile)) {
             $photo_url = $fileName;
@@ -61,7 +61,7 @@ $app->post('/masterscout/?', function () use ($app, $masterscoutDAO) {
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($grouphuggerDAO->insert($post['user_id'], _DAY, $post['time'], $post['distance']));
+    echo json_encode($masterscoutDAO->insert($post['user_id'], _DAY, $post['time'], $post['distance']));
     exit();
 });
 
@@ -71,7 +71,7 @@ $app->post('/beerking/?', function () use ($app, $beerkingDAO) {
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($grouphuggerDAO->insert($post['user_id'], _DAY, $post['angle'], $post['seconds']));
+    echo json_encode($beerkingDAO->insert($post['user_id'], _DAY, $post['angle'], $post['seconds']));
     exit();
 });
 
