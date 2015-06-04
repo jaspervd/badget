@@ -10,7 +10,6 @@ require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'UsersDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'GrouphuggerDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'MasterscoutDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'BeerkingDAO.php';
-require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'SettingsDAO.php';
 
 \Slim\Slim::registerAutoloader();
 
@@ -19,13 +18,6 @@ $usersDAO = new UsersDAO();
 $grouphuggerDAO = new GrouphuggerDAO();
 $masterscoutDAO = new MasterscoutDAO();
 $beerkingDAO = new BeerkingDAO();
-$settingsDAO = new SettingsDAO();
-
-$app->get('/day/?', function() use ($settingsDAO) {
-    header('Content-Type: application/json');
-    echo json_encode($settingsDAO->getCurrentDay());
-    exit;
-});
 
 $app->post('/users/?', function () use ($app, $usersDAO) {
     header('Content-Type: application/json');
