@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost:8889
--- Gegenereerd op: 03 jun 2015 om 16:49
+-- Gegenereerd op: 04 jun 2015 om 19:31
 -- Serverversie: 5.5.38
 -- PHP-versie: 5.6.2
 
@@ -33,7 +33,7 @@ CREATE TABLE `bg_beerking` (
   `user_id` int(11) NOT NULL,
   `day` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `angle` float NOT NULL,
-  `time` time NOT NULL
+  `seconds` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

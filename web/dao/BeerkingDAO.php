@@ -29,13 +29,13 @@ class BeerkingDAO extends DAO {
         return array();
     }
 
-    public function insert($user_id, $day, $angle, $time) {
-        $sql = "INSERT INTO `bg_beerking` (`user_id`, `day`, `angle`, `time`) VALUES (:user_id, :day, :angle, :time)";
+    public function insert($user_id, $day, $angle, $seconds) {
+        $sql = "INSERT INTO `bg_beerking` (`user_id`, `day`, `angle`, `seconds`) VALUES (:user_id, :day, :angle, :seconds)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         $stmt->bindValue(':day', $day);
         $stmt->bindValue(':angle', $angle);
-        $stmt->bindValue(':time', $time);
+        $stmt->bindValue(':seconds', $seconds);
         if ($stmt->execute()) {
             return $this->selectById($this->pdo->lastInsertId());
         }

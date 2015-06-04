@@ -71,7 +71,7 @@ $app->post('/beerking/?', function () use ($app, $beerkingDAO) {
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($grouphuggerDAO->insert($post['user_id'], _DAY, $post['angle'], $post['time']));
+    echo json_encode($grouphuggerDAO->insert($post['user_id'], _DAY, $post['angle'], $post['seconds']));
     exit();
 });
 
