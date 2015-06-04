@@ -85,6 +85,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         if(self.anglesArray.count > 0) {
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
             self.scoreView.angleText.text = "Gemiddelde: \(avg)°"
+            var beerking = Beerking(angle: Int(avg), seconds: Int(round(seconds)))
         }
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()

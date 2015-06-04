@@ -123,11 +123,12 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         request.HTTPMethod = "POST"
         fileUploader.uploadFile(request: request)?.responseJSON { (_, _, data, _) in
             let jsonData = JSON(data!)
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
-            NSUserDefaults.standardUserDefaults().setObject(jsonData["id"].string, forKey: "userId")
-            NSUserDefaults.standardUserDefaults().setObject(jsonData["name"].string, forKey: "name")
-            NSUserDefaults.standardUserDefaults().setObject(jsonData["email"].string, forKey: "email")
-            NSUserDefaults.standardUserDefaults().setObject(jsonData["photo_url"].string, forKey: "photoUrl")
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setBool(true, forKey: "loggedIn")
+            userDefaults.setInteger(jsonData["id"].intValue, forKey: "userId")
+            userDefaults.setObject(jsonData["name"].string, forKey: "name")
+            userDefaults.setObject(jsonData["email"].string, forKey: "email")
+            userDefaults.setObject(jsonData["photo_url"].string, forKey: "photoUrl")
         }
     }
     /*

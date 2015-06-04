@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import CoreBluetooth
 
 class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableViewDelegate, CBCentralManagerDelegate, UITableViewDataSource {
@@ -51,6 +52,17 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
         self.scoreView.friendsText.text = "Je had \(self.connectedFriends.count) vrienden bij je!"
+        var grouphugger = Grouphugger(friends: self.connectedFriends.count)
+        let parameters = [
+            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+            "friends": grouphugger.friends
+        ]
+        println(parameters)
+        Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters).responseJSON { (_, _, data, error) in
+            println(error)
+            println(data)
+            //let jsonData = JSON(data!)
+        }
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
@@ -59,7 +71,6 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
             self.peripheralsArray.append(peripheral)
             self.visualView.reloadData()
         }
-        println(peripheral)
     }
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
@@ -127,8 +138,6 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         
         var peripheral = self.peripheralsArray[indexPath.row]
         cell.textLabel?.text = peripheral.name
-        
-        println(peripheral.name)
         
         var state = "Unknown"
         switch(peripheral.state) {

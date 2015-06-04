@@ -9,13 +9,18 @@
 import UIKit
 
 class Masterscout: NSObject, NSCoding {
-    var time:String!
+    var time:Int
+    
+    init(time: Int) {
+        self.time = time
+        super.init()
+    }
     
     required init(coder aDecoder: NSCoder) {
-        self.time = aDecoder.decodeObjectForKey("time") as! String?
+        self.time = aDecoder.decodeIntegerForKey("time")
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.time, forKey: "time")
+        aCoder.encodeInteger(self.time, forKey: "time")
     }
 }

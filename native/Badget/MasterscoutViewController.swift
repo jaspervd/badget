@@ -68,6 +68,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
         self.scoreView.timerText.text = self.visualView.timerText.text
+        var masterscout = Masterscout(time: Int(self.milliseconds * 100))
         timer.invalidate()
         self.milliseconds = 0
     }

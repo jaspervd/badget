@@ -9,7 +9,12 @@
 import UIKit
 
 class Grouphugger: NSObject, NSCoding {
-    var friends:Int!
+    var friends:Int
+    
+    init(friends: Int) {
+        self.friends = friends
+        super.init()
+    }
     
     required init(coder aDecoder: NSCoder) {
         self.friends = aDecoder.decodeIntegerForKey("friends")

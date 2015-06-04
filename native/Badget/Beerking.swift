@@ -9,8 +9,14 @@
 import UIKit
 
 class Beerking: NSObject, NSCoding {
-    var angle:Int!
-    var seconds:Int!
+    var angle:Int
+    var seconds:Int
+    
+    init(angle: Int, seconds: Int) {
+        self.angle = angle
+        self.seconds = seconds
+        super.init()
+    }
     
     required init(coder aDecoder: NSCoder) {
         self.angle = aDecoder.decodeIntegerForKey("angle")
