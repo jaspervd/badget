@@ -10,6 +10,7 @@ require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'UsersDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'GrouphuggerDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'MasterscoutDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'BeerkingDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'SettingsDAO.php';
 
 \Slim\Slim::registerAutoloader();
 
