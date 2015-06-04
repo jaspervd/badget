@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import Alamofire
 
 class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
@@ -86,6 +87,13 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
             self.scoreView.angleText.text = "Gemiddelde: \(avg)°"
             var beerking = Beerking(angle: Int(avg), seconds: Int(round(seconds)))
+            
+            let parameters = [
+                "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+                "angle": beerking.angle,
+                "seconds": beerking.seconds
+            ]
+            Alamofire.request(.POST, Settings.apiUrl + "/beerking", parameters: parameters)
         }
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()

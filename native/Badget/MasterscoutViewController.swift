@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Alamofire
 
 class MasterscoutViewController: UIViewController, ChallengeProtocol {
     var detailView:MasterscoutDetailView!
@@ -69,6 +70,11 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         self.started = false
         self.scoreView.timerText.text = self.visualView.timerText.text
         var masterscout = Masterscout(time: Int(self.milliseconds * 100))
+        let parameters = [
+            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+            "time": masterscout.time
+        ]
+        Alamofire.request(.POST, Settings.apiUrl + "/masterscout", parameters: parameters)
         timer.invalidate()
         self.milliseconds = 0
     }

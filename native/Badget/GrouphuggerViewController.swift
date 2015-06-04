@@ -57,12 +57,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
             "friends": grouphugger.friends
         ]
-        println(parameters)
-        Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters).responseJSON { (_, _, data, error) in
-            println(error)
-            println(data)
-            //let jsonData = JSON(data!)
-        }
+        Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters)
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
