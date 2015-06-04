@@ -16,7 +16,7 @@ struct Settings {
     static let endDate = NSDate(timeIntervalSince1970: 1440266400) // 1440266400: 22/08/15 18:00
     static var currentDate = NSDate()
     
-    static func getDate() -> NSDate {
+    static func getDate() {
         Alamofire.request(.GET, self.apiUrl + "/day").responseJSON { (_, _, data, _) in
             let json = JSON(data!)
             let formatter = NSDateFormatter()
@@ -24,7 +24,7 @@ struct Settings {
             if let day = json["current_day"].string {
                 self.currentDate = formatter.dateFromString(day)!
             }
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "didUpdateDate", object: self.currentDate))
         }
-        return self.currentDate
     }
 }
