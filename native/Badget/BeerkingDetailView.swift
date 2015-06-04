@@ -19,7 +19,6 @@ class BeerkingDetailView: UIView {
         self.descriptionText = UITextView(frame: CGRectMake(10, 100, 300, 340))
         self.btnContinue = UIButton(frame: CGRectMake(10, 440, 300, 40))
         super.init(frame: frame)
-        self.backgroundColor = UIColor.grayColor()
         
         self.titleText.text = "Beerking"
         self.titleText.textAlignment = .Center

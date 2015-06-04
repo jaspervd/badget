@@ -64,13 +64,13 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if(self.grouphuggerVC.started && !CGRectIntersectsRect(scrollView.bounds, self.grouphuggerVC.view.frame)) {
-            self.grouphuggerVC.stopChallenge()
+            self.grouphuggerVC.didFinishChallenge()
         }
         if(self.masterscoutVC.started && !CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
-            self.masterscoutVC.stopChallenge()
+            self.masterscoutVC.didFinishChallenge()
         }
         if(self.beerkingVC.started && !CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
-            self.beerkingVC.stopChallenge()
+            self.beerkingVC.didFinishChallenge()
         }
     }
     

@@ -11,9 +11,9 @@ import CoreMotion
 
 class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
-    let detailView = BeerkingDetailView()
-    let visualView = BeerkingVisualView()
-    let scoreView = BeerkingScoreView()
+    var detailView:BeerkingDetailView!
+    var visualView:BeerkingVisualView!
+    var scoreView:BeerkingScoreView!
     let device = UIDevice.currentDevice()
     var startTime = NSDate()
     var anglesArray:Array<Double> = []
@@ -22,27 +22,23 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = UIView(frame: bounds)
-        self.detailView.frame = bounds
-        self.visualView.frame = bounds
-        self.scoreView.frame = bounds
+        self.detailView = BeerkingDetailView(frame: bounds)
+        self.visualView = BeerkingVisualView(frame: bounds)
+        self.scoreView = BeerkingScoreView(frame: bounds)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
-        self.view.addSubview(self.visualView)
-        self.view.addSubview(self.scoreView)
-        self.detailView.hidden = true
         
-        self.detailView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    func startChallenge() {
+    func didStartChallenge() {
+        UIView.transitionFromView(self.detailView, toView: self.visualView, duration: 1, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.anglesArray = []
         self.startTime = NSDate()
-        self.detailView.hidden = false
-        self.visualView.addSubview(self.visualView.angleText)
         self.started = true
         
         self.device.proximityMonitoringEnabled = true
@@ -77,11 +73,11 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         }
     }
     
-    func stopChallenge() {
+    func didFinishChallenge() {
+        UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.device.proximityMonitoringEnabled = false
         self.started = false
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "UIDeviceProximityStateDidChangeNotification", object: nil)
-        self.detailView.hidden = true
         
         var seconds = NSDate().timeIntervalSinceDate(self.startTime)
         println("Seconds: \(round(seconds))")
@@ -99,7 +95,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         if(self.device.proximityState) {
             self.startMotion()
         } else {
-            self.stopChallenge()
+            self.didFinishChallenge()
         }
     }
 

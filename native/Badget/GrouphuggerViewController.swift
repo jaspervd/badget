@@ -13,17 +13,17 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     var centralManager:CBCentralManager!
     var peripheralsArray:Array<CBPeripheral> = []
     var connectedFriends:Array<CBPeripheral> = []
-    let detailView = GrouphuggerDetailView()
-    let visualView = GrouphuggerVisualView()
-    let scoreView = GrouphuggerScoreView()
+    var detailView:GrouphuggerDetailView!
+    var visualView:GrouphuggerVisualView!
+    var scoreView:GrouphuggerScoreView!
     var started:Bool = false
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = UIView(frame: bounds)
-        self.detailView.frame = bounds
-        self.visualView.frame = bounds
-        self.scoreView.frame = bounds
+        self.detailView = GrouphuggerDetailView(frame: bounds)
+        self.visualView = GrouphuggerVisualView(frame: bounds)
+        self.scoreView = GrouphuggerScoreView(frame: bounds)
     }
 
     override func viewDidLoad() {
@@ -32,26 +32,23 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
-        self.view.addSubview(self.visualView)
-        self.view.addSubview(self.scoreView)
-        self.detailView.hidden = true
         self.visualView.delegate = self
         self.visualView.dataSource = self
         
         self.visualView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
-        self.detailView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    func startChallenge() {
-        self.detailView.hidden = false
+    func didStartChallenge() {
+        UIView.transitionFromView(self.detailView, toView: self.visualView, duration: 1, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = true
         if(self.centralManager.state == .PoweredOn) {
             self.centralManager.scanForPeripheralsWithServices(nil, options: nil)
         }
     }
     
-    func stopChallenge() {
-        self.detailView.hidden = true
+    func didFinishChallenge() {
+        UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
         println("Wauw je had \(self.connectedFriends.count) vrienden bij je!")
     }

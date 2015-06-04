@@ -18,8 +18,6 @@ class MasterscoutVisualView: UIView {
         self.timerText = UILabel(frame: CGRectMake(10, 300, 300, 40))
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.redColor()
-        
         self.instructionText.textAlignment = .Center
         self.instructionText.textColor = UIColor.whiteColor()
         self.instructionText.font = UIFont.systemFontOfSize(25)

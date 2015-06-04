@@ -15,7 +15,6 @@ class BeerkingVisualView: UIView {
     override init(frame: CGRect) {
         self.angleText = UILabel(frame: CGRectMake(10, frame.height / 2, 300, 40))
         super.init(frame: frame)
-        self.backgroundColor = UIColor.grayColor()
         
         self.angleText.text = "0°"
         self.angleText.textAlignment = .Center

@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window.rootViewController = StartViewController()
         }
         self.window.makeKeyAndVisible()
+        self.window.backgroundColor = UIColor.lightGrayColor()
         
         return true
     }
