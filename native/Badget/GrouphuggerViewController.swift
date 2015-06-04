@@ -50,7 +50,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     func didFinishChallenge() {
         UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
-        println("Wauw je had \(self.connectedFriends.count) vrienden bij je!")
+        self.scoreView.friendsText.text = "Je had \(self.connectedFriends.count) vrienden bij je!"
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {

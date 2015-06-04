@@ -67,6 +67,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
     func didFinishChallenge() {
         UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
+        self.scoreView.timerText.text = self.visualView.timerText.text
         timer.invalidate()
         self.milliseconds = 0
     }

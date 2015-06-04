@@ -80,11 +80,11 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "UIDeviceProximityStateDidChangeNotification", object: nil)
         
         var seconds = NSDate().timeIntervalSinceDate(self.startTime)
-        println("Seconds: \(round(seconds))")
+        self.scoreView.timeText.text = "\(round(seconds)) seconden"
         
         if(self.anglesArray.count > 0) {
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
-            println(avg)
+            self.scoreView.angleText.text = "Gemiddelde: \(avg)°"
         }
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()
