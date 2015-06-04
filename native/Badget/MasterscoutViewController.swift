@@ -10,34 +10,31 @@ import UIKit
 import MapKit
 
 class MasterscoutViewController: UIViewController, ChallengeProtocol {
-    let detailView = UIView()
+    let detailView = MasterscoutDetailView()
+    let visualView = MasterscoutVisualView()
+    let scoreView = MasterscoutScoreView()
     var started:Bool = false
     var timer:NSTimer = NSTimer()
     var milliseconds:CGFloat = 0
     var locations = Dictionary<String, Int>() // CLLocationCoordinate2D
     
-    var masterscoutView:MasterscoutView! {
-        get {
-            return self.view as! MasterscoutView
-        }
-    }
-    
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = MasterscoutView(frame: bounds)
+        self.view = UIView(frame: bounds)
         self.detailView.frame = bounds
+        self.visualView.frame = bounds
+        self.scoreView.frame = bounds
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
-        self.detailView.backgroundColor = UIColor.redColor()
-        self.detailView.addSubview(self.masterscoutView.instructionText)
-        self.detailView.addSubview(self.masterscoutView.timerText)
+        self.view.addSubview(self.visualView)
+        self.view.addSubview(self.scoreView)
         self.detailView.hidden = true
         
-        self.masterscoutView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.detailView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func startChallenge() {
@@ -48,7 +45,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         self.locations = ["Mainstage": 13, "Dance Hall": 4, "Boiler Room": 6, "Chateau": 3, "Marquee": 80, "Petit Bazar": 43, "Arabian Tea Site": 2, "Salon Fou": 73, "The Shelter": 56, "WC naast de Chateau": 30]
         
         var loc = getRandomLocation()
-        self.masterscoutView.instructionText.text = "Ga naar de \(loc)"
+        self.visualView.instructionText.text = "Ga naar de \(loc)"
     }
     
     func getRandomLocation() -> String {
@@ -67,7 +64,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         var minutes:Int = sec / 60 - hours * 60
         var seconds:Int = sec - (minutes * 60 + hours * 60)
         var ms = Int((self.milliseconds - CGFloat(sec)) * 100)
-        self.masterscoutView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
+        self.visualView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
     }
     
     func stopChallenge() {

@@ -13,19 +13,17 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     var centralManager:CBCentralManager!
     var peripheralsArray:Array<CBPeripheral> = []
     var connectedFriends:Array<CBPeripheral> = []
-    let detailView = UITableView()
+    let detailView = GrouphuggerDetailView()
+    let visualView = GrouphuggerVisualView()
+    let scoreView = GrouphuggerScoreView()
     var started:Bool = false
-    
-    var grouphuggerView:GrouphuggerView! {
-        get {
-            return self.view as! GrouphuggerView
-        }
-    }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = GrouphuggerView(frame: bounds)
+        self.view = UIView(frame: bounds)
         self.detailView.frame = bounds
+        self.visualView.frame = bounds
+        self.scoreView.frame = bounds
     }
 
     override func viewDidLoad() {
@@ -34,12 +32,14 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
+        self.view.addSubview(self.visualView)
+        self.view.addSubview(self.scoreView)
         self.detailView.hidden = true
-        self.detailView.delegate = self
-        self.detailView.dataSource = self
+        self.visualView.delegate = self
+        self.visualView.dataSource = self
         
-        self.detailView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
-        self.grouphuggerView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.visualView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
+        self.detailView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func startChallenge() {
@@ -60,20 +60,20 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         var arr = self.peripheralsArray.filter( { return $0.identifier == peripheral.identifier } )
         if(arr.count == 0) {
             self.peripheralsArray.append(peripheral)
-            self.detailView.reloadData()
+            self.visualView.reloadData()
         }
         println(peripheral)
     }
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
         self.connectedFriends.append(peripheral)
-        self.detailView.reloadData()
+        self.visualView.reloadData()
     }
     
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
         self.peripheralsArray.removeAtIndex(find(self.peripheralsArray, peripheral)!)
         self.connectedFriends.removeAtIndex(find(self.connectedFriends, peripheral)!)
-        self.detailView.reloadData()
+        self.visualView.reloadData()
     }
     
     func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {

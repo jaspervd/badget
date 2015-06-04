@@ -11,39 +11,38 @@ import CoreMotion
 
 class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
-    let detailView = UIView()
+    let detailView = BeerkingDetailView()
+    let visualView = BeerkingVisualView()
+    let scoreView = BeerkingScoreView()
     let device = UIDevice.currentDevice()
     var startTime = NSDate()
     var anglesArray:Array<Double> = []
     var started:Bool = false
     
-    var beerkingView:BeerkingView! {
-        get {
-            return self.view as! BeerkingView
-        }
-    }
-    
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = BeerkingView(frame: bounds)
+        self.view = UIView(frame: bounds)
         self.detailView.frame = bounds
-        self.detailView.backgroundColor = UIColor.whiteColor()
+        self.visualView.frame = bounds
+        self.scoreView.frame = bounds
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
+        self.view.addSubview(self.visualView)
+        self.view.addSubview(self.scoreView)
         self.detailView.hidden = true
         
-        self.beerkingView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.detailView.btnContinue.addTarget(self, action: "startChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func startChallenge() {
         self.anglesArray = []
         self.startTime = NSDate()
         self.detailView.hidden = false
-        self.detailView.addSubview(self.beerkingView.angleText)
+        self.visualView.addSubview(self.visualView.angleText)
         self.started = true
         
         self.device.proximityMonitoringEnabled = true
@@ -72,7 +71,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
                     angle = yaw
                 }
                 
-                self.beerkingView.angleText.text = String(format: "%.f", round(angle)) + "°"
+                self.visualView.angleText.text = String(format: "%.f", round(angle)) + "°"
                 self.anglesArray.append(angle)
             })
         }

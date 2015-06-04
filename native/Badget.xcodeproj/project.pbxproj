@@ -17,6 +17,12 @@
 		A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E31B1667A9008B3823 /* Images.xcassets */; };
 		A43E13F31B1667A9008B3823 /* BadgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13F21B1667A9008B3823 /* BadgetTests.swift */; };
 		A4480BD21B1F6CE30050C744 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */; };
+		A48BC2371B2075F500B8A110 /* GrouphuggerScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2361B2075F500B8A110 /* GrouphuggerScoreView.swift */; };
+		A48BC2391B20831100B8A110 /* MasterscoutScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2381B20831100B8A110 /* MasterscoutScoreView.swift */; };
+		A48BC23B1B20831F00B8A110 /* MasterscoutVisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23A1B20831F00B8A110 /* MasterscoutVisualView.swift */; };
+		A48BC23D1B20833D00B8A110 /* BeerkingVisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23C1B20833D00B8A110 /* BeerkingVisualView.swift */; };
+		A48BC23F1B20834C00B8A110 /* BeerkingScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23E1B20834C00B8A110 /* BeerkingScoreView.swift */; };
+		A48BC2411B208E8300B8A110 /* GrouphuggerVisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2401B208E8300B8A110 /* GrouphuggerVisualView.swift */; };
 		A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */; };
 		A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */; };
 		A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* StartViewController.swift */; };
@@ -24,9 +30,9 @@
 		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
 		A4C03DC21B1F604B00C30B62 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C03DC11B1F604B00C30B62 /* FileUploader.swift */; };
 		A4DFB0C31B1914D6005FCF13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DFB0C21B1914D6005FCF13 /* MapKit.framework */; };
-		A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */; };
-		A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */; };
-		A4E6ECB21B188FA300B20927 /* BeerkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECB11B188FA300B20927 /* BeerkingView.swift */; };
+		A4E6ECAE1B188F0100B20927 /* GrouphuggerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAD1B188F0100B20927 /* GrouphuggerDetailView.swift */; };
+		A4E6ECB01B188F8E00B20927 /* MasterscoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECAF1B188F8E00B20927 /* MasterscoutDetailView.swift */; };
+		A4E6ECB21B188FA300B20927 /* BeerkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E6ECB11B188FA300B20927 /* BeerkingDetailView.swift */; };
 		E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5D2CC95AD2501AB8C96E3A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -57,6 +63,12 @@
 		A43E13F11B1667A9008B3823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43E13F21B1667A9008B3823 /* BadgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgetTests.swift; sourceTree = "<group>"; };
 		A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		A48BC2361B2075F500B8A110 /* GrouphuggerScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerScoreView.swift; sourceTree = "<group>"; };
+		A48BC2381B20831100B8A110 /* MasterscoutScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutScoreView.swift; sourceTree = "<group>"; };
+		A48BC23A1B20831F00B8A110 /* MasterscoutVisualView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutVisualView.swift; sourceTree = "<group>"; };
+		A48BC23C1B20833D00B8A110 /* BeerkingVisualView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingVisualView.swift; sourceTree = "<group>"; };
+		A48BC23E1B20834C00B8A110 /* BeerkingScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingScoreView.swift; sourceTree = "<group>"; };
+		A48BC2401B208E8300B8A110 /* GrouphuggerVisualView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerVisualView.swift; sourceTree = "<group>"; };
 		A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
 		A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -64,9 +76,9 @@
 		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		A4C03DC11B1F604B00C30B62 /* FileUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		A4DFB0C21B1914D6005FCF13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerView.swift; sourceTree = "<group>"; };
-		A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutView.swift; sourceTree = "<group>"; };
-		A4E6ECB11B188FA300B20927 /* BeerkingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingView.swift; sourceTree = "<group>"; };
+		A4E6ECAD1B188F0100B20927 /* GrouphuggerDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerDetailView.swift; sourceTree = "<group>"; };
+		A4E6ECAF1B188F8E00B20927 /* MasterscoutDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutDetailView.swift; sourceTree = "<group>"; };
+		A4E6ECB11B188FA300B20927 /* BeerkingDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingDetailView.swift; sourceTree = "<group>"; };
 		FB5D2CC95AD2501AB8C96E3A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -160,6 +172,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A48BC2311B20754300B8A110 /* Beerking */ = {
+			isa = PBXGroup;
+			children = (
+				A43E0E641B1B93860020713F /* BeerkingViewController.swift */,
+				A4E6ECB11B188FA300B20927 /* BeerkingDetailView.swift */,
+				A48BC23C1B20833D00B8A110 /* BeerkingVisualView.swift */,
+				A48BC23E1B20834C00B8A110 /* BeerkingScoreView.swift */,
+			);
+			name = Beerking;
+			sourceTree = "<group>";
+		};
+		A48BC2321B20754B00B8A110 /* Grouphugger */ = {
+			isa = PBXGroup;
+			children = (
+				A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */,
+				A4E6ECAD1B188F0100B20927 /* GrouphuggerDetailView.swift */,
+				A48BC2401B208E8300B8A110 /* GrouphuggerVisualView.swift */,
+				A48BC2361B2075F500B8A110 /* GrouphuggerScoreView.swift */,
+			);
+			name = Grouphugger;
+			sourceTree = "<group>";
+		};
+		A48BC2331B20755400B8A110 /* Masterscout */ = {
+			isa = PBXGroup;
+			children = (
+				A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */,
+				A4E6ECAF1B188F8E00B20927 /* MasterscoutDetailView.swift */,
+				A48BC23A1B20831F00B8A110 /* MasterscoutVisualView.swift */,
+				A48BC2381B20831100B8A110 /* MasterscoutScoreView.swift */,
+			);
+			name = Masterscout;
+			sourceTree = "<group>";
+		};
 		A4AD989B1B179EF7009ED7AE /* Start */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,13 +219,10 @@
 			children = (
 				A43E0E621B1B50CF0020713F /* PeripheralCell.swift */,
 				A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */,
-				A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */,
-				A43E0E641B1B93860020713F /* BeerkingViewController.swift */,
-				A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */,
-				A4E6ECAD1B188F0100B20927 /* GrouphuggerView.swift */,
-				A4E6ECAF1B188F8E00B20927 /* MasterscoutView.swift */,
-				A4E6ECB11B188FA300B20927 /* BeerkingView.swift */,
 				A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */,
+				A48BC2321B20754B00B8A110 /* Grouphugger */,
+				A48BC2331B20755400B8A110 /* Masterscout */,
+				A48BC2311B20754300B8A110 /* Beerking */,
 			);
 			name = Challenges;
 			sourceTree = "<group>";
@@ -366,22 +408,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E6ECB21B188FA300B20927 /* BeerkingView.swift in Sources */,
+				A4E6ECB21B188FA300B20927 /* BeerkingDetailView.swift in Sources */,
+				A48BC23D1B20833D00B8A110 /* BeerkingVisualView.swift in Sources */,
+				A48BC23F1B20834C00B8A110 /* BeerkingScoreView.swift in Sources */,
 				A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */,
 				A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */,
-				A4E6ECB01B188F8E00B20927 /* MasterscoutView.swift in Sources */,
-				A4E6ECAE1B188F0100B20927 /* GrouphuggerView.swift in Sources */,
+				A4E6ECB01B188F8E00B20927 /* MasterscoutDetailView.swift in Sources */,
+				A4E6ECAE1B188F0100B20927 /* GrouphuggerDetailView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
 				A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */,
 				A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */,
 				A4C03DC21B1F604B00C30B62 /* FileUploader.swift in Sources */,
+				A48BC2391B20831100B8A110 /* MasterscoutScoreView.swift in Sources */,
+				A48BC23B1B20831F00B8A110 /* MasterscoutVisualView.swift in Sources */,
 				A418E9381B1F513A000BFC6D /* Settings.swift in Sources */,
+				A48BC2411B208E8300B8A110 /* GrouphuggerVisualView.swift in Sources */,
 				A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
 				A43E0E631B1B50CF0020713F /* PeripheralCell.swift in Sources */,
 				A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */,
 				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
 				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
+				A48BC2371B2075F500B8A110 /* GrouphuggerScoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,6 @@
 //
 
 protocol ChallengeProtocol {
-    func startChallenge()
-    func stopChallenge()
+    func didContinue()
+    func didFinish()
 }
