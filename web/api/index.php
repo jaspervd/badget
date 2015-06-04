@@ -50,7 +50,7 @@ $app->post('/grouphugger/?', function () use ($app, $grouphuggerDAO) {
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($grouphuggerDAO->insert($post['user_id'], _DAY, $post['friends']));
+    echo json_encode($grouphuggerDAO->insert($post['user_id'], $post['day'], $post['friends']));
     exit();
 });
 
@@ -60,7 +60,7 @@ $app->post('/masterscout/?', function () use ($app, $masterscoutDAO) {
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($masterscoutDAO->insert($post['user_id'], _DAY, $post['time'], $post['distance']));
+    echo json_encode($masterscoutDAO->insert($post['user_id'], $post['day'], $post['time'], $post['distance']));
     exit();
 });
 
@@ -70,7 +70,7 @@ $app->post('/beerking/?', function () use ($app, $beerkingDAO) {
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($beerkingDAO->insert($post['user_id'], _DAY, $post['angle'], $post['seconds']));
+    echo json_encode($beerkingDAO->insert($post['user_id'], $post['day'], $post['angle'], $post['seconds']));
     exit();
 });
 
