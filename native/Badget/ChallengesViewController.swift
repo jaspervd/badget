@@ -58,6 +58,19 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
             println("'t Is gedaan!")
         }
         
+        let grouphuggerDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("grouphuggerDate")
+        let masterscoutDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("masterscoutDate")
+        let beerkingDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("beerkingDate")
+        if(grouphuggerDate != nil && calendar.isDate(grouphuggerDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
+            println("Je hebt de Grouphugger challenge al gedaan") // show score
+        }
+        if(masterscoutDate != nil && calendar.isDate(masterscoutDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
+            println("Je hebt de Masterscout challenge al gedaan") // show score
+        }
+        if(beerkingDate != nil && calendar.isDate(beerkingDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
+            println("Je hebt de Beerking challenge al gedaan") // show score
+        }
+        
         self.masterscoutVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width
         self.beerkingVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width + self.masterscoutVC.view.frame.origin.x
         

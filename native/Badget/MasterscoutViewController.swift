@@ -69,6 +69,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
         var masterscout = Masterscout(time: self.visualView.timerText.text!, distance: 420)
+        NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "masterscoutDate")
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
             "day": Settings.currentDate,

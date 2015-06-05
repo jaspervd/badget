@@ -88,6 +88,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
             self.scoreView.angleText.text = "Gemiddelde: \(avg)°"
             var beerking = Beerking(angle: Int(avg), seconds: Int(round(seconds)))
             
+            NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "beerkingDate")
             let parameters = [
                 "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
                 "day": Settings.currentDate,
