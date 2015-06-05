@@ -21,8 +21,6 @@ class CountdownViewController: UIViewController {
     override func viewDidLoad() {
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "timerHandler:", userInfo: nil, repeats: true)
         super.viewDidLoad()
-        
-        println("sd \(Settings.startDate.timeIntervalSince1970), cd \(Settings.currentDate.timeIntervalSince1970)")
     }
     
     override func loadView() {
@@ -32,7 +30,7 @@ class CountdownViewController: UIViewController {
 
     func timerHandler(timer: NSTimer) {
         self.seconds++
-        let difference:Int = Int(Settings.startDate.timeIntervalSince1970 - Settings.currentDate.timeIntervalSince1970) - self.seconds
+        let difference:Int = Int(Settings.startDate.timeIntervalSinceDate(Settings.currentDate)) - self.seconds
         
         var formatter = NSNumberFormatter()
         formatter.minimumIntegerDigits = 2
@@ -40,7 +38,6 @@ class CountdownViewController: UIViewController {
         var hours:Int = difference / (60 * 60) - days * 24 * 60 * 60
         var minutes:Int = difference / 60 - (hours * 60 - days * 24 * 60 * 60)
         var seconds:Int = difference - (minutes * 60 + hours * 60 * 60 + days * 24 * 60 * 60)
-        println(seconds)
         
         self.countdownView.countdown.text = "Nog \(formatter.stringFromNumber(days)!) dagen, \(formatter.stringFromNumber(hours)!) uur, \(formatter.stringFromNumber(minutes)!) minuten en \(formatter.stringFromNumber(seconds)!) seconden"
     }

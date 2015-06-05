@@ -50,6 +50,14 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.masterscoutVC.view)
         self.view.addSubview(self.beerkingVC.view)
         
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitSecond, fromDate: Settings.currentDate)
+        let seconds = components.hour * 60 * 60 + components.minute * 60 + components.second
+        
+        if(seconds > Settings.secondsEndDay) {
+            println("'t Is gedaan!")
+        }
+        
         self.masterscoutVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width
         self.beerkingVC.view.frame.origin.x = self.grouphuggerVC.view.frame.width + self.masterscoutVC.view.frame.origin.x
         
