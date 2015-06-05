@@ -17,6 +17,8 @@
 		A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E31B1667A9008B3823 /* Images.xcassets */; };
 		A43E13F31B1667A9008B3823 /* BadgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13F21B1667A9008B3823 /* BadgetTests.swift */; };
 		A4480BD21B1F6CE30050C744 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */; };
+		A4892FE41B21BA48008C731B /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4892FE31B21BA48008C731B /* CountdownViewController.swift */; };
+		A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4892FE61B21BAC4008C731B /* CountdownView.swift */; };
 		A48BC2371B2075F500B8A110 /* GrouphuggerScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2361B2075F500B8A110 /* GrouphuggerScoreView.swift */; };
 		A48BC2391B20831100B8A110 /* MasterscoutScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2381B20831100B8A110 /* MasterscoutScoreView.swift */; };
 		A48BC23B1B20831F00B8A110 /* MasterscoutVisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23A1B20831F00B8A110 /* MasterscoutVisualView.swift */; };
@@ -67,6 +69,8 @@
 		A43E13F11B1667A9008B3823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43E13F21B1667A9008B3823 /* BadgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgetTests.swift; sourceTree = "<group>"; };
 		A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		A4892FE31B21BA48008C731B /* CountdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
+		A4892FE61B21BAC4008C731B /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		A48BC2361B2075F500B8A110 /* GrouphuggerScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerScoreView.swift; sourceTree = "<group>"; };
 		A48BC2381B20831100B8A110 /* MasterscoutScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutScoreView.swift; sourceTree = "<group>"; };
 		A48BC23A1B20831F00B8A110 /* MasterscoutVisualView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutVisualView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 				A418E9371B1F513A000BFC6D /* Settings.swift */,
 				A4AD989D1B179F14009ED7AE /* Badges */,
 				A4AD989C1B179F0D009ED7AE /* Challenges */,
+				A4892FE51B21BA59008C731B /* Countdown */,
 				A4AD989B1B179EF7009ED7AE /* Start */,
 				A43E13DC1B1667A9008B3823 /* AppDelegate.swift */,
 				A43E13E31B1667A9008B3823 /* Images.xcassets */,
@@ -179,6 +184,15 @@
 				A43E13F11B1667A9008B3823 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4892FE51B21BA59008C731B /* Countdown */ = {
+			isa = PBXGroup;
+			children = (
+				A4892FE31B21BA48008C731B /* CountdownViewController.swift */,
+				A4892FE61B21BAC4008C731B /* CountdownView.swift */,
+			);
+			name = Countdown;
 			sourceTree = "<group>";
 		};
 		A48BC2311B20754300B8A110 /* Beerking */ = {
@@ -430,8 +444,10 @@
 				A4E6ECB01B188F8E00B20927 /* MasterscoutDetailView.swift in Sources */,
 				A48BC2451B20AB8A00B8A110 /* Masterscout.swift in Sources */,
 				A4E6ECAE1B188F0100B20927 /* GrouphuggerDetailView.swift in Sources */,
+				A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
 				A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */,
+				A4892FE41B21BA48008C731B /* CountdownViewController.swift in Sources */,
 				A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */,
 				A4C03DC21B1F604B00C30B62 /* FileUploader.swift in Sources */,
 				A48BC2391B20831100B8A110 /* MasterscoutScoreView.swift in Sources */,

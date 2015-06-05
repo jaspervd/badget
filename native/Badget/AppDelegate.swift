@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         if(NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")) {
-            self.window.rootViewController = ChallengesViewController()
+            if(Settings.currentDate.timeIntervalSince1970 > Settings.startDate.timeIntervalSince1970) {
+                self.window.rootViewController = ChallengesViewController()
+            } else {
+                self.window.rootViewController = CountdownViewController()
+            }
         } else {
             self.window.rootViewController = StartViewController()
         }
