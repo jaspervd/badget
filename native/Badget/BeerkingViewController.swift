@@ -68,6 +68,12 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
                     angle = yaw
                 }
                 
+                if(angle < 0) {
+                    angle += 180
+                } else {
+                    angle -= 180
+                }
+                
                 self.visualView.angleText.text = String(format: "%.f", round(angle)) + "°"
                 self.anglesArray.append(angle)
             })
@@ -83,7 +89,8 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         var seconds = NSDate().timeIntervalSinceDate(self.startTime)
         self.scoreView.timeText.text = "\(round(seconds)) seconden"
         
-        if(self.anglesArray.count > 0) {
+        if(self.anglesArray.count > 1) {
+            self.anglesArray.removeLast() // last angle is when turning the device around
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
             self.scoreView.angleText.text = "Gemiddelde: \(avg)°"
             var beerking = Beerking(angle: Int(avg), seconds: Int(round(seconds)))
