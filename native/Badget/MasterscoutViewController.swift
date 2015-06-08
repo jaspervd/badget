@@ -70,6 +70,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         self.started = false
         var masterscout = Masterscout(time: self.visualView.timerText.text!, distance: 420)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "masterscoutDate")
+        NSUserDefaults.standardUserDefaults().setObject(masterscout, forKey: "masterscoutLastScore")
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
             "day": Settings.currentDate,
