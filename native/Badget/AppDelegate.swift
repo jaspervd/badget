@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if(NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")) {
             if(Settings.currentDate.timeIntervalSinceDate(Settings.startDate) > 0) {
-                self.window.rootViewController = ChallengesViewController()
+                let navController = UINavigationController(rootViewController: ChallengesViewController())
+                self.window.rootViewController = navController
             } else {
                 self.window.rootViewController = CountdownViewController()
             }
