@@ -20,6 +20,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
     var grouphuggerBtn = UIButton()
     var masterscoutBtn = UIButton()
     var beerkingBtn = UIButton()
+    var region:CLCircularRegion!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +70,17 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
         didChangeAuthorizationStatus status: CLAuthorizationStatus) {
             if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
                 manager.startUpdatingLocation()
-                let region = CLCircularRegion(center: Settings.randstadCoords, radius: 10, identifier: "Randstad Stand")
+                self.region = CLCircularRegion(center: Settings.randstadCoords, radius: 10, identifier: "Randstad Stand")
                 manager.startMonitoringForRegion(region)
             } else {
                 println("Not authorized :(")
             }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        if(self.region.containsCoordinate(newLocation.coordinate)) {
+            println("already in region")
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
