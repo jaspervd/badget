@@ -24,7 +24,7 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Schakel je locatieservice in zodat we weten wanneer je aan het Randstad standje en andere locaties bent</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

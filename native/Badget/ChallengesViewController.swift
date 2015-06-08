@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ChallengesViewController: UIViewController {
+class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
     
     let grouphuggerVC = GrouphuggerViewController()
     let masterscoutVC = MasterscoutViewController()
@@ -25,7 +25,8 @@ class ChallengesViewController: UIViewController {
         super.viewDidLoad()
         
         checkTime()
-        self.locationManager.requestWhenInUseAuthorization()
+        setupLocationManager()
+        
         self.title = "Uitdagingen"
         
         self.badgesBtn = UIButton(frame: CGRectMake(10, 440, 44, 44))
@@ -53,6 +54,42 @@ class ChallengesViewController: UIViewController {
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = UIView(frame: bounds);
+    }
+    
+    func setupLocationManager() {
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = 1
+        if (CLLocationManager.authorizationStatus() == .NotDetermined) {
+            self.locationManager.requestAlwaysAuthorization()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!,
+        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+            if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+                manager.startUpdatingLocation()
+                let region = CLCircularRegion(center: Settings.randstadCoords, radius: 10, identifier: "Randstad Stand")
+                manager.startMonitoringForRegion(region)
+            } else {
+                println("Not authorized :(")
+            }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
+        let alertController = UIAlertController(title: "Great Success", message:
+            "Aww yiss", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Jeppep", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
+        let alertController = UIAlertController(title: "Oh...", message:
+            "Please come back :(?", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "I don't know man...", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func grouphuggerHandler() {
