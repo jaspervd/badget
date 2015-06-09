@@ -10,9 +10,9 @@ import UIKit
 
 class Masterscout: NSObject, NSCoding {
     var time:String
-    var distance:Int
+    var distance:Double
     
-    init(time: String, distance: Int) {
+    init(time: String, distance: Double) {
         self.time = time
         self.distance = distance
         super.init()
@@ -20,11 +20,11 @@ class Masterscout: NSObject, NSCoding {
     
     required init(coder aDecoder: NSCoder) {
         self.time = aDecoder.decodeObjectForKey("time") as! String
-        self.distance = aDecoder.decodeIntegerForKey("distance")
+        self.distance = aDecoder.decodeDoubleForKey("distance")
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.time, forKey: "time")
-        aCoder.encodeInteger(self.distance, forKey: "distance")
+        aCoder.encodeDouble(self.distance, forKey: "distance")
     }
 }

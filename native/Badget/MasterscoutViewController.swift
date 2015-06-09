@@ -11,7 +11,7 @@ import MapKit
 import Alamofire
 import CoreLocation
 
-class MasterscoutViewController: UIViewController, ChallengeProtocol {
+class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocationManagerDelegate {
     var detailView:MasterscoutDetailView!
     var visualView:MasterscoutVisualView!
     var scoreView:MasterscoutScoreView!
@@ -19,6 +19,9 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
     var timer:NSTimer = NSTimer()
     var milliseconds:CGFloat = 0
     var locations:Array<CLRegion> = []
+    let locationManager = CLLocationManager()
+    var distance:Double = 0
+    var locationsVisited:Int = 0
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
@@ -53,6 +56,10 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 30, identifier: "Chill Out"))
         self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 40, identifier: "Boiler Room"))
         self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 35, identifier: "Dance Hall"))
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = 1
     }
     
     func didStartChallenge() {
@@ -61,6 +68,8 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         self.started = true
             
         var loc = self.getRandomLocation()
+        self.locationManager.startUpdatingLocation()
+        self.locationManager.startMonitoringForRegion(loc)
         self.visualView.instructionText.text = "Ga naar de \(loc.identifier)"
     }
     
@@ -69,6 +78,23 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         let key = self.locations[index]
         self.locations.removeAtIndex(index)
         return key
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        self.distance += newLocation.distanceFromLocation(oldLocation)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
+        self.locationManager.stopMonitoringForRegion(region)
+        self.locationsVisited++
+        
+        if(self.locationsVisited < 5) { // if user hasn't visited 5 locations yet
+            var loc = getRandomLocation()
+            self.locationManager.startMonitoringForRegion(loc)
+            self.visualView.instructionText.text = "Ga naar de \(loc.identifier)"
+        } else {
+            didFinishChallenge()
+        }
     }
     
     func timerHandler() {
@@ -86,9 +112,9 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
     func didFinishChallenge() {
         UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
-        var masterscout = Masterscout(time: self.visualView.timerText.text!, distance: 420)
+        var masterscout = Masterscout(time: self.visualView.timerText.text!, distance: self.distance)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "masterscoutDate")
-        NSUserDefaults.standardUserDefaults().setObject(masterscout, forKey: "masterscoutLastScore")
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(masterscout), forKey: "masterscoutLastScore")
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
             "day": Settings.currentDate,

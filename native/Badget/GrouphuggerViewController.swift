@@ -54,7 +54,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         self.scoreView.friendsText.text = "Je had \(self.connectedFriends.count) vrienden bij je!"
         var grouphugger = Grouphugger(friends: self.connectedFriends.count)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "grouphuggerDate")
-        NSUserDefaults.standardUserDefaults().setObject(grouphugger, forKey: "grouphuggerLastScore")
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(grouphugger), forKey: "grouphuggerLastScore")
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
             "day": Settings.currentDate,
