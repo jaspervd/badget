@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Alamofire
+import CoreLocation
 
 class MasterscoutViewController: UIViewController, ChallengeProtocol {
     var detailView:MasterscoutDetailView!
@@ -17,7 +18,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
     var started:Bool = false
     var timer:NSTimer = NSTimer()
     var milliseconds:CGFloat = 0
-    var locations = Dictionary<String, Int>() // CLLocationCoordinate2D
+    var locations:Array<CLRegion> = []
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
@@ -25,6 +26,8 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         self.detailView = MasterscoutDetailView(frame: bounds)
         self.visualView = MasterscoutVisualView(frame: bounds)
         self.scoreView = MasterscoutScoreView(frame: bounds)
+        
+        createLocations()
     }
 
     override func viewDidLoad() {
@@ -35,21 +38,36 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
         self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
+    func createLocations() {
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Main Stage"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Club"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Wablief?!"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Picknick Area"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Castello"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Petit Bazar"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Trashure Island"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Salon Fou"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Marquee"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "The Shelter"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Le Bois Batterie"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Chill Out"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Boiler Room"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Dance Hall"))
+    }
+    
     func didStartChallenge() {
         UIView.transitionFromView(self.detailView, toView: self.visualView, duration: 1, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
         self.started = true
             
-        self.locations = ["Mainstage": 13, "Dance Hall": 4, "Boiler Room": 6, "Chateau": 3, "Marquee": 80, "Petit Bazar": 43, "Arabian Tea Site": 2, "Salon Fou": 73, "The Shelter": 56, "WC naast de Chateau": 30]
-            
         var loc = self.getRandomLocation()
-        self.visualView.instructionText.text = "Ga naar de \(loc)"
+        self.visualView.instructionText.text = "Ga naar de \(loc.identifier)"
     }
     
-    func getRandomLocation() -> String {
+    func getRandomLocation() -> CLRegion {
         let index:Int = Int(arc4random_uniform(UInt32(self.locations.count)))
-        let key = Array(self.locations.keys)[index]
-        self.locations.removeValueForKey(key)
+        let key = self.locations[index]
+        self.locations.removeAtIndex(index)
         return key
     }
     
