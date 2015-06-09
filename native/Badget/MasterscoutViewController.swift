@@ -39,20 +39,20 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol {
     }
     
     func createLocations() {
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Main Stage"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Club"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Wablief?!"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Picknick Area"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Castello"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 60, identifier: "Main Stage"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 40, identifier: "Club"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 20, identifier: "Wablief?!"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 20, identifier: "Picknick Area"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 30, identifier: "Castello"))
         self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Petit Bazar"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Trashure Island"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Salon Fou"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Marquee"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "The Shelter"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Le Bois Batterie"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Chill Out"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Boiler Room"))
-        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 50, identifier: "Dance Hall"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 30, identifier: "Trashure Island"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 10, identifier: "Salon Fou"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 40, identifier: "Marquee"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 30, identifier: "The Shelter"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 20, identifier: "Le Bois Batterie"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 30, identifier: "Chill Out"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 40, identifier: "Boiler Room"))
+        self.locations.append(CLCircularRegion(center: CLLocationCoordinate2DMake(50, 4), radius: 35, identifier: "Dance Hall"))
     }
     
     func didStartChallenge() {

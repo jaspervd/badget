@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         self.window.makeKeyAndVisible()
+        self.window.backgroundColor = UIColor.magentaColor()
         
         return true
     }
