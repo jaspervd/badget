@@ -103,25 +103,37 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        if(self.region.containsCoordinate(newLocation.coordinate)) {
-            println("already in region")
+        let inLocation = self.region.containsCoordinate(newLocation.coordinate)
+        if(inLocation && self.masterscoutVC.isViewLoaded()) {
+            self.masterscoutVC.detailView.btnContinue.enabled = true
+        } else if(!inLocation && self.masterscoutVC.isViewLoaded()) {
+            self.masterscoutVC.detailView.btnContinue.enabled = false
+        }
+        if(inLocation && self.beerkingVC.isViewLoaded()) {
+            self.beerkingVC.detailView.btnContinue.enabled = true
+        } else if(!inLocation && self.beerkingVC.isViewLoaded()) {
+            self.beerkingVC.detailView.btnContinue.enabled = false
         }
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
-        let alertController = UIAlertController(title: "Great Success", message:
-            "Aww yiss", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Jeppep", style: UIAlertActionStyle.Default,handler: nil))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+        println("entered region")
+        if(self.masterscoutVC.isViewLoaded()) {
+            self.masterscoutVC.detailView.btnContinue.enabled = true
+        }
+        if(self.beerkingVC.isViewLoaded()) {
+            self.beerkingVC.detailView.btnContinue.enabled = true
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
-        let alertController = UIAlertController(title: "Oh...", message:
-            "Please come back :(?", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "I don't know man...", style: UIAlertActionStyle.Default,handler: nil))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+        println("left region")
+        if(self.masterscoutVC.isViewLoaded()) {
+            self.masterscoutVC.detailView.btnContinue.enabled = false
+        }
+        if(self.beerkingVC.isViewLoaded()) {
+            self.beerkingVC.detailView.btnContinue.enabled = false
+        }
     }
     
     func grouphuggerHandler() {

@@ -22,13 +22,13 @@ class ChallengeView: UIView {
         passView.backgroundColor = UIColor.whiteColor()
         
         let imageView = UIImageView(image: photo)
-        imageView.frame = CGRectMake(passView.frame.width / 2 - 50, 40, 100, 100)
+        imageView.frame = CGRectMake(passView.frame.width / 2 - 75, 40, 150, 150)
         
-        let titleText = UILabel(frame: CGRectMake(10, imageView.frame.origin.y + imageView.frame.height + 20, passView.frame.width - 20, 44))
+        let titleText = UILabel(frame: CGRectMake(10, imageView.frame.origin.y + imageView.frame.height + 10, passView.frame.width - 20, 44))
         titleText.text = title
         titleText.textAlignment = .Center
         
-        btnContinue.frame = CGRectMake(10, titleText.frame.origin.y + titleText.frame.height + 20, passView.frame.width - 20, 44)
+        btnContinue.frame = CGRectMake(10, titleText.frame.origin.y + titleText.frame.height + 10, passView.frame.width - 20, 44)
         btnContinue.setTitle("Let's do this!", forState: UIControlState.Normal)
         
         let introText = UITextView(frame: CGRectMake(passView.frame.origin.x, passView.frame.origin.y + passView.frame.height + 40, frame.width - 40, 100))
