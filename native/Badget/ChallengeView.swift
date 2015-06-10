@@ -31,7 +31,7 @@ class ChallengeView: UIView {
         btnContinue.frame = CGRectMake(10, titleText.frame.origin.y + titleText.frame.height + 10, passView.frame.width - 20, 44)
         btnContinue.setTitle("Let's do this!", forState: UIControlState.Normal)
         
-        let introText = UITextView(frame: CGRectMake(passView.frame.origin.x, passView.frame.origin.y + passView.frame.height + 40, frame.width - 40, 100))
+        let introText = UITextView(frame: CGRectMake(passView.frame.origin.x, passView.frame.origin.y + passView.frame.height + 40, frame.width - 60, 100))
         introText.text = intro
         introText.textColor = UIColor.whiteColor()
         introText.backgroundColor = nil

@@ -71,7 +71,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             self.presentViewController(alertController, animated: true, completion: nil)
         } else {
             saveUser()
-            self.presentViewController(self.challengesVC, animated: true, completion: nil)
+            let navController = UINavigationController(rootViewController: ChallengesViewController())
+            self.presentViewController(navController, animated: true, completion: nil)
         }
     }
     
