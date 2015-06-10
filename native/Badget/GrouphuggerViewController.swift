@@ -35,7 +35,8 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         self.title = "Grouphugger"
         
         self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
-        self.visualView.retakeBtn.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        self.visualView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        self.visualView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func didStartChallenge() {
@@ -62,7 +63,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
             fView.removeFromSuperview()
         }
         self.visualView.imageView.transform = CGAffineTransformMakeScale(1, 1)
-        self.visualView.scrollView.contentOffset = CGPointMake(0, 0)
+        self.visualView.scrollView.setContentOffset(CGPointMake(0, 0), animated: false)
         self.smiles = 0
         self.facesArray = []
         self.presentViewController(self.imagePicker, animated: true, completion: nil)
@@ -92,8 +93,6 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
             }
         }
         
-        println("Van de \(self.facesArray.count) lachten er \(self.smiles)")
-        
         let imageRect = CGRectMake(0, 0, self.image.size.width, self.image.size.height)
         self.visualView.imageView.frame = imageRect
         self.visualView.imageView.image = self.image
@@ -106,7 +105,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         self.visualView.scrollView.minimumZoomScale = minZoomScale
         self.visualView.scrollView.zoomScale = minZoomScale
         self.visualView.scrollView.maximumZoomScale = 4
-        self.visualView.scrollView.contentOffset = CGPointMake(self.image.size.width / 2 * minZoomScale, 0)
+        self.visualView.scrollView.setContentOffset(CGPointMake(self.image.size.width / 2 * minZoomScale, 0), animated: false)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {

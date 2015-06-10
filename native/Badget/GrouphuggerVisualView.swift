@@ -12,23 +12,29 @@ class GrouphuggerVisualView: UIView {
     
     let scrollView:UIScrollView!
     let imageView:UIImageView!
-    let retakeBtn:UIButton!
+    let btnRetake:UIButton!
+    let btnContinue:UIButton!
 
     override init(frame: CGRect) {
         self.scrollView = UIScrollView(frame: frame)
         self.imageView = UIImageView(frame: frame)
-        self.retakeBtn = UIButton.buttonWithType(.System) as! UIButton
+        self.btnRetake = UIButton.buttonWithType(.System) as! UIButton
+        self.btnContinue = UIButton.buttonWithType(.System) as! UIButton
         super.init(frame: frame)
         
         self.backgroundColor = Settings.bgColor
         
-        self.retakeBtn.frame = CGRectMake(0, frame.height - 50, frame.width, 44)
-        self.retakeBtn.setTitle("Nog een keer", forState: .Normal)
+        self.btnRetake.frame = CGRectMake(0, frame.height - 88, frame.width, 44)
+        self.btnRetake.setTitle("Nog een keer", forState: .Normal)
+        
+        self.btnContinue.frame = CGRectMake(0, frame.height - 44, frame.width, 44)
+        self.btnContinue.setTitle("Oké, dit is 'em!", forState: .Normal)
         
         self.scrollView.bounces = false
         self.scrollView.addSubview(self.imageView)
         self.addSubview(self.scrollView)
-        self.addSubview(self.retakeBtn)
+        self.addSubview(self.btnRetake)
+        self.addSubview(self.btnContinue)
     }
     
     required init(coder aDecoder: NSCoder) {
