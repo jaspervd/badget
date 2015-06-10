@@ -15,7 +15,8 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     let masterscoutVC = MasterscoutViewController()
     let beerkingVC = BeerkingViewController()
     let locationManager = CLLocationManager()
-    var badgesBtn = UIButton()
+    var badgesBtn = UIBarButtonItem()
+    let infoVC = InfoViewController()
     let badgesVC = BadgesViewController()
     var region:CLCircularRegion!
     var challengeViews:Array<ChallengeView> = []
@@ -35,11 +36,11 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
         
         self.title = "Uitdagingen"
         
-        self.badgesBtn = UIButton(frame: CGRectMake(10, 440, 44, 44))
-        self.badgesBtn.backgroundColor = UIColor.yellowColor()
-        self.badgesBtn.addTarget(self, action: "showBadges", forControlEvents: UIControlEvents.TouchUpInside)
+        let infoBtn = UIBarButtonItem(title: "Info", style: .Plain, target: self, action: "infoHandler")
+        self.navigationItem.leftBarButtonItem = infoBtn
         
-        self.view.addSubview(self.badgesBtn)
+        let badgesBtn = UIBarButtonItem(title: "Badges", style: .Plain, target: self, action: "badgesHandler")
+        self.navigationItem.rightBarButtonItem = badgesBtn
     }
     
     override func loadView() {
@@ -59,6 +60,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
             if(index != 1) {
                 challengeView.transform = CGAffineTransformMakeScale(0.7, 0.7)
             }
+            println(self.view.frame.width)
             challengeView.btnContinue.tag = index
             challengeView.btnContinue.addTarget(self, action: "continueHandler:", forControlEvents: UIControlEvents.TouchUpInside)
             self.challengeViews.append(challengeView)
@@ -71,7 +73,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.badgesBtn.frame.origin.x = 10 + scrollView.contentOffset.x
+        //self.badgesBtn.frame.origin.x = 10 + scrollView.contentOffset.x
         /*for challengeView in self.view.subviews {
             println(challengeView.frame)
         }*/
@@ -201,7 +203,11 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
         }
     }
     
-    func showBadges() {
+    func infoHandler() {
+        self.presentViewController(self.infoVC, animated: true, completion: nil)
+    }
+    
+    func badgesHandler() {
         self.presentViewController(self.badgesVC, animated: true, completion: nil)
     }
 
