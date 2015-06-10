@@ -51,7 +51,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     func createPasses() {
         let challengesArray = [grouphuggerVC, masterscoutVC, beerkingVC]
         let challengesTitle = ["Grouphugger", "Masterscout", "Beerking"]
-        let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan. Connecteer via Bluetooth met vrienden en eens bij de Randstad stand zal je score worden bepaald.", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
+        let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan en trek een toffe groepsfoto met elkaar!", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
         var xPos:CGFloat = 0
         for (index, challengeVC) in enumerate(challengesArray) {
             let challengeView = ChallengeView(frame: CGRectMake(xPos, self.view.frame.origin.y, self.view.frame.width, self.view.frame.height), photo: UIImage(named: "av")!, title: challengesTitle[index], intro: challengesIntro[index])

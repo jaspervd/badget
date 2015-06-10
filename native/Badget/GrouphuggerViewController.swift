@@ -15,6 +15,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
     var scoreView:GrouphuggerScoreView!
     var started:Bool = false
     var facesArray:Array<UIView> = []
+    var smiles:Int = 0
     let imagePicker = UIImagePickerController()
     var image:UIImage!
     
@@ -60,6 +61,9 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         for fView in self.facesArray {
             fView.removeFromSuperview()
         }
+        self.visualView.imageView.transform = CGAffineTransformMakeScale(1, 1)
+        self.visualView.scrollView.contentOffset = CGPointMake(0, 0)
+        self.smiles = 0
         self.facesArray = []
         self.presentViewController(self.imagePicker, animated: true, completion: nil)
     }
@@ -71,7 +75,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         let context = CIContext(options: nil)
         let detector = CIDetector(ofType: CIDetectorTypeFace, context: context, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])
         let image = CIImage(image: self.image)
-        let features = detector.featuresInImage(image)
+        let features = detector.featuresInImage(image, options: [CIDetectorSmile:true])
         for feature in features {
             var featureBounds = feature.bounds
             featureBounds.origin.y = self.image.size.height - featureBounds.origin.y - featureBounds.size.height
@@ -81,7 +85,14 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
             
             self.facesArray.append(fView)
             self.visualView.imageView.addSubview(fView)
+            if let smile = feature.hasSmile {
+                if(smile) {
+                    self.smiles++
+                }
+            }
         }
+        
+        println("Van de \(self.facesArray.count) lachten er \(self.smiles)")
         
         let imageRect = CGRectMake(0, 0, self.image.size.width, self.image.size.height)
         self.visualView.imageView.frame = imageRect
