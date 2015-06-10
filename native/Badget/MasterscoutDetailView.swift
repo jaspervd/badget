@@ -21,6 +21,8 @@ class MasterscoutDetailView: UIView {
         self.btnContinue = UIButton(frame: CGRectMake(10, 440, 300, 40))
         super.init(frame: frame)
         
+        self.backgroundColor = Settings.bgColor
+        
         self.titleText.text = "Masterscout"
         self.titleText.textAlignment = .Center
         self.descriptionText.text = "Vanaf de Randstad stand zal je een parcours moeten afleggen, doe dit zo efficiënt en zo snel mogelijk. Je moet het terrein van binnen en van buiten leren kennen."

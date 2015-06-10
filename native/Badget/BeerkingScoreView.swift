@@ -18,6 +18,8 @@ class BeerkingScoreView: UIView {
         self.timeText = UILabel(frame: CGRectMake(10, self.angleText.frame.origin.y + 40, 300, 40))
         super.init(frame: frame)
         
+        self.backgroundColor = Settings.bgColor
+        
         self.angleText.text = "Gemiddelde: 0°"
         self.angleText.textAlignment = .Center
         

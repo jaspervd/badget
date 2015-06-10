@@ -17,7 +17,7 @@ class CountdownView: UIView {
         
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.redColor()
+        self.backgroundColor = Settings.bgColor
         self.countdown.text = ""
         self.countdown.textAlignment = .Center
         self.countdown.font = UIFont.systemFontOfSize(10)

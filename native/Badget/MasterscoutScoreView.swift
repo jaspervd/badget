@@ -16,6 +16,8 @@ class MasterscoutScoreView: UIView {
         self.timerText = UILabel(frame: CGRectMake(10, frame.height / 2, 300, 40))
         super.init(frame: frame)
         
+        self.backgroundColor = Settings.bgColor
+        
         self.timerText.textAlignment = .Center
         self.timerText.text = "00:00:00.00"
         

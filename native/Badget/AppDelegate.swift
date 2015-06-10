@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window.rootViewController = StartViewController()
         }
 
+        self.window.backgroundColor = Settings.bgColor
         self.window.makeKeyAndVisible()
-        self.window.backgroundColor = UIColor.magentaColor()
         
         return true
     }

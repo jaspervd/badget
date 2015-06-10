@@ -16,6 +16,8 @@ class GrouphuggerScoreView: UIView {
         self.friendsText = UILabel(frame: CGRectMake(10, frame.height / 2, 300, 40))
         super.init(frame: frame)
         
+        self.backgroundColor = Settings.bgColor
+        
         self.friendsText.textAlignment = .Center
         self.friendsText.text = "0 vrienden"
         

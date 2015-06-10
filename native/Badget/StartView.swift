@@ -46,7 +46,7 @@ class StartView: UIView {
         
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.grayColor()
+        self.backgroundColor = Settings.bgColor
         
         self.addSubview(self.campaignText)
         self.addSubview(self.btnContinue)
