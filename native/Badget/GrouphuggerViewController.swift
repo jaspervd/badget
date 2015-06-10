@@ -8,16 +8,15 @@
 
 import UIKit
 import Alamofire
-import CoreBluetooth
 
-class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableViewDelegate, CBCentralManagerDelegate, UITableViewDataSource {
-    var centralManager:CBCentralManager!
-    var peripheralsArray:Array<CBPeripheral> = []
-    var connectedFriends:Array<CBPeripheral> = []
+class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     var detailView:GrouphuggerDetailView!
     var visualView:GrouphuggerVisualView!
     var scoreView:GrouphuggerScoreView!
     var started:Bool = false
+    var facesArray:Array<UIView> = []
+    let imagePicker = UIImagePickerController()
+    var image:UIImage!
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
@@ -28,33 +27,86 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
     }
 
     override func viewDidLoad() {
-        self.centralManager = CBCentralManager(delegate: nil, queue: nil)
-        self.centralManager.delegate = self
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
-        self.visualView.delegate = self
-        self.visualView.dataSource = self
         
         self.title = "Grouphugger"
         
-        self.visualView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
         self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.visualView.retakeBtn.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func didStartChallenge() {
         UIView.transitionFromView(self.detailView, toView: self.visualView, duration: 1, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = true
-        if(self.centralManager.state == .PoweredOn) {
-            self.centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        
+        self.visualView.scrollView.delegate = self
+        
+        var mediatypes = ["public.image"] as Array
+        if(UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            self.imagePicker.sourceType = .Camera
+        } else {
+            self.imagePicker.sourceType = .PhotoLibrary
         }
+        self.imagePicker.mediaTypes = mediatypes
+        self.imagePicker.delegate = self
+        self.imagePicker.modalTransitionStyle = .CrossDissolve
+        self.imagePicker.modalPresentationStyle = .CurrentContext
+        self.presentViewController(self.imagePicker, animated: true, completion: nil)
+    }
+    
+    func retakeHandler() {
+        for fView in self.facesArray {
+            fView.removeFromSuperview()
+        }
+        self.facesArray = []
+        self.presentViewController(self.imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        self.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        let context = CIContext(options: nil)
+        let detector = CIDetector(ofType: CIDetectorTypeFace, context: context, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])
+        let image = CIImage(image: self.image)
+        let features = detector.featuresInImage(image)
+        for feature in features {
+            var featureBounds = feature.bounds
+            featureBounds.origin.y = self.image.size.height - featureBounds.origin.y - featureBounds.size.height
+            
+            let fView = UIView(frame: featureBounds)
+            fView.backgroundColor = UIColor(red: 73/255, green: 99/255, blue: 204/255, alpha: 0.6)
+            
+            self.facesArray.append(fView)
+            self.visualView.imageView.addSubview(fView)
+        }
+        
+        let imageRect = CGRectMake(0, 0, self.image.size.width, self.image.size.height)
+        self.visualView.imageView.frame = imageRect
+        self.visualView.imageView.image = self.image
+        self.visualView.scrollView.frame = self.view.frame
+        self.visualView.scrollView.contentSize = self.image.size
+        
+        let scaleX = self.visualView.bounds.size.width / self.visualView.scrollView.contentSize.width
+        let scaleY = self.visualView.bounds.size.height / self.visualView.scrollView.contentSize.height
+        let minZoomScale = max(scaleX, scaleY)
+        self.visualView.scrollView.minimumZoomScale = minZoomScale
+        self.visualView.scrollView.zoomScale = minZoomScale
+        self.visualView.scrollView.maximumZoomScale = 4
+        self.visualView.scrollView.contentOffset = CGPointMake(self.image.size.width / 2 * minZoomScale, 0)
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.visualView.imageView
     }
     
     func didFinishChallenge() {
         UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
-        self.scoreView.friendsText.text = "Je had \(self.connectedFriends.count) vrienden bij je!"
-        var grouphugger = Grouphugger(friends: self.connectedFriends.count)
+        self.scoreView.friendsText.text = "Je had \(self.facesArray.count) vrienden bij je!"
+        var grouphugger = Grouphugger(friends: self.facesArray.count)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "grouphuggerDate")
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(grouphugger), forKey: "grouphuggerLastScore")
         let parameters = [
@@ -64,138 +116,11 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         ]
         Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters)
     }
-    
-    func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        var arr = self.peripheralsArray.filter( { return $0.identifier == peripheral.identifier } )
-        if(arr.count == 0) {
-            self.peripheralsArray.append(peripheral)
-            self.visualView.reloadData()
-        }
-    }
-    
-    func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
-        self.connectedFriends.append(peripheral)
-        self.visualView.reloadData()
-    }
-    
-    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
-        self.peripheralsArray.removeAtIndex(find(self.peripheralsArray, peripheral)!)
-        self.connectedFriends.removeAtIndex(find(self.connectedFriends, peripheral)!)
-        self.visualView.reloadData()
-    }
-    
-    func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
-        println("didFailToConnect")
-    }
-    
-    func centralManagerDidUpdateState(central: CBCentralManager!) {
-        switch(central.state) {
-        case .Unsupported:
-            println("Unsupported")
-        case .Unauthorized:
-            println("Unauthorized")
-        case .Unknown:
-            println("Unknown")
-        case .Resetting:
-            println("Resetting")
-        case .PoweredOff:
-            println("PoweredOff")
-            let alertController = UIAlertController(title: "Bluetooth staat uit", message:
-                "Om te kunnen verbinden met je vrienden moet je bluetooth aan staan.", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Oké", style: UIAlertActionStyle.Default,handler: nil))
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
-        case .PoweredOn:
-            println("PoweredOn")
-            central.scanForPeripheralsWithServices(nil, options: nil)
-        default:
-            println("Default")
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return self.peripheralsArray.count
-    }
-
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("peripheralCell", forIndexPath: indexPath) as! UITableViewCell
-        
-        var peripheral = self.peripheralsArray[indexPath.row]
-        cell.textLabel?.text = peripheral.name
-        
-        var state = "Unknown"
-        switch(peripheral.state) {
-        case .Disconnected:
-            state = "Disconnected"
-        case .Connecting:
-            state = "Connecting"
-        case .Connected:
-            state = "Connected"
-        }
-        
-        cell.detailTextLabel?.text = state
-
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var peripheral = self.peripheralsArray[indexPath.row]
-        
-        self.centralManager.connectPeripheral(peripheral, options: nil)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
