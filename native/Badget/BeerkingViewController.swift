@@ -14,7 +14,6 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
     var detailView:BeerkingDetailView!
     var visualView:BeerkingVisualView!
-    var scoreView:BeerkingScoreView!
     let device = UIDevice.currentDevice()
     var startTime = NSDate()
     var anglesArray:Array<Double> = []
@@ -26,7 +25,6 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         self.view = UIView(frame: bounds)
         self.detailView = BeerkingDetailView(frame: bounds)
         self.visualView = BeerkingVisualView(frame: bounds)
-        self.scoreView = BeerkingScoreView(frame: bounds)
     }
 
     override func viewDidLoad() {
@@ -84,18 +82,15 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     }
     
     func didFinishChallenge() {
-        UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.device.proximityMonitoringEnabled = false
         self.started = false
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "UIDeviceProximityStateDidChangeNotification", object: nil)
         
         var seconds = NSDate().timeIntervalSinceDate(self.startTime)
-        self.scoreView.timeText.text = "\(round(seconds)) seconden"
         
         if(self.anglesArray.count > 1) {
             self.anglesArray.removeLast() // last angle is when turning the device around
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
-            self.scoreView.angleText.text = "Gemiddelde: \(avg)°"
             var beerking = Beerking(angle: Int(avg), seconds: Int(round(seconds)))
             
             NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "beerkingDate")
@@ -107,6 +102,10 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
                 "seconds": beerking.seconds
             ]
             Alamofire.request(.POST, Settings.apiUrl + "/beerking", parameters: parameters)
+            
+            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(beerking.seconds) seconden over en had een hellings gemiddelde van \(beerking.angle)!", badges: [])
+            scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+            self.presentViewController(scoreVC, animated: true, completion: nil)
         }
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()

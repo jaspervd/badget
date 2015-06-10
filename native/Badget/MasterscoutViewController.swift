@@ -14,7 +14,6 @@ import CoreLocation
 class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocationManagerDelegate {
     var detailView:MasterscoutDetailView!
     var visualView:MasterscoutVisualView!
-    var scoreView:MasterscoutScoreView!
     var started:Bool = false
     var timer:NSTimer = NSTimer()
     var milliseconds:CGFloat = 0
@@ -28,7 +27,6 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         self.view = UIView(frame: bounds)
         self.detailView = MasterscoutDetailView(frame: bounds)
         self.visualView = MasterscoutVisualView(frame: bounds)
-        self.scoreView = MasterscoutScoreView(frame: bounds)
         
         createLocations()
     }
@@ -112,7 +110,6 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
     }
     
     func didFinishChallenge() {
-        UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
         var masterscout = Masterscout(time: self.visualView.timerText.text!, distance: self.distance)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "masterscoutDate")
@@ -123,10 +120,13 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
             "time": masterscout.time,
             "distance": masterscout.distance
         ]
-        self.scoreView.timerText.text = masterscout.time
         Alamofire.request(.POST, Settings.apiUrl + "/masterscout", parameters: parameters)
         timer.invalidate()
         self.milliseconds = 0
+        
+        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(masterscout.time) een afstand van \(masterscout.distance)m af!", badges: [])
+        scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.presentViewController(scoreVC, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

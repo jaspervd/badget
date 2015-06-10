@@ -12,7 +12,6 @@ import Alamofire
 class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     var detailView:GrouphuggerDetailView!
     var visualView:GrouphuggerVisualView!
-    var scoreView:GrouphuggerScoreView!
     var started:Bool = false
     var facesArray:Array<UIView> = []
     var smiles:Int = 0
@@ -24,7 +23,6 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         self.view = UIView(frame: bounds)
         self.detailView = GrouphuggerDetailView(frame: bounds)
         self.visualView = GrouphuggerVisualView(frame: bounds)
-        self.scoreView = GrouphuggerScoreView(frame: bounds)
     }
 
     override func viewDidLoad() {
@@ -113,9 +111,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
     }
     
     func didFinishChallenge() {
-        UIView.transitionFromView(self.visualView, toView: self.scoreView, duration: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
         self.started = false
-        self.scoreView.friendsText.text = "Je had \(self.facesArray.count) vrienden bij je!"
         var grouphugger = Grouphugger(friends: self.facesArray.count)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "grouphuggerDate")
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(grouphugger), forKey: "grouphuggerLastScore")
@@ -125,6 +121,10 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
             "friends": grouphugger.friends
         ]
         Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters)
+        
+        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(grouphugger.friends) vrienden bij je!", badges: [])
+        scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.presentViewController(scoreVC, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
