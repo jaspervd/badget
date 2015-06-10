@@ -113,6 +113,11 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         let inLocation = self.region.containsCoordinate(newLocation.coordinate)
+        if(inLocation && self.grouphuggerVC.isViewLoaded()) {
+            self.grouphuggerVC.detailView.btnContinue.enabled = true
+        } else if(!inLocation && self.grouphuggerVC.isViewLoaded()) {
+            self.grouphuggerVC.detailView.btnContinue.enabled = false
+        }
         if(inLocation && self.masterscoutVC.isViewLoaded()) {
             self.masterscoutVC.detailView.btnContinue.enabled = true
         } else if(!inLocation && self.masterscoutVC.isViewLoaded()) {
@@ -127,6 +132,9 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         println("entered region")
+        if(self.grouphuggerVC.isViewLoaded()) {
+            self.grouphuggerVC.detailView.btnContinue.enabled = true
+        }
         if(self.masterscoutVC.isViewLoaded()) {
             self.masterscoutVC.detailView.btnContinue.enabled = true
         }
@@ -137,6 +145,9 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         println("left region")
+        if(self.grouphuggerVC.isViewLoaded()) {
+            self.grouphuggerVC.detailView.btnContinue.enabled = false
+        }
         if(self.masterscoutVC.isViewLoaded()) {
             self.masterscoutVC.detailView.btnContinue.enabled = false
         }

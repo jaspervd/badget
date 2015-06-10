@@ -28,6 +28,9 @@ class GrouphuggerDetailView: UIView {
         self.descriptionText.editable = false
         
         self.btnContinue.setTitle("Let's do this!", forState: UIControlState.Normal)
+        self.btnContinue.setTitle("Ga naar de Randstad Stand", forState: UIControlState.Disabled)
+        self.btnContinue.enabled = false
+        
         self.addSubview(self.titleText)
         self.addSubview(self.descriptionText)
         self.addSubview(self.btnContinue)
