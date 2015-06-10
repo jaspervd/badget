@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
+class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate {
     
     let grouphuggerVC = GrouphuggerViewController()
     let masterscoutVC = MasterscoutViewController()
@@ -22,10 +22,17 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
     var beerkingBtn = UIButton()
     var region:CLCircularRegion!
     
+    var scrollView:UIScrollView! {
+        get {
+            return self.view as! UIScrollView
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkTime()
+        //checkTime()
+        createPasses()
         setupLocationManager()
         
         self.title = "Uitdagingen"
@@ -34,27 +41,46 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
         self.badgesBtn.backgroundColor = UIColor.yellowColor()
         self.badgesBtn.addTarget(self, action: "showBadges", forControlEvents: UIControlEvents.TouchUpInside)
         
-        self.grouphuggerBtn = UIButton(frame: CGRectMake(10, 200, 300, 44))
-        self.grouphuggerBtn.setTitle("Grouphugger", forState: .Normal)
-        self.grouphuggerBtn.addTarget(self, action: "grouphuggerHandler", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.masterscoutBtn = UIButton(frame: CGRectMake(10, 244, 300, 44))
-        self.masterscoutBtn.setTitle("Masterscout", forState: .Normal)
-        self.masterscoutBtn.addTarget(self, action: "masterscoutHandler", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.beerkingBtn = UIButton(frame: CGRectMake(10, 288, 300, 44))
-        self.beerkingBtn.setTitle("Beerking", forState: .Normal)
-        self.beerkingBtn.addTarget(self, action: "beerkingHandler", forControlEvents: UIControlEvents.TouchUpInside)
-        
         self.view.addSubview(self.badgesBtn)
-        self.view.addSubview(self.grouphuggerBtn)
-        self.view.addSubview(self.masterscoutBtn)
-        self.view.addSubview(self.beerkingBtn)
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = UIView(frame: bounds);
+        self.view = UIScrollView(frame: bounds);
+    }
+    
+    func createPasses() {
+        let challengesArray = [grouphuggerVC, masterscoutVC, beerkingVC]
+        let challengesTitle = ["Grouphugger", "Masterscout", "Beerking"]
+        let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan. Connecteer via Bluetooth met vrienden en eens bij de Randstad stand zal je score worden bepaald.", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
+        var xPos:CGFloat = 0
+        for (index, challengeVC) in enumerate(challengesArray) {
+            let challengeView = ChallengeView(frame: CGRectMake(xPos, self.view.frame.origin.y, self.view.frame.width, self.view.frame.height), photo: UIImage(named: "av")!, title: challengesTitle[index], intro: challengesIntro[index])
+            self.view.addSubview(challengeView)
+            xPos += self.view.frame.width
+            if(index != 1) {
+                challengeView.transform = CGAffineTransformMakeScale(0.7, 0.7)
+            }
+            challengeView.btnContinue.tag = index
+            challengeView.btnContinue.addTarget(self, action: "continueHandler:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        
+        self.scrollView.contentOffset = CGPointMake(xPos / 3, 0)
+        self.scrollView.pagingEnabled = true
+        self.scrollView.contentSize = CGSizeMake(xPos, 0)
+    }
+    
+    func continueHandler(sender: UIButton!) {
+        switch(sender.tag) {
+        case 0:
+            grouphuggerHandler()
+        case 1:
+            masterscoutHandler()
+        case 2:
+            beerkingHandler()
+        default:
+            masterscoutHandler()
+        }
     }
     
     func setupLocationManager() {
@@ -66,15 +92,14 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(manager: CLLocationManager!,
-        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-            if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
-                manager.startUpdatingLocation()
-                self.region = CLCircularRegion(center: Settings.randstadCoords, radius: 10, identifier: "Randstad Stand")
-                manager.startMonitoringForRegion(region)
-            } else {
-                println("Not authorized :(")
-            }
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+            manager.startUpdatingLocation()
+            self.region = CLCircularRegion(center: Settings.randstadCoords, radius: 10, identifier: "Randstad Stand")
+            manager.startMonitoringForRegion(region)
+        } else {
+            println("Not authorized :(")
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
@@ -123,7 +148,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
         let grouphuggerDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("grouphuggerDate")
         let masterscoutDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("masterscoutDate")
         let beerkingDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("beerkingDate")
-        /*if(grouphuggerDate != nil && calendar.isDate(grouphuggerDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
+        if(grouphuggerDate != nil && calendar.isDate(grouphuggerDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
             UIView.transitionFromView(self.grouphuggerVC.detailView, toView: self.grouphuggerVC.scoreView, duration: 0, options: nil, completion: nil)
         }
         if(masterscoutDate != nil && calendar.isDate(masterscoutDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
@@ -131,10 +156,10 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
         }
         if(beerkingDate != nil && calendar.isDate(beerkingDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
             UIView.transitionFromView(self.beerkingVC.detailView, toView: self.beerkingVC.scoreView, duration: 0, options: nil, completion: nil)
-        }*/
+        }
     }
     
-    /*func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if(self.grouphuggerVC.started && !CGRectIntersectsRect(scrollView.bounds, self.grouphuggerVC.view.frame)) {
             self.grouphuggerVC.didFinishChallenge()
         }
@@ -144,7 +169,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate {
         if(self.beerkingVC.started && !CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
             self.beerkingVC.didFinishChallenge()
         }
-    }*/
+    }
     
     func showBadges() {
         self.presentViewController(self.badgesVC, animated: true, completion: nil)

@@ -19,6 +19,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     var startTime = NSDate()
     var anglesArray:Array<Double> = []
     var started:Bool = false
+    var descriptionText:String!
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
@@ -32,6 +33,8 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         super.viewDidLoad()
         
         self.view.addSubview(self.detailView)
+        
+        self.title = "Beerking"
         
         self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }

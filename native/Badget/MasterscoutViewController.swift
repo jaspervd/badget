@@ -38,6 +38,8 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         
         self.view.addSubview(self.detailView)
         
+        self.title = "Masterscout"
+        
         self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     

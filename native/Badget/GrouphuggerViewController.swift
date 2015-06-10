@@ -36,6 +36,8 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UITableVie
         self.visualView.delegate = self
         self.visualView.dataSource = self
         
+        self.title = "Grouphugger"
+        
         self.visualView.registerClass(PeripheralCell.classForCoder(), forCellReuseIdentifier: "peripheralCell")
         self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
