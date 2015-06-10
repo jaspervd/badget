@@ -17,10 +17,8 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     let locationManager = CLLocationManager()
     var badgesBtn = UIButton()
     let badgesVC = BadgesViewController()
-    var grouphuggerBtn = UIButton()
-    var masterscoutBtn = UIButton()
-    var beerkingBtn = UIButton()
     var region:CLCircularRegion!
+    var challengeViews:Array<ChallengeView> = []
     
     var scrollView:UIScrollView! {
         get {
@@ -63,11 +61,20 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
             }
             challengeView.btnContinue.tag = index
             challengeView.btnContinue.addTarget(self, action: "continueHandler:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.challengeViews.append(challengeView)
         }
         
+        self.scrollView.delegate = self
         self.scrollView.contentOffset = CGPointMake(xPos / 3, 0)
         self.scrollView.pagingEnabled = true
         self.scrollView.contentSize = CGSizeMake(xPos, 0)
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.badgesBtn.frame.origin.x = 10 + scrollView.contentOffset.x
+        /*for challengeView in self.view.subviews {
+            println(challengeView.frame)
+        }*/
     }
     
     func continueHandler(sender: UIButton!) {
@@ -172,6 +179,17 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        for view in challengeViews {
+            if(CGRectIntersectsRect(scrollView.bounds, view.frame)) {
+                UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                    view.transform = CGAffineTransformMakeScale(1, 1)
+                }, completion: nil)
+            } else {
+                UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                    view.transform = CGAffineTransformMakeScale(0.7, 0.7)
+                }, completion: nil)
+            }
+        }
         if(self.grouphuggerVC.started && !CGRectIntersectsRect(scrollView.bounds, self.grouphuggerVC.view.frame)) {
             self.grouphuggerVC.didFinishChallenge()
         }

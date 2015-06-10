@@ -35,6 +35,7 @@ class ChallengeView: UIView {
         introText.text = intro
         introText.textColor = UIColor.whiteColor()
         introText.backgroundColor = nil
+        introText.editable = false
         
         passView.addSubview(imageView)
         passView.addSubview(titleText)
