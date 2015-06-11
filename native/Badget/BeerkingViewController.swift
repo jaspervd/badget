@@ -116,8 +116,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
                 badge = Badge(title: "Creatief", goal: "Je toont ambitie en bent snel, maar maakt af en toe fouten", image: UIImage(named: "av")!)
             }
             let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(beerking.seconds) seconden over en had een hellings gemiddelde van \(beerking.angle)!", badge: badge)
-            scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-            self.presentViewController(scoreVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(scoreVC, animated: true)
         }
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()

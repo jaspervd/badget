@@ -139,8 +139,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
             badge = Badge(title: "Organisatietalent", goal: "Trek een foto met meer dan 15 mensen", image: UIImage(named: "av")!)
         }
         let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(grouphugger.friends) vrienden bij je!", badge: badge)
-        scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        self.presentViewController(scoreVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(scoreVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

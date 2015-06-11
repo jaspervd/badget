@@ -11,23 +11,16 @@ import UIKit
 class ScoreView: UIView {
 
     let btnClose:UIButton!
-    let blurEffectView:UIVisualEffectView
     let badgesView:UIView
     let badgeSize = CGSizeMake(50, 50)
     
     init(frame: CGRect, header: String, feedback: String, badge: Badge?) {
         self.btnClose = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        self.blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Dark))
-        self.blurEffectView.frame = frame
         self.badgesView = UIView()
         
         super.init(frame: frame)
-        
-        if !UIAccessibilityIsReduceTransparencyEnabled() {
-            self.addSubview(self.blurEffectView)
-        } else {
-            self.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        }
+
+        self.backgroundColor = UIColor(white: 0, alpha: 0.3)
         
         let scoreHolder = UIView(frame: CGRectMake(30, 40, frame.width - 60, 300))
         scoreHolder.backgroundColor = UIColor.whiteColor()

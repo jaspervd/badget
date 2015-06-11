@@ -41,18 +41,12 @@ class ScoreViewController: UIViewController {
     }
     
     func closeHandler() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = ScoreView(frame: bounds, header: self.header, feedback: self.feedback, badge: self.badge)
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        if !UIAccessibilityIsReduceTransparencyEnabled() {
-            self.scoreView.blurEffectView.removeFromSuperview()
-        }
     }
 
     override func didReceiveMemoryWarning() {
