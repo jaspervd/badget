@@ -107,7 +107,15 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
             ]
             Alamofire.request(.POST, Settings.apiUrl + "/beerking", parameters: parameters)
             
-            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(beerking.seconds) seconden over en had een hellings gemiddelde van \(beerking.angle)!", badges: [])
+            var badge = Badge()
+            if(avg < 10 && seconds <= 60) { // if average angle was less than 10° and took less than 60 seconds
+                badge = Badge(title: "Multi-tasken", goal: "Voer de opdracht zo recht en zo snel mogelijk uit (in minder dan een minuut)", image: UIImage(named: "av")!)
+            } else if(avg < 10 && seconds > 60) { // if average angle was less than 10° but took more than 60 seconds
+                badge = Badge(title: "Doelgericht", goal: "Je doet er langer dan 20 minuten over, maar legt een kleinere afstand af dan 3km", image: UIImage(named: "av")!)
+            } else if(avg > 10 && seconds < 60) { // if angle was bigger than 10° and took less than 60 seconds
+                badge = Badge(title: "Creatief", goal: "Je toont ambitie en bent snel, maar maakt af en toe fouten", image: UIImage(named: "av")!)
+            }
+            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(beerking.seconds) seconden over en had een hellings gemiddelde van \(beerking.angle)!", badge: badge)
             scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
             self.presentViewController(scoreVC, animated: true, completion: nil)
         }

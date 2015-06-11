@@ -126,8 +126,19 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         ]
         Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters)
         
-        var badge = Badge(title: "Sociaal", goal: "Wees ne sociale pe en zorg voor meer dan 20 vrienden op de foto", image: UIImage(named: "av")!)
-        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(grouphugger.friends) vrienden bij je!", badges: [badge, badge, badge])
+        var badge = Badge()
+        if(grouphugger.friends == 1) {
+            badge = Badge(title: "Onafhankelijk", goal: "Trek een selfie!", image: UIImage(named: "av")!)
+        } else if(grouphugger.friends <= 5) {
+            badge = Badge(title: "Moedig", goal: "Trek een foto met meer dan 1 persoon", image: UIImage(named: "av")!)
+        } else if(grouphugger.friends <= 10) {
+            badge = Badge(title: "Sociaal", goal: "Trek een foto met meer dan 5 mensen", image: UIImage(named: "av")!)
+        } else if(grouphugger.friends <= 15) {
+            badge = Badge(title: "Mensenkennis", goal: "Trek een foto met meer dan 10 mensen", image: UIImage(named: "av")!)
+        } else if(grouphugger.friends > 15) {
+            badge = Badge(title: "Organisatietalent", goal: "Trek een foto met meer dan 15 mensen", image: UIImage(named: "av")!)
+        }
+        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(grouphugger.friends) vrienden bij je!", badge: badge)
         scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.presentViewController(scoreVC, animated: true, completion: nil)
     }

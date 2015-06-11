@@ -12,7 +12,7 @@ class ScoreViewController: UIViewController {
     
     let header:String
     let feedback:String
-    let badges:Array<Badge>
+    let badge:Badge?
     
     var scoreView:ScoreView! {
         get {
@@ -20,10 +20,10 @@ class ScoreViewController: UIViewController {
         }
     }
     
-    init(header: String, feedback: String, badges: Array<Badge>) {
+    init(header: String, feedback: String, badge: Badge) {
         self.header = header
         self.feedback = feedback
-        self.badges = badges
+        self.badge = badge
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,13 +31,12 @@ class ScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var badgesViews:Array<BadgeView> = []
-        for badge in self.badges {
-            let badgeVC = BadgeViewController(badge: badge)
+        if(self.badge != nil) {
+            let badgeVC = BadgeViewController(badge: self.badge!)
             self.addChildViewController(badgeVC)
-            badgesViews.append(badgeVC.badgeView)
+            self.scoreView.showBadge(badgeVC.badgeView)
         }
-        self.scoreView.createBadges(badgesViews)
+        
         self.scoreView.btnClose.addTarget(self, action: "closeHandler", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
@@ -47,7 +46,7 @@ class ScoreViewController: UIViewController {
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = ScoreView(frame: bounds, header: self.header, feedback: self.feedback, badges: self.badges)
+        self.view = ScoreView(frame: bounds, header: self.header, feedback: self.feedback, badge: self.badge)
     }
     
     override func viewDidDisappear(animated: Bool) {

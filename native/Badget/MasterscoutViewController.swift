@@ -126,11 +126,21 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         ]
         Alamofire.request(.POST, Settings.apiUrl + "/masterscout", parameters: parameters)
         timer.invalidate()
-        self.milliseconds = 0
         
-        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(masterscout.time) een afstand van \(masterscout.distance)m af!", badges: [])
+        var badge = Badge()
+        if(self.milliseconds < 120000 && self.distance < 3000) { // if faster than 20 min + distance was less than 3km
+            badge = Badge(title: "Efficiënt", goal: "Wees sneller dan 20 minuten en leg een afstand af kleiner dan 3km", image: UIImage(named: "av")!)
+        } else if(self.milliseconds > 120000 && self.distance < 3000) { // if slower than 20 min + distance was less than 3km
+            badge = Badge(title: "Doelgericht", goal: "Je doet er langer dan 20 minuten over, maar legt een kleinere afstand  af dan 3km", image: UIImage(named: "av")!)
+        } else if(self.milliseconds < 120000 && self.distance < 3000) {
+            badge = Badge(title: "Creatief", goal: "Wees sneller dan 20 minuten en leg een afstand af groter dan 3km", image: UIImage(named: "av")!)
+        } /*else if(self.milliseconds > 120000 && self.distance > 3000) {
+            badge = Badge(title: "Oriëntatievermogen", goal: "Je geraakt er mits een langere tijd en grotere afstand af te leggen", image: UIImage(named: "av")!)
+        }*/
+        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(masterscout.time) een afstand van \(masterscout.distance)m af!", badge: badge)
         scoreVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.presentViewController(scoreVC, animated: true, completion: nil)
+        self.milliseconds = 0
     }
 
     override func didReceiveMemoryWarning() {

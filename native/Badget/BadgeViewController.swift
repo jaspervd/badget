@@ -30,7 +30,7 @@ class BadgeViewController: UIViewController {
     }
     
     func showDetails() {
-        println("showDetails()")
+        println(badge.title, badge.goal)
     }
     
     override func loadView() {

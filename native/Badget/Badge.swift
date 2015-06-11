@@ -19,4 +19,10 @@ class Badge: NSObject {
         self.image = image
         super.init()
     }
+    
+    override init() {
+        self.title = ""
+        self.goal = ""
+        self.image = UIImage()
+    }
 }
