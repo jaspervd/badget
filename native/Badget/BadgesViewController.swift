@@ -28,6 +28,6 @@ class BadgesViewController: UIViewController {
     }
     
     func swipeHandler() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }

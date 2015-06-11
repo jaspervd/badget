@@ -219,11 +219,11 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func infoHandler() {
-        self.presentViewController(self.infoVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(self.infoVC, animated: true)
     }
     
     func badgesHandler() {
-        self.presentViewController(self.badgesVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(self.badgesVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
