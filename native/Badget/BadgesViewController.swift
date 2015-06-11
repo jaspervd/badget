@@ -8,26 +8,20 @@
 
 import UIKit
 
-let reuseIdentifier = "Cell"
-
 class BadgesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Badges"
-
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: "swipeHandler")
-        swipeDown.direction = .Down
-        
-        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    override func loadView() {
+        let bounds = UIScreen.mainScreen().bounds
+        self.view = UIView(frame: bounds)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func swipeHandler() {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }
