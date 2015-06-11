@@ -38,6 +38,7 @@
 		A4B619F81B28F30200748A1D /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F71B28F30200748A1D /* Badge.swift */; };
 		A4B619FB1B28FBF000748A1D /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619FA1B28FBF000748A1D /* ScoreViewController.swift */; };
 		A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619FD1B29007400748A1D /* InstructionView.swift */; };
+		A4B61A001B290AEF00748A1D /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619FF1B290AEF00748A1D /* Challenge.swift */; };
 		A4C03DC21B1F604B00C30B62 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C03DC11B1F604B00C30B62 /* FileUploader.swift */; };
 		A4DFB0C31B1914D6005FCF13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DFB0C21B1914D6005FCF13 /* MapKit.framework */; };
 		E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5D2CC95AD2501AB8C96E3A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -91,6 +92,7 @@
 		A4B619F71B28F30200748A1D /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		A4B619FA1B28FBF000748A1D /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		A4B619FD1B29007400748A1D /* InstructionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
+		A4B619FF1B290AEF00748A1D /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		A4C03DC11B1F604B00C30B62 /* FileUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		A4DFB0C21B1914D6005FCF13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FB5D2CC95AD2501AB8C96E3A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +249,7 @@
 				A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */,
 				A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */,
 				A4B619F01B28618C00748A1D /* ChallengeView.swift */,
+				A4B619FF1B290AEF00748A1D /* Challenge.swift */,
 				A48BC2321B20754B00B8A110 /* Grouphugger */,
 				A48BC2331B20755400B8A110 /* Masterscout */,
 				A48BC2311B20754300B8A110 /* Beerking */,
@@ -484,6 +487,7 @@
 				A48BC2411B208E8300B8A110 /* GrouphuggerView.swift in Sources */,
 				A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
+				A4B61A001B290AEF00748A1D /* Challenge.swift in Sources */,
 				A4B619F81B28F30200748A1D /* Badge.swift in Sources */,
 				A48BC2431B20A8DA00B8A110 /* Grouphugger.swift in Sources */,
 				A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */,
