@@ -24,7 +24,6 @@
 		A48BC2431B20A8DA00B8A110 /* Grouphugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2421B20A8DA00B8A110 /* Grouphugger.swift */; };
 		A48BC2451B20AB8A00B8A110 /* Masterscout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2441B20AB8A00B8A110 /* Masterscout.swift */; };
 		A48BC2471B20AB9500B8A110 /* Beerking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2461B20AB9500B8A110 /* Beerking.swift */; };
-		A48BC2491B20B53D00B8A110 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2481B20B53D00B8A110 /* User.swift */; };
 		A48CCE5E1B26405400B41774 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48CCE5D1B26405400B41774 /* CoreLocation.framework */; };
 		A48CCE601B26405900B41774 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48CCE5F1B26405900B41774 /* CoreBluetooth.framework */; };
 		A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */; };
@@ -78,7 +77,6 @@
 		A48BC2421B20A8DA00B8A110 /* Grouphugger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grouphugger.swift; sourceTree = "<group>"; };
 		A48BC2441B20AB8A00B8A110 /* Masterscout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Masterscout.swift; sourceTree = "<group>"; };
 		A48BC2461B20AB9500B8A110 /* Beerking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beerking.swift; sourceTree = "<group>"; };
-		A48BC2481B20B53D00B8A110 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A48CCE5D1B26405400B41774 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A48CCE5F1B26405900B41774 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 				A43E13E31B1667A9008B3823 /* Images.xcassets */,
 				A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */,
 				A43E13DA1B1667A9008B3823 /* Supporting Files */,
-				A48BC2481B20B53D00B8A110 /* User.swift */,
 			);
 			path = Badget;
 			sourceTree = "<group>";
@@ -466,7 +463,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A48BC2491B20B53D00B8A110 /* User.swift in Sources */,
 				A48BC23D1B20833D00B8A110 /* BeerkingView.swift in Sources */,
 				A48BC2471B20AB9500B8A110 /* Beerking.swift in Sources */,
 				A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */,
