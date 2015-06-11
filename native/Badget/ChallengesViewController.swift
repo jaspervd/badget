@@ -30,6 +30,11 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(!NSUserDefaults.standardUserDefaults().boolForKey("hasSeenInfo")) {
+            self.presentViewController(self.infoVC, animated: true, completion: nil)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenInfo")
+        }
+        
         //checkTime()
         createPasses()
         setupLocationManager()

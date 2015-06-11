@@ -10,7 +10,6 @@
 		A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */; };
-		A43E0E631B1B50CF0020713F /* PeripheralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E621B1B50CF0020713F /* PeripheralCell.swift */; };
 		A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BeerkingViewController.swift */; };
 		A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */; };
 		A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13DC1B1667A9008B3823 /* AppDelegate.swift */; };
@@ -60,7 +59,6 @@
 		A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerViewController.swift; sourceTree = "<group>"; };
-		A43E0E621B1B50CF0020713F /* PeripheralCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralCell.swift; sourceTree = "<group>"; };
 		A43E0E641B1B93860020713F /* BeerkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingViewController.swift; sourceTree = "<group>"; };
 		A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutViewController.swift; sourceTree = "<group>"; };
 		A43E13D71B1667A9008B3823 /* Badget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Badget.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,7 +244,6 @@
 		A4AD989C1B179F0D009ED7AE /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
-				A43E0E621B1B50CF0020713F /* PeripheralCell.swift */,
 				A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */,
 				A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */,
 				A4B619F01B28618C00748A1D /* ChallengeView.swift */,
@@ -488,7 +485,6 @@
 				A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
 				A4B619F81B28F30200748A1D /* Badge.swift in Sources */,
-				A43E0E631B1B50CF0020713F /* PeripheralCell.swift in Sources */,
 				A48BC2431B20A8DA00B8A110 /* Grouphugger.swift in Sources */,
 				A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */,
 				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
