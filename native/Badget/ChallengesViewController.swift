@@ -214,13 +214,13 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        for view in challengeViews {
+        for (index, view) in enumerate(challengeViews) {
             if(CGRectIntersectsRect(scrollView.bounds, view.frame)) {
-                UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                     view.transform = CGAffineTransformMakeScale(1, 1)
-                }, completion: nil)
+                    }, completion: nil)
             } else {
-                UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                     view.transform = CGAffineTransformMakeScale(0.7, 0.7)
                 }, completion: nil)
             }

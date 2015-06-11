@@ -16,8 +16,6 @@ class ChallengeView: UIView {
         
         super.init(frame: frame)
         
-        self.backgroundColor = Settings.bgColor
-        
         let passView = UIView(frame: CGRectMake(30, 40, frame.width - 60, 300))
         passView.backgroundColor = UIColor.whiteColor()
         
