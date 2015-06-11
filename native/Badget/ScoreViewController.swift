@@ -31,6 +31,13 @@ class ScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var badgesViews:Array<BadgeView> = []
+        for badge in self.badges {
+            let badgeVC = BadgeViewController(badge: badge)
+            self.addChildViewController(badgeVC)
+            badgesViews.append(badgeVC.badgeView)
+        }
+        self.scoreView.createBadges(badgesViews)
         self.scoreView.btnClose.addTarget(self, action: "closeHandler", forControlEvents: UIControlEvents.TouchUpInside)
     }
     

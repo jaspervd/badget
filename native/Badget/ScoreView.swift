@@ -43,7 +43,6 @@ class ScoreView: UIView {
         
         let rows = round(CGFloat(badges.count) / 4)
         self.badgesView.frame = CGRectMake(10, feedbackText.frame.origin.y + feedbackText.frame.size.height + 20, scoreHolder.frame.width - 20, self.badgeSize.height * rows)
-        createBadges(badges)
         
         self.btnClose.frame = CGRectMake(10, badgesView.frame.origin.y + badgesView.frame.height + 10, scoreHolder.frame.width - 20, 44)
         self.btnClose.setTitle("Done!", forState: UIControlState.Normal)
@@ -59,13 +58,12 @@ class ScoreView: UIView {
         self.addSubview(scoreHolder)
     }
     
-    func createBadges(badges:Array<Badge>) {
+    func createBadges(badges:Array<BadgeView>) {
         var xPos:CGFloat = 0
         var yPos:CGFloat = 0
-        for (index, badge) in enumerate(badges) {
-            let badgeVC = BadgeViewController(badge: badge)
-            self.badgesView.addSubview(badgeVC.view)
-            badgeVC.view.frame = CGRectMake(xPos, yPos, self.badgeSize.width, self.badgeSize.height)
+        for (index, badgeView) in enumerate(badges) {
+            self.badgesView.addSubview(badgeView)
+            badgeView.frame = CGRectMake(xPos, yPos, self.badgeSize.width, self.badgeSize.height)
             xPos += self.badgeSize.width + 7.5
             if((index + 1) % 4 == 0) {
                 yPos += 7.5 + self.badgeSize.height
