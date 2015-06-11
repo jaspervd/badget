@@ -1,5 +1,5 @@
 //
-//  Grouphugger.swift
+//  Organisator.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 04/06/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Grouphugger: NSObject, NSCoding {
+class Organisator: NSObject, NSCoding {
     var date:NSDate
     var friends:Int
     

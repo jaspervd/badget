@@ -1,5 +1,5 @@
 //
-//  BeerkingVisualView.swift
+//  BarmanView.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 04/06/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerkingView: UIView {
+class BarmanView: UIView {
 
     let angleText: UILabel
     

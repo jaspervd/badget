@@ -1,5 +1,5 @@
 //
-//  MasterscoutVisualView.swift
+//  CoordinatorView.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 04/06/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterscoutView: UIView {
+class CoordinatorView: UIView {
     
     let timerText:UILabel
     let instructionText:UILabel

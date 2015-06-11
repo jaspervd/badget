@@ -1,5 +1,5 @@
 //
-//  MasterscoutViewController.swift
+//  CoordinatorViewController.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 31/05/15.
@@ -11,7 +11,7 @@ import MapKit
 import Alamofire
 import CoreLocation
 
-class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocationManagerDelegate {
+class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocationManagerDelegate {
     var instructionView:InstructionView!
     var started:Bool = false
     var timer:NSTimer = NSTimer()
@@ -21,15 +21,15 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
     var distance:Double = 0
     var locationsVisited:Int = 0
     
-    var masterscoutView:MasterscoutView! {
+    var coordinatorView:CoordinatorView! {
         get {
-            return self.view as! MasterscoutView
+            return self.view as! CoordinatorView
         }
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = MasterscoutView(frame: bounds)
+        self.view = CoordinatorView(frame: bounds)
         self.instructionView = InstructionView(frame: bounds)
         
         createLocations()
@@ -40,7 +40,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         
         self.view.addSubview(self.instructionView)
         
-        self.title = "Masterscout"
+        self.title = "Coordinator"
         
         self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
@@ -74,7 +74,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         var loc = self.getRandomLocation()
         self.locationManager.startUpdatingLocation()
         self.locationManager.startMonitoringForRegion(loc)
-        self.masterscoutView.instructionText.text = "Ga naar de \(loc.identifier)"
+        self.coordinatorView.instructionText.text = "Ga naar de \(loc.identifier)"
     }
     
     func getRandomLocation() -> CLRegion {
@@ -95,7 +95,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         if(self.locationsVisited < 5) { // if user hasn't visited 5 locations yet
             var loc = getRandomLocation()
             self.locationManager.startMonitoringForRegion(loc)
-            self.masterscoutView.instructionText.text = "Ga naar de \(loc.identifier)"
+            self.coordinatorView.instructionText.text = "Ga naar de \(loc.identifier)"
         } else {
             didFinishChallenge()
         }
@@ -110,21 +110,21 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         var minutes:Int = sec / 60 - hours * 60
         var seconds:Int = sec - (minutes * 60 + hours * 60)
         var ms = Int((self.milliseconds - CGFloat(sec)) * 100)
-        self.masterscoutView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
+        self.coordinatorView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
     }
     
     func didFinishChallenge() {
         self.started = false
-        var masterscout = Masterscout(date: Settings.currentDate, time: self.masterscoutView.timerText.text!, distance: self.distance)
-        NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "masterscoutDate")
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(masterscout), forKey: "masterscoutLastScore")
+        var coordinator = Coordinator(date: Settings.currentDate, time: self.coordinatorView.timerText.text!, distance: self.distance)
+        NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "coordinatorDate")
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(coordinator), forKey: "coordinatorLastScore")
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
             "day": Settings.currentDate,
-            "time": masterscout.time,
-            "distance": masterscout.distance
+            "time": coordinator.time,
+            "distance": coordinator.distance
         ]
-        Alamofire.request(.POST, Settings.apiUrl + "/masterscout", parameters: parameters)
+        Alamofire.request(.POST, Settings.apiUrl + "/coordinator", parameters: parameters)
         timer.invalidate()
         
         var badge = Badge()
@@ -138,7 +138,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
             badge = Badge(title: "Oriëntatievermogen", goal: "Je geraakt er mits een langere tijd en grotere afstand af te leggen", image: UIImage(named: "av")!)
         }*/
         
-        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(masterscout.time) een afstand van \(masterscout.distance)m af!", badge: badge)
+        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: badge)
         self.navigationController?.pushViewController(scoreVC, animated: true)
         self.milliseconds = 0
     }

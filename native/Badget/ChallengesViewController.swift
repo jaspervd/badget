@@ -11,9 +11,9 @@ import CoreLocation
 
 class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate {
     
-    let grouphuggerVC = GrouphuggerViewController()
-    let masterscoutVC = MasterscoutViewController()
-    let beerkingVC = BeerkingViewController()
+    let organisatorVC = OrganisatorViewController()
+    let coordinatorVC = CoordinatorViewController()
+    let barmanVC = BarmanViewController()
     let locationManager = CLLocationManager()
     var badgesBtn = UIBarButtonItem()
     let infoVC = InfoViewController()
@@ -54,8 +54,8 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func createPasses() {
-        let challengesArray = [grouphuggerVC, masterscoutVC, beerkingVC]
-        let challengesTitle = ["Grouphugger", "Masterscout", "Beerking"]
+        let challengesArray = [organisatorVC, coordinatorVC, barmanVC]
+        let challengesTitle = ["Organisator", "Coordinator", "Barman"]
         let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan en trek een toffe groepsfoto met elkaar!", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
         var xPos:CGFloat = 0
         for (index, challengeVC) in enumerate(challengesArray) {
@@ -86,13 +86,13 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     func continueHandler(sender: UIButton!) {
         switch(sender.tag) {
         case 0:
-            grouphuggerHandler()
+            organisatorHandler()
         case 1:
-            masterscoutHandler()
+            coordinatorHandler()
         case 2:
-            beerkingHandler()
+            barmanHandler()
         default:
-            masterscoutHandler()
+            coordinatorHandler()
         }
     }
     
@@ -117,59 +117,59 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         let inLocation = self.region.containsCoordinate(newLocation.coordinate)
-        if(inLocation && self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.instructionView.btnContinue.enabled = true
-        } else if(!inLocation && self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.instructionView.btnContinue.enabled = false
+        if(inLocation && self.organisatorVC.isViewLoaded()) {
+            self.organisatorVC.instructionView.btnContinue.enabled = true
+        } else if(!inLocation && self.organisatorVC.isViewLoaded()) {
+            self.organisatorVC.instructionView.btnContinue.enabled = false
         }
-        if(inLocation && self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.instructionView.btnContinue.enabled = true
-        } else if(!inLocation && self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.instructionView.btnContinue.enabled = false
+        if(inLocation && self.coordinatorVC.isViewLoaded()) {
+            self.coordinatorVC.instructionView.btnContinue.enabled = true
+        } else if(!inLocation && self.coordinatorVC.isViewLoaded()) {
+            self.coordinatorVC.instructionView.btnContinue.enabled = false
         }
-        if(inLocation && self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.instructionView.btnContinue.enabled = true
-        } else if(!inLocation && self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.instructionView.btnContinue.enabled = false
+        if(inLocation && self.barmanVC.isViewLoaded()) {
+            self.barmanVC.instructionView.btnContinue.enabled = true
+        } else if(!inLocation && self.barmanVC.isViewLoaded()) {
+            self.barmanVC.instructionView.btnContinue.enabled = false
         }
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         println("entered region")
-        if(self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.instructionView.btnContinue.enabled = true
+        if(self.organisatorVC.isViewLoaded()) {
+            self.organisatorVC.instructionView.btnContinue.enabled = true
         }
-        if(self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.instructionView.btnContinue.enabled = true
+        if(self.coordinatorVC.isViewLoaded()) {
+            self.coordinatorVC.instructionView.btnContinue.enabled = true
         }
-        if(self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.instructionView.btnContinue.enabled = true
+        if(self.barmanVC.isViewLoaded()) {
+            self.barmanVC.instructionView.btnContinue.enabled = true
         }
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         println("left region")
-        if(self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.instructionView.btnContinue.enabled = false
+        if(self.organisatorVC.isViewLoaded()) {
+            self.organisatorVC.instructionView.btnContinue.enabled = false
         }
-        if(self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.instructionView.btnContinue.enabled = false
+        if(self.coordinatorVC.isViewLoaded()) {
+            self.coordinatorVC.instructionView.btnContinue.enabled = false
         }
-        if(self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.instructionView.btnContinue.enabled = false
+        if(self.barmanVC.isViewLoaded()) {
+            self.barmanVC.instructionView.btnContinue.enabled = false
         }
     }
     
-    func grouphuggerHandler() {
-        self.navigationController?.pushViewController(self.grouphuggerVC, animated: true)
+    func organisatorHandler() {
+        self.navigationController?.pushViewController(self.organisatorVC, animated: true)
     }
     
-    func masterscoutHandler() {
-        self.navigationController?.pushViewController(self.masterscoutVC, animated: true)
+    func coordinatorHandler() {
+        self.navigationController?.pushViewController(self.coordinatorVC, animated: true)
     }
     
-    func beerkingHandler() {
-        self.navigationController?.pushViewController(self.beerkingVC, animated: true)
+    func barmanHandler() {
+        self.navigationController?.pushViewController(self.barmanVC, animated: true)
     }
     
     func checkTime() {
@@ -181,17 +181,17 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
             println("'t Is gedaan!")
         }
         
-        let grouphuggerDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("grouphuggerDate")
-        let masterscoutDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("masterscoutDate")
-        let beerkingDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("beerkingDate")
-        /*if(grouphuggerDate != nil && calendar.isDate(grouphuggerDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
-            UIView.transitionFromView(self.grouphuggerVC.detailView, toView: self.grouphuggerVC.scoreView, duration: 0, options: nil, completion: nil)
+        let organisatorDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("organisatorDate")
+        let coordinatorDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("coordinatorDate")
+        let barmanDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("barmanDate")
+        /*if(organisatorDate != nil && calendar.isDate(organisatorDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
+            UIView.transitionFromView(self.organisatorVC.detailView, toView: self.organisatorVC.scoreView, duration: 0, options: nil, completion: nil)
         }
-        if(masterscoutDate != nil && calendar.isDate(masterscoutDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
-            UIView.transitionFromView(self.grouphuggerVC.detailView, toView: self.grouphuggerVC.scoreView, duration: 0, options: nil, completion: nil)
+        if(coordinatorDate != nil && calendar.isDate(coordinatorDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
+            UIView.transitionFromView(self.organisatorVC.detailView, toView: self.organisatorVC.scoreView, duration: 0, options: nil, completion: nil)
         }
-        if(beerkingDate != nil && calendar.isDate(beerkingDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
-            UIView.transitionFromView(self.beerkingVC.detailView, toView: self.beerkingVC.scoreView, duration: 0, options: nil, completion: nil)
+        if(barmanDate != nil && calendar.isDate(barmanDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
+            UIView.transitionFromView(self.barmanVC.detailView, toView: self.barmanVC.scoreView, duration: 0, options: nil, completion: nil)
         }*/
     }
     
@@ -207,14 +207,14 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
                 }, completion: nil)
             }
         }
-        if(self.grouphuggerVC.started && !CGRectIntersectsRect(scrollView.bounds, self.grouphuggerVC.view.frame)) {
-            self.grouphuggerVC.didFinishChallenge()
+        if(self.organisatorVC.started && !CGRectIntersectsRect(scrollView.bounds, self.organisatorVC.view.frame)) {
+            self.organisatorVC.didFinishChallenge()
         }
-        if(self.masterscoutVC.started && !CGRectIntersectsRect(scrollView.bounds, self.masterscoutVC.view.frame)) {
-            self.masterscoutVC.didFinishChallenge()
+        if(self.coordinatorVC.started && !CGRectIntersectsRect(scrollView.bounds, self.coordinatorVC.view.frame)) {
+            self.coordinatorVC.didFinishChallenge()
         }
-        if(self.beerkingVC.started && !CGRectIntersectsRect(scrollView.bounds, self.beerkingVC.view.frame)) {
-            self.beerkingVC.didFinishChallenge()
+        if(self.barmanVC.started && !CGRectIntersectsRect(scrollView.bounds, self.barmanVC.view.frame)) {
+            self.barmanVC.didFinishChallenge()
         }
     }
     

@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
-		A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */; };
-		A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BeerkingViewController.swift */; };
-		A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */; };
+		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
+		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
+		A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E661B1B939A0020713F /* CoordinatorViewController.swift */; };
 		A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13DC1B1667A9008B3823 /* AppDelegate.swift */; };
 		A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43E13E31B1667A9008B3823 /* Images.xcassets */; };
 		A43E13F31B1667A9008B3823 /* BadgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E13F21B1667A9008B3823 /* BadgetTests.swift */; };
 		A4480BD21B1F6CE30050C744 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */; };
 		A4892FE41B21BA48008C731B /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4892FE31B21BA48008C731B /* CountdownViewController.swift */; };
 		A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4892FE61B21BAC4008C731B /* CountdownView.swift */; };
-		A48BC23B1B20831F00B8A110 /* MasterscoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23A1B20831F00B8A110 /* MasterscoutView.swift */; };
-		A48BC23D1B20833D00B8A110 /* BeerkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23C1B20833D00B8A110 /* BeerkingView.swift */; };
-		A48BC2411B208E8300B8A110 /* GrouphuggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2401B208E8300B8A110 /* GrouphuggerView.swift */; };
-		A48BC2431B20A8DA00B8A110 /* Grouphugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2421B20A8DA00B8A110 /* Grouphugger.swift */; };
-		A48BC2451B20AB8A00B8A110 /* Masterscout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2441B20AB8A00B8A110 /* Masterscout.swift */; };
-		A48BC2471B20AB9500B8A110 /* Beerking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2461B20AB9500B8A110 /* Beerking.swift */; };
+		A48BC23B1B20831F00B8A110 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23A1B20831F00B8A110 /* CoordinatorView.swift */; };
+		A48BC23D1B20833D00B8A110 /* BarmanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC23C1B20833D00B8A110 /* BarmanView.swift */; };
+		A48BC2411B208E8300B8A110 /* OrganisatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2401B208E8300B8A110 /* OrganisatorView.swift */; };
+		A48BC2431B20A8DA00B8A110 /* Organisator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2421B20A8DA00B8A110 /* Organisator.swift */; };
+		A48BC2451B20AB8A00B8A110 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2441B20AB8A00B8A110 /* Coordinator.swift */; };
+		A48BC2471B20AB9500B8A110 /* Barman.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2461B20AB9500B8A110 /* Barman.swift */; };
 		A48CCE5E1B26405400B41774 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48CCE5D1B26405400B41774 /* CoreLocation.framework */; };
 		A48CCE601B26405900B41774 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48CCE5F1B26405900B41774 /* CoreBluetooth.framework */; };
 		A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */; };
@@ -60,9 +60,9 @@
 		6F6500C793CF27A14A745F40 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerViewController.swift; sourceTree = "<group>"; };
-		A43E0E641B1B93860020713F /* BeerkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingViewController.swift; sourceTree = "<group>"; };
-		A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutViewController.swift; sourceTree = "<group>"; };
+		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
+		A43E0E661B1B939A0020713F /* CoordinatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorViewController.swift; sourceTree = "<group>"; };
 		A43E13D71B1667A9008B3823 /* Badget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Badget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43E13DB1B1667A9008B3823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43E13DC1B1667A9008B3823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,12 +73,12 @@
 		A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		A4892FE31B21BA48008C731B /* CountdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		A4892FE61B21BAC4008C731B /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
-		A48BC23A1B20831F00B8A110 /* MasterscoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterscoutView.swift; sourceTree = "<group>"; };
-		A48BC23C1B20833D00B8A110 /* BeerkingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerkingView.swift; sourceTree = "<group>"; };
-		A48BC2401B208E8300B8A110 /* GrouphuggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrouphuggerView.swift; sourceTree = "<group>"; };
-		A48BC2421B20A8DA00B8A110 /* Grouphugger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grouphugger.swift; sourceTree = "<group>"; };
-		A48BC2441B20AB8A00B8A110 /* Masterscout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Masterscout.swift; sourceTree = "<group>"; };
-		A48BC2461B20AB9500B8A110 /* Beerking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beerking.swift; sourceTree = "<group>"; };
+		A48BC23A1B20831F00B8A110 /* CoordinatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
+		A48BC23C1B20833D00B8A110 /* BarmanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanView.swift; sourceTree = "<group>"; };
+		A48BC2401B208E8300B8A110 /* OrganisatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganisatorView.swift; sourceTree = "<group>"; };
+		A48BC2421B20A8DA00B8A110 /* Organisator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organisator.swift; sourceTree = "<group>"; };
+		A48BC2441B20AB8A00B8A110 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A48BC2461B20AB9500B8A110 /* Barman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barman.swift; sourceTree = "<group>"; };
 		A48CCE5D1B26405400B41774 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A48CCE5F1B26405900B41774 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		A499A2531B29C24E00D903F3 /* BadgeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
+		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ChallengesViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4B619F01B28618C00748A1D /* ChallengeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		A4B619F31B28C4BC00748A1D /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A4B619F51B28F1AF00748A1D /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
@@ -205,34 +205,34 @@
 			name = Countdown;
 			sourceTree = "<group>";
 		};
-		A48BC2311B20754300B8A110 /* Beerking */ = {
+		A48BC2311B20754300B8A110 /* Barman */ = {
 			isa = PBXGroup;
 			children = (
-				A43E0E641B1B93860020713F /* BeerkingViewController.swift */,
-				A48BC23C1B20833D00B8A110 /* BeerkingView.swift */,
-				A48BC2461B20AB9500B8A110 /* Beerking.swift */,
+				A43E0E641B1B93860020713F /* BarmanViewController.swift */,
+				A48BC23C1B20833D00B8A110 /* BarmanView.swift */,
+				A48BC2461B20AB9500B8A110 /* Barman.swift */,
 			);
-			name = Beerking;
+			name = Barman;
 			sourceTree = "<group>";
 		};
-		A48BC2321B20754B00B8A110 /* Grouphugger */ = {
+		A48BC2321B20754B00B8A110 /* Organisator */ = {
 			isa = PBXGroup;
 			children = (
-				A43E0E601B1B50C40020713F /* GrouphuggerViewController.swift */,
-				A48BC2401B208E8300B8A110 /* GrouphuggerView.swift */,
-				A48BC2421B20A8DA00B8A110 /* Grouphugger.swift */,
+				A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */,
+				A48BC2401B208E8300B8A110 /* OrganisatorView.swift */,
+				A48BC2421B20A8DA00B8A110 /* Organisator.swift */,
 			);
-			name = Grouphugger;
+			name = Organisator;
 			sourceTree = "<group>";
 		};
-		A48BC2331B20755400B8A110 /* Masterscout */ = {
+		A48BC2331B20755400B8A110 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				A43E0E661B1B939A0020713F /* MasterscoutViewController.swift */,
-				A48BC23A1B20831F00B8A110 /* MasterscoutView.swift */,
-				A48BC2441B20AB8A00B8A110 /* Masterscout.swift */,
+				A43E0E661B1B939A0020713F /* CoordinatorViewController.swift */,
+				A48BC23A1B20831F00B8A110 /* CoordinatorView.swift */,
+				A48BC2441B20AB8A00B8A110 /* Coordinator.swift */,
 			);
-			name = Masterscout;
+			name = Coordinator;
 			sourceTree = "<group>";
 		};
 		A4AD989B1B179EF7009ED7AE /* Start */ = {
@@ -251,9 +251,9 @@
 				A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */,
 				A4B619F01B28618C00748A1D /* ChallengeView.swift */,
 				A4B619FF1B290AEF00748A1D /* Challenge.swift */,
-				A48BC2321B20754B00B8A110 /* Grouphugger */,
-				A48BC2331B20755400B8A110 /* Masterscout */,
-				A48BC2311B20754300B8A110 /* Beerking */,
+				A48BC2321B20754B00B8A110 /* Organisator */,
+				A48BC2331B20755400B8A110 /* Coordinator */,
+				A48BC2311B20754300B8A110 /* Barman */,
 			);
 			name = Challenges;
 			sourceTree = "<group>";
@@ -469,32 +469,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A48BC23D1B20833D00B8A110 /* BeerkingView.swift in Sources */,
-				A48BC2471B20AB9500B8A110 /* Beerking.swift in Sources */,
+				A48BC23D1B20833D00B8A110 /* BarmanView.swift in Sources */,
+				A48BC2471B20AB9500B8A110 /* Barman.swift in Sources */,
 				A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */,
 				A4B619F61B28F1AF00748A1D /* ScoreView.swift in Sources */,
 				A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */,
 				A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */,
-				A48BC2451B20AB8A00B8A110 /* Masterscout.swift in Sources */,
+				A48BC2451B20AB8A00B8A110 /* Coordinator.swift in Sources */,
 				A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */,
 				A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
-				A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */,
+				A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */,
 				A4892FE41B21BA48008C731B /* CountdownViewController.swift in Sources */,
 				A4B619F11B28618C00748A1D /* ChallengeView.swift in Sources */,
 				A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */,
 				A4B619FB1B28FBF000748A1D /* ScoreViewController.swift in Sources */,
 				A4C03DC21B1F604B00C30B62 /* FileUploader.swift in Sources */,
-				A48BC23B1B20831F00B8A110 /* MasterscoutView.swift in Sources */,
+				A48BC23B1B20831F00B8A110 /* CoordinatorView.swift in Sources */,
 				A418E9381B1F513A000BFC6D /* Settings.swift in Sources */,
-				A48BC2411B208E8300B8A110 /* GrouphuggerView.swift in Sources */,
-				A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */,
+				A48BC2411B208E8300B8A110 /* OrganisatorView.swift in Sources */,
+				A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
 				A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */,
 				A4B61A001B290AEF00748A1D /* Challenge.swift in Sources */,
 				A4B619F81B28F30200748A1D /* Badge.swift in Sources */,
-				A48BC2431B20A8DA00B8A110 /* Grouphugger.swift in Sources */,
-				A43E0E671B1B939A0020713F /* MasterscoutViewController.swift in Sources */,
+				A48BC2431B20A8DA00B8A110 /* Organisator.swift in Sources */,
+				A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */,
 				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
 				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
 				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,

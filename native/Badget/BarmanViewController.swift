@@ -1,5 +1,5 @@
 //
-//  BeerkingViewController.swift
+//  BarmanViewController.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 31/05/15.
@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 import Alamofire
 
-class BeerkingViewController: UIViewController, ChallengeProtocol {
+class BarmanViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
     var instructionView:InstructionView!
     let device = UIDevice.currentDevice()
@@ -19,15 +19,15 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
     var started:Bool = false
     var descriptionText:String!
     
-    var beerkingView:BeerkingView! {
+    var barmanView:BarmanView! {
         get {
-            return self.view as! BeerkingView
+            return self.view as! BarmanView
         }
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = BeerkingView(frame: bounds)
+        self.view = BarmanView(frame: bounds)
         self.instructionView = InstructionView(frame: bounds)
     }
 
@@ -36,7 +36,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         
         self.view.addSubview(self.instructionView)
         
-        self.title = "Beerking"
+        self.title = "Barman"
         
         self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
@@ -79,7 +79,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
                     angle -= 180
                 }
                 
-                self.beerkingView.angleText.text = String(format: "%.f", round(angle)) + "°"
+                self.barmanView.angleText.text = String(format: "%.f", round(angle)) + "°"
                 self.anglesArray.append(angle)
             })
         }
@@ -95,17 +95,17 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         if(self.anglesArray.count > 1) {
             self.anglesArray.removeLast() // last angle is when turning the device around
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
-            var beerking = Beerking(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)))
+            var barman = Barman(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)))
             
-            NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "beerkingDate")
-            NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(beerking), forKey: "beerkingLastScore")
+            NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "barmanDate")
+            NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(barman), forKey: "barmanLastScore")
             let parameters = [
                 "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
                 "day": Settings.currentDate,
-                "angle": beerking.angle,
-                "seconds": beerking.seconds
+                "angle": barman.angle,
+                "seconds": barman.seconds
             ]
-            Alamofire.request(.POST, Settings.apiUrl + "/beerking", parameters: parameters)
+            Alamofire.request(.POST, Settings.apiUrl + "/barman", parameters: parameters)
             
             var badge = Badge()
             if(avg < 10 && seconds <= 60) { // if average angle was less than 10° and took less than 60 seconds
@@ -115,7 +115,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
             } else if(avg > 10 && seconds < 60) { // if angle was bigger than 10° and took less than 60 seconds
                 badge = Badge(title: "Creatief", goal: "Je toont ambitie en bent snel, maar maakt af en toe fouten", image: UIImage(named: "av")!)
             }
-            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(beerking.seconds) seconden over en had een hellings gemiddelde van \(beerking.angle)!", badge: badge)
+            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(barman.seconds) seconden over en had een hellings gemiddelde van \(barman.angle)!", badge: badge)
             self.navigationController?.pushViewController(scoreVC, animated: true)
         }
         if(self.motionManager.deviceMotionActive) {

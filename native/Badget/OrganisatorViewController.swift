@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     var instructionView:InstructionView!
     var started:Bool = false
     var facesArray:Array<UIView> = []
@@ -17,15 +17,15 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
     let imagePicker = UIImagePickerController()
     var image:UIImage!
     
-    var grouphuggerView:GrouphuggerView! {
+    var organisatorView:OrganisatorView! {
         get {
-            return self.view as! GrouphuggerView
+            return self.view as! OrganisatorView
         }
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = GrouphuggerView(frame: bounds)
+        self.view = OrganisatorView(frame: bounds)
         self.instructionView = InstructionView(frame: bounds)
     }
 
@@ -34,18 +34,18 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         
         self.view.addSubview(self.instructionView)
         
-        self.title = "Grouphugger"
+        self.title = "Organisator"
         
         self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
-        self.grouphuggerView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
-        self.grouphuggerView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.organisatorView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        self.organisatorView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func didStartChallenge() {
         self.instructionView.removeFromSuperview()
         self.started = true
         
-        self.grouphuggerView.scrollView.delegate = self
+        self.organisatorView.scrollView.delegate = self
         
         var mediatypes = ["public.image"] as Array
         if(UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -64,8 +64,8 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         for fView in self.facesArray {
             fView.removeFromSuperview()
         }
-        self.grouphuggerView.imageView.transform = CGAffineTransformMakeScale(1, 1)
-        self.grouphuggerView.scrollView.setContentOffset(CGPointMake(0, 0), animated: false)
+        self.organisatorView.imageView.transform = CGAffineTransformMakeScale(1, 1)
+        self.organisatorView.scrollView.setContentOffset(CGPointMake(0, 0), animated: false)
         self.smiles = 0
         self.facesArray = []
         self.presentViewController(self.imagePicker, animated: true, completion: nil)
@@ -87,7 +87,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
             fView.backgroundColor = UIColor(red: 73/255, green: 99/255, blue: 204/255, alpha: 0.6)
             
             self.facesArray.append(fView)
-            self.grouphuggerView.imageView.addSubview(fView)
+            self.organisatorView.imageView.addSubview(fView)
             if let smile = feature.hasSmile {
                 if(smile) {
                     self.smiles++
@@ -96,49 +96,49 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         }
         
         let imageRect = CGRectMake(0, 0, self.image.size.width, self.image.size.height)
-        self.grouphuggerView.imageView.frame = imageRect
-        self.grouphuggerView.imageView.image = self.image
-        self.grouphuggerView.scrollView.frame = self.view.frame
-        self.grouphuggerView.scrollView.contentSize = self.image.size
+        self.organisatorView.imageView.frame = imageRect
+        self.organisatorView.imageView.image = self.image
+        self.organisatorView.scrollView.frame = self.view.frame
+        self.organisatorView.scrollView.contentSize = self.image.size
         
-        let scaleX = self.grouphuggerView.bounds.size.width / self.grouphuggerView.scrollView.contentSize.width
-        let scaleY = self.grouphuggerView.bounds.size.height / self.grouphuggerView.scrollView.contentSize.height
+        let scaleX = self.organisatorView.bounds.size.width / self.organisatorView.scrollView.contentSize.width
+        let scaleY = self.organisatorView.bounds.size.height / self.organisatorView.scrollView.contentSize.height
         let minZoomScale = max(scaleX, scaleY)
-        self.grouphuggerView.scrollView.minimumZoomScale = minZoomScale
-        self.grouphuggerView.scrollView.zoomScale = minZoomScale
-        self.grouphuggerView.scrollView.maximumZoomScale = 4
-        self.grouphuggerView.scrollView.setContentOffset(CGPointMake(self.image.size.width / 2 * minZoomScale, 0), animated: false)
+        self.organisatorView.scrollView.minimumZoomScale = minZoomScale
+        self.organisatorView.scrollView.zoomScale = minZoomScale
+        self.organisatorView.scrollView.maximumZoomScale = 4
+        self.organisatorView.scrollView.setContentOffset(CGPointMake(self.image.size.width / 2 * minZoomScale, 0), animated: false)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return self.grouphuggerView.imageView
+        return self.organisatorView.imageView
     }
     
     func didFinishChallenge() {
         self.started = false
-        var grouphugger = Grouphugger(date: Settings.currentDate, friends: self.facesArray.count)
-        NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "grouphuggerDate")
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(grouphugger), forKey: "grouphuggerLastScore")
+        var organisator = Organisator(date: Settings.currentDate, friends: self.facesArray.count)
+        NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "organisatorDate")
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(organisator), forKey: "organisatorLastScore")
         let parameters = [
             "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
             "day": Settings.currentDate,
-            "friends": grouphugger.friends
+            "friends": organisator.friends
         ]
-        Alamofire.request(.POST, Settings.apiUrl + "/grouphugger", parameters: parameters)
+        Alamofire.request(.POST, Settings.apiUrl + "/organisator", parameters: parameters)
         
         var badge = Badge()
-        if(grouphugger.friends == 1) {
+        if(organisator.friends == 1) {
             badge = Badge(title: "Onafhankelijk", goal: "Trek een selfie!", image: UIImage(named: "av")!)
-        } else if(grouphugger.friends <= 5) {
+        } else if(organisator.friends <= 5) {
             badge = Badge(title: "Moedig", goal: "Trek een foto met meer dan 1 persoon", image: UIImage(named: "av")!)
-        } else if(grouphugger.friends <= 10) {
+        } else if(organisator.friends <= 10) {
             badge = Badge(title: "Sociaal", goal: "Trek een foto met meer dan 5 mensen", image: UIImage(named: "av")!)
-        } else if(grouphugger.friends <= 15) {
+        } else if(organisator.friends <= 15) {
             badge = Badge(title: "Mensenkennis", goal: "Trek een foto met meer dan 10 mensen", image: UIImage(named: "av")!)
-        } else if(grouphugger.friends > 15) {
+        } else if(organisator.friends > 15) {
             badge = Badge(title: "Organisatietalent", goal: "Trek een foto met meer dan 15 mensen", image: UIImage(named: "av")!)
         }
-        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(grouphugger.friends) vrienden bij je!", badge: badge)
+        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(organisator.friends) vrienden bij je!", badge: badge)
         self.navigationController?.pushViewController(scoreVC, animated: true)
     }
 

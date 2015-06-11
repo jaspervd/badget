@@ -1,5 +1,5 @@
 //
-//  Beerking.swift
+//  Barman.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 04/06/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Beerking: NSObject, NSCoding {
+class Barman: NSObject, NSCoding {
     var date:NSDate
     var angle:Int
     var seconds:Int

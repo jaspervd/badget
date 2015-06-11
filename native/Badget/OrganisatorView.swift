@@ -1,5 +1,5 @@
 //
-//  GrouphuggerVisualView.swift
+//  OrganisatorView.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 04/06/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GrouphuggerView: UIView {
+class OrganisatorView: UIView {
     
     let scrollView:UIScrollView!
     let imageView:UIImageView!

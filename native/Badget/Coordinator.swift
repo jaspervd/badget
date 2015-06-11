@@ -1,5 +1,5 @@
 //
-//  Masterscout.swift
+//  Coordinator.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 04/06/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Masterscout: NSObject, NSCoding {
+class Coordinator: NSObject, NSCoding {
     var date:NSDate
     var time:String
     var distance:Double
