@@ -16,6 +16,12 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
     var smiles:Int = 0
     let imagePicker = UIImagePickerController()
     var image:UIImage!
+    var fileName:String {
+        get {
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+            return documentsPath.stringByAppendingPathComponent("organisator.challenge")
+        }
+    }
     
     var organisatorView:OrganisatorView! {
         get {
@@ -116,30 +122,33 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
     
     func didFinishChallenge() {
         self.started = false
-        var organisator = Organisator(date: Settings.currentDate, friends: self.facesArray.count)
-        NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "organisatorDate")
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(organisator), forKey: "organisatorLastScore")
-        let parameters = [
-            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
-            "day": Settings.currentDate,
-            "friends": organisator.friends
-        ]
-        Alamofire.request(.POST, Settings.apiUrl + "/organisator", parameters: parameters)
         
+        var friendsCount = self.facesArray.count
         var badge = Badge()
-        if(organisator.friends == 1) {
+        if(friendsCount == 1) {
             badge = Badge(title: "Onafhankelijk", goal: "Trek een selfie!", image: UIImage(named: "av")!)
-        } else if(organisator.friends <= 5) {
+        } else if(friendsCount <= 5) {
             badge = Badge(title: "Moedig", goal: "Trek een foto met meer dan 1 persoon", image: UIImage(named: "av")!)
-        } else if(organisator.friends <= 10) {
+        } else if(friendsCount <= 10) {
             badge = Badge(title: "Sociaal", goal: "Trek een foto met meer dan 5 mensen", image: UIImage(named: "av")!)
-        } else if(organisator.friends <= 15) {
+        } else if(friendsCount <= 15) {
             badge = Badge(title: "Mensenkennis", goal: "Trek een foto met meer dan 10 mensen", image: UIImage(named: "av")!)
-        } else if(organisator.friends > 15) {
+        } else if(friendsCount > 15) {
             badge = Badge(title: "Organisatietalent", goal: "Trek een foto met meer dan 15 mensen", image: UIImage(named: "av")!)
         }
-        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(organisator.friends) vrienden bij je!", badge: badge)
-        self.navigationController?.pushViewController(scoreVC, animated: true)
+        
+        var organisator = Organisator(date: Settings.currentDate, friends: self.facesArray.count, badge: badge)
+        if(NSKeyedArchiver.archiveRootObject(organisator, toFile: self.fileName)) {
+            let parameters = [
+                "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+                "day": Settings.currentDate,
+                "friends": organisator.friends
+            ]
+            Alamofire.request(.POST, Settings.apiUrl + "/organisator", parameters: parameters)
+            
+            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(organisator.friends) vrienden bij je!", badge: badge)
+            self.navigationController?.pushViewController(scoreVC, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

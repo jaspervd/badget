@@ -181,18 +181,26 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
             println("'t Is gedaan!")
         }
         
-        let organisatorDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("organisatorDate")
-        let coordinatorDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("coordinatorDate")
-        let barmanDate:AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("barmanDate")
-        /*if(organisatorDate != nil && calendar.isDate(organisatorDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
-            UIView.transitionFromView(self.organisatorVC.detailView, toView: self.organisatorVC.scoreView, duration: 0, options: nil, completion: nil)
+        if let organisator = NSKeyedUnarchiver.unarchiveObjectWithFile(organisatorVC.fileName) as? Organisator {
+            if(calendar.isDate(organisator.date, inSameDayAsDate: Settings.currentDate)) {
+                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Organisator score", badge: organisator.badge)
+                self.navigationController?.presentViewController(scoreVC, animated: false, completion: nil)
+            }
         }
-        if(coordinatorDate != nil && calendar.isDate(coordinatorDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
-            UIView.transitionFromView(self.organisatorVC.detailView, toView: self.organisatorVC.scoreView, duration: 0, options: nil, completion: nil)
+        
+        if let coordinator = NSKeyedUnarchiver.unarchiveObjectWithFile(coordinatorVC.fileName) as? Coordinator {
+            if(calendar.isDate(coordinator.date, inSameDayAsDate: Settings.currentDate)) {
+                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Coordinator score", badge: coordinator.badge)
+                self.navigationController?.presentViewController(scoreVC, animated: false, completion: nil)
+            }
         }
-        if(barmanDate != nil && calendar.isDate(barmanDate as! NSDate, inSameDayAsDate: Settings.currentDate)) {
-            UIView.transitionFromView(self.barmanVC.detailView, toView: self.barmanVC.scoreView, duration: 0, options: nil, completion: nil)
-        }*/
+        
+        if let barman = NSKeyedUnarchiver.unarchiveObjectWithFile(barmanVC.fileName) as? Barman {
+            if(calendar.isDate(barman.date, inSameDayAsDate: Settings.currentDate)) {
+                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Barman score", badge: barman.badge)
+                self.navigationController?.presentViewController(scoreVC, animated: false, completion: nil)
+            }
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {

@@ -20,6 +20,12 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
     let locationManager = CLLocationManager()
     var distance:Double = 0
     var locationsVisited:Int = 0
+    var fileName:String {
+        get {
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+            return documentsPath.stringByAppendingPathComponent("coordinator.challenge")
+        }
+    }
     
     var coordinatorView:CoordinatorView! {
         get {
@@ -115,17 +121,6 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
     
     func didFinishChallenge() {
         self.started = false
-        var coordinator = Coordinator(date: Settings.currentDate, time: self.coordinatorView.timerText.text!, distance: self.distance)
-        NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "coordinatorDate")
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(coordinator), forKey: "coordinatorLastScore")
-        let parameters = [
-            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
-            "day": Settings.currentDate,
-            "time": coordinator.time,
-            "distance": coordinator.distance
-        ]
-        Alamofire.request(.POST, Settings.apiUrl + "/coordinator", parameters: parameters)
-        timer.invalidate()
         
         var badge = Badge()
         if(self.milliseconds < 120000 && self.distance < 3000) { // if faster than 20 min + distance was less than 3km
@@ -138,9 +133,23 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
             badge = Badge(title: "Oriëntatievermogen", goal: "Je geraakt er mits een langere tijd en grotere afstand af te leggen", image: UIImage(named: "av")!)
         }*/
         
-        let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: badge)
-        self.navigationController?.pushViewController(scoreVC, animated: true)
+        
+        var coordinator = Coordinator(date: Settings.currentDate, time: self.coordinatorView.timerText.text!, distance: self.distance, badge: badge)
+        if(NSKeyedArchiver.archiveRootObject(coordinator, toFile: self.fileName)) {
+            let parameters = [
+                "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+                "day": Settings.currentDate,
+                "time": coordinator.time,
+                "distance": coordinator.distance
+            ]
+            Alamofire.request(.POST, Settings.apiUrl + "/coordinator", parameters: parameters)
+        
+            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: badge)
+            self.navigationController?.pushViewController(scoreVC, animated: true)
+        }
+        
         self.milliseconds = 0
+        timer.invalidate()
     }
 
     override func didReceiveMemoryWarning() {

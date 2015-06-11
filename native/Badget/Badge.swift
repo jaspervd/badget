@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Badge: NSObject {
+class Badge: NSObject, NSCoding {
     let title:String
     let goal:String
     let image:UIImage
@@ -24,5 +24,17 @@ class Badge: NSObject {
         self.title = ""
         self.goal = ""
         self.image = UIImage()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.title = aDecoder.decodeObjectForKey("title") as! String
+        self.goal = aDecoder.decodeObjectForKey("goal") as! String
+        self.image = aDecoder.decodeObjectForKey("image") as! UIImage
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.title, forKey: "title")
+        aCoder.encodeObject(self.goal, forKey: "goal")
+        aCoder.encodeObject(self.image, forKey: "image")
     }
 }

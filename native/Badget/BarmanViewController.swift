@@ -25,6 +25,13 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
         }
     }
     
+    var fileName:String {
+        get {
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+            return documentsPath.stringByAppendingPathComponent("barman.challenge")
+        }
+    }
+    
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = BarmanView(frame: bounds)
@@ -95,17 +102,6 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
         if(self.anglesArray.count > 1) {
             self.anglesArray.removeLast() // last angle is when turning the device around
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
-            var barman = Barman(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)))
-            
-            NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "barmanDate")
-            NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(barman), forKey: "barmanLastScore")
-            let parameters = [
-                "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
-                "day": Settings.currentDate,
-                "angle": barman.angle,
-                "seconds": barman.seconds
-            ]
-            Alamofire.request(.POST, Settings.apiUrl + "/barman", parameters: parameters)
             
             var badge = Badge()
             if(avg < 10 && seconds <= 60) { // if average angle was less than 10° and took less than 60 seconds
@@ -115,8 +111,20 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
             } else if(avg > 10 && seconds < 60) { // if angle was bigger than 10° and took less than 60 seconds
                 badge = Badge(title: "Creatief", goal: "Je toont ambitie en bent snel, maar maakt af en toe fouten", image: UIImage(named: "av")!)
             }
-            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(barman.seconds) seconden over en had een hellings gemiddelde van \(barman.angle)!", badge: badge)
-            self.navigationController?.pushViewController(scoreVC, animated: true)
+            
+            var barman = Barman(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)), badge: badge)
+            if(NSKeyedArchiver.archiveRootObject(barman, toFile: self.fileName)) {
+                let parameters = [
+                    "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+                    "day": Settings.currentDate,
+                    "angle": barman.angle,
+                    "seconds": barman.seconds
+                ]
+                Alamofire.request(.POST, Settings.apiUrl + "/barman", parameters: parameters)
+                
+                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(barman.seconds) seconden over en had een hellings gemiddelde van \(barman.angle)!", badge: badge)
+                self.navigationController?.pushViewController(scoreVC, animated: true)
+            }
         }
         if(self.motionManager.deviceMotionActive) {
             self.motionManager.stopDeviceMotionUpdates()
