@@ -25,7 +25,6 @@
 		A48BC2451B20AB8A00B8A110 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2441B20AB8A00B8A110 /* Coordinator.swift */; };
 		A48BC2471B20AB9500B8A110 /* Barman.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48BC2461B20AB9500B8A110 /* Barman.swift */; };
 		A48CCE5E1B26405400B41774 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48CCE5D1B26405400B41774 /* CoreLocation.framework */; };
-		A48CCE601B26405900B41774 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48CCE5F1B26405900B41774 /* CoreBluetooth.framework */; };
 		A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */; };
 		A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */; };
 		A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499A2511B29B88100D903F3 /* BadgeView.swift */; };
@@ -105,7 +104,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A48CCE601B26405900B41774 /* CoreBluetooth.framework in Frameworks */,
 				A48CCE5E1B26405400B41774 /* CoreLocation.framework in Frameworks */,
 				A4DFB0C31B1914D6005FCF13 /* MapKit.framework in Frameworks */,
 				E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */,

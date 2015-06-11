@@ -1,6 +1,6 @@
 //
-//  TableViewController.swift
-//  BluetoothTest
+//  OrganisatorViewController.swift
+//  Badget
 //
 //  Created by Jasper Van Damme on 31/05/15.
 //  Copyright (c) 2015 Jasper Van Damme. All rights reserved.
