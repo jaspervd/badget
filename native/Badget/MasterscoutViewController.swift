@@ -74,7 +74,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         var loc = self.getRandomLocation()
         self.locationManager.startUpdatingLocation()
         self.locationManager.startMonitoringForRegion(loc)
-        self.instructionView.instructionTextView.text = "Ga naar de \(loc.identifier)"
+        self.masterscoutView.instructionText.text = "Ga naar de \(loc.identifier)"
     }
     
     func getRandomLocation() -> CLRegion {
@@ -95,7 +95,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         if(self.locationsVisited < 5) { // if user hasn't visited 5 locations yet
             var loc = getRandomLocation()
             self.locationManager.startMonitoringForRegion(loc)
-            self.instructionView.instructionTextView.text = "Ga naar de \(loc.identifier)"
+            self.masterscoutView.instructionText.text = "Ga naar de \(loc.identifier)"
         } else {
             didFinishChallenge()
         }

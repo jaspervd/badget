@@ -28,6 +28,8 @@
 		A48CCE601B26405900B41774 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48CCE5F1B26405900B41774 /* CoreBluetooth.framework */; };
 		A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */; };
 		A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */; };
+		A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499A2511B29B88100D903F3 /* BadgeView.swift */; };
+		A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499A2531B29C24E00D903F3 /* BadgeViewController.swift */; };
 		A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* StartViewController.swift */; };
 		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
 		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
@@ -81,6 +83,8 @@
 		A48CCE5F1B26405900B41774 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
 		A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
+		A499A2511B29B88100D903F3 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		A499A2531B29C24E00D903F3 /* BadgeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				A429304F1B1F6A40009762F9 /* Classes */,
-				A418E9371B1F513A000BFC6D /* Settings.swift */,
 				A4B619F21B28C49C00748A1D /* Info */,
 				A4AD989D1B179F14009ED7AE /* Badges */,
 				A4B619F91B28FBD800748A1D /* Score */,
@@ -159,6 +162,7 @@
 				A4AD989C1B179F0D009ED7AE /* Challenges */,
 				A4892FE51B21BA59008C731B /* Countdown */,
 				A4AD989B1B179EF7009ED7AE /* Start */,
+				A418E9371B1F513A000BFC6D /* Settings.swift */,
 				A43E13DC1B1667A9008B3823 /* AppDelegate.swift */,
 				A43E13E31B1667A9008B3823 /* Images.xcassets */,
 				A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */,
@@ -258,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */,
+				A499A2531B29C24E00D903F3 /* BadgeViewController.swift */,
+				A499A2511B29B88100D903F3 /* BadgeView.swift */,
 				A4B619F71B28F30200748A1D /* Badge.swift */,
 			);
 			name = Badges;
@@ -471,6 +477,7 @@
 				A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */,
 				A48BC2451B20AB8A00B8A110 /* Masterscout.swift in Sources */,
 				A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */,
+				A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
 				A43E0E611B1B50C40020713F /* GrouphuggerViewController.swift in Sources */,
 				A4892FE41B21BA48008C731B /* CountdownViewController.swift in Sources */,
@@ -483,6 +490,7 @@
 				A48BC2411B208E8300B8A110 /* GrouphuggerView.swift in Sources */,
 				A43E0E651B1B93860020713F /* BeerkingViewController.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
+				A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */,
 				A4B61A001B290AEF00748A1D /* Challenge.swift in Sources */,
 				A4B619F81B28F30200748A1D /* Badge.swift in Sources */,
 				A48BC2431B20A8DA00B8A110 /* Grouphugger.swift in Sources */,
