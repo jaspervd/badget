@@ -114,6 +114,8 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
         self.organisatorView.scrollView.minimumZoomScale = minZoomScale
         self.organisatorView.scrollView.zoomScale = minZoomScale
         self.organisatorView.scrollView.maximumZoomScale = 4
+        println(self.image.size.width / 2 * minZoomScale)
+        println(self.image.size.width)
         self.organisatorView.scrollView.setContentOffset(CGPointMake(self.image.size.width / 2 * minZoomScale, 0), animated: false)
     }
     

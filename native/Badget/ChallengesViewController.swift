@@ -178,7 +178,7 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func barmanHandler() {
-        if(self.organisatorVC.scoreVC == nil) {
+        if(self.barmanVC.scoreVC == nil) {
             self.navigationController?.pushViewController(self.barmanVC, animated: true)
         } else {
             self.navigationController?.pushViewController(self.barmanVC.scoreVC, animated: true)

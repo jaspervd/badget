@@ -29,7 +29,7 @@ class InstructionView: UIView {
         self.btnContinue.frame = CGRectMake(20, self.instructionTextView.frame.origin.x + self.instructionTextView.frame.size.height, frame.size.width - 40, 44)
         self.btnContinue.setTitle("Oké, ik ben er!", forState: UIControlState.Normal)
         self.btnContinue.setTitleColor(UIColor(white: 1, alpha: 0.5), forState: UIControlState.Disabled)
-        self.btnContinue.enabled = false
+        self.btnContinue.enabled = true
         
         self.addSubview(self.instructionTextView)
         self.addSubview(self.btnContinue)
