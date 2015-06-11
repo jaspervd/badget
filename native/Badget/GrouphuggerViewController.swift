@@ -116,7 +116,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
     
     func didFinishChallenge() {
         self.started = false
-        var grouphugger = Grouphugger(friends: self.facesArray.count)
+        var grouphugger = Grouphugger(date: Settings.currentDate, friends: self.facesArray.count)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "grouphuggerDate")
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(grouphugger), forKey: "grouphuggerLastScore")
         let parameters = [

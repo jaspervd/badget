@@ -47,7 +47,7 @@ class InfoViewController: UIViewController, UIScrollViewDelegate {
         var xPos:CGFloat = 0
         for index in 1...3 {
             let view = UIView(frame: CGRectMake(xPos, 0, self.view.frame.width, self.view.frame.height))
-            self.view.backgroundColor = UIColor.redColor()
+            self.view.backgroundColor = UIColor.whiteColor()
             self.view.addSubview(view)
             xPos += self.view.frame.width
         }

@@ -115,7 +115,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
     
     func didFinishChallenge() {
         self.started = false
-        var masterscout = Masterscout(time: self.masterscoutView.timerText.text!, distance: self.distance)
+        var masterscout = Masterscout(date: Settings.currentDate, time: self.masterscoutView.timerText.text!, distance: self.distance)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "masterscoutDate")
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(masterscout), forKey: "masterscoutLastScore")
         let parameters = [

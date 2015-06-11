@@ -95,7 +95,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
         if(self.anglesArray.count > 1) {
             self.anglesArray.removeLast() // last angle is when turning the device around
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
-            var beerking = Beerking(angle: Int(avg), seconds: Int(round(seconds)))
+            var beerking = Beerking(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)))
             
             NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "beerkingDate")
             NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(beerking), forKey: "beerkingLastScore")
