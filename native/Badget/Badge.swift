@@ -13,7 +13,7 @@ class Badge: NSObject {
     let goal:String
     let image:UIImage
     
-    init(title: String, goal: String, intro: String, image: UIImage) {
+    init(title: String, goal: String, image: UIImage) {
         self.title = title
         self.goal = goal
         self.image = image

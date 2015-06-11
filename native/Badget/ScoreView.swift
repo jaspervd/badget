@@ -13,7 +13,6 @@ class ScoreView: UIView {
     let btnClose:UIButton!
     let blurEffectView:UIVisualEffectView
     let badgesView:UIView
-    var rows:CGFloat = 0
     let badgeSize = CGSizeMake(50, 50)
     
     init(frame: CGRect, header: String, feedback: String, badges: Array<Badge>) {
@@ -42,14 +41,14 @@ class ScoreView: UIView {
         feedbackText.backgroundColor = nil
         feedbackText.editable = false
         
-        self.rows = round(CGFloat(badges.count) / 5)
+        let rows = round(CGFloat(badges.count) / 4)
         self.badgesView.frame = CGRectMake(10, feedbackText.frame.origin.y + feedbackText.frame.size.height + 20, scoreHolder.frame.width - 20, self.badgeSize.height * rows)
         createBadges(badges)
         
         self.btnClose.frame = CGRectMake(10, badgesView.frame.origin.y + badgesView.frame.height + 10, scoreHolder.frame.width - 20, 44)
         self.btnClose.setTitle("Done!", forState: UIControlState.Normal)
         
-        scoreHolder.frame.size.height = 40 + headerText.frame.origin.y + headerText.frame.size.height + 20 + feedbackText.frame.origin.y + feedbackText.frame.size.height + 10 + self.btnClose.frame.size.height
+        scoreHolder.frame.size.height = 40 + headerText.frame.size.height + 20 + feedbackText.frame.size.height + 10 + self.badgesView.frame.size.height + self.btnClose.frame.size.height
         scoreHolder.center = CGPointMake(frame.width / 2, frame.height / 2)
         
         scoreHolder.addSubview(headerText)
@@ -62,11 +61,16 @@ class ScoreView: UIView {
     
     func createBadges(badges:Array<Badge>) {
         var xPos:CGFloat = 0
-        for badge in badges {
+        var yPos:CGFloat = 0
+        for (index, badge) in enumerate(badges) {
             let badgeVC = BadgeViewController(badge: badge)
             self.badgesView.addSubview(badgeVC.view)
-            badgeVC.view.frame = CGRectMake(10 + xPos, self.badgeSize.height * self.rows, self.badgeSize.width, self.badgeSize.height)
+            badgeVC.view.frame = CGRectMake(xPos, yPos, self.badgeSize.width, self.badgeSize.height)
             xPos += self.badgeSize.width + 7.5
+            if((index + 1) % 4 == 0) {
+                yPos += 7.5 + self.badgeSize.height
+                xPos = 0
+            }
         }
     }
     
