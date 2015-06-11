@@ -16,6 +16,7 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
     var smiles:Int = 0
     let imagePicker = UIImagePickerController()
     var image:UIImage!
+    var scoreVC:ScoreViewController!
     var fileName:String {
         get {
             let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
@@ -120,6 +121,10 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
         return self.organisatorView.imageView
     }
     
+    func setScore(organisator: Organisator) {
+        self.scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(organisator.friends) vrienden bij je!", badge: organisator.badge)
+    }
+    
     func didFinishChallenge() {
         self.started = false
         
@@ -146,8 +151,8 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
             ]
             Alamofire.request(.POST, Settings.apiUrl + "/organisator", parameters: parameters)
             
-            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(organisator.friends) vrienden bij je!", badge: badge)
-            self.navigationController?.pushViewController(scoreVC, animated: true)
+            setScore(organisator)
+            self.navigationController?.pushViewController(self.scoreVC, animated: true)
         }
     }
 

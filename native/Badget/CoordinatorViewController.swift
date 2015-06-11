@@ -20,6 +20,7 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
     let locationManager = CLLocationManager()
     var distance:Double = 0
     var locationsVisited:Int = 0
+    var scoreVC:ScoreViewController!
     var fileName:String {
         get {
             let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
@@ -119,6 +120,10 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
         self.coordinatorView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
     }
     
+    func setScore(coordinator: Coordinator) {
+        self.scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: coordinator.badge)
+    }
+    
     func didFinishChallenge() {
         self.started = false
         
@@ -144,7 +149,7 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
             ]
             Alamofire.request(.POST, Settings.apiUrl + "/coordinator", parameters: parameters)
         
-            let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: badge)
+            setScore(coordinator)
             self.navigationController?.pushViewController(scoreVC, animated: true)
         }
         

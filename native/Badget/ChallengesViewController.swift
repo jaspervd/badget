@@ -162,15 +162,27 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     }
     
     func organisatorHandler() {
-        self.navigationController?.pushViewController(self.organisatorVC, animated: true)
+        if(self.organisatorVC.scoreVC == nil) {
+            self.navigationController?.pushViewController(self.organisatorVC, animated: true)
+        } else {
+            self.navigationController?.pushViewController(self.organisatorVC.scoreVC, animated: true)
+        }
     }
     
     func coordinatorHandler() {
-        self.navigationController?.pushViewController(self.coordinatorVC, animated: true)
+        if(self.coordinatorVC.scoreVC == nil) {
+            self.navigationController?.pushViewController(self.coordinatorVC, animated: true)
+        } else {
+            self.navigationController?.pushViewController(self.coordinatorVC.scoreVC, animated: true)
+        }
     }
     
     func barmanHandler() {
-        self.navigationController?.pushViewController(self.barmanVC, animated: true)
+        if(self.organisatorVC.scoreVC == nil) {
+            self.navigationController?.pushViewController(self.barmanVC, animated: true)
+        } else {
+            self.navigationController?.pushViewController(self.barmanVC.scoreVC, animated: true)
+        }
     }
     
     func checkTime() {
@@ -182,19 +194,19 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
             println("'t Is gedaan!")
         }
         
-        if let organisator = NSKeyedUnarchiver.unarchiveObjectWithFile(organisatorVC.fileName) as? Organisator {
+        if let organisator = NSKeyedUnarchiver.unarchiveObjectWithFile(self.organisatorVC.fileName) as? Organisator {
             if(calendar.isDate(organisator.date, inSameDayAsDate: Settings.currentDate)) {
-                println(organisator)
+                self.organisatorVC.setScore(organisator)
             }
         }
         
-        if let coordinator = NSKeyedUnarchiver.unarchiveObjectWithFile(coordinatorVC.fileName) as? Coordinator {
+        if let coordinator = NSKeyedUnarchiver.unarchiveObjectWithFile(self.coordinatorVC.fileName) as? Coordinator {
             if(calendar.isDate(coordinator.date, inSameDayAsDate: Settings.currentDate)) {
                 println(coordinator)
             }
         }
         
-        if let barman = NSKeyedUnarchiver.unarchiveObjectWithFile(barmanVC.fileName) as? Barman {
+        if let barman = NSKeyedUnarchiver.unarchiveObjectWithFile(self.barmanVC.fileName) as? Barman {
             if(calendar.isDate(barman.date, inSameDayAsDate: Settings.currentDate)) {
                 println(barman)
             }

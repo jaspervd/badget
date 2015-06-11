@@ -18,6 +18,7 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
     var anglesArray:Array<Double> = []
     var started:Bool = false
     var descriptionText:String!
+    var scoreVC:ScoreViewController!
     
     var barmanView:BarmanView! {
         get {
@@ -92,6 +93,10 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
         }
     }
     
+    func setScore(barman: Barman) {
+        self.scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(barman.seconds) seconden over en had een hellings gemiddelde van \(barman.angle)!", badge: barman.badge)
+    }
+    
     func didFinishChallenge() {
         self.device.proximityMonitoringEnabled = false
         self.started = false
@@ -122,7 +127,7 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
                 ]
                 Alamofire.request(.POST, Settings.apiUrl + "/barman", parameters: parameters)
                 
-                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(barman.seconds) seconden over en had een hellings gemiddelde van \(barman.angle)!", badge: badge)
+                setScore(barman)
                 self.navigationController?.pushViewController(scoreVC, animated: true)
             }
         }
