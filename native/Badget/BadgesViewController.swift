@@ -14,6 +14,7 @@ class BadgesViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Badges"
+        self.view.backgroundColor = Settings.bgColor
     }
     
     override func loadView() {
