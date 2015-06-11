@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterscoutVisualView: UIView {
+class MasterscoutView: UIView {
     
     let timerText:UILabel
     let instructionText:UILabel

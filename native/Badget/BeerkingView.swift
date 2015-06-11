@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerkingVisualView: UIView {
+class BeerkingView: UIView {
 
     let angleText: UILabel
     

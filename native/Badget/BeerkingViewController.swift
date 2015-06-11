@@ -12,33 +12,37 @@ import Alamofire
 
 class BeerkingViewController: UIViewController, ChallengeProtocol {
     let motionManager = CMMotionManager()
-    var detailView:BeerkingDetailView!
-    var visualView:BeerkingVisualView!
+    var instructionView:InstructionView!
     let device = UIDevice.currentDevice()
     var startTime = NSDate()
     var anglesArray:Array<Double> = []
     var started:Bool = false
     var descriptionText:String!
     
+    var beerkingView:BeerkingView! {
+        get {
+            return self.view as! BeerkingView
+        }
+    }
+    
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = UIView(frame: bounds)
-        self.detailView = BeerkingDetailView(frame: bounds)
-        self.visualView = BeerkingVisualView(frame: bounds)
+        self.view = BeerkingView(frame: bounds)
+        self.instructionView = InstructionView(frame: bounds)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(self.detailView)
+        self.view.addSubview(self.instructionView)
         
         self.title = "Beerking"
         
-        self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func didStartChallenge() {
-        UIView.transitionFromView(self.detailView, toView: self.visualView, duration: 1, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
+        self.instructionView.removeFromSuperview()
         self.anglesArray = []
         self.startTime = NSDate()
         self.started = true
@@ -75,7 +79,7 @@ class BeerkingViewController: UIViewController, ChallengeProtocol {
                     angle -= 180
                 }
                 
-                self.visualView.angleText.text = String(format: "%.f", round(angle)) + "°"
+                self.beerkingView.angleText.text = String(format: "%.f", round(angle)) + "°"
                 self.anglesArray.append(angle)
             })
         }

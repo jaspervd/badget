@@ -12,8 +12,7 @@ import Alamofire
 import CoreLocation
 
 class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocationManagerDelegate {
-    var detailView:MasterscoutDetailView!
-    var visualView:MasterscoutVisualView!
+    var instructionView:InstructionView!
     var started:Bool = false
     var timer:NSTimer = NSTimer()
     var milliseconds:CGFloat = 0
@@ -22,11 +21,16 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
     var distance:Double = 0
     var locationsVisited:Int = 0
     
+    var masterscoutView:MasterscoutView! {
+        get {
+            return self.view as! MasterscoutView
+        }
+    }
+    
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = UIView(frame: bounds)
-        self.detailView = MasterscoutDetailView(frame: bounds)
-        self.visualView = MasterscoutVisualView(frame: bounds)
+        self.view = MasterscoutView(frame: bounds)
+        self.instructionView = InstructionView(frame: bounds)
         
         createLocations()
     }
@@ -34,11 +38,11 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(self.detailView)
+        self.view.addSubview(self.instructionView)
         
         self.title = "Masterscout"
         
-        self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func createLocations() {
@@ -63,14 +67,14 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
     }
     
     func didStartChallenge() {
-        UIView.transitionFromView(self.detailView, toView: self.visualView, duration: 1, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
+        self.instructionView.removeFromSuperview()
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
         self.started = true
             
         var loc = self.getRandomLocation()
         self.locationManager.startUpdatingLocation()
         self.locationManager.startMonitoringForRegion(loc)
-        self.visualView.instructionText.text = "Ga naar de \(loc.identifier)"
+        self.instructionView.instructionTextView.text = "Ga naar de \(loc.identifier)"
     }
     
     func getRandomLocation() -> CLRegion {
@@ -91,7 +95,7 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         if(self.locationsVisited < 5) { // if user hasn't visited 5 locations yet
             var loc = getRandomLocation()
             self.locationManager.startMonitoringForRegion(loc)
-            self.visualView.instructionText.text = "Ga naar de \(loc.identifier)"
+            self.instructionView.instructionTextView.text = "Ga naar de \(loc.identifier)"
         } else {
             didFinishChallenge()
         }
@@ -106,12 +110,12 @@ class MasterscoutViewController: UIViewController, ChallengeProtocol, CLLocation
         var minutes:Int = sec / 60 - hours * 60
         var seconds:Int = sec - (minutes * 60 + hours * 60)
         var ms = Int((self.milliseconds - CGFloat(sec)) * 100)
-        self.visualView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
+        self.masterscoutView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
     }
     
     func didFinishChallenge() {
         self.started = false
-        var masterscout = Masterscout(time: self.visualView.timerText.text!, distance: self.distance)
+        var masterscout = Masterscout(time: self.masterscoutView.timerText.text!, distance: self.distance)
         NSUserDefaults.standardUserDefaults().setObject(Settings.currentDate, forKey: "masterscoutDate")
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(masterscout), forKey: "masterscoutLastScore")
         let parameters = [

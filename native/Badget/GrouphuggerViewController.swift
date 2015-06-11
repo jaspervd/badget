@@ -10,38 +10,42 @@ import UIKit
 import Alamofire
 
 class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
-    var detailView:GrouphuggerDetailView!
-    var visualView:GrouphuggerVisualView!
+    var instructionView:InstructionView!
     var started:Bool = false
     var facesArray:Array<UIView> = []
     var smiles:Int = 0
     let imagePicker = UIImagePickerController()
     var image:UIImage!
     
+    var grouphuggerView:GrouphuggerView! {
+        get {
+            return self.view as! GrouphuggerView
+        }
+    }
+    
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = UIView(frame: bounds)
-        self.detailView = GrouphuggerDetailView(frame: bounds)
-        self.visualView = GrouphuggerVisualView(frame: bounds)
+        self.view = GrouphuggerView(frame: bounds)
+        self.instructionView = InstructionView(frame: bounds)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(self.detailView)
+        self.view.addSubview(self.instructionView)
         
         self.title = "Grouphugger"
         
-        self.detailView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
-        self.visualView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
-        self.visualView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.grouphuggerView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        self.grouphuggerView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func didStartChallenge() {
-        UIView.transitionFromView(self.detailView, toView: self.visualView, duration: 1, options: UIViewAnimationOptions.CurveEaseInOut, completion: nil)
+        self.instructionView.removeFromSuperview()
         self.started = true
         
-        self.visualView.scrollView.delegate = self
+        self.grouphuggerView.scrollView.delegate = self
         
         var mediatypes = ["public.image"] as Array
         if(UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -60,8 +64,8 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         for fView in self.facesArray {
             fView.removeFromSuperview()
         }
-        self.visualView.imageView.transform = CGAffineTransformMakeScale(1, 1)
-        self.visualView.scrollView.setContentOffset(CGPointMake(0, 0), animated: false)
+        self.grouphuggerView.imageView.transform = CGAffineTransformMakeScale(1, 1)
+        self.grouphuggerView.scrollView.setContentOffset(CGPointMake(0, 0), animated: false)
         self.smiles = 0
         self.facesArray = []
         self.presentViewController(self.imagePicker, animated: true, completion: nil)
@@ -83,7 +87,7 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
             fView.backgroundColor = UIColor(red: 73/255, green: 99/255, blue: 204/255, alpha: 0.6)
             
             self.facesArray.append(fView)
-            self.visualView.imageView.addSubview(fView)
+            self.grouphuggerView.imageView.addSubview(fView)
             if let smile = feature.hasSmile {
                 if(smile) {
                     self.smiles++
@@ -92,22 +96,22 @@ class GrouphuggerViewController: UIViewController, ChallengeProtocol, UIImagePic
         }
         
         let imageRect = CGRectMake(0, 0, self.image.size.width, self.image.size.height)
-        self.visualView.imageView.frame = imageRect
-        self.visualView.imageView.image = self.image
-        self.visualView.scrollView.frame = self.view.frame
-        self.visualView.scrollView.contentSize = self.image.size
+        self.grouphuggerView.imageView.frame = imageRect
+        self.grouphuggerView.imageView.image = self.image
+        self.grouphuggerView.scrollView.frame = self.view.frame
+        self.grouphuggerView.scrollView.contentSize = self.image.size
         
-        let scaleX = self.visualView.bounds.size.width / self.visualView.scrollView.contentSize.width
-        let scaleY = self.visualView.bounds.size.height / self.visualView.scrollView.contentSize.height
+        let scaleX = self.grouphuggerView.bounds.size.width / self.grouphuggerView.scrollView.contentSize.width
+        let scaleY = self.grouphuggerView.bounds.size.height / self.grouphuggerView.scrollView.contentSize.height
         let minZoomScale = max(scaleX, scaleY)
-        self.visualView.scrollView.minimumZoomScale = minZoomScale
-        self.visualView.scrollView.zoomScale = minZoomScale
-        self.visualView.scrollView.maximumZoomScale = 4
-        self.visualView.scrollView.setContentOffset(CGPointMake(self.image.size.width / 2 * minZoomScale, 0), animated: false)
+        self.grouphuggerView.scrollView.minimumZoomScale = minZoomScale
+        self.grouphuggerView.scrollView.zoomScale = minZoomScale
+        self.grouphuggerView.scrollView.maximumZoomScale = 4
+        self.grouphuggerView.scrollView.setContentOffset(CGPointMake(self.image.size.width / 2 * minZoomScale, 0), animated: false)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return self.visualView.imageView
+        return self.grouphuggerView.imageView
     }
     
     func didFinishChallenge() {

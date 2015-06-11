@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GrouphuggerVisualView: UIView {
+class GrouphuggerView: UIView {
     
     let scrollView:UIScrollView!
     let imageView:UIImageView!

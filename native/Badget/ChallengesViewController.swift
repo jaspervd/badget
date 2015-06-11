@@ -60,7 +60,6 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
             if(index != 1) {
                 challengeView.transform = CGAffineTransformMakeScale(0.7, 0.7)
             }
-            println(self.view.frame.width)
             challengeView.btnContinue.tag = index
             challengeView.btnContinue.addTarget(self, action: "continueHandler:", forControlEvents: UIControlEvents.TouchUpInside)
             self.challengeViews.append(challengeView)
@@ -114,45 +113,45 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         let inLocation = self.region.containsCoordinate(newLocation.coordinate)
         if(inLocation && self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.detailView.btnContinue.enabled = true
+            self.grouphuggerVC.instructionView.btnContinue.enabled = true
         } else if(!inLocation && self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.detailView.btnContinue.enabled = false
+            self.grouphuggerVC.instructionView.btnContinue.enabled = false
         }
         if(inLocation && self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.detailView.btnContinue.enabled = true
+            self.masterscoutVC.instructionView.btnContinue.enabled = true
         } else if(!inLocation && self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.detailView.btnContinue.enabled = false
+            self.masterscoutVC.instructionView.btnContinue.enabled = false
         }
         if(inLocation && self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.detailView.btnContinue.enabled = true
+            self.beerkingVC.instructionView.btnContinue.enabled = true
         } else if(!inLocation && self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.detailView.btnContinue.enabled = false
+            self.beerkingVC.instructionView.btnContinue.enabled = false
         }
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         println("entered region")
         if(self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.detailView.btnContinue.enabled = true
+            self.grouphuggerVC.instructionView.btnContinue.enabled = true
         }
         if(self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.detailView.btnContinue.enabled = true
+            self.masterscoutVC.instructionView.btnContinue.enabled = true
         }
         if(self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.detailView.btnContinue.enabled = true
+            self.beerkingVC.instructionView.btnContinue.enabled = true
         }
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         println("left region")
         if(self.grouphuggerVC.isViewLoaded()) {
-            self.grouphuggerVC.detailView.btnContinue.enabled = false
+            self.grouphuggerVC.instructionView.btnContinue.enabled = false
         }
         if(self.masterscoutVC.isViewLoaded()) {
-            self.masterscoutVC.detailView.btnContinue.enabled = false
+            self.masterscoutVC.instructionView.btnContinue.enabled = false
         }
         if(self.beerkingVC.isViewLoaded()) {
-            self.beerkingVC.detailView.btnContinue.enabled = false
+            self.beerkingVC.instructionView.btnContinue.enabled = false
         }
     }
     
