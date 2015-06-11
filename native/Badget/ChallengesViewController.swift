@@ -35,7 +35,6 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenInfo")
         }
         
-        //checkTime()
         createPasses()
         setupLocationManager()
         
@@ -46,6 +45,8 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
         
         let badgesBtn = UIBarButtonItem(title: "Badges", style: .Plain, target: self, action: "badgesHandler")
         self.navigationItem.rightBarButtonItem = badgesBtn
+        
+        checkTime()
     }
     
     override func loadView() {
@@ -183,22 +184,19 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
         
         if let organisator = NSKeyedUnarchiver.unarchiveObjectWithFile(organisatorVC.fileName) as? Organisator {
             if(calendar.isDate(organisator.date, inSameDayAsDate: Settings.currentDate)) {
-                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Organisator score", badge: organisator.badge)
-                self.navigationController?.presentViewController(scoreVC, animated: false, completion: nil)
+                println(organisator)
             }
         }
         
         if let coordinator = NSKeyedUnarchiver.unarchiveObjectWithFile(coordinatorVC.fileName) as? Coordinator {
             if(calendar.isDate(coordinator.date, inSameDayAsDate: Settings.currentDate)) {
-                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Coordinator score", badge: coordinator.badge)
-                self.navigationController?.presentViewController(scoreVC, animated: false, completion: nil)
+                println(coordinator)
             }
         }
         
         if let barman = NSKeyedUnarchiver.unarchiveObjectWithFile(barmanVC.fileName) as? Barman {
             if(calendar.isDate(barman.date, inSameDayAsDate: Settings.currentDate)) {
-                let scoreVC = ScoreViewController(header: "Resultaat", feedback: "Barman score", badge: barman.badge)
-                self.navigationController?.presentViewController(scoreVC, animated: false, completion: nil)
+                println(barman)
             }
         }
     }
