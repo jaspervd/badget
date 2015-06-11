@@ -24,7 +24,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         
         self.startView.btnContinue.addTarget(self, action: "continueClicked", forControlEvents: UIControlEvents.TouchUpInside)
-        self.startView.btnPhoto.addTarget(self, action: "photoClicked", forControlEvents: UIControlEvents.TouchUpInside)
         self.startView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
 
         // Do any additional setup after loading the view.
@@ -60,10 +59,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             alertController = UIAlertController(title: "Foutje", message:
                 "Gelieve je e-mailadres in te vullen.", preferredStyle: UIAlertControllerStyle.Alert)
             errors = true
-        } else if(self.image == nil) {
-            alertController = UIAlertController(title: "Foutje", message:
-                "Gelieve een foto up te loaden.", preferredStyle: UIAlertControllerStyle.Alert)
-            errors = true
         }
         
         if(errors) {
@@ -76,48 +71,16 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    func photoClicked() {
-        var mediatypes = ["public.image"] as Array
-        let imagePicker = UIImagePickerController()
-        if(UIImagePickerController.isSourceTypeAvailable(.Camera)) {
-            imagePicker.sourceType = .Camera
-        } else {
-            imagePicker.sourceType = .PhotoLibrary
-        }
-        imagePicker.mediaTypes = mediatypes
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
-        imagePicker.modalTransitionStyle = .CrossDissolve
-        imagePicker.modalPresentationStyle = .CurrentContext
-        self.presentViewController(imagePicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        self.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        self.startView.btnPhoto.setBackgroundImage(self.image, forState: UIControlState.Normal)
-        picker.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluateWithObject(email)
     }
     
-    func resizeImage(image: UIImage, scale: CGFloat) -> UIImage {
-        let rect = CGRectMake(0.0, 0.0, image.size.width * scale, image.size.height * scale);
-        UIGraphicsBeginImageContext(rect.size);
-        image.drawInRect(rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
     func saveUser() {
         let fileUploader = FileUploader()
-        let data = resizeImage(self.image!, scale: 0.5)
         
-        fileUploader.addFileData(UIImageJPEGRepresentation(data, 0.8), withName: "photo", withMimeType: "image/jpeg")
+        //fileUploader.addFileData(UIImageJPEGRepresentation(data, 0.8), withName: "photo", withMimeType: "image/jpeg")
         fileUploader.setValue(self.startView.inputName.text, forParameter: "name")
         fileUploader.setValue(self.startView.inputEmail.text, forParameter: "email")
         var request = NSMutableURLRequest(URL: NSURL(string: Settings.apiUrl + "/users")!)

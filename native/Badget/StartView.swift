@@ -14,33 +14,34 @@ class StartView: UIView {
     let btnContinue:UIButton!
     let inputName:UITextField!
     let inputEmail:UITextField!
-    let btnPhoto:UIButton!
     let btnSave:UIButton!
+    let genderSwitch:UISwitch!
     
     override init(frame: CGRect) {
-        self.campaignText = UITextView(frame: CGRect(x: 10, y: 50, width: 300, height: 400))
+        self.campaignText = UITextView(frame: CGRectMake(10, 50, 300, 400))
         self.campaignText.text = "Intro campagne"
         self.campaignText.editable = false
         
-        self.btnContinue = UIButton(frame: CGRect(x: 10, y: self.campaignText.frame.origin.y + self.campaignText.frame.height + 10, width: 300, height: 40))
+        self.btnContinue = UIButton(frame: CGRectMake(10, self.campaignText.frame.origin.y + self.campaignText.frame.height + 10, 300, 40))
         self.btnContinue.setTitle("Ga verder", forState: UIControlState.Normal)
         
-        self.inputName = UITextField(frame: CGRect(x: 10, y: 50, width: 300, height: 40))
+        self.genderSwitch = UISwitch(frame: CGRectMake(10, 300, 44, 100))
+        self.genderSwitch.center = CGPointMake(frame.width / 2, self.genderSwitch.frame.origin.y)
+        self.genderSwitch.hidden = true
+        
+        self.inputName = UITextField(frame: CGRectMake(10, self.genderSwitch.frame.origin.y + self.genderSwitch.frame.height + 10, 300, 40))
         self.inputName.hidden = true
         self.inputName.placeholder = "Chokri Mahassine"
         self.inputName.autocapitalizationType = .Words
         
-        self.inputEmail = UITextField(frame: CGRect(x: 10, y: self.inputName.frame.origin.y + self.inputName.frame.height + 10, width: 300, height: 40))
+        self.inputEmail = UITextField(frame: CGRectMake(10, self.inputName.frame.origin.y + self.inputName.frame.height + 10, 300, 40))
         self.inputEmail.hidden = true
         self.inputEmail.placeholder = "chokri.mahassine@pukkelpop.be"
         self.inputEmail.autocapitalizationType = .None
         self.inputEmail.keyboardType = .EmailAddress
         
-        self.btnPhoto = UIButton(frame: CGRect(x: 10, y: self.inputEmail.frame.origin.y + self.inputEmail.frame.height + 10, width: 300, height: 40))
-        self.btnPhoto.setTitle("Foto", forState: UIControlState.Normal)
-        self.btnPhoto.hidden = true
-        
-        self.btnSave = UIButton(frame: CGRect(x: 10, y: self.btnPhoto.frame.origin.y + self.btnPhoto.frame.height + 10, width: 300, height: 40))
+        self.btnSave = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        self.btnSave.frame = CGRectMake(10, self.inputEmail.frame.origin.y + self.inputEmail.frame.height + 10, 300, 44)
         self.btnSave.setTitle("Oké!", forState: UIControlState.Normal)
         self.btnSave.hidden = true
         
@@ -52,7 +53,7 @@ class StartView: UIView {
         self.addSubview(self.btnContinue)
         self.addSubview(self.inputName)
         self.addSubview(self.inputEmail)
-        self.addSubview(self.btnPhoto)
+        self.addSubview(self.genderSwitch)
         self.addSubview(self.btnSave)
     }
     
@@ -62,7 +63,7 @@ class StartView: UIView {
         
         self.inputName.hidden = false
         self.inputEmail.hidden = false
-        self.btnPhoto.hidden = false
+        self.genderSwitch.hidden = false
         self.btnSave.hidden = false
     }
     
