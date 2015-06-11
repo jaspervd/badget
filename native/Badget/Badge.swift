@@ -9,5 +9,14 @@
 import UIKit
 
 class Badge: NSObject {
-   
+    let title:String
+    let goal:String
+    let image:UIImage
+    
+    init(title: String, goal: String, intro: String, image: UIImage) {
+        self.title = title
+        self.goal = goal
+        self.image = image
+        super.init()
+    }
 }
