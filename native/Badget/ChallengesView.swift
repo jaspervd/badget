@@ -17,6 +17,9 @@ class ChallengesView: UIView {
     override init(frame: CGRect) {
         self.circularScrollView = CircularScrollView(frame: frame)
         super.init(frame: frame)
+        
+        self.backgroundColor = Settings.bgColor
+        self.circularScrollView.backgroundColor = nil
 
         self.addSubview(circularScrollView)
     }

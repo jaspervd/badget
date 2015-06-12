@@ -11,29 +11,30 @@ import UIKit
 class ChallengeView: UIView {
     let btnContinue:UIButton!
     
-    init(frame: CGRect, photo: UIImage, title: String) {
+    init(frame: CGRect, photo: UIImage, header: String) {
         self.btnContinue = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         
         super.init(frame: frame)
         
-        let passView = UIView(frame: CGRectMake(30, 40, frame.width - 60, 300))
-        passView.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.whiteColor()
+        
+        let passHolder = UIView(frame: CGRectMake(0, 0, frame.size.width - 60, 350))
+        passHolder.center = CGPointMake(frame.size.width / 2, frame.size.height / 2)
         
         let imageView = UIImageView(image: photo)
-        imageView.frame = CGRectMake(passView.frame.width / 2 - 75, 40, 150, 150)
+        imageView.frame = CGRectMake(passHolder.frame.size.width / 2 - 75, 40, 150, 150)
         
-        let titleText = UILabel(frame: CGRectMake(10, imageView.frame.origin.y + imageView.frame.height + 10, passView.frame.width - 20, 44))
-        titleText.text = title
+        let titleText = UILabel(frame: CGRectMake(10, imageView.frame.origin.y + imageView.frame.height + 10, passHolder.frame.size.width - 20, 44))
+        titleText.text = header
         titleText.textAlignment = .Center
         
-        btnContinue.frame = CGRectMake(10, titleText.frame.origin.y + titleText.frame.height + 10, passView.frame.width - 20, 44)
+        btnContinue.frame = CGRectMake(10, titleText.frame.origin.y + titleText.frame.height + 10, passHolder.frame.size.width - 20, 44)
         btnContinue.setTitle("Let's do this!", forState: UIControlState.Normal)
         
-        passView.addSubview(imageView)
-        passView.addSubview(titleText)
-        passView.addSubview(self.btnContinue)
-        
-        self.addSubview(passView)
+        passHolder.addSubview(imageView)
+        passHolder.addSubview(titleText)
+        passHolder.addSubview(self.btnContinue)
+        self.addSubview(passHolder)
     }
     
     required init(coder aDecoder: NSCoder) {

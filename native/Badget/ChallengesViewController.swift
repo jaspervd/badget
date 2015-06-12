@@ -20,8 +20,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     let infoVC = InfoViewController()
     let badgesVC = BadgesViewController()
     var region:CLCircularRegion!
-    var challengeVCs:Array<UIViewController> = []
-    var challengeViews:Array<ChallengeView> = []
+    var challengeVCs:Array<ChallengeViewController> = []
     var numberOfChallenges:Int = 0
     
     var challengesView:ChallengesView! {
@@ -58,23 +57,10 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     }
     
     func createPasses() {
-        self.challengeVCs = [organisatorVC, coordinatorVC, barmanVC]
-        let challengesTitle = ["Organisator", "Coordinator", "Barman"]
+        self.challengeVCs = [ChallengeViewController(viewController: self.organisatorVC, navController: self.navigationController!, image: UIImage(named: "av")!, header: "Organisator"), ChallengeViewController(viewController: self.coordinatorVC, navController: self.navigationController!, image: UIImage(named: "av")!, header: "Coordinator"), ChallengeViewController(viewController: self.barmanVC, navController: self.navigationController!, image: UIImage(named: "av")!, header: "Barman")]
         //let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan en trek een toffe groepsfoto met elkaar!", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
-        var xPos:CGFloat = 0
-        for (index, challengeVC) in enumerate(self.challengeVCs) {
-            let challengeView = ChallengeView(frame: CGRectMake(xPos, self.view.frame.origin.y, self.view.frame.width, self.view.frame.height), photo: UIImage(named: "av")!, title: challengesTitle[index])
-            self.view.addSubview(challengeView)
-            xPos += self.view.frame.width
-            /*if(index != 1) {
-                challengeView.transform = CGAffineTransformMakeScale(0.7, 0.7)
-            }*/
-            challengeView.btnContinue.tag = index
-            challengeView.btnContinue.addTarget(self, action: "continueHandler:", forControlEvents: UIControlEvents.TouchUpInside)
-            self.challengeViews.append(challengeView)
-        }
         
-        self.numberOfChallenges = self.challengeViews.count
+        self.numberOfChallenges = self.challengeVCs.count
         
         self.challengesView.circularScrollView.delegate = self
         self.challengesView.circularScrollView.dataSource = self
@@ -86,19 +72,6 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     
     func circularScrollView(#scroll: CircularScrollView!, viewControllerAtIndex index: Int!) -> UIViewController! {
         return self.challengeVCs[index]
-    }
-    
-    func continueHandler(sender: UIButton!) {
-        switch(sender.tag) {
-        case 0:
-            organisatorHandler()
-        case 1:
-            coordinatorHandler()
-        case 2:
-            barmanHandler()
-        default:
-            coordinatorHandler()
-        }
     }
     
     func setupLocationManager() {
@@ -206,26 +179,26 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         
         if let coordinator = NSKeyedUnarchiver.unarchiveObjectWithFile(self.coordinatorVC.fileName) as? Coordinator {
             if(calendar.isDate(coordinator.date, inSameDayAsDate: Settings.currentDate)) {
-                println(coordinator)
+                self.coordinatorVC.setScore(coordinator)
             }
         }
         
         if let barman = NSKeyedUnarchiver.unarchiveObjectWithFile(self.barmanVC.fileName) as? Barman {
             if(calendar.isDate(barman.date, inSameDayAsDate: Settings.currentDate)) {
-                println(barman)
+                self.barmanVC.setScore(barman)
             }
         }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        for (index, view) in enumerate(challengeViews) {
-            if(CGRectIntersectsRect(scrollView.bounds, view.frame)) {
+        for (index, challengeVC) in enumerate(challengeVCs) {
+            if(CGRectIntersectsRect(scrollView.bounds, challengeVC.view.frame)) {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                    view.transform = CGAffineTransformMakeScale(1, 1)
+                    challengeVC.view.transform = CGAffineTransformMakeScale(1, 1)
                     }, completion: nil)
             } else {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                    view.transform = CGAffineTransformMakeScale(0.7, 0.7)
+                    challengeVC.view.transform = CGAffineTransformMakeScale(0.7, 0.7)
                 }, completion: nil)
             }
         }
