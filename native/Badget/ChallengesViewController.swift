@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreLocation
+import CircularScrollView
 
-class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate {
+class ChallengesViewController: UIViewController, CLLocationManagerDelegate, CircularScrollViewDataSource, CircularScrollViewDelegate {
     
     let organisatorVC = OrganisatorViewController()
     let coordinatorVC = CoordinatorViewController()
@@ -19,11 +20,13 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     let infoVC = InfoViewController()
     let badgesVC = BadgesViewController()
     var region:CLCircularRegion!
+    var challengeVCs:Array<UIViewController> = []
     var challengeViews:Array<ChallengeView> = []
+    var numberOfChallenges:Int = 0
     
-    var scrollView:UIScrollView! {
+    var challengesView:ChallengesView! {
         get {
-            return self.view as! UIScrollView
+            return self.view as! ChallengesView
         }
     }
     
@@ -51,37 +54,38 @@ class ChallengesViewController: UIViewController, UIScrollViewDelegate, CLLocati
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = UIScrollView(frame: bounds);
+        self.view = ChallengesView(frame: bounds)
     }
     
     func createPasses() {
-        let challengesArray = [organisatorVC, coordinatorVC, barmanVC]
+        self.challengeVCs = [organisatorVC, coordinatorVC, barmanVC]
         let challengesTitle = ["Organisator", "Coordinator", "Barman"]
-        let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan en trek een toffe groepsfoto met elkaar!", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
+        //let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan en trek een toffe groepsfoto met elkaar!", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
         var xPos:CGFloat = 0
-        for (index, challengeVC) in enumerate(challengesArray) {
-            let challengeView = ChallengeView(frame: CGRectMake(xPos, self.view.frame.origin.y, self.view.frame.width, self.view.frame.height), photo: UIImage(named: "av")!, title: challengesTitle[index], intro: challengesIntro[index])
+        for (index, challengeVC) in enumerate(self.challengeVCs) {
+            let challengeView = ChallengeView(frame: CGRectMake(xPos, self.view.frame.origin.y, self.view.frame.width, self.view.frame.height), photo: UIImage(named: "av")!, title: challengesTitle[index])
             self.view.addSubview(challengeView)
             xPos += self.view.frame.width
-            if(index != 1) {
+            /*if(index != 1) {
                 challengeView.transform = CGAffineTransformMakeScale(0.7, 0.7)
-            }
+            }*/
             challengeView.btnContinue.tag = index
             challengeView.btnContinue.addTarget(self, action: "continueHandler:", forControlEvents: UIControlEvents.TouchUpInside)
             self.challengeViews.append(challengeView)
         }
         
-        self.scrollView.delegate = self
-        self.scrollView.contentOffset = CGPointMake(xPos / 3, 0)
-        self.scrollView.pagingEnabled = true
-        self.scrollView.contentSize = CGSizeMake(xPos, 0)
+        self.numberOfChallenges = self.challengeViews.count
+        
+        self.challengesView.circularScrollView.delegate = self
+        self.challengesView.circularScrollView.dataSource = self
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        //self.badgesBtn.frame.origin.x = 10 + scrollView.contentOffset.x
-        /*for challengeView in self.view.subviews {
-            println(challengeView.frame)
-        }*/
+    func numberOfPagesInCircularScrollView(#scroll: CircularScrollView!) -> Int! {
+        return self.numberOfChallenges
+    }
+    
+    func circularScrollView(#scroll: CircularScrollView!, viewControllerAtIndex index: Int!) -> UIViewController! {
+        return self.challengeVCs[index]
     }
     
     func continueHandler(sender: UIButton!) {

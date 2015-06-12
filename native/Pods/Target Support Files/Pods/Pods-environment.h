@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_Alamofire 2
 #define COCOAPODS_VERSION_PATCH_Alamofire 2
 
+// CircularScrollView
+#define COCOAPODS_POD_AVAILABLE_CircularScrollView
+#define COCOAPODS_VERSION_MAJOR_CircularScrollView 0
+#define COCOAPODS_VERSION_MINOR_CircularScrollView 1
+#define COCOAPODS_VERSION_PATCH_CircularScrollView 0
+

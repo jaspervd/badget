@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */; };
+		A40D6D731B2B2D5B00E7D05F /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D721B2B2D5B00E7D05F /* ChallengesView.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -58,6 +59,7 @@
 		335ACF075B77FCACEBBAD971 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6F6500C793CF27A14A745F40 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		A40D6D721B2B2D5B00E7D05F /* ChallengesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */,
+				A40D6D721B2B2D5B00E7D05F /* ChallengesView.swift */,
 				A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */,
 				A4B619F01B28618C00748A1D /* ChallengeView.swift */,
 				A4B619FF1B290AEF00748A1D /* Challenge.swift */,
@@ -467,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A40D6D731B2B2D5B00E7D05F /* ChallengesView.swift in Sources */,
 				A48BC23D1B20833D00B8A110 /* BarmanView.swift in Sources */,
 				A48BC2471B20AB9500B8A110 /* Barman.swift in Sources */,
 				A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */,
