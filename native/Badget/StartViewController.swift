@@ -11,6 +11,10 @@ import Alamofire
 
 class StartViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var headVC:CharacterPartViewController!
+    var bodyVC:CharacterPartViewController!
+    var legsVC:CharacterPartViewController!
+    
     var startView:StartView! {
         get {
             return self.view as! StartView
@@ -23,7 +27,30 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var maleHeads = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        var femaleHeads = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        self.headVC = CharacterPartViewController(maleArray: maleHeads, femaleArray: femaleHeads)
+        self.addChildViewController(self.headVC)
+        
+        var maleBodies = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        var femaleBodies = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        self.bodyVC = CharacterPartViewController(maleArray: maleBodies, femaleArray: femaleBodies)
+        self.addChildViewController(self.bodyVC)
+        
+        var maleLegs = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        var femaleLegs = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        self.legsVC = CharacterPartViewController(maleArray: maleLegs, femaleArray: femaleLegs)
+        self.addChildViewController(self.legsVC)
+        
+        self.view.addSubview(self.headVC.view)
+        self.view.addSubview(self.bodyVC.view)
+        self.view.addSubview(self.legsVC.view)
+        
+        self.bodyVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height)
+        self.legsVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + maleBodies[0].size.height)
+        
         self.startView.btnContinue.addTarget(self, action: "continueClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        self.startView.genderSwitch.addTarget(self, action: "genderSwitched", forControlEvents: UIControlEvents.ValueChanged)
         self.startView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
 
         // Do any additional setup after loading the view.
@@ -46,6 +73,12 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func continueClicked() {
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "readCampaign")
         self.startView.showCredentials()
+    }
+    
+    func genderSwitched() {
+        self.headVC.switchActiveArray()
+        self.bodyVC.switchActiveArray()
+        self.legsVC.switchActiveArray()
     }
     
     func saveClicked() {

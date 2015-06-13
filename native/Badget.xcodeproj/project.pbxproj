@@ -16,6 +16,8 @@
 		A40D6D7D1B2C3B0E00E7D05F /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D7C1B2C3B0E00E7D05F /* Region.swift */; };
 		A40D6D7F1B2C3B1A00E7D05F /* RegionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */; };
 		A40D6D811B2C4A7300E7D05F /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D801B2C4A7300E7D05F /* ChallengesViewController.swift */; };
+		A40D6D841B2C728F00E7D05F /* CharacterPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D831B2C728F00E7D05F /* CharacterPartViewController.swift */; };
+		A40D6D861B2C72F400E7D05F /* CharacterPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -73,6 +75,8 @@
 		A40D6D7C1B2C3B0E00E7D05F /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionFactory.swift; sourceTree = "<group>"; };
 		A40D6D801B2C4A7300E7D05F /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
+		A40D6D831B2C728F00E7D05F /* CharacterPartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartViewController.swift; sourceTree = "<group>"; };
+		A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartView.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A40D6D821B2C725100E7D05F /* CharacterPart */ = {
+			isa = PBXGroup;
+			children = (
+				A40D6D831B2C728F00E7D05F /* CharacterPartViewController.swift */,
+				A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */,
+			);
+			name = CharacterPart;
+			sourceTree = "<group>";
+		};
 		A429304F1B1F6A40009762F9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +266,7 @@
 		A4AD989B1B179EF7009ED7AE /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				A40D6D821B2C725100E7D05F /* CharacterPart */,
 				A4AD989E1B17A358009ED7AE /* StartViewController.swift */,
 				A4AD98A01B17A3BA009ED7AE /* StartView.swift */,
 			);
@@ -511,10 +525,12 @@
 				A48BC23B1B20831F00B8A110 /* CoordinatorView.swift in Sources */,
 				A418E9381B1F513A000BFC6D /* Settings.swift in Sources */,
 				A48BC2411B208E8300B8A110 /* OrganisatorView.swift in Sources */,
+				A40D6D861B2C72F400E7D05F /* CharacterPartView.swift in Sources */,
 				A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */,
 				A40D6D7F1B2C3B1A00E7D05F /* RegionFactory.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
 				A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */,
+				A40D6D841B2C728F00E7D05F /* CharacterPartViewController.swift in Sources */,
 				A40D6D791B2C297000E7D05F /* BadgeFactory.swift in Sources */,
 				A4B61A001B290AEF00748A1D /* Challenge.swift in Sources */,
 				A4B619F81B28F30200748A1D /* Badge.swift in Sources */,

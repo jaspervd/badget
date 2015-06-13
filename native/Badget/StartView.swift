@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import CircularScrollView
 
 class StartView: UIView {
     
-    let campaignText:UITextView!
-    let btnContinue:UIButton!
-    let inputName:UITextField!
-    let inputEmail:UITextField!
-    let btnSave:UIButton!
-    let genderSwitch:UISwitch!
+    let campaignText:UITextView
+    let btnContinue:UIButton
+    let inputName:UITextField
+    let inputEmail:UITextField
+    let btnSave:UIButton
+    let genderSwitch:UISwitch
     
     override init(frame: CGRect) {
         self.campaignText = UITextView(frame: CGRectMake(10, 50, 300, 400))
