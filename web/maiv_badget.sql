@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost:8889
--- Gegenereerd op: 04 jun 2015 om 22:58
+-- Gegenereerd op: 13 jun 2015 om 22:26
 -- Serverversie: 5.5.38
 -- PHP-versie: 5.6.2
 
@@ -19,15 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Databank: `maiv_badget`
 --
-USE `jaspervandahch7i`;
+CREATE DATABASE IF NOT EXISTS `maiv_badget` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `maiv_badget`;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `bg_beerking`
+-- Tabelstructuur voor tabel `bg_badges`
 --
 
-CREATE TABLE `bg_beerking` (
+CREATE TABLE `bg_badges` (
+`id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(30) NOT NULL,
+  `goal` varchar(255) NOT NULL,
+  `photo_url` text NOT NULL,
+  `date_achieved` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `bg_barman`
+--
+
+CREATE TABLE `bg_barman` (
 `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `day` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -38,23 +54,10 @@ CREATE TABLE `bg_beerking` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `bg_grouphugger`
+-- Tabelstructuur voor tabel `bg_coordinator`
 --
 
-CREATE TABLE `bg_grouphugger` (
-`id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `day` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `friends` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `bg_masterscout`
---
-
-CREATE TABLE `bg_masterscout` (
+CREATE TABLE `bg_coordinator` (
 `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `day` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -65,19 +68,15 @@ CREATE TABLE `bg_masterscout` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `bg_settings`
+-- Tabelstructuur voor tabel `bg_organisator`
 --
 
-CREATE TABLE `bg_settings` (
-  `current_day` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE `bg_organisator` (
+`id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `day` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `friends` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Gegevens worden geëxporteerd voor tabel `bg_settings`
---
-
-INSERT INTO `bg_settings` (`current_day`) VALUES
-('2015-08-21 10:13:31');
 
 -- --------------------------------------------------------
 
@@ -89,6 +88,7 @@ CREATE TABLE `bg_users` (
 `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(60) NOT NULL,
+  `gender` enum('m','f') NOT NULL,
   `photo_url` text NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -98,21 +98,27 @@ CREATE TABLE `bg_users` (
 --
 
 --
--- Indexen voor tabel `bg_beerking`
+-- Indexen voor tabel `bg_badges`
 --
-ALTER TABLE `bg_beerking`
+ALTER TABLE `bg_badges`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `bg_grouphugger`
+-- Indexen voor tabel `bg_barman`
 --
-ALTER TABLE `bg_grouphugger`
+ALTER TABLE `bg_barman`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `bg_masterscout`
+-- Indexen voor tabel `bg_coordinator`
 --
-ALTER TABLE `bg_masterscout`
+ALTER TABLE `bg_coordinator`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `bg_organisator`
+--
+ALTER TABLE `bg_organisator`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -126,19 +132,24 @@ ALTER TABLE `bg_users`
 --
 
 --
--- AUTO_INCREMENT voor een tabel `bg_beerking`
+-- AUTO_INCREMENT voor een tabel `bg_badges`
 --
-ALTER TABLE `bg_beerking`
+ALTER TABLE `bg_badges`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT voor een tabel `bg_grouphugger`
+-- AUTO_INCREMENT voor een tabel `bg_barman`
 --
-ALTER TABLE `bg_grouphugger`
+ALTER TABLE `bg_barman`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT voor een tabel `bg_masterscout`
+-- AUTO_INCREMENT voor een tabel `bg_coordinator`
 --
-ALTER TABLE `bg_masterscout`
+ALTER TABLE `bg_coordinator`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `bg_organisator`
+--
+ALTER TABLE `bg_organisator`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT voor een tabel `bg_users`

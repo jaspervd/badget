@@ -1,14 +1,14 @@
 <?php
 require_once __DIR__ . '/DAO.php';
-class GrouphuggerDAO extends DAO {
+class CoordinatorDAO extends DAO {
     public function selectById($id) {
-        $sql = "SELECT * FROM `bg_grouphugger` WHERE `id` = :id";
+        $sql = "SELECT * FROM `bg_coordinator` WHERE `id` = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id);
         if($stmt->execute()) {
-            $grouphugger = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!empty($grouphugger)) {
-                return $grouphugger;
+            $coordinator = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!empty($coordinator)) {
+                return $coordinator;
             }
         }
 
@@ -16,25 +16,26 @@ class GrouphuggerDAO extends DAO {
     }
 
     public function selectByUserId($user_id) {
-        $sql = "SELECT * FROM `bg_grouphugger` WHERE `user_id` = :user_id";
+        $sql = "SELECT * FROM `bg_coordinator` WHERE `user_id` = :user_id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         if($stmt->execute()) {
-            $grouphugger = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!empty($grouphugger)) {
-                return $grouphugger;
+            $coordinator = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!empty($coordinator)) {
+                return $coordinator;
             }
         }
 
         return array();
     }
 
-    public function insert($user_id, $day, $friends) {
-        $sql = "INSERT INTO `bg_grouphugger` (`user_id`, `day`, `friends`) VALUES (:user_id, :day, :friends)";
+    public function insert($user_id, $day, $time, $distance) {
+        $sql = "INSERT INTO `bg_coordinator` (`user_id`, `day`, `time`, `distance`) VALUES (:user_id, :day, :time, :distance)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         $stmt->bindValue(':day', $day);
-        $stmt->bindValue(':friends', $friends);
+        $stmt->bindValue(':time', $time);
+        $stmt->bindValue(':distance', $distance);
         if ($stmt->execute()) {
             return $this->selectById($this->pdo->lastInsertId());
         }

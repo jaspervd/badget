@@ -7,17 +7,19 @@ define("WWW_ROOT", dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 require_once WWW_ROOT . 'api' . DIRECTORY_SEPARATOR . 'Slim' . DIRECTORY_SEPARATOR . 'Slim.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'UsersDAO.php';
-require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'GrouphuggerDAO.php';
-require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'MasterscoutDAO.php';
-require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'BeerkingDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'OrganisatorDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'CoordinatorDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'BarmanDAO.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'BadgesDAO.php';
 
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
 $usersDAO = new UsersDAO();
-$grouphuggerDAO = new GrouphuggerDAO();
-$masterscoutDAO = new MasterscoutDAO();
-$beerkingDAO = new BeerkingDAO();
+$organisatorDAO = new OrganisatorDAO();
+$coordinatorDAO = new CoordinatorDAO();
+$barmanDAO = new BarmanDAO();
+$badgesDAO = new BadgesDAO();
 
 $app->post('/users/?', function () use ($app, $usersDAO) {
     header('Content-Type: application/json');
@@ -44,33 +46,43 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
     exit();
 });
 
-$app->post('/grouphugger/?', function () use ($app, $grouphuggerDAO) {
+$app->post('/organisator/?', function () use ($app, $organisatorDAO) {
     header('Content-Type: application/json');
     $post = $app->request->post();
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($grouphuggerDAO->insert($post['user_id'], $post['day'], $post['friends']));
+    echo json_encode($organisatorDAO->insert($post['user_id'], $post['day'], $post['friends']));
     exit();
 });
 
-$app->post('/masterscout/?', function () use ($app, $masterscoutDAO) {
+$app->post('/coordinator/?', function () use ($app, $coordinatorDAO) {
     header('Content-Type: application/json');
     $post = $app->request->post();
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($masterscoutDAO->insert($post['user_id'], $post['day'], $post['time'], $post['distance']));
+    echo json_encode($coordinatorDAO->insert($post['user_id'], $post['day'], $post['time'], $post['distance']));
     exit();
 });
 
-$app->post('/beerking/?', function () use ($app, $beerkingDAO) {
+$app->post('/barman/?', function () use ($app, $barmanDAO) {
     header('Content-Type: application/json');
     $post = $app->request->post();
     if (empty($post)) {
         $post = (array)json_decode($app->request()->getBody());
     }
-    echo json_encode($beerkingDAO->insert($post['user_id'], $post['day'], $post['angle'], $post['seconds']));
+    echo json_encode($barmanDAO->insert($post['user_id'], $post['day'], $post['angle'], $post['seconds']));
+    exit();
+});
+
+$app->post('/badges/?', function () use ($app, $badgesDAO) {
+    header('Content-Type: application/json');
+    $post = $app->request->post();
+    if (empty($post)) {
+        $post = (array)json_decode($app->request()->getBody());
+    }
+    echo json_encode($badgesDAO->insert($post['user_id'], $post['title'], $post['goal'], $post['photo_url']));
     exit();
 });
 
