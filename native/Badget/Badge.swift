@@ -51,10 +51,17 @@ class Badge: NSObject, NSCoding {
     }
     
     func save() {
-        let entity = NSEntityDescription.entityForName("Badge", inManagedObjectContext: self.appDelegate.managedObjectContext!)
-        let badge = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:self.appDelegate.managedObjectContext!)
-        badge.setValue(self.id, forKey: "plistId")
-        badge.setValue(Settings.currentDate, forKey: "achievedDate")
+        if(count(self.title) > 0) {
+            let entity = NSEntityDescription.entityForName("Badge", inManagedObjectContext: self.appDelegate.managedObjectContext!)
+            let badge = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:self.appDelegate.managedObjectContext!)
+            badge.setValue(self.id, forKey: "plistId")
+            badge.setValue(Settings.currentDate, forKey: "achievedDate")
+            
+            var error:NSError?
+            if(!appDelegate.managedObjectContext!.save(&error)) {
+                println("Couldn't save \(error), \(error?.userInfo)")
+            }
+        }
     }
     
     class func loadPlist() -> Array<Badge> {

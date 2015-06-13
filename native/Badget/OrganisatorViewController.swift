@@ -133,20 +133,22 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
         
         var friendsCount = self.facesArray.count
         var badge = Badge()
+        let badges = Badge.loadPlist()
         if(friendsCount == 1) {
-            badge = Badge(title: "Onafhankelijk", goal: "Trek een selfie!", image: UIImage(named: "av")!)
+            badge = badges[0]
         } else if(friendsCount <= 5) {
-            badge = Badge(title: "Moedig", goal: "Trek een foto met meer dan 1 persoon", image: UIImage(named: "av")!)
+            badge = badges[1]
         } else if(friendsCount <= 10) {
-            badge = Badge(title: "Sociaal", goal: "Trek een foto met meer dan 5 mensen", image: UIImage(named: "av")!)
+            badge = badges[2]
         } else if(friendsCount <= 15) {
-            badge = Badge(title: "Mensenkennis", goal: "Trek een foto met meer dan 10 mensen", image: UIImage(named: "av")!)
+            badge = badges[3]
         } else if(friendsCount > 15) {
-            badge = Badge(title: "Organisatietalent", goal: "Trek een foto met meer dan 15 mensen", image: UIImage(named: "av")!)
+            badge = badges[4]
         }
         
         var organisator = Organisator(date: Settings.currentDate, friends: self.facesArray.count, badge: badge)
         if(NSKeyedArchiver.archiveRootObject(organisator, toFile: self.fileName)) {
+            badge.save()
             let parameters = [
                 "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
                 "day": Settings.currentDate,

@@ -109,16 +109,18 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
             var avg = (self.anglesArray as AnyObject).valueForKeyPath("@avg.self") as! Double
             
             var badge = Badge()
+            let badges = Badge.loadPlist()
             if(avg < 10 && seconds <= 60) { // if average angle was less than 10° and took less than 60 seconds
-                badge = Badge(title: "Multi-tasken", goal: "Voer de opdracht zo recht en zo snel mogelijk uit (in minder dan een minuut)", image: UIImage(named: "av")!)
+                badge = badges[9]
             } else if(avg < 10 && seconds > 60) { // if average angle was less than 10° but took more than 60 seconds
-                badge = Badge(title: "Flexibel", goal: "Voer de opdracht zo recht mogelijk maar doet er langer dan een minuut over", image: UIImage(named: "av")!)
+                badge = badges[10]
             } else if(avg > 10 && seconds < 60) { // if angle was bigger than 10° and took less than 60 seconds
-                badge = Badge(title: "Ambitieus", goal: "Je toont ambitie en bent snel, maar maakt af en toe fouten", image: UIImage(named: "av")!)
+                badge = badges[11]
             }
             
             var barman = Barman(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)), badge: badge)
             if(NSKeyedArchiver.archiveRootObject(barman, toFile: self.fileName)) {
+                badge.save()
                 let parameters = [
                     "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
                     "day": Settings.currentDate,

@@ -11,6 +11,8 @@ import CoreData
 
 class BadgesViewController: UIViewController {
     
+    var badges:Array<BadgeViewController> = []
+    
     var appDelegate:AppDelegate {
         get {
             return UIApplication.sharedApplication().delegate as! AppDelegate
@@ -23,7 +25,18 @@ class BadgesViewController: UIViewController {
         self.title = "Badges"
         self.view.backgroundColor = Settings.bgColor
         
+        let possibleBadges = Badge.loadPlist()
+        
         let entity = NSEntityDescription.entityForName("Badge", inManagedObjectContext: self.appDelegate.managedObjectContext!)
+        let fetchRequest = NSFetchRequest(entityName: "Badge")
+        var error:NSError?
+        
+        let achievedBadges = appDelegate.managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]
+        for badge in achievedBadges {
+            var badgeVC = BadgeViewController(badge: possibleBadges[badge.valueForKey("plistId") as! Int])
+            self.view.addSubview(badgeVC.view)
+            self.badges.append(badgeVC)
+        }
     }
     
     override func loadView() {
