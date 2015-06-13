@@ -33,7 +33,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         super.viewDidLoad()
         
         if(!NSUserDefaults.standardUserDefaults().boolForKey("hasSeenInfo")) {
-            self.navigationController?.pushViewController(self.infoVC, animated: true)
+            self.navigationController?.pushViewController(self.infoVC, animated: false)
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenInfo")
         }
         
