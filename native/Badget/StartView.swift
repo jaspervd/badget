@@ -26,7 +26,7 @@ class StartView: UIView {
         self.btnContinue = UIButton(frame: CGRectMake(10, self.campaignText.frame.origin.y + self.campaignText.frame.height + 10, 300, 40))
         self.btnContinue.setTitle("Ga verder", forState: UIControlState.Normal)
         
-        self.genderSwitch = UISwitch(frame: CGRectMake(10, 300, 44, 100))
+        self.genderSwitch = UISwitch(frame: CGRectMake(10, 400, 44, 100))
         self.genderSwitch.center = CGPointMake(frame.width / 2, self.genderSwitch.frame.origin.y)
         self.genderSwitch.hidden = true
         

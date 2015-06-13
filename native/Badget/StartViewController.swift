@@ -42,10 +42,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.legsVC = CharacterPartViewController(maleArray: maleLegs, femaleArray: femaleLegs)
         self.addChildViewController(self.legsVC)
         
-        self.view.addSubview(self.headVC.view)
-        self.view.addSubview(self.bodyVC.view)
-        self.view.addSubview(self.legsVC.view)
-        
         self.bodyVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height)
         self.legsVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + maleBodies[0].size.height)
         
@@ -73,6 +69,10 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func continueClicked() {
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "readCampaign")
         self.startView.showCredentials()
+        
+        self.view.addSubview(self.headVC.view)
+        self.view.addSubview(self.bodyVC.view)
+        self.view.addSubview(self.legsVC.view)
     }
     
     func genderSwitched() {
@@ -113,7 +113,14 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func saveUser() {
         let fileUploader = FileUploader()
         
-        //fileUploader.addFileData(UIImageJPEGRepresentation(data, 0.8), withName: "photo", withMimeType: "image/jpeg")
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.view.frame.width, self.view.frame.height), false, 1)
+        self.headVC.characterPartView.imageView.image?.drawInRect(CGRectMake(self.headVC.view.frame.origin.x, self.headVC.view.frame.origin.y, self.headVC.characterPartView.imageView.frame.width, self.headVC.characterPartView.imageView.frame.height))
+        self.bodyVC.characterPartView.imageView.image?.drawInRect(CGRectMake(self.bodyVC.view.frame.origin.x, self.bodyVC.view.frame.origin.y, self.bodyVC.characterPartView.imageView.frame.width, self.bodyVC.characterPartView.imageView.frame.height))
+        self.legsVC.characterPartView.imageView.image?.drawInRect(CGRectMake(self.legsVC.view.frame.origin.x, self.legsVC.view.frame.origin.y, self.legsVC.characterPartView.imageView.frame.width, self.legsVC.characterPartView.imageView.frame.height))
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        fileUploader.addFileData(UIImagePNGRepresentation(image), withName: "photo", withMimeType: "image/png")
         fileUploader.setValue(self.startView.inputName.text, forParameter: "name")
         fileUploader.setValue(self.startView.inputEmail.text, forParameter: "email")
         var request = NSMutableURLRequest(URL: NSURL(string: Settings.apiUrl + "/users")!)

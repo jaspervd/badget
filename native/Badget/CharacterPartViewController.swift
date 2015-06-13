@@ -77,7 +77,7 @@ class CharacterPartViewController: UIViewController {
     
     override func loadView() {
         let bounds = UIScreen.mainScreen().bounds
-        self.view = CharacterPartView(frame: bounds, partSize: self.femaleArray[0].size)
+        self.view = CharacterPartView(frame: CGRectMake(0, 0, bounds.width, self.femaleArray[0].size.height), partSize: self.femaleArray[0].size)
     }
 
     override func didReceiveMemoryWarning() {
