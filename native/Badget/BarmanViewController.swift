@@ -112,9 +112,9 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
             if(avg < 10 && seconds <= 60) { // if average angle was less than 10° and took less than 60 seconds
                 badge = Badge(title: "Multi-tasken", goal: "Voer de opdracht zo recht en zo snel mogelijk uit (in minder dan een minuut)", image: UIImage(named: "av")!)
             } else if(avg < 10 && seconds > 60) { // if average angle was less than 10° but took more than 60 seconds
-                badge = Badge(title: "Doelgericht", goal: "Je doet er langer dan 20 minuten over, maar legt een kleinere afstand af dan 3km", image: UIImage(named: "av")!)
+                badge = Badge(title: "Flexibel", goal: "Voer de opdracht zo recht mogelijk maar doet er langer dan een minuut over", image: UIImage(named: "av")!)
             } else if(avg > 10 && seconds < 60) { // if angle was bigger than 10° and took less than 60 seconds
-                badge = Badge(title: "Creatief", goal: "Je toont ambitie en bent snel, maar maakt af en toe fouten", image: UIImage(named: "av")!)
+                badge = Badge(title: "Ambitieus", goal: "Je toont ambitie en bent snel, maar maakt af en toe fouten", image: UIImage(named: "av")!)
             }
             
             var barman = Barman(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)), badge: badge)

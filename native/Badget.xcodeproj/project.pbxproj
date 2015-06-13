@@ -10,6 +10,8 @@
 		A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */; };
 		A40D6D731B2B2D5B00E7D05F /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D721B2B2D5B00E7D05F /* ChallengesView.swift */; };
 		A40D6D751B2B61C600E7D05F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D741B2B61C600E7D05F /* ChallengeViewController.swift */; };
+		A40D6D771B2C1D8400E7D05F /* Badges.plist in Resources */ = {isa = PBXBuildFile; fileRef = A40D6D761B2C1D8400E7D05F /* Badges.plist */; };
+		A40D6D791B2C297000E7D05F /* BadgeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D781B2C297000E7D05F /* BadgeFactory.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -62,6 +64,8 @@
 		A40219C81B1FA7EF0092B1F7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		A40D6D721B2B2D5B00E7D05F /* ChallengesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
 		A40D6D741B2B61C600E7D05F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		A40D6D761B2C1D8400E7D05F /* Badges.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Badges.plist; path = ../Badges.plist; sourceTree = "<group>"; };
+		A40D6D781B2C297000E7D05F /* BadgeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeFactory.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +273,8 @@
 				A499A2531B29C24E00D903F3 /* BadgeViewController.swift */,
 				A499A2511B29B88100D903F3 /* BadgeView.swift */,
 				A4B619F71B28F30200748A1D /* Badge.swift */,
+				A40D6D761B2C1D8400E7D05F /* Badges.plist */,
+				A40D6D781B2C297000E7D05F /* BadgeFactory.swift */,
 			);
 			name = Badges;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 			files = (
 				A4480BD21B1F6CE30050C744 /* LaunchScreen.xib in Resources */,
 				A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */,
+				A40D6D771B2C1D8400E7D05F /* Badges.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +504,7 @@
 				A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
 				A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */,
+				A40D6D791B2C297000E7D05F /* BadgeFactory.swift in Sources */,
 				A4B61A001B290AEF00748A1D /* Challenge.swift in Sources */,
 				A4B619F81B28F30200748A1D /* Badge.swift in Sources */,
 				A48BC2431B20A8DA00B8A110 /* Organisator.swift in Sources */,

@@ -37,4 +37,10 @@ class Badge: NSObject, NSCoding {
         aCoder.encodeObject(self.goal, forKey: "goal")
         aCoder.encodeObject(self.image, forKey: "image")
     }
+    
+    class func loadPlist() -> Array<Badge> {
+        let path = NSBundle.mainBundle().URLForResource("Badges", withExtension: "plist")
+        let tempArr = NSArray(contentsOfURL: path!)
+        return BadgeFactory.createFromArray(tempArr!)
+    }
 }

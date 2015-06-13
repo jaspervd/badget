@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>Onafhankelijk</string>
+		<key>goal</key>
+		<string>Trek een selfie!</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Moedig</string>
+		<key>goal</key>
+		<string>Trek een foto met meer dan 1 persoon.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Sociaal</string>
+		<key>goal</key>
+		<string>Trek een foto met meer dan 5 mensen.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Mensenkennis</string>
+		<key>goal</key>
+		<string>Trek een foto met meer dan 10 mensen.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Organisatietalent</string>
+		<key>goal</key>
+		<string>Trek een foto met meer dan 15 mensen.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Efficiënt</string>
+		<key>goal</key>
+		<string>Wees sneller dan 20 minuten en leg een afstand af kleiner dan 1km.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Doelgericht</string>
+		<key>goal</key>
+		<string>Je doet er langer dan 20 minuten over, maar legt een kleinere afstand af dan 1km.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Creatief</string>
+		<key>goal</key>
+		<string>Wees sneller dan 20 minuten en leg een afstand af groter dan 1km.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Oriëntatievermogen</string>
+		<key>goal</key>
+		<string>Je geraakt er mits een langere tijd en grotere afstand af te leggen.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Multi-tasken</string>
+		<key>goal</key>
+		<string>Voer de opdracht zo recht en zo snel mogelijk uit (in minder dan een minuut).</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Flexibel</string>
+		<key>goal</key>
+		<string>Voer de opdracht zo recht mogelijk maar doet er langer dan een minuut over.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Ambitieus</string>
+		<key>goal</key>
+		<string>Je toont ambitie en bent snel, maar maakt af en toe fouten.</string>
+		<key>image</key>
+		<string>av</string>
+	</dict>
+</array>
+</plist>
