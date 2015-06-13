@@ -149,12 +149,7 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
         var organisator = Organisator(date: Settings.currentDate, friends: self.facesArray.count, badge: badge)
         if(NSKeyedArchiver.archiveRootObject(organisator, toFile: self.fileName)) {
             badge.save()
-            let parameters = [
-                "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
-                "day": Settings.currentDate,
-                "friends": organisator.friends
-            ]
-            Alamofire.request(.POST, Settings.apiUrl + "/organisator", parameters: parameters)
+            organisator.save()
             
             setScore(organisator)
             self.navigationController?.pushViewController(self.scoreVC, animated: true)

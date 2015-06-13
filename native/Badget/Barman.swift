@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class Barman: NSObject, NSCoding {
     var date:NSDate
@@ -20,6 +21,16 @@ class Barman: NSObject, NSCoding {
         self.seconds = seconds
         self.badge = badge
         super.init()
+    }
+    
+    func save() {
+        let parameters = [
+            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+            "day": Settings.currentDate,
+            "angle": self.angle,
+            "seconds": self.seconds
+        ]
+        Alamofire.request(.POST, Settings.apiUrl + "/barman", parameters: parameters)
     }
     
     required init(coder aDecoder: NSCoder) {

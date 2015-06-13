@@ -121,13 +121,7 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
             var barman = Barman(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)), badge: badge)
             if(NSKeyedArchiver.archiveRootObject(barman, toFile: self.fileName)) {
                 badge.save()
-                let parameters = [
-                    "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
-                    "day": Settings.currentDate,
-                    "angle": barman.angle,
-                    "seconds": barman.seconds
-                ]
-                Alamofire.request(.POST, Settings.apiUrl + "/barman", parameters: parameters)
+                barman.save()
                 
                 setScore(barman)
                 self.navigationController?.pushViewController(scoreVC, animated: true)

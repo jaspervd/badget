@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class Organisator: NSObject, NSCoding {
     var date:NSDate
@@ -18,6 +19,15 @@ class Organisator: NSObject, NSCoding {
         self.friends = friends
         self.badge = badge
         super.init()
+    }
+    
+    func save() {
+        let parameters = [
+            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+            "day": Settings.currentDate,
+            "friends": self.friends
+        ]
+        Alamofire.request(.POST, Settings.apiUrl + "/organisator", parameters: parameters)
     }
     
     required init(coder aDecoder: NSCoder) {

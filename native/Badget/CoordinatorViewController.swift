@@ -133,13 +133,7 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
         var coordinator = Coordinator(date: Settings.currentDate, time: self.coordinatorView.timerText.text!, distance: self.distance, badge: badge)
         if(NSKeyedArchiver.archiveRootObject(coordinator, toFile: self.fileName)) {
             badge.save()
-            let parameters = [
-                "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
-                "day": Settings.currentDate,
-                "time": coordinator.time,
-                "distance": coordinator.distance
-            ]
-            Alamofire.request(.POST, Settings.apiUrl + "/coordinator", parameters: parameters)
+            coordinator.save()
         
             setScore(coordinator)
             self.navigationController?.pushViewController(scoreVC, animated: true)

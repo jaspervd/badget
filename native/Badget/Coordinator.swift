@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class Coordinator: NSObject, NSCoding {
     var date:NSDate
@@ -20,6 +21,16 @@ class Coordinator: NSObject, NSCoding {
         self.distance = distance
         self.badge = badge
         super.init()
+    }
+    
+    func save() {
+        let parameters = [
+            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+            "day": Settings.currentDate,
+            "time": self.time,
+            "distance": self.distance
+        ]
+        Alamofire.request(.POST, Settings.apiUrl + "/coordinator", parameters: parameters)
     }
     
     required init(coder aDecoder: NSCoder) {
