@@ -60,10 +60,9 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         self.challengeVCs = [ChallengeViewController(viewController: self.organisatorVC, navController: self.navigationController!, image: UIImage(named: "av")!, header: "Organisator"), ChallengeViewController(viewController: self.coordinatorVC, navController: self.navigationController!, image: UIImage(named: "av")!, header: "Coordinator"), ChallengeViewController(viewController: self.barmanVC, navController: self.navigationController!, image: UIImage(named: "av")!, header: "Barman")]
         //let challengesIntro = ["Overtuig zoveel mogelijk mensen om mee naar de Randstad stand te gaan en trek een toffe groepsfoto met elkaar!", "Vanaf de Randstad stand zal je een parcours moeten afleggen. Je moet het terrein van binnen en van buiten leren kennen.", "Ga naar de Randstad stand. Hier krijg je een plateau waar je jouw smartphone op moet leggen met het scherm naar beneden. Hierna zal je zo snel mogelijk en zo recht mogelijk de plateau moeten vervoeren doorheen een obstakelparcours."]
         
-        println(Badge.loadPlist())
-        
         self.numberOfChallenges = self.challengeVCs.count
         
+        self.automaticallyAdjustsScrollViewInsets = false
         self.challengesView.circularScrollView.delegate = self
         self.challengesView.circularScrollView.dataSource = self
     }

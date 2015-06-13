@@ -15,6 +15,7 @@
 		A40D6D7B1B2C39B500E7D05F /* Regions.plist in Resources */ = {isa = PBXBuildFile; fileRef = A40D6D7A1B2C39B500E7D05F /* Regions.plist */; };
 		A40D6D7D1B2C3B0E00E7D05F /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D7C1B2C3B0E00E7D05F /* Region.swift */; };
 		A40D6D7F1B2C3B1A00E7D05F /* RegionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */; };
+		A40D6D811B2C4A7300E7D05F /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D801B2C4A7300E7D05F /* ChallengesViewController.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -38,7 +39,6 @@
 		A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499A2531B29C24E00D903F3 /* BadgeViewController.swift */; };
 		A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* StartViewController.swift */; };
 		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
-		A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */; };
 		A4B619F11B28618C00748A1D /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F01B28618C00748A1D /* ChallengeView.swift */; };
 		A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F31B28C4BC00748A1D /* InfoViewController.swift */; };
 		A4B619F61B28F1AF00748A1D /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F51B28F1AF00748A1D /* ScoreView.swift */; };
@@ -72,6 +72,7 @@
 		A40D6D7A1B2C39B500E7D05F /* Regions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Regions.plist; sourceTree = "<group>"; };
 		A40D6D7C1B2C3B0E00E7D05F /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionFactory.swift; sourceTree = "<group>"; };
+		A40D6D801B2C4A7300E7D05F /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		A499A2531B29C24E00D903F3 /* BadgeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ChallengesViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4B619F01B28618C00748A1D /* ChallengeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		A4B619F31B28C4BC00748A1D /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A4B619F51B28F1AF00748A1D /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 		A4AD989C1B179F0D009ED7AE /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
-				A4AD98A21B17AD34009ED7AE /* ChallengesViewController.swift */,
+				A40D6D801B2C4A7300E7D05F /* ChallengesViewController.swift */,
 				A40D6D721B2B2D5B00E7D05F /* ChallengesView.swift */,
 				A48EABE51B1D0723008FEE12 /* ChallengeProtocol.swift */,
 				A40D6D741B2B61C600E7D05F /* ChallengeViewController.swift */,
@@ -496,7 +496,6 @@
 				A48BC2471B20AB9500B8A110 /* Barman.swift in Sources */,
 				A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */,
 				A4B619F61B28F1AF00748A1D /* ScoreView.swift in Sources */,
-				A4AD98A31B17AD34009ED7AE /* ChallengesViewController.swift in Sources */,
 				A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */,
 				A48BC2451B20AB8A00B8A110 /* Coordinator.swift in Sources */,
 				A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */,
@@ -523,6 +522,7 @@
 				A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */,
 				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
 				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
+				A40D6D811B2C4A7300E7D05F /* ChallengesViewController.swift in Sources */,
 				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

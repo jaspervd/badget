@@ -62,8 +62,6 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
         }
         self.imagePicker.mediaTypes = mediatypes
         self.imagePicker.delegate = self
-        self.imagePicker.modalTransitionStyle = .CrossDissolve
-        self.imagePicker.modalPresentationStyle = .CurrentContext
         self.presentViewController(self.imagePicker, animated: true, completion: nil)
     }
     
@@ -106,15 +104,20 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
         self.organisatorView.imageView.frame = imageRect
         self.organisatorView.imageView.image = self.image
         self.organisatorView.scrollView.frame = self.view.frame
-        self.organisatorView.scrollView.contentSize = self.image.size
         
-        let scaleX = self.organisatorView.bounds.size.width / self.organisatorView.scrollView.contentSize.width
-        let scaleY = self.organisatorView.bounds.size.height / self.organisatorView.scrollView.contentSize.height
+        let scaleX = self.organisatorView.bounds.size.width / self.image.size.width
+        let scaleY = self.organisatorView.bounds.size.height / self.image.size.height
         let minZoomScale = max(scaleX, scaleY)
         self.organisatorView.scrollView.minimumZoomScale = minZoomScale
         self.organisatorView.scrollView.zoomScale = minZoomScale
         self.organisatorView.scrollView.maximumZoomScale = 4
         self.organisatorView.scrollView.setContentOffset(CGPointMake((self.image.size.width * minZoomScale - self.organisatorView.scrollView.frame.width) / 2, (self.image.size.height * minZoomScale - self.organisatorView.scrollView.frame.height) / 2), animated: false)
+        
+        self.organisatorView.scrollView.contentSize = CGSizeMake(self.image.size.width * minZoomScale, self.image.size.height * minZoomScale)
+    }
+    
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        self.organisatorView.scrollView.contentSize = CGSizeMake(self.image.size.width * scrollView.zoomScale, self.image.size.height * scrollView.zoomScale)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
