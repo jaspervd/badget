@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 class Badge: NSObject, NSCoding {
     let id:Int
@@ -61,6 +62,14 @@ class Badge: NSObject, NSCoding {
             if(!appDelegate.managedObjectContext!.save(&error)) {
                 println("Couldn't save \(error), \(error?.userInfo)")
             }
+            
+            let parameters = [
+                "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
+                "title": self.title,
+                "goal": self.goal,
+                "photo_url": "\(self.title.lowercaseString).png"
+            ]
+            Alamofire.request(.POST, Settings.apiUrl + "/badges", parameters: parameters as? [String : AnyObject])
         }
     }
     

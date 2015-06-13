@@ -185,7 +185,6 @@
 				A429304F1B1F6A40009762F9 /* Classes */,
 				A4B619F21B28C49C00748A1D /* Info */,
 				A4AD989D1B179F14009ED7AE /* Badges */,
-				A4B619F91B28FBD800748A1D /* Score */,
 				A4B619FC1B29005400748A1D /* Instruction */,
 				A4AD989C1B179F0D009ED7AE /* Challenges */,
 				A4892FE51B21BA59008C731B /* Countdown */,
@@ -301,6 +300,7 @@
 				A4B619F71B28F30200748A1D /* Badge.swift */,
 				A40D6D761B2C1D8400E7D05F /* Badges.plist */,
 				A40D6D781B2C297000E7D05F /* BadgeFactory.swift */,
+				A4B619F91B28FBD800748A1D /* Score */,
 			);
 			name = Badges;
 			sourceTree = "<group>";
