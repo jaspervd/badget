@@ -18,6 +18,7 @@
 		A40D6D811B2C4A7300E7D05F /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D801B2C4A7300E7D05F /* ChallengesViewController.swift */; };
 		A40D6D841B2C728F00E7D05F /* CharacterPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D831B2C728F00E7D05F /* CharacterPartViewController.swift */; };
 		A40D6D861B2C72F400E7D05F /* CharacterPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */; };
+		A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D871B2CA59900E7D05F /* Badget.xcdatamodeld */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -77,6 +78,7 @@
 		A40D6D801B2C4A7300E7D05F /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		A40D6D831B2C728F00E7D05F /* CharacterPartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartViewController.swift; sourceTree = "<group>"; };
 		A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartView.swift; sourceTree = "<group>"; };
+		A40D6D881B2CA59900E7D05F /* Badget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Badget.xcdatamodel; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		A43E13D91B1667A9008B3823 /* Badget */ = {
 			isa = PBXGroup;
 			children = (
+				A40D6D871B2CA59900E7D05F /* Badget.xcdatamodeld */,
 				A429304F1B1F6A40009762F9 /* Classes */,
 				A4B619F21B28C49C00748A1D /* Info */,
 				A4AD989D1B179F14009ED7AE /* Badges */,
@@ -537,6 +540,7 @@
 				A48BC2431B20A8DA00B8A110 /* Organisator.swift in Sources */,
 				A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */,
 				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
+				A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */,
 				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
 				A40D6D811B2C4A7300E7D05F /* ChallengesViewController.swift in Sources */,
 				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
@@ -732,6 +736,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A40D6D871B2CA59900E7D05F /* Badget.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A40D6D881B2CA59900E7D05F /* Badget.xcdatamodel */,
+			);
+			currentVersion = A40D6D881B2CA59900E7D05F /* Badget.xcdatamodel */;
+			path = Badget.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A43E13CF1B1667A9008B3823 /* Project object */;
 }

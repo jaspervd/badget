@@ -12,12 +12,12 @@ class BadgeFactory: NSObject {
    
     class func createFromArray(plistArray:NSArray) -> Array<Badge> {
         var badgesArray = Array<Badge>()
-        for badgeDict in plistArray {
+        for (index, badgeDict) in enumerate(plistArray) {
             let title = badgeDict["title"] as! String
             let goal = badgeDict["goal"] as! String
             let image = badgeDict["image"] as! String
             
-            badgesArray.append(Badge(title: title, goal: goal, image: UIImage(named: image)!))
+            badgesArray.append(Badge(id: index, title: title, goal: goal, image: UIImage(named: image)!))
         }
         
         return badgesArray
