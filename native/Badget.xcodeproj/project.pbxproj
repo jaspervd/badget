@@ -12,6 +12,9 @@
 		A40D6D751B2B61C600E7D05F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D741B2B61C600E7D05F /* ChallengeViewController.swift */; };
 		A40D6D771B2C1D8400E7D05F /* Badges.plist in Resources */ = {isa = PBXBuildFile; fileRef = A40D6D761B2C1D8400E7D05F /* Badges.plist */; };
 		A40D6D791B2C297000E7D05F /* BadgeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D781B2C297000E7D05F /* BadgeFactory.swift */; };
+		A40D6D7B1B2C39B500E7D05F /* Regions.plist in Resources */ = {isa = PBXBuildFile; fileRef = A40D6D7A1B2C39B500E7D05F /* Regions.plist */; };
+		A40D6D7D1B2C3B0E00E7D05F /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D7C1B2C3B0E00E7D05F /* Region.swift */; };
+		A40D6D7F1B2C3B1A00E7D05F /* RegionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -66,6 +69,9 @@
 		A40D6D741B2B61C600E7D05F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		A40D6D761B2C1D8400E7D05F /* Badges.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Badges.plist; path = ../Badges.plist; sourceTree = "<group>"; };
 		A40D6D781B2C297000E7D05F /* BadgeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeFactory.swift; sourceTree = "<group>"; };
+		A40D6D7A1B2C39B500E7D05F /* Regions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Regions.plist; sourceTree = "<group>"; };
+		A40D6D7C1B2C3B0E00E7D05F /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionFactory.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +243,9 @@
 				A43E0E661B1B939A0020713F /* CoordinatorViewController.swift */,
 				A48BC23A1B20831F00B8A110 /* CoordinatorView.swift */,
 				A48BC2441B20AB8A00B8A110 /* Coordinator.swift */,
+				A40D6D7A1B2C39B500E7D05F /* Regions.plist */,
+				A40D6D7C1B2C3B0E00E7D05F /* Region.swift */,
+				A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */,
 			);
 			name = Coordinator;
 			sourceTree = "<group>";
@@ -413,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4480BD21B1F6CE30050C744 /* LaunchScreen.xib in Resources */,
+				A40D6D7B1B2C39B500E7D05F /* Regions.plist in Resources */,
 				A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */,
 				A40D6D771B2C1D8400E7D05F /* Badges.plist in Resources */,
 			);
@@ -481,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A40D6D731B2B2D5B00E7D05F /* ChallengesView.swift in Sources */,
+				A40D6D7D1B2C3B0E00E7D05F /* Region.swift in Sources */,
 				A48BC23D1B20833D00B8A110 /* BarmanView.swift in Sources */,
 				A48BC2471B20AB9500B8A110 /* Barman.swift in Sources */,
 				A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */,
@@ -502,6 +513,7 @@
 				A418E9381B1F513A000BFC6D /* Settings.swift in Sources */,
 				A48BC2411B208E8300B8A110 /* OrganisatorView.swift in Sources */,
 				A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */,
+				A40D6D7F1B2C3B1A00E7D05F /* RegionFactory.swift in Sources */,
 				A40219C91B1FA7EF0092B1F7 /* SwiftyJSON.swift in Sources */,
 				A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */,
 				A40D6D791B2C297000E7D05F /* BadgeFactory.swift in Sources */,

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Main Stage</string>
+		<key>radius</key>
+		<integer>60</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Club</string>
+		<key>radius</key>
+		<integer>40</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Wablief?!</string>
+		<key>radius</key>
+		<integer>20</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Picknick Area</string>
+		<key>radius</key>
+		<integer>20</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Castello</string>
+		<key>radius</key>
+		<integer>30</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Petit Bazar</string>
+		<key>radius</key>
+		<integer>50</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Trashure Island</string>
+		<key>radius</key>
+		<integer>30</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Salon Fou</string>
+		<key>radius</key>
+		<integer>10</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Marquee</string>
+		<key>radius</key>
+		<integer>40</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>The Shelter</string>
+		<key>radius</key>
+		<integer>30</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Le Bous Batterie</string>
+		<key>radius</key>
+		<integer>20</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Chill Out</string>
+		<key>radius</key>
+		<integer>30</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Boiler Room</string>
+		<key>radius</key>
+		<integer>40</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Dance Hall</string>
+		<key>radius</key>
+		<integer>35</integer>
+		<key>latitude</key>
+		<integer>50</integer>
+		<key>longitude</key>
+		<integer>4</integer>
+	</dict>
+</array>
+</plist>
