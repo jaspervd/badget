@@ -41,7 +41,7 @@ class ChallengeViewController: UIViewController {
     
     override func loadView() {
         let bounds = UIScreen.mainScreen().bounds
-        self.view = ChallengeView(frame: bounds, photo: self.image, header: self.header)
+        self.view = ChallengeView(frame: CGRectMake(self.navController.navigationBar.frame.height, 0, bounds.width, bounds.height - self.navController.navigationBar.frame.height), photo: self.image, header: self.header)
     }
 
     override func didReceiveMemoryWarning() {

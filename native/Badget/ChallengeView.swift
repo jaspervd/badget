@@ -16,10 +16,11 @@ class ChallengeView: UIView {
         
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = Settings.bgColor
         
         let passHolder = UIView(frame: CGRectMake(0, 0, frame.size.width - 60, 350))
         passHolder.center = CGPointMake(frame.size.width / 2, frame.size.height / 2)
+        passHolder.backgroundColor = UIColor.whiteColor()
         
         let imageView = UIImageView(image: photo)
         imageView.frame = CGRectMake(passHolder.frame.size.width / 2 - 75, 40, 150, 150)
