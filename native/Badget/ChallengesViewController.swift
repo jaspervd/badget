@@ -48,12 +48,31 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         let badgesBtn = UIBarButtonItem(title: "Badges", style: .Plain, target: self, action: "badgesHandler")
         self.navigationItem.rightBarButtonItem = badgesBtn
         
+        self.challengesView.leftBtn.addTarget(self, action: "leftBtnHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        self.challengesView.rightBtn.addTarget(self, action: "rightBtnHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        
         checkTime()
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = ChallengesView(frame: bounds)
+    }
+    
+    func leftBtnHandler() {
+        var index = self.numberOfChallenges - 1
+        if(self.challengesView.circularScrollView.currentPage() > 0) {
+            index = self.challengesView.circularScrollView.currentPage() - 1
+        }
+        self.challengesView.circularScrollView.moveToPage(index, animated: true)
+    }
+    
+    func rightBtnHandler() {
+        var index = 0
+        if(self.challengesView.circularScrollView.currentPage() < (self.numberOfChallenges - 1)) {
+            index = self.challengesView.circularScrollView.currentPage() + 1
+        }
+        self.challengesView.circularScrollView.moveToPage(index, animated: true)
     }
     
     func createPasses() {
