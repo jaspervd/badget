@@ -32,12 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 111, 43))
-        imageView.contentMode = .ScaleAspectFit
-        imageView.image = UIImage(named: "logo")
+        let titleView = UIImageView(image: UIImage(named: "logo"))
+        titleView.center = CGPointMake(navController.navigationBar.frame.size.width / 2, navController.navigationBar.frame.size.height / 2)
+        navController.navigationBar.addSubview(titleView)
         
         let headerBg = UIImage(named: "headerbg")!
-        navController.navigationBar.topItem!.titleView = imageView
         navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.setBackgroundImage(headerBg.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
         navController.navigationBar.sizeThatFits(headerBg.size)

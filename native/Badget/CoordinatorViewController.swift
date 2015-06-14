@@ -47,8 +47,6 @@ class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocation
         
         self.view.addSubview(self.instructionView)
         
-        self.title = "Coordinator"
-        
         self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     

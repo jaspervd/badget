@@ -41,8 +41,6 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
         
         self.view.addSubview(self.instructionView)
         
-        self.title = "Organisator"
-        
         self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
         self.organisatorView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
         self.organisatorView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)

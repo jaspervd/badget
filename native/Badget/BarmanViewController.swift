@@ -44,8 +44,6 @@ class BarmanViewController: UIViewController, ChallengeProtocol {
         
         self.view.addSubview(self.instructionView)
         
-        self.title = "Barman"
-        
         self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
