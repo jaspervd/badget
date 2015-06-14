@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     var headVC:CharacterPartViewController!
     var bodyVC:CharacterPartViewController!
@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     let challengesVC = ChallengesViewController()
     var image:UIImage?
+    var kbHeight:CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +53,46 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         
         self.registerView.genderSwitch.addTarget(self, action: "genderSwitched", forControlEvents: UIControlEvents.ValueChanged)
         self.registerView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
-
-        // Do any additional setup after loading the view.
+        
+        self.registerView.inputName.delegate = self
+        self.registerView.inputEmail.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
-
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                self.kbHeight = keyboardSize.height
+                moveContent(true)
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        moveContent(false)
+    }
+    
+    func moveContent(up: Bool) {
+        var movement = (up ? -self.kbHeight : self.kbHeight)
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
