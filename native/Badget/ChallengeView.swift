@@ -34,6 +34,7 @@ class ChallengeView: UIView {
         self.btnContinue.frame = CGRectMake((passHolder.frame.width - activeImage.size.width) / 2, headerView.frame.origin.y + headerView.frame.height + 20, activeImage.size.width, activeImage.size.height)
         self.btnContinue.setBackgroundImage(activeImage, forState: .Normal)
         self.btnContinue.setBackgroundImage(UIImage(named: "beginbtninactive"), forState: .Disabled)
+        self.btnContinue.enabled = false
         
         passHolder.addSubview(imageView)
         passHolder.addSubview(headerView)

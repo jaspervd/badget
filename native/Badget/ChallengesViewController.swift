@@ -112,46 +112,24 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         let inLocation = self.region.containsCoordinate(newLocation.coordinate)
-        if(inLocation && self.organisatorVC.isViewLoaded()) {
-            self.organisatorVC.instructionView.btnContinue.enabled = true
-        } else if(!inLocation && self.organisatorVC.isViewLoaded()) {
-            self.organisatorVC.instructionView.btnContinue.enabled = false
+        
+        for challengeVC in challengeVCs {
+            challengeVC.challengeView.btnContinue.enabled = inLocation
         }
-        if(inLocation && self.coordinatorVC.isViewLoaded()) {
-            self.coordinatorVC.instructionView.btnContinue.enabled = true
-        } else if(!inLocation && self.coordinatorVC.isViewLoaded()) {
-            self.coordinatorVC.instructionView.btnContinue.enabled = false
-        }
-        if(inLocation && self.barmanVC.isViewLoaded()) {
-            self.barmanVC.instructionView.btnContinue.enabled = true
-        } else if(!inLocation && self.barmanVC.isViewLoaded()) {
-            self.barmanVC.instructionView.btnContinue.enabled = false
-        }
+        manager.stopUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         println("entered region")
-        if(self.organisatorVC.isViewLoaded()) {
-            self.organisatorVC.instructionView.btnContinue.enabled = true
-        }
-        if(self.coordinatorVC.isViewLoaded()) {
-            self.coordinatorVC.instructionView.btnContinue.enabled = true
-        }
-        if(self.barmanVC.isViewLoaded()) {
-            self.barmanVC.instructionView.btnContinue.enabled = true
+        for challengeVC in challengeVCs {
+            challengeVC.challengeView.btnContinue.enabled = true
         }
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         println("left region")
-        if(self.organisatorVC.isViewLoaded()) {
-            self.organisatorVC.instructionView.btnContinue.enabled = false
-        }
-        if(self.coordinatorVC.isViewLoaded()) {
-            self.coordinatorVC.instructionView.btnContinue.enabled = false
-        }
-        if(self.barmanVC.isViewLoaded()) {
-            self.barmanVC.instructionView.btnContinue.enabled = false
+        for challengeVC in challengeVCs {
+            challengeVC.challengeView.btnContinue.enabled = false
         }
     }
     
@@ -208,17 +186,6 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        for (index, challengeVC) in enumerate(challengeVCs) {
-            if(CGRectIntersectsRect(scrollView.bounds, challengeVC.view.frame)) {
-                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                    challengeVC.view.transform = CGAffineTransformMakeScale(1, 1)
-                    }, completion: nil)
-            } else {
-                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                    challengeVC.view.transform = CGAffineTransformMakeScale(0.7, 0.7)
-                }, completion: nil)
-            }
-        }
         if(self.organisatorVC.started && !CGRectIntersectsRect(scrollView.bounds, self.organisatorVC.view.frame)) {
             self.organisatorVC.didFinishChallenge()
         }
