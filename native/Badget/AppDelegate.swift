@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")) {
             if(Settings.currentDate.timeIntervalSinceDate(Settings.startDate) > 0) {
                 let navController = UINavigationController(rootViewController: ChallengesViewController())
+                UINavigationBar.appearance().shadowImage = UIImage()
+                UINavigationBar.appearance().setBackgroundImage(UIImage(named: "headerbg")!.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
                 self.window.rootViewController = navController
             } else {
                 self.window.rootViewController = CountdownViewController()
