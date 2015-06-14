@@ -27,6 +27,7 @@ class RegisterView: UIView {
         self.characterView.addSubview(characterShade)
         
         self.genderSwitch = UISwitch(frame: CGRectMake(10, self.characterView.frame.size.height + self.characterView.frame.origin.y, 44, 100))
+        self.genderSwitch.setOn(true, animated: false)
         
         let inputView = UIView(frame: CGRectMake((frame.size.width - 294) / 2, self.genderSwitch.frame.origin.y + self.genderSwitch.frame.height, 294, 93))
         inputView.addSubview(UIImageView(image: UIImage(named: "loginput")))

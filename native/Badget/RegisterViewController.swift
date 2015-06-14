@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     var headVC:CharacterPartViewController!
     var bodyVC:CharacterPartViewController!
     var legsVC:CharacterPartViewController!
+    var gender = "m"
     
     var registerView:RegisterView! {
         get {
@@ -104,6 +105,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func genderSwitched() {
+        self.gender = (self.registerView.genderSwitch.on ? "m" : "f")
         self.headVC.switchActiveArray()
         self.bodyVC.switchActiveArray()
         self.legsVC.switchActiveArray()
@@ -151,6 +153,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         fileUploader.addFileData(UIImagePNGRepresentation(image), withName: "photo", withMimeType: "image/png")
         fileUploader.setValue(self.registerView.inputName.text, forParameter: "name")
         fileUploader.setValue(self.registerView.inputEmail.text, forParameter: "email")
+        fileUploader.setValue(self.gender, forParameter: "gender")
         var request = NSMutableURLRequest(URL: NSURL(string: Settings.apiUrl + "/users")!)
         request.HTTPMethod = "POST"
         fileUploader.uploadFile(request: request)?.responseJSON { (_, _, data, _) in
