@@ -75,7 +75,7 @@ class InfoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func swipeHandler() {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     /*
