@@ -23,7 +23,7 @@ class ChallengeView: UIView {
         passHolder.backgroundColor = UIColor.whiteColor()
         
         let imageView = UIImageView(image: photo)
-        imageView.frame = CGRectMake(passHolder.frame.size.width / 2 - 75, 40, 150, 150)
+        imageView.frame = CGRectMake((passHolder.frame.size.width - photo.size.width) / 2, 40, photo.size.width, photo.size.height)
         
         let titleText = UILabel(frame: CGRectMake(10, imageView.frame.origin.y + imageView.frame.height + 10, passHolder.frame.size.width - 20, 44))
         titleText.text = header

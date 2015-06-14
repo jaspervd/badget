@@ -32,14 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 111, 43))
         imageView.contentMode = .ScaleAspectFit
         imageView.image = UIImage(named: "logo")
         
+        let headerBg = UIImage(named: "headerbg")!
         navController.navigationBar.topItem!.titleView = imageView
-        
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "headerbg")!.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
+        navController.navigationBar.shadowImage = UIImage()
+        navController.navigationBar.setBackgroundImage(headerBg.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
+        navController.navigationBar.sizeThatFits(headerBg.size)
         self.window.rootViewController = navController
 
         self.window.backgroundColor = Settings.bgColor

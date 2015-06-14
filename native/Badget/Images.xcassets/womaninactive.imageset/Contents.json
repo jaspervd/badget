@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "womaninactive.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "womaninactive.png"
+      "filename" : "womaninactive@2x.png"
     },
     {
       "idiom" : "universal",
