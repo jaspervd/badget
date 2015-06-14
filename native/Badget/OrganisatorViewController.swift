@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 
 class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
-    var instructionView:InstructionView!
     var started:Bool = false
     var facesArray:Array<UIView> = []
     var smiles:Int = 0
@@ -33,21 +32,17 @@ class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePic
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = OrganisatorView(frame: bounds)
-        self.instructionView = InstructionView(frame: bounds)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(self.instructionView)
-        
-        self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
+        self.organisatorView.btnCamera.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
         self.organisatorView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
         self.organisatorView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func didStartChallenge() {
-        self.instructionView.removeFromSuperview()
         self.started = true
         
         self.organisatorView.scrollView.delegate = self
