@@ -168,18 +168,21 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         
         if let organisator = NSKeyedUnarchiver.unarchiveObjectWithFile(self.organisatorVC.fileName) as? Organisator {
             if(calendar.isDate(organisator.date, inSameDayAsDate: Settings.currentDate)) {
+                self.challengeVCs[0].setDone()
                 self.organisatorVC.setScore(organisator)
             }
         }
         
         if let coordinator = NSKeyedUnarchiver.unarchiveObjectWithFile(self.coordinatorVC.fileName) as? Coordinator {
             if(calendar.isDate(coordinator.date, inSameDayAsDate: Settings.currentDate)) {
+                self.challengeVCs[1].setDone()
                 self.coordinatorVC.setScore(coordinator)
             }
         }
         
         if let barman = NSKeyedUnarchiver.unarchiveObjectWithFile(self.barmanVC.fileName) as? Barman {
             if(calendar.isDate(barman.date, inSameDayAsDate: Settings.currentDate)) {
+                self.challengeVCs[2].setDone()
                 self.barmanVC.setScore(barman)
             }
         }

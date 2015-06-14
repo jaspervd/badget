@@ -41,6 +41,12 @@ class ChallengeViewController: UIViewController {
         let bounds = UIScreen.mainScreen().bounds
         self.view = ChallengeView(frame: CGRectMake(self.navController.navigationBar.frame.height, 0, bounds.width, bounds.height - self.navController.navigationBar.frame.height), header: self.header)
     }
+    
+    func setDone() {
+        self.challengeView.toggleResult()
+        self.challengeView.imageView.image = UIImage(named: "manageruncolored") //\(self.header)
+        self.challengeView.headerView.image = UIImage(named: "\(self.header)functietitleuncolored")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
