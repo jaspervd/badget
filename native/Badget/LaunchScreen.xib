@@ -6,37 +6,44 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="R1T-Pa-9Z2">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+        <view contentMode="scaleAspectFit" id="R1T-Pa-9Z2">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="WVI-k8-hMK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="qUv-BL-ALX">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <variation key="heightClass=regular" misplaced="YES">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                    </variation>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.98039215686274506" green="0.92549019607843142" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="WVI-k8-hMK" secondAttribute="centerX" id="d4B-77-S7N"/>
-                <constraint firstAttribute="centerY" secondItem="WVI-k8-hMK" secondAttribute="centerY" id="jbe-45-3AV"/>
+                <constraint firstAttribute="centerY" secondItem="qUv-BL-ALX" secondAttribute="centerY" id="JnD-3x-b6I"/>
+                <constraint firstAttribute="centerX" secondItem="qUv-BL-ALX" secondAttribute="centerX" id="qxz-h2-zN1"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="WVI-k8-hMK"/>
+                    <exclude reference="qUv-BL-ALX"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="d4B-77-S7N"/>
-                    <exclude reference="jbe-45-3AV"/>
+                    <exclude reference="JnD-3x-b6I"/>
+                    <exclude reference="qxz-h2-zN1"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular">
                 <mask key="subviews">
-                    <include reference="WVI-k8-hMK"/>
+                    <include reference="qUv-BL-ALX"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="d4B-77-S7N"/>
-                    <include reference="jbe-45-3AV"/>
+                    <include reference="JnD-3x-b6I"/>
+                    <include reference="qxz-h2-zN1"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="538" y="412"/>
         </view>
     </objects>
     <resources>

@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 struct Settings {
-    static let bgColor = UIColor(red: 98/255, green: 190/255, blue: 199/255, alpha: 1)
+    static let bgColor = UIColor(red: 252/255, green: 240/255, blue: 222/255, alpha: 1)
     static let apiUrl = "http://student.howest.be/jasper.van.damme/20142015/MA4/BADGET/api"
     static let startDate = NSDate(timeIntervalSince1970: 1440057600) // 1440057600: 20/08/15 08:00
     static let secondsEndDay = 64800 // 64800: 18h
