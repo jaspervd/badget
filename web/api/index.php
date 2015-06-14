@@ -33,7 +33,7 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
         $fileTmp = $_FILES['photo'];
         $ext = pathinfo($fileTmp['name'], PATHINFO_EXTENSION);
         if($ext == '') {
-            $ext = 'jpg';
+            $ext = 'png';
         }
         $fileName = time() . '_' . mt_rand(100, 999) . '.' . $ext;
         $uploadfile = '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $fileName;
