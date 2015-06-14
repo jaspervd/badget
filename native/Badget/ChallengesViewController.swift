@@ -40,8 +40,6 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         createPasses()
         setupLocationManager()
         
-        self.title = "Uitdagingen"
-        
         let infoBtn = UIBarButtonItem(title: "Info", style: .Plain, target: self, action: "infoHandler")
         self.navigationItem.leftBarButtonItem = infoBtn
         
@@ -76,7 +74,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     }
     
     func createPasses() {
-        self.challengeVCs = [ChallengeViewController(viewController: self.organisatorVC, navController: self.navigationController!, image: UIImage(named: "managercolored")!, header: "Organisator"), ChallengeViewController(viewController: self.coordinatorVC, navController: self.navigationController!, image: UIImage(named: "managercolored")!, header: "Coordinator"), ChallengeViewController(viewController: self.barmanVC, navController: self.navigationController!, image: UIImage(named: "managercolored")!, header: "Barman")]
+        self.challengeVCs = [ChallengeViewController(viewController: self.organisatorVC, navController: self.navigationController!, header: "organisator"), ChallengeViewController(viewController: self.coordinatorVC, navController: self.navigationController!, header: "coordinator"), ChallengeViewController(viewController: self.barmanVC, navController: self.navigationController!, header: "barman")]
         
         self.numberOfChallenges = self.challengeVCs.count
         

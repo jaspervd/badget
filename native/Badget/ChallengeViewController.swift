@@ -12,7 +12,6 @@ class ChallengeViewController: UIViewController {
     
     let viewController:UIViewController
     let navController:UINavigationController
-    let image:UIImage
     let header:String
     
     var challengeView:ChallengeView! {
@@ -21,10 +20,9 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    init(viewController: UIViewController, navController: UINavigationController, image: UIImage, header: String) {
+    init(viewController: UIViewController, navController: UINavigationController, header: String) {
         self.viewController = viewController
         self.navController = navController
-        self.image = image
         self.header = header
         super.init(nibName: nil, bundle: nil)
     }
@@ -41,7 +39,7 @@ class ChallengeViewController: UIViewController {
     
     override func loadView() {
         let bounds = UIScreen.mainScreen().bounds
-        self.view = ChallengeView(frame: CGRectMake(self.navController.navigationBar.frame.height, 0, bounds.width, bounds.height - self.navController.navigationBar.frame.height), photo: self.image, header: self.header)
+        self.view = ChallengeView(frame: CGRectMake(self.navController.navigationBar.frame.height, 0, bounds.width, bounds.height - self.navController.navigationBar.frame.height), header: self.header)
     }
 
     override func didReceiveMemoryWarning() {

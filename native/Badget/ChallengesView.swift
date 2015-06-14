@@ -12,32 +12,36 @@ import CircularScrollView
 class ChallengesView: UIView {
 
     let circularScrollView:CircularScrollView
-    let leftBtn:UIButton
-    let rightBtn:UIButton
+    let leftBtn:ArrowButton
+    let rightBtn:ArrowButton
     
     override init(frame: CGRect) {
         self.circularScrollView = CircularScrollView(frame: frame)
-        self.leftBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        self.rightBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        self.leftBtn = ArrowButton()
+        self.rightBtn = ArrowButton()
         super.init(frame: frame)
         
         self.backgroundColor = Settings.bgColor
-        self.circularScrollView.backgroundColor = nil
+        self.circularScrollView.backgroundColor = UIColor.clearColor()
         
-        let infoText = UITextView(frame: CGRectMake(20, frame.height - 80, frame.width - 40, 80))
+        let infoText = UITextView(frame: CGRectMake(50, frame.height - 80, frame.width - 100, 80))
         infoText.backgroundColor = nil
         infoText.editable = false
-        infoText.textColor = UIColor.whiteColor()
+        infoText.textColor = UIColor(red: 117/255, green: 192/255, blue: 204/255, alpha: 1)
+        infoText.font = UIFont.systemFontOfSize(14, weight: 700)
         infoText.text = "Ga naar de Randstad stand om de uitdaging aan te gaan."
+        infoText.textAlignment = .Center
         
-        self.leftBtn.frame = CGRectMake(0, frame.height / 2 - 22, 30, 44)
-        self.leftBtn.setTitle("<", forState: UIControlState.Normal)
-        self.leftBtn.backgroundColor = UIColor.whiteColor()
+        self.leftBtn.frame = CGRectMake(10, frame.height / 2 - 22, 30, 44)
+        self.leftBtn.setDirection(.Left)
         
-        self.rightBtn.frame = CGRectMake(frame.width - 30, frame.height / 2 - 22, 30, 44)
-        self.rightBtn.setTitle(">", forState: UIControlState.Normal)
-        self.rightBtn.backgroundColor = UIColor.whiteColor()
+        self.rightBtn.frame = CGRectMake(frame.width - 40, frame.height / 2 - 22, 30, 44)
+        self.rightBtn.setDirection(.Right)
+    
+        let overviewBar = UIImageView(image: UIImage(named: "overviewbar"))
+        overviewBar.frame = CGRectMake((frame.width - overviewBar.frame.width) / 2, 80, overviewBar.frame.width, overviewBar.frame.height)
         
+        self.addSubview(overviewBar)
         self.addSubview(self.circularScrollView)
         self.addSubview(self.leftBtn)
         self.addSubview(self.rightBtn)
