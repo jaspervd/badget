@@ -40,7 +40,8 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         createPasses()
         setupLocationManager()
         
-        let infoBtn = UIBarButtonItem(title: "Info", style: .Plain, target: self, action: "infoHandler")
+        let infoBtn = UIBarButtonItem(image: UIImage(named: "infobtn"), style: .Plain, target: self, action: "infoHandler")
+        infoBtn.image = infoBtn.image?.imageWithRenderingMode(.AlwaysOriginal)
         self.navigationItem.leftBarButtonItem = infoBtn
         
         let badgesBtn = UIBarButtonItem(title: "Badges", style: .Plain, target: self, action: "badgesHandler")
