@@ -143,10 +143,10 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     func saveUser() {
         let fileUploader = FileUploader()
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.view.frame.width, self.view.frame.height), false, 1)
-        self.headVC.characterPartView.imageView.image?.drawInRect(CGRectMake(self.headVC.view.frame.origin.x, self.headVC.view.frame.origin.y, self.headVC.characterPartView.imageView.frame.width, self.headVC.characterPartView.imageView.frame.height))
-        self.bodyVC.characterPartView.imageView.image?.drawInRect(CGRectMake(self.bodyVC.view.frame.origin.x, self.bodyVC.view.frame.origin.y, self.bodyVC.characterPartView.imageView.frame.width, self.bodyVC.characterPartView.imageView.frame.height))
-        self.legsVC.characterPartView.imageView.image?.drawInRect(CGRectMake(self.legsVC.view.frame.origin.x, self.legsVC.view.frame.origin.y, self.legsVC.characterPartView.imageView.frame.width, self.legsVC.characterPartView.imageView.frame.height))
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.bodyVC.characterPartView.imageView.frame.size.width, self.registerView.characterView.frame.size.height), false, 1)
+        self.headVC.characterPartView.imageView.image?.drawInRect(CGRectMake((self.bodyVC.characterPartView.imageView.frame.size.width - self.headVC.characterPartView.imageView.frame.size.width) / 2, self.headVC.view.frame.origin.y, self.headVC.characterPartView.imageView.frame.width, self.headVC.characterPartView.imageView.frame.height))
+        self.bodyVC.characterPartView.imageView.image?.drawInRect(CGRectMake(0, self.bodyVC.view.frame.origin.y, self.bodyVC.characterPartView.imageView.frame.width, self.bodyVC.characterPartView.imageView.frame.height))
+        self.legsVC.characterPartView.imageView.image?.drawInRect(CGRectMake((self.bodyVC.characterPartView.imageView.frame.size.width - self.legsVC.characterPartView.imageView.frame.size.width) / 2, self.legsVC.view.frame.origin.y, self.legsVC.characterPartView.imageView.frame.width, self.legsVC.characterPartView.imageView.frame.height))
         var image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
