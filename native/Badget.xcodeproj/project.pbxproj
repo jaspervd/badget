@@ -42,6 +42,7 @@
 		A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499A2531B29C24E00D903F3 /* BadgeViewController.swift */; };
 		A49A82A01B2D8880009558CB /* CampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A829F1B2D8880009558CB /* CampaignView.swift */; };
 		A49A82A21B2D8937009558CB /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A11B2D8937009558CB /* CampaignViewController.swift */; };
+		A49A82A41B2D8E9C009558CB /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A31B2D8E9C009558CB /* ArrowButton.swift */; };
 		A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */; };
 		A4AD98A11B17A3BA009ED7AE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */; };
 		A4B619F11B28618C00748A1D /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F01B28618C00748A1D /* ChallengeView.swift */; };
@@ -109,6 +110,7 @@
 		A499A2531B29C24E00D903F3 /* BadgeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		A49A829F1B2D8880009558CB /* CampaignView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignView.swift; sourceTree = "<group>"; };
 		A49A82A11B2D8937009558CB /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
+		A49A82A31B2D8E9C009558CB /* ArrowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A4B619F01B28618C00748A1D /* ChallengeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				A4892FE51B21BA59008C731B /* Countdown */,
 				A4AD989B1B179EF7009ED7AE /* Start */,
 				A418E9371B1F513A000BFC6D /* Settings.swift */,
+				A49A82A51B2D8EA6009558CB /* UI */,
 				A43E13DC1B1667A9008B3823 /* AppDelegate.swift */,
 				A43E13E31B1667A9008B3823 /* Images.xcassets */,
 				A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */,
@@ -267,6 +270,14 @@
 				A40D6D7E1B2C3B1A00E7D05F /* RegionFactory.swift */,
 			);
 			name = Coordinator;
+			sourceTree = "<group>";
+		};
+		A49A82A51B2D8EA6009558CB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A49A82A31B2D8E9C009558CB /* ArrowButton.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		A4AD989B1B179EF7009ED7AE /* Start */ = {
@@ -547,6 +558,7 @@
 				A4B619F81B28F30200748A1D /* Badge.swift in Sources */,
 				A48BC2431B20A8DA00B8A110 /* Organisator.swift in Sources */,
 				A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */,
+				A49A82A41B2D8E9C009558CB /* ArrowButton.swift in Sources */,
 				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
 				A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */,
 				A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */,

@@ -17,22 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        var navController = UINavigationController()
         if(NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")) {
             if(Settings.currentDate.timeIntervalSinceDate(Settings.startDate) > 0) {
-                let navController = UINavigationController(rootViewController: ChallengesViewController())
-                UINavigationBar.appearance().shadowImage = UIImage()
-                UINavigationBar.appearance().setBackgroundImage(UIImage(named: "headerbg")!.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
-                self.window.rootViewController = navController
+                navController = UINavigationController(rootViewController: ChallengesViewController())
             } else {
-                self.window.rootViewController = CountdownViewController()
+                navController = UINavigationController(rootViewController: CountdownViewController())
             }
         } else {
             if(NSUserDefaults.standardUserDefaults().boolForKey("readCampaign")) {
-                self.window.rootViewController = RegisterViewController()
+                navController = UINavigationController(rootViewController: RegisterViewController())
             } else {
-                self.window.rootViewController = CampaignViewController()
+                navController = UINavigationController(rootViewController: CampaignViewController())
             }
         }
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .ScaleAspectFit
+        imageView.image = UIImage(named: "logo")
+        
+        navController.navigationBar.topItem!.titleView = imageView
+        
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "headerbg")!.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
+        self.window.rootViewController = navController
 
         self.window.backgroundColor = Settings.bgColor
         self.window.makeKeyAndVisible()

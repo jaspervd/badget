@@ -11,24 +11,18 @@ import UIKit
 class CharacterPartView: UIView {
     
     let imageView:UIImageView
-    let leftBtn:UIButton
-    let rightBtn:UIButton
+    let leftBtn:ArrowButton
+    let rightBtn:ArrowButton
 
     init(frame: CGRect, partSize: CGSize) {
         self.imageView = UIImageView(frame: CGRectMake((frame.width - partSize.width) / 2, 0, partSize.width, partSize.height))
-        self.leftBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        self.rightBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        self.leftBtn = ArrowButton(frame: CGRectMake(10, partSize.height / 2 - 22, 30, 44))
+        self.leftBtn.setDirection(.Left)
+        
+        self.rightBtn = ArrowButton(frame: CGRectMake(frame.width - 40, partSize.height / 2 - 22, 30, 44))
+        self.rightBtn.setDirection(.Right)
+        
         super.init(frame: frame)
-        
-        self.imageView.backgroundColor = UIColor.redColor()
-        
-        self.leftBtn.frame = CGRectMake(10, partSize.height / 2 - 22, 30, 44)
-        self.leftBtn.setTitle("<", forState: UIControlState.Normal)
-        self.leftBtn.backgroundColor = UIColor.whiteColor()
-        
-        self.rightBtn.frame = CGRectMake(frame.width - 40, partSize.height / 2 - 22, 30, 44)
-        self.rightBtn.setTitle(">", forState: UIControlState.Normal)
-        self.rightBtn.backgroundColor = UIColor.whiteColor()
         
         self.addSubview(self.imageView)
         self.addSubview(self.leftBtn)

@@ -27,27 +27,28 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var maleHeads = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
-        var femaleHeads = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        var maleHeads = [UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!]
+        var femaleHeads = [UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!]
         self.headVC = CharacterPartViewController(maleArray: maleHeads, femaleArray: femaleHeads)
         self.addChildViewController(self.headVC)
         
-        var maleBodies = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
-        var femaleBodies = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        var maleBodies = [UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!]
+        var femaleBodies = [UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!]
         self.bodyVC = CharacterPartViewController(maleArray: maleBodies, femaleArray: femaleBodies)
         self.addChildViewController(self.bodyVC)
         
-        var maleLegs = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
-        var femaleLegs = [UIImage(named: "av")!, UIImage(named: "av")!, UIImage(named: "av")!]
+        var maleLegs = [UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!]
+        var femaleLegs = [UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!]
         self.legsVC = CharacterPartViewController(maleArray: maleLegs, femaleArray: femaleLegs)
         self.addChildViewController(self.legsVC)
         
-        self.bodyVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height)
-        self.legsVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + maleBodies[0].size.height)
+        self.headVC.view.frame.origin = CGPointMake(0, 35)
+        self.bodyVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + 35)
+        self.legsVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + maleBodies[0].size.height + 35)
         
-        self.view.addSubview(self.headVC.view)
-        self.view.addSubview(self.bodyVC.view)
-        self.view.addSubview(self.legsVC.view)
+        self.registerView.characterView.addSubview(self.headVC.view)
+        self.registerView.characterView.addSubview(self.bodyVC.view)
+        self.registerView.characterView.addSubview(self.legsVC.view)
         
         self.registerView.genderSwitch.addTarget(self, action: "genderSwitched", forControlEvents: UIControlEvents.ValueChanged)
         self.registerView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
