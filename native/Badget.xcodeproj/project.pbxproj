@@ -40,8 +40,10 @@
 		A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */; };
 		A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499A2511B29B88100D903F3 /* BadgeView.swift */; };
 		A499A2541B29C24E00D903F3 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499A2531B29C24E00D903F3 /* BadgeViewController.swift */; };
-		A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* StartViewController.swift */; };
-		A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* StartView.swift */; };
+		A49A82A01B2D8880009558CB /* CampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A829F1B2D8880009558CB /* CampaignView.swift */; };
+		A49A82A21B2D8937009558CB /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A11B2D8937009558CB /* CampaignViewController.swift */; };
+		A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */; };
+		A4AD98A11B17A3BA009ED7AE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */; };
 		A4B619F11B28618C00748A1D /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F01B28618C00748A1D /* ChallengeView.swift */; };
 		A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F31B28C4BC00748A1D /* InfoViewController.swift */; };
 		A4B619F61B28F1AF00748A1D /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F51B28F1AF00748A1D /* ScoreView.swift */; };
@@ -105,8 +107,10 @@
 		A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
 		A499A2511B29B88100D903F3 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		A499A2531B29C24E00D903F3 /* BadgeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
-		A4AD989E1B17A358009ED7AE /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		A4AD98A01B17A3BA009ED7AE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		A49A829F1B2D8880009558CB /* CampaignView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignView.swift; sourceTree = "<group>"; };
+		A49A82A11B2D8937009558CB /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
+		A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A4B619F01B28618C00748A1D /* ChallengeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		A4B619F31B28C4BC00748A1D /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A4B619F51B28F1AF00748A1D /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
@@ -269,8 +273,10 @@
 			isa = PBXGroup;
 			children = (
 				A40D6D821B2C725100E7D05F /* CharacterPart */,
-				A4AD989E1B17A358009ED7AE /* StartViewController.swift */,
-				A4AD98A01B17A3BA009ED7AE /* StartView.swift */,
+				A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */,
+				A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */,
+				A49A82A11B2D8937009558CB /* CampaignViewController.swift */,
+				A49A829F1B2D8880009558CB /* CampaignView.swift */,
 			);
 			name = Start;
 			sourceTree = "<group>";
@@ -513,11 +519,13 @@
 				A48BC2471B20AB9500B8A110 /* Barman.swift in Sources */,
 				A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */,
 				A4B619F61B28F1AF00748A1D /* ScoreView.swift in Sources */,
+				A49A82A01B2D8880009558CB /* CampaignView.swift in Sources */,
 				A48EABE61B1D0723008FEE12 /* ChallengeProtocol.swift in Sources */,
 				A48BC2451B20AB8A00B8A110 /* Coordinator.swift in Sources */,
 				A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */,
 				A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
+				A49A82A21B2D8937009558CB /* CampaignViewController.swift in Sources */,
 				A40D6D751B2B61C600E7D05F /* ChallengeViewController.swift in Sources */,
 				A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */,
 				A4892FE41B21BA48008C731B /* CountdownViewController.swift in Sources */,
@@ -541,9 +549,9 @@
 				A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */,
 				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
 				A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */,
-				A4AD989F1B17A358009ED7AE /* StartViewController.swift in Sources */,
+				A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */,
 				A40D6D811B2C4A7300E7D05F /* ChallengesViewController.swift in Sources */,
-				A4AD98A11B17A3BA009ED7AE /* StartView.swift in Sources */,
+				A4AD98A11B17A3BA009ED7AE /* RegisterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

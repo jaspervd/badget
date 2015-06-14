@@ -1,5 +1,5 @@
 //
-//  StartViewController.swift
+//  registerViewController.swift
 //  Badget
 //
 //  Created by Jasper Van Damme on 28/05/15.
@@ -9,15 +9,15 @@
 import UIKit
 import Alamofire
 
-class StartViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var headVC:CharacterPartViewController!
     var bodyVC:CharacterPartViewController!
     var legsVC:CharacterPartViewController!
     
-    var startView:StartView! {
+    var registerView:RegisterView! {
         get {
-            return self.view as! StartView
+            return self.view as! RegisterView
         }
     }
     
@@ -45,9 +45,12 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.bodyVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height)
         self.legsVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + maleBodies[0].size.height)
         
-        self.startView.btnContinue.addTarget(self, action: "continueClicked", forControlEvents: UIControlEvents.TouchUpInside)
-        self.startView.genderSwitch.addTarget(self, action: "genderSwitched", forControlEvents: UIControlEvents.ValueChanged)
-        self.startView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(self.headVC.view)
+        self.view.addSubview(self.bodyVC.view)
+        self.view.addSubview(self.legsVC.view)
+        
+        self.registerView.genderSwitch.addTarget(self, action: "genderSwitched", forControlEvents: UIControlEvents.ValueChanged)
+        self.registerView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
 
         // Do any additional setup after loading the view.
     }
@@ -59,20 +62,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = StartView(frame:bounds)
-        
-        if(NSUserDefaults.standardUserDefaults().boolForKey("readCampaign")) {
-            self.startView.showCredentials()
-        }
-    }
-    
-    func continueClicked() {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "readCampaign")
-        self.startView.showCredentials()
-        
-        self.view.addSubview(self.headVC.view)
-        self.view.addSubview(self.bodyVC.view)
-        self.view.addSubview(self.legsVC.view)
+        self.view = RegisterView(frame: bounds)
     }
     
     func genderSwitched() {
@@ -84,11 +74,11 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func saveClicked() {
         var alertController = UIAlertController()
         var errors = false
-        if(count(self.startView.inputName.text) < 1) {
+        if(count(self.registerView.inputName.text) < 1) {
             alertController = UIAlertController(title: "Foutje", message:
                 "Gelieve je naam in te vullen.", preferredStyle: UIAlertControllerStyle.Alert)
             errors = true
-        } else if(count(self.startView.inputEmail.text) < 1 || !isValidEmail(self.startView.inputEmail.text)) {
+        } else if(count(self.registerView.inputEmail.text) < 1 || !isValidEmail(self.registerView.inputEmail.text)) {
             alertController = UIAlertController(title: "Foutje", message:
                 "Gelieve je e-mailadres in te vullen.", preferredStyle: UIAlertControllerStyle.Alert)
             errors = true
@@ -121,8 +111,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         UIGraphicsEndImageContext()
         
         fileUploader.addFileData(UIImagePNGRepresentation(image), withName: "photo", withMimeType: "image/png")
-        fileUploader.setValue(self.startView.inputName.text, forParameter: "name")
-        fileUploader.setValue(self.startView.inputEmail.text, forParameter: "email")
+        fileUploader.setValue(self.registerView.inputName.text, forParameter: "name")
+        fileUploader.setValue(self.registerView.inputEmail.text, forParameter: "email")
         var request = NSMutableURLRequest(URL: NSURL(string: Settings.apiUrl + "/users")!)
         request.HTTPMethod = "POST"
         fileUploader.uploadFile(request: request)?.responseJSON { (_, _, data, _) in

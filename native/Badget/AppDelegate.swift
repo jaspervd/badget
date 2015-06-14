@@ -27,7 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window.rootViewController = CountdownViewController()
             }
         } else {
-            self.window.rootViewController = StartViewController()
+            if(NSUserDefaults.standardUserDefaults().boolForKey("readCampaign")) {
+                self.window.rootViewController = RegisterViewController()
+            } else {
+                self.window.rootViewController = CampaignViewController()
+            }
         }
 
         self.window.backgroundColor = Settings.bgColor
