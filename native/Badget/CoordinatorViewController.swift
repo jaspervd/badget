@@ -16,7 +16,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     var timer:NSTimer = NSTimer()
     var countdown:NSTimer = NSTimer()
     var countdownTime = 5
-    var milliseconds:CGFloat = 0
+    var seconds:Int = 0
     var locations:Array<CLRegion> = []
     let locationManager = CLLocationManager()
     var distance:Double = 0
@@ -77,7 +77,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func didStartChallenge() {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
         self.started = true
             
         var loc = self.getRandomLocation()
@@ -114,15 +114,13 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func timerHandler() {
-        self.milliseconds += 0.01
+        self.seconds++
         var formatter = NSNumberFormatter()
         formatter.minimumIntegerDigits = 2
-        var sec = Int(self.milliseconds)
-        var hours:Int = sec / (60 * 60)
-        var minutes:Int = sec / 60 - hours * 60
-        var seconds:Int = sec - (minutes * 60 + hours * 60)
-        var ms = Int((self.milliseconds - CGFloat(sec)) * 100)
-        self.coordinatorView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!).\(formatter.stringFromNumber(ms)!)"
+        var hours:Int = self.seconds / (60 * 60)
+        var minutes:Int = self.seconds / 60 - hours * 60
+        var seconds:Int = self.seconds - (minutes * 60 + hours * 60)
+        self.coordinatorView.timerText.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!)"
     }
     
     func setScore(coordinator: Coordinator) {
@@ -134,13 +132,13 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
         
         var badge = Badge()
         let badges = Badge.loadPlist()
-        if(self.milliseconds < 120000 && self.distance < 1000) { // if faster than 20 min + distance was less than 1km
+        if(self.seconds < 1200 && self.distance < 1000) { // if faster than 20 min + distance was less than 1km
             badge = badges[5]
-        } else if(self.milliseconds > 120000 && self.distance < 1000) { // if slower than 20 min + distance was less than 1km
+        } else if(self.seconds > 1200 && self.distance < 1000) { // if slower than 20 min + distance was less than 1km
             badge = badges[6]
-        } else if(self.milliseconds < 120000 && self.distance > 1000) { // if faster than 20 min + distance was larger than 1km
+        } else if(self.seconds < 1200 && self.distance > 1000) { // if faster than 20 min + distance was larger than 1km
             badge = badges[7]
-        } else if(self.milliseconds > 120000 && self.distance > 1000) {
+        } else if(self.seconds > 1200 && self.distance > 1000) {
             badge = badges[8]
         }
         
@@ -154,7 +152,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
             self.navigationController?.pushViewController(scoreVC, animated: true)
         }
         
-        self.milliseconds = 0
+        self.seconds = 0
         timer.invalidate()
     }
 

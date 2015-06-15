@@ -12,6 +12,7 @@ class CoordinatorView: UIView {
     
     let titleView:UIImageView
     let instructionText:UITextView
+    let textBackground:UIImageView
     let timerText:UILabel
     let distanceText:UILabel
     let locationBg:UIImageView
@@ -31,7 +32,7 @@ class CoordinatorView: UIView {
         self.instructionText.center = CGPointMake(frame.width / 2, self.titleView.frame.height * 2 + 120)
         
         let challengeBg = UIImageView(image: UIImage(named: "coordinatorlocatiechallengebg"))
-        challengeBg.frame = CGRectMake(0, self.instructionText.frame.origin.y + self.instructionText.frame.size.height, challengeBg.image!.size.width, challengeBg.image!.size.width)
+        challengeBg.frame = CGRectMake(0, self.instructionText.frame.origin.y + self.instructionText.frame.size.height + 10, challengeBg.image!.size.width, challengeBg.image!.size.width)
         self.goToText = UILabel(frame: CGRectMake(0, challengeBg.frame.origin.y + 30, frame.width, 40))
         self.goToText.text = "Ga naar..."
         self.goToText.textAlignment = .Center
@@ -46,22 +47,22 @@ class CoordinatorView: UIView {
         self.locationText.font = UIFont.systemFontOfSize(25)
         self.locationText.textAlignment = .Center
         
-        self.timerText = UILabel(frame: CGRectMake(0, 0, frame.width, 60))
-        self.timerText.textAlignment = .Center
-        self.timerText.text = "00:00:00.00"
-        self.timerText.center = CGPointMake(frame.width / 2, frame.height / 2 + self.locationText.frame.origin.y / 2)
+        self.textBackground = UIImageView(image: UIImage(named: "afstandtijdbg"))
+        self.textBackground.center = CGPointMake(frame.width / 2, (frame.height + self.locationText.frame.origin.y) / 2 + 10)
         
-        self.distanceText = UILabel(frame: CGRectMake(0, 0, frame.width, 60))
+        self.timerText = UILabel(frame: CGRectMake(0, 0, self.textBackground.frame.width, self.textBackground.frame.height / 2))
+        self.timerText.textAlignment = .Center
+        self.timerText.text = "00:00:00"
+        
+        self.distanceText = UILabel(frame: CGRectMake(0, self.timerText.frame.height, self.textBackground.frame.width, self.textBackground.frame.height / 2))
         self.distanceText.textAlignment = .Center
         self.distanceText.text = "0m"
-        self.distanceText.center = CGPointMake(frame.width / 2, frame.height / 2 + self.locationText.frame.origin.y / 2 + self.timerText.frame.height)
         
-        self.countdownText = UILabel(frame: CGRectMake(0, 0, frame.width, 200))
+        self.countdownText = UILabel(frame: CGRectMake(0, frame.height / 2, frame.width, 200))
         self.countdownText.text = "5"
         self.countdownText.textColor = UIColor.whiteColor()
         self.countdownText.font = UIFont.systemFontOfSize(150)
         self.countdownText.textAlignment = .Center
-        self.countdownText.center = CGPointMake(frame.width / 2, (frame.height + challengeBg.frame.height / 2) / 2)
         
         super.init(frame: frame)
         
@@ -70,6 +71,8 @@ class CoordinatorView: UIView {
         self.addSubview(self.instructionText)
         self.addSubview(challengeBg)
         self.addSubview(self.countdownText)
+        self.textBackground.addSubview(self.timerText)
+        self.textBackground.addSubview(self.distanceText)
     }
     
     func startChallenge() {
@@ -77,8 +80,7 @@ class CoordinatorView: UIView {
         self.addSubview(self.goToText)
         self.addSubview(self.locationBg)
         self.addSubview(self.locationText)
-        self.addSubview(self.timerText)
-        self.addSubview(self.distanceText)
+        self.addSubview(self.textBackground)
     }
     
     required init(coder aDecoder: NSCoder) {
