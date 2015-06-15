@@ -149,7 +149,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
             coordinator.save()
         
             setScore(coordinator)
-            self.navigationController?.pushViewController(scoreVC, animated: true)
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "coordinatorDidFinish", object: nil))
         }
         
         self.seconds = 0

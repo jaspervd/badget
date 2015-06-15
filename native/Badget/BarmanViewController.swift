@@ -120,7 +120,7 @@ class BarmanViewController: UIViewController {
                 barman.save()
                 
                 setScore(barman)
-                self.navigationController?.pushViewController(scoreVC, animated: true)
+                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "barmanDidFinish", object: nil))
             }
         }
         if(self.motionManager.deviceMotionActive) {

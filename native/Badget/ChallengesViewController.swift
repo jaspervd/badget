@@ -94,18 +94,22 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         self.automaticallyAdjustsScrollViewInsets = false
         self.challengesView.circularScrollView.delegate = self
         self.challengesView.circularScrollView.dataSource = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "organisatorHandler", name: "organisatorDidFinish", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "coordinatorHandler", name: "coordinatorDidFinish", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "barmanHandler", name: "barmanDidFinish", object: nil)
     }
     
     func willShowResult(challenge: ChallengeViewController) {
         switch challenge.header {
         case "organisator":
-            self.navigationController?.pushViewController(self.organisatorVC.scoreVC, animated: true)
+            organisatorHandler()
             
         case "coordinator":
-            self.navigationController?.pushViewController(self.coordinatorVC.scoreVC, animated: true)
+            coordinatorHandler()
             
         case "barman":
-            self.navigationController?.pushViewController(self.barmanVC.scoreVC, animated: true)
+            barmanHandler()
             
         default:
             self.navigationController?.pushViewController(challenge.viewController, animated: true)
@@ -164,6 +168,8 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         if(self.organisatorVC.scoreVC == nil) {
             self.navigationController?.pushViewController(self.organisatorVC, animated: true)
         } else {
+            self.challengeVCs[0].setDone()
+            self.navigationController?.popViewControllerAnimated(false)
             self.navigationController?.pushViewController(self.organisatorVC.scoreVC, animated: true)
         }
     }
@@ -172,6 +178,8 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         if(self.coordinatorVC.scoreVC == nil) {
             self.navigationController?.pushViewController(self.coordinatorVC, animated: true)
         } else {
+            self.challengeVCs[1].setDone()
+            self.navigationController?.popViewControllerAnimated(false)
             self.navigationController?.pushViewController(self.coordinatorVC.scoreVC, animated: true)
         }
     }
@@ -180,6 +188,8 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         if(self.barmanVC.scoreVC == nil) {
             self.navigationController?.pushViewController(self.barmanVC, animated: true)
         } else {
+            self.challengeVCs[2].setDone()
+            self.navigationController?.popViewControllerAnimated(false)
             self.navigationController?.pushViewController(self.barmanVC.scoreVC, animated: true)
         }
     }

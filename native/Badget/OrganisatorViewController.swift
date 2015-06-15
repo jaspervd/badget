@@ -152,7 +152,7 @@ class OrganisatorViewController: UIViewController, UIImagePickerControllerDelega
             organisator.save()
             
             setScore(organisator)
-            self.navigationController?.pushViewController(self.scoreVC, animated: true)
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "organisatorDidFinish", object: nil))
         }
     }
 
