@@ -23,7 +23,7 @@ class InfoViewController: UIViewController, UIScrollViewDelegate {
 
         self.view.backgroundColor = UIColor.blackColor()
         
-        self.title = "Info"
+        self.title = ""
         
         createPages()
         self.pageControl = UIPageControl(frame: CGRectMake(0, self.view.frame.height - 30, self.view.frame.width, 20))

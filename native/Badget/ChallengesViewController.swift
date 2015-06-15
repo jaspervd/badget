@@ -39,6 +39,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         
         createPasses()
         setupLocationManager()
+        self.title = ""
         
         let infoBtn = UIBarButtonItem(image: UIImage(named: "infobtn"), style: .Plain, target: self, action: "infoHandler")
         infoBtn.image = infoBtn.image?.imageWithRenderingMode(.AlwaysOriginal)
@@ -148,14 +149,12 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
-        println("entered region")
         for challengeVC in challengeVCs {
             challengeVC.challengeView.btnContinue.enabled = true
         }
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
-        println("left region")
         for challengeVC in challengeVCs {
             challengeVC.challengeView.btnContinue.enabled = false
         }

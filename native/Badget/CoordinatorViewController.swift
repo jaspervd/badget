@@ -94,6 +94,9 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         self.distance += newLocation.distanceFromLocation(oldLocation)
+        if(self.distance >= 0) {
+            self.coordinatorView.distanceText.text = "\(Int(round(self.distance)))m"
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {

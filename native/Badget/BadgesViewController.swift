@@ -22,7 +22,7 @@ class BadgesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Badges"
+        self.title = ""
         self.view.backgroundColor = Settings.bgColor
         
         let possibleBadges = Badge.loadPlist()
