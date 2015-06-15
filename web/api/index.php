@@ -42,7 +42,7 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
         }
     }
 
-    echo json_encode($usersDAO->register($post['name'], $post['email'], $photo_url));
+    echo json_encode($usersDAO->register($post['name'], $post['email'], $post['gender'], $photo_url));
     exit();
 });
 

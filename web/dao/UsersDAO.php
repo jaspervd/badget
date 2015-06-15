@@ -15,11 +15,12 @@ class UsersDAO extends DAO {
         return array();
     }
 
-    public function register($name, $email, $photo_url) {
-        $sql = "INSERT INTO `bg_users` (`name`, `email`, `photo_url`) VALUES (:name, :email, :photo_url)";
+    public function register($name, $email, $gender, $photo_url) {
+        $sql = "INSERT INTO `bg_users` (`name`, `email`, `gender`, `photo_url`) VALUES (:name, :email, :gender, :photo_url)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':gender', $gender);
         $stmt->bindValue(':photo_url', $photo_url);
         if ($stmt->execute()) {
             return $this->selectById($this->pdo->lastInsertId());
