@@ -142,7 +142,7 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         let inLocation = self.region.containsCoordinate(newLocation.coordinate)
         
         for challengeVC in challengeVCs {
-            challengeVC.challengeView.btnContinue.enabled = inLocation
+            challengeVC.challengeView.btnContinue.enabled = true
         }
         manager.stopUpdatingLocation()
     }

@@ -39,6 +39,8 @@ class BarmanViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.startMotion()
     }
     
     func didStartChallenge() {
@@ -62,7 +64,7 @@ class BarmanViewController: UIViewController {
                 var yaw = asin(2*(quat.x*quat.z - quat.w*quat.y)) * 180/M_PI
                 
                 var angle:Double = 0
-                let minimum:Double = 10
+                let minimum:Double = 5
                 
                 if(pitch > minimum || pitch < -minimum) {
                     angle = pitch
@@ -72,14 +74,16 @@ class BarmanViewController: UIViewController {
                     angle = yaw
                 }
                 
-                if(angle < 0) {
-                    angle += 180
-                } else {
-                    angle -= 180
+                if(self.started) {
+                    if(angle < 0) {
+                        angle += 180
+                    } else {
+                        angle -= 180
+                    }
+                    
+                    self.anglesArray.append(angle)
                 }
-                
                 self.barmanView.angleText.text = String(format: "%.f", round(angle)) + "°"
-                self.anglesArray.append(angle)
             })
         }
     }
@@ -125,7 +129,7 @@ class BarmanViewController: UIViewController {
     
     func proximityChanged(notification: NSNotification) {
         if(self.device.proximityState) {
-            self.startMotion()
+            self.didStartChallenge()
         } else {
             self.didFinishChallenge()
         }
