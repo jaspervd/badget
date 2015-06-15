@@ -13,29 +13,72 @@ class CoordinatorView: UIView {
     let titleView:UIImageView
     let instructionText:UITextView
     let timerText:UILabel
+    let distanceText:UILabel
+    let locationBg:UIImageView
+    let locationText:UILabel
+    let goToText:UILabel
+    let countdownText:UILabel
     
     override init(frame: CGRect) {
         self.titleView = UIImageView(image: UIImage(named: "coordinatortitle")!)
-        self.instructionText = UITextView(frame: CGRectMake(0, 0, frame.width - 40, 75))
-        self.timerText = UILabel(frame: CGRectMake(10, 300, 300, 40))
-        super.init(frame: frame)
-        
-        self.backgroundColor = Settings.bgColor
-        
         self.titleView.center = CGPointMake(frame.width / 2, self.titleView.frame.height / 2 + 110)
         
-        self.instructionText.text = "Je krijgt 5 verschillende locaties die zich op de festivalweide bevinden toegewezen, eens je op een locatie bent wordt je gestuurd naar de volgende plek."
+        self.instructionText = UITextView(frame: CGRectMake(0, 0, frame.width - 40, 75))
+        self.instructionText.text = "Je krijgt 5 verschillende locaties die zich op de festivalweide bevinden toegewezen, ken jij het festival vanbuiten?"
         self.instructionText.font = UIFont.systemFontOfSize(14)
         self.instructionText.backgroundColor = UIColor.clearColor()
         self.instructionText.textAlignment = .Center
         self.instructionText.center = CGPointMake(frame.width / 2, self.titleView.frame.height * 2 + 120)
         
+        let challengeBg = UIImageView(image: UIImage(named: "coordinatorlocatiechallengebg"))
+        challengeBg.frame = CGRectMake(0, self.instructionText.frame.origin.y + self.instructionText.frame.size.height, challengeBg.image!.size.width, challengeBg.image!.size.width)
+        self.goToText = UILabel(frame: CGRectMake(0, challengeBg.frame.origin.y + 30, frame.width, 40))
+        self.goToText.text = "Ga naar..."
+        self.goToText.textAlignment = .Center
+        
+        self.locationBg = UIImageView(image: UIImage(named: "locatiebg"))
+        self.locationBg.center = CGPointMake(frame.width / 2, frame.height / 2 + 40)
+        
+        self.locationText = UILabel(frame: CGRectMake(0, 0, locationBg.frame.width, locationBg.frame.height))
+        self.locationText.center = CGPointMake(frame.width / 2, frame.height / 2 + 40)
+        self.locationText.text = "Pukkelpop"
+        self.locationText.textColor = UIColor.whiteColor()
+        self.locationText.font = UIFont.systemFontOfSize(25)
+        self.locationText.textAlignment = .Center
+        
+        self.timerText = UILabel(frame: CGRectMake(0, 0, frame.width, 60))
         self.timerText.textAlignment = .Center
         self.timerText.text = "00:00:00.00"
+        self.timerText.center = CGPointMake(frame.width / 2, frame.height / 2 + self.locationText.frame.origin.y / 2)
         
+        self.distanceText = UILabel(frame: CGRectMake(0, 0, frame.width, 60))
+        self.distanceText.textAlignment = .Center
+        self.distanceText.text = "0m"
+        self.distanceText.center = CGPointMake(frame.width / 2, frame.height / 2 + self.locationText.frame.origin.y / 2 + self.timerText.frame.height)
+        
+        self.countdownText = UILabel(frame: CGRectMake(0, 0, frame.width, 200))
+        self.countdownText.text = "5"
+        self.countdownText.textColor = UIColor.whiteColor()
+        self.countdownText.font = UIFont.systemFontOfSize(150)
+        self.countdownText.textAlignment = .Center
+        self.countdownText.center = CGPointMake(frame.width / 2, (frame.height + challengeBg.frame.height / 2) / 2)
+        
+        super.init(frame: frame)
+        
+        self.backgroundColor = Settings.bgColor
         self.addSubview(self.titleView)
         self.addSubview(self.instructionText)
+        self.addSubview(challengeBg)
+        self.addSubview(self.countdownText)
+    }
+    
+    func startChallenge() {
+        self.countdownText.hidden = true
+        self.addSubview(self.goToText)
+        self.addSubview(self.locationBg)
+        self.addSubview(self.locationText)
         self.addSubview(self.timerText)
+        self.addSubview(self.distanceText)
     }
     
     required init(coder aDecoder: NSCoder) {

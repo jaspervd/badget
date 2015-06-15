@@ -14,6 +14,8 @@ import CoreLocation
 class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     var started:Bool = false
     var timer:NSTimer = NSTimer()
+    var countdown:NSTimer = NSTimer()
+    var countdownTime = 5
     var milliseconds:CGFloat = 0
     var locations:Array<CLRegion> = []
     let locationManager = CLLocationManager()
@@ -42,6 +44,24 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.countdown = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "countdownHandler", userInfo: nil, repeats: true)
+    }
+    
+    func countdownHandler() {
+        self.countdownTime--
+        self.coordinatorView.countdownText.transform = CGAffineTransformMakeScale(1, 1)
+        self.coordinatorView.countdownText.alpha = 1
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            self.coordinatorView.countdownText.transform = CGAffineTransformMakeScale(0.5, 0.5)
+            self.coordinatorView.countdownText.alpha = 0
+        })
+        self.coordinatorView.countdownText.text = "\(self.countdownTime)"
+        if(countdownTime < 0) {
+            self.coordinatorView.startChallenge()
+            self.didStartChallenge()
+            self.countdown.invalidate()
+        }
     }
     
     func createLocations() {
@@ -62,7 +82,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
         var loc = self.getRandomLocation()
         self.locationManager.startUpdatingLocation()
         self.locationManager.startMonitoringForRegion(loc)
-        self.coordinatorView.instructionText.text = "Ga naar de \(loc.identifier)"
+        self.coordinatorView.locationText.text = "\(loc.identifier)"
     }
     
     func getRandomLocation() -> CLRegion {
@@ -83,7 +103,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
         if(self.locationsVisited < 5) { // if user hasn't visited 5 locations yet
             var loc = getRandomLocation()
             self.locationManager.startMonitoringForRegion(loc)
-            self.coordinatorView.instructionText.text = "Ga naar de \(loc.identifier)"
+            self.coordinatorView.locationText.text = "\(loc.identifier)"
         } else {
             didFinishChallenge()
         }
