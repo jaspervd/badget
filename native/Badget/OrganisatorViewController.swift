@@ -96,7 +96,8 @@ class OrganisatorViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
         
-        self.organisatorView.friendsText.text = "\(self.facesArray.count) vrienden"
+        self.organisatorView.friendsText.text = "\(self.facesArray.count) VRIENDEN"
+        self.organisatorView.friendsText.sizeToFit()
         self.organisatorView.showButtons()
         
         let imageRect = CGRectMake(0, 0, self.image.size.width, self.image.size.height)

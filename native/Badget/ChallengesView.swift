@@ -29,13 +29,13 @@ class ChallengesView: UIView {
         
         self.circularScrollView.backgroundColor = UIColor.clearColor()
         
-        let infoText = UITextView(frame: CGRectMake(50, frame.height - 80, frame.width - 100, 80))
-        infoText.backgroundColor = nil
-        infoText.editable = false
+        let infoText = UILabel(frame: CGRectMake(40, frame.height - 80, frame.width - 80, 80))
+        infoText.numberOfLines = 0
         infoText.textColor = Settings.blueColor
-        infoText.font = UIFont.systemFontOfSize(14, weight: 700)
+        infoText.font = UIFont(name: "Dosis-Medium", size: 18)
         infoText.text = "Ga naar de Randstad stand om de uitdaging aan te gaan."
         infoText.textAlignment = .Center
+        infoText.sizeToFit()
         
         self.leftBtn.frame = CGRectMake(10, frame.height / 2 - 22, 30, 44)
         self.leftBtn.setDirection(.Left)

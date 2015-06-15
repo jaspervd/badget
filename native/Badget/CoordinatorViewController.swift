@@ -96,7 +96,11 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         self.distance += newLocation.distanceFromLocation(oldLocation)
         if(self.distance >= 0) {
-            self.coordinatorView.distanceText.text = "\(Int(round(self.distance)))m"
+            let distanceString = "\(Int(round(self.distance)))m" as NSString
+            let attString = NSMutableAttributedString(string: distanceString as String)
+            attString.addAttribute(NSFontAttributeName, value: UIFont(name: "Roca", size: 22)!, range: NSMakeRange(0, distanceString.length))
+            attString.addAttribute(NSFontAttributeName, value: UIFont(name: "Roca", size: 16)!, range: NSMakeRange(distanceString.length - 1, 1))
+            self.coordinatorView.distanceText.attributedText = attString
         }
     }
     

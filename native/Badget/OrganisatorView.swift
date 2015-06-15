@@ -11,7 +11,7 @@ import UIKit
 class OrganisatorView: UIView {
     
     let titleView:UIImageView
-    let instructionText:UITextView
+    let instructionText:UILabel
     let photoHolder:UIImageView
     let scrollView:UIScrollView
     let imageView:UIImageView
@@ -24,15 +24,16 @@ class OrganisatorView: UIView {
     override init(frame: CGRect) {
         self.titleView = UIImageView(image: UIImage(named: "organisatortitle")!)
         
-        self.instructionText = UITextView(frame: CGRectMake(0, 0, frame.width - 40, 75))
+        self.instructionText = UILabel(frame: CGRectMake(0, 0, frame.width - 40, 75))
         self.instructionText.text = "Probeer zo veel mogelijk vrienden en/of omstaanders mee op de foto te krijgen. Hoe meer mensen, hoe beter!"
-        self.instructionText.font = UIFont.systemFontOfSize(14)
-        self.instructionText.backgroundColor = UIColor.clearColor()
+        self.instructionText.font = UIFont(name: "Dosis-Bold", size: 16)
+        self.instructionText.textColor = Settings.blueColor
+        self.instructionText.numberOfLines = 0
         self.instructionText.textAlignment = .Center
         self.instructionText.center = CGPointMake(frame.width / 2, self.titleView.frame.height * 2 + 120)
         
         self.photoHolder = UIImageView(image: UIImage(named: "photoborder")!)
-        self.photoHolder.frame = CGRectMake(0, self.instructionText.frame.size.height + 140, self.photoHolder.frame.size.width, self.photoHolder.frame.size.height)
+        self.photoHolder.frame = CGRectMake(0, self.instructionText.frame.size.height + 150, self.photoHolder.frame.size.width, self.photoHolder.frame.size.height)
         self.photoHolder.userInteractionEnabled = true
         
         self.scrollView = UIScrollView(frame: self.photoHolder.frame)
@@ -45,10 +46,13 @@ class OrganisatorView: UIView {
         self.titleView.center = CGPointMake(frame.width / 2, self.titleView.frame.height / 2 + 110)
         
         self.friendsImage = UIImageView(image: UIImage(named: "friendsicon"))
-        self.friendsImage.frame.origin = CGPointMake(60, self.photoHolder.frame.origin.y + self.photoHolder.frame.height + 15)
+        self.friendsImage.frame.origin = CGPointMake(50, self.photoHolder.frame.origin.y + self.photoHolder.frame.height + 15)
         
         self.friendsText = UILabel(frame: CGRectMake(self.friendsImage.frame.size.width + self.friendsImage.frame.origin.x + 15, self.friendsImage.frame.origin.y, 100, self.friendsImage.frame.height))
-        self.friendsText.text = "0 vrienden"
+        self.friendsText.text = "0 VRIENDEN"
+        self.friendsText.font = UIFont(name: "Dosis-Bold", size: 30)
+        self.friendsText.textColor = Settings.grayColor
+        self.friendsText.sizeToFit()
         
         let retakeImage = UIImage(named: "okbtn")!
         self.btnRetake = UIButton(frame: CGRectMake(35, self.photoHolder.frame.origin.y + self.photoHolder.frame.size.height + 65, retakeImage.size.width, retakeImage.size.height))

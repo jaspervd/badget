@@ -45,6 +45,9 @@
 		A49A82A71B2ECD28009558CB /* ChallengeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A61B2ECD28009558CB /* ChallengeDelegate.swift */; };
 		A49A82A91B2ED775009558CB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A81B2ED775009558CB /* NavigationBar.swift */; };
 		A49A82AB1B2F4179009558CB /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82AA1B2F4179009558CB /* Switch.swift */; };
+		A49A82B21B2F83BE009558CB /* Dosis-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A49A82AF1B2F83BE009558CB /* Dosis-Medium.ttf */; };
+		A49A82B41B2F83BE009558CB /* Roca.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A49A82B11B2F83BE009558CB /* Roca.ttf */; };
+		A49A82B61B2F84A3009558CB /* Dosis-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A49A82B51B2F84A3009558CB /* Dosis-Bold.ttf */; };
 		A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */; };
 		A4AD98A11B17A3BA009ED7AE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */; };
 		A4B619F11B28618C00748A1D /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F01B28618C00748A1D /* ChallengeView.swift */; };
@@ -113,6 +116,9 @@
 		A49A82A61B2ECD28009558CB /* ChallengeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDelegate.swift; path = ../../../../../../Users/Jasper/.Trash/ChallengeDelegate.swift; sourceTree = "<group>"; };
 		A49A82A81B2ED775009558CB /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		A49A82AA1B2F4179009558CB /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		A49A82AF1B2F83BE009558CB /* Dosis-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Medium.ttf"; sourceTree = "<group>"; };
+		A49A82B11B2F83BE009558CB /* Roca.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roca.ttf; sourceTree = "<group>"; };
+		A49A82B51B2F84A3009558CB /* Dosis-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.ttf"; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A4B619F01B28618C00748A1D /* ChallengeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
@@ -207,6 +213,9 @@
 		A43E13DA1B1667A9008B3823 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A49A82B51B2F84A3009558CB /* Dosis-Bold.ttf */,
+				A49A82AF1B2F83BE009558CB /* Dosis-Medium.ttf */,
+				A49A82B11B2F83BE009558CB /* Roca.ttf */,
 				A43E13DB1B1667A9008B3823 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -448,7 +457,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4480BD21B1F6CE30050C744 /* LaunchScreen.xib in Resources */,
+				A49A82B21B2F83BE009558CB /* Dosis-Medium.ttf in Resources */,
+				A49A82B61B2F84A3009558CB /* Dosis-Bold.ttf in Resources */,
 				A40D6D7B1B2C39B500E7D05F /* Regions.plist in Resources */,
+				A49A82B41B2F83BE009558CB /* Roca.ttf in Resources */,
 				A43E13E41B1667A9008B3823 /* Images.xcassets in Resources */,
 				A40D6D771B2C1D8400E7D05F /* Badges.plist in Resources */,
 			);
