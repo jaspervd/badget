@@ -17,29 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        var navController = UINavigationController()
+        var navController = UINavigationController(navigationBarClass: NavigationBar.classForCoder(), toolbarClass: UIToolbar.classForCoder())
         if(NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")) {
             if(Settings.currentDate.timeIntervalSinceDate(Settings.startDate) > 0) {
-                navController = UINavigationController(rootViewController: ChallengesViewController())
+                navController.setViewControllers([ChallengesViewController()], animated: false)
             } else {
-                navController = UINavigationController(rootViewController: CountdownViewController())
+                navController.setViewControllers([CountdownViewController()], animated: false)
             }
         } else {
             if(NSUserDefaults.standardUserDefaults().boolForKey("readCampaign")) {
-                navController = UINavigationController(rootViewController: RegisterViewController())
+                navController.setViewControllers([RegisterViewController()], animated: false)
             } else {
-                navController = UINavigationController(rootViewController: CampaignViewController())
+                navController.setViewControllers([CampaignViewController()], animated: false)
             }
         }
         
         let titleView = UIImageView(image: UIImage(named: "logo"))
-        titleView.center = CGPointMake(navController.navigationBar.frame.size.width / 2, navController.navigationBar.frame.size.height / 2)
+        titleView.center = CGPointMake(navController.navigationBar.frame.size.width / 2, navController.navigationBar.frame.size.height / 2 - 10)
         navController.navigationBar.addSubview(titleView)
         
         let headerBg = UIImage(named: "headerbg")!
         navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.setBackgroundImage(headerBg.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
         navController.navigationBar.sizeThatFits(headerBg.size)
+        
         self.window.rootViewController = navController
 
         self.window.backgroundColor = Settings.bgColor

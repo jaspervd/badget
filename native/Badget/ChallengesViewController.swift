@@ -46,6 +46,12 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         
         let badgesBtn = UIBarButtonItem(title: "Badges", style: .Plain, target: self, action: "badgesHandler")
         self.navigationItem.rightBarButtonItem = badgesBtn
+        // = UIBarButtonItem(image: UIImage(named: "backbtn"), style: .Plain, target: nil, action: nil)
+        
+        let backBtn = UIImage(named: "backbtn")!.imageWithRenderingMode(.AlwaysOriginal)
+        self.navigationItem.backBarButtonItem?.title = ""
+        self.navigationController?.navigationBar.backIndicatorImage = backBtn
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backBtn
         
         self.challengesView.leftBtn.addTarget(self, action: "leftBtnHandler", forControlEvents: UIControlEvents.TouchUpInside)
         self.challengesView.rightBtn.addTarget(self, action: "rightBtnHandler", forControlEvents: UIControlEvents.TouchUpInside)

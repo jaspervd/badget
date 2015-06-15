@@ -43,6 +43,7 @@
 		A49A82A21B2D8937009558CB /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A11B2D8937009558CB /* CampaignViewController.swift */; };
 		A49A82A41B2D8E9C009558CB /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A31B2D8E9C009558CB /* ArrowButton.swift */; };
 		A49A82A71B2ECD28009558CB /* ChallengeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A61B2ECD28009558CB /* ChallengeDelegate.swift */; };
+		A49A82A91B2ED775009558CB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A82A81B2ED775009558CB /* NavigationBar.swift */; };
 		A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */; };
 		A4AD98A11B17A3BA009ED7AE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */; };
 		A4B619F11B28618C00748A1D /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F01B28618C00748A1D /* ChallengeView.swift */; };
@@ -110,6 +111,7 @@
 		A49A82A11B2D8937009558CB /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		A49A82A31B2D8E9C009558CB /* ArrowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
 		A49A82A61B2ECD28009558CB /* ChallengeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDelegate.swift; path = ../../../../../../Users/Jasper/.Trash/ChallengeDelegate.swift; sourceTree = "<group>"; };
+		A49A82A81B2ED775009558CB /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		A4AD989E1B17A358009ED7AE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A4AD98A01B17A3BA009ED7AE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A4B619F01B28618C00748A1D /* ChallengeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				A49A82A31B2D8E9C009558CB /* ArrowButton.swift */,
+				A49A82A81B2ED775009558CB /* NavigationBar.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */,
 				A49A82A41B2D8E9C009558CB /* ArrowButton.swift in Sources */,
 				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
+				A49A82A91B2ED775009558CB /* NavigationBar.swift in Sources */,
 				A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */,
 				A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */,
 				A40D6D811B2C4A7300E7D05F /* ChallengesViewController.swift in Sources */,
