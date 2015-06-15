@@ -15,21 +15,44 @@ class RegisterView: UIView {
     let inputName:UITextField
     let inputEmail:UITextField
     let btnSave:UIButton
-    let genderSwitch:UISwitch
+    let genderSwitch:Switch
+    let maleBtn:UIButton
+    let femaleBtn:UIButton
     
     override init(frame: CGRect) {
         let characterBg = UIImage(named: "avatarbg")!
-        self.characterView = UIView(frame: CGRectMake(0, 40, characterBg.size.width, characterBg.size.height))
+        self.characterView = UIView(frame: CGRectMake(0, 70, characterBg.size.width, characterBg.size.height))
         
         let characterShade = UIImageView(image: UIImage(named: "avatarshade")!)
         characterShade.center = CGPointMake(characterBg.size.width / 2, characterBg.size.height / 2)
         self.characterView.addSubview(UIImageView(image: characterBg))
         self.characterView.addSubview(characterShade)
         
-        self.genderSwitch = UISwitch(frame: CGRectMake(10, self.characterView.frame.size.height + self.characterView.frame.origin.y, 44, 100))
+        /*self.genderSwitch = UISwitch(frame: CGRectMake(10, self.characterView.frame.size.height + self.characterView.frame.origin.y, 44, 100))
         self.genderSwitch.setOn(true, animated: false)
         
-        let inputView = UIView(frame: CGRectMake((frame.size.width - 294) / 2, self.genderSwitch.frame.origin.y + self.genderSwitch.frame.height, 294, 93))
+        self.genderSwitch = UISwitch(frame: CGRectMake(10, self.characterView.frame.size.height + self.characterView.frame.origin.y + 10, 44, 100))
+        self.genderSwitch.setOn(true, animated: false)
+        self.genderSwitch.onTintColor = UIColor(red: 79/255, green: 70/255, blue: 59/255, alpha: 1)
+        self.genderSwitch.tintColor = UIColor(red: 79/255, green: 70/255, blue: 59/255, alpha: 1)
+        self.genderSwitch.thumbTintColor = UIColor(red: 207/255, green: 88/255, blue: 74/255, alpha: 1)*/
+        
+        self.genderSwitch = Switch(frame: CGRectMake((frame.width - 55) / 2, self.characterView.frame.size.height + self.characterView.frame.origin.y + 10, 55, 32))
+        self.genderSwitch.setOn(true, animated: false)
+        
+        let maleImage = UIImage(named: "maninactive")!
+        self.maleBtn = UIButton(frame: CGRectMake(self.genderSwitch.frame.origin.x + self.genderSwitch.frame.width + 10, self.genderSwitch.frame.origin.y + (self.genderSwitch.frame.height - maleImage.size.height) / 2, maleImage.size.width, maleImage.size.height))
+        self.maleBtn.setBackgroundImage(maleImage, forState: .Normal)
+        self.maleBtn.setBackgroundImage(UIImage(named: "manactive"), forState: .Selected)
+        self.maleBtn.selected = true
+        
+        let femaleImage = UIImage(named: "womaninactive")!
+        self.femaleBtn = UIButton(frame: CGRectMake(self.genderSwitch.frame.origin.x - femaleImage.size.width - 10, self.genderSwitch.frame.origin.y + (self.genderSwitch.frame.height - femaleImage.size.height) / 2, femaleImage.size.width, femaleImage.size.height))
+        self.femaleBtn.setBackgroundImage(femaleImage, forState: .Normal)
+        self.femaleBtn.setBackgroundImage(UIImage(named: "womanactive"), forState: .Selected)
+        
+
+        let inputView = UIView(frame: CGRectMake((frame.size.width - 294) / 2, self.genderSwitch.frame.origin.y + self.genderSwitch.frame.height + 10, 294, 93))
         inputView.addSubview(UIImageView(image: UIImage(named: "loginput")))
         
         self.inputName = UITextField(frame: CGRectMake(15, 2, inputView.frame.size.width - 30, 45))
@@ -54,6 +77,8 @@ class RegisterView: UIView {
         inputView.addSubview(self.inputName)
         inputView.addSubview(self.inputEmail)
         self.addSubview(self.genderSwitch)
+        self.addSubview(self.maleBtn)
+        self.addSubview(self.femaleBtn)
         self.addSubview(self.btnSave)
     }
     

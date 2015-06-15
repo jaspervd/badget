@@ -52,8 +52,10 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         self.registerView.characterView.addSubview(self.bodyVC.view)
         self.registerView.characterView.addSubview(self.legsVC.view)
         
-        self.registerView.genderSwitch.addTarget(self, action: "genderSwitched", forControlEvents: UIControlEvents.ValueChanged)
-        self.registerView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        self.registerView.genderSwitch.addTarget(self, action: "genderSwitched", forControlEvents: .TouchUpInside)
+        self.registerView.maleBtn.addTarget(self, action: "switchMale", forControlEvents: .TouchUpInside)
+        self.registerView.femaleBtn.addTarget(self, action: "switchFemale", forControlEvents: .TouchUpInside)
+        self.registerView.btnSave.addTarget(self, action: "saveClicked", forControlEvents: .TouchUpInside)
         
         self.registerView.inputName.delegate = self
         self.registerView.inputEmail.delegate = self
@@ -104,7 +106,20 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         self.view = RegisterView(frame: bounds)
     }
     
+    func switchMale() {
+        self.registerView.genderSwitch.setOn(false, animated: true)
+        genderSwitched()
+    }
+    
+    func switchFemale() {
+        self.registerView.genderSwitch.setOn(true, animated: true)
+        genderSwitched()
+    }
+    
     func genderSwitched() {
+        self.registerView.maleBtn.selected = !self.registerView.genderSwitch.on
+        self.registerView.femaleBtn.selected = self.registerView.genderSwitch.on
+        self.registerView.genderSwitch.setOn(!self.registerView.genderSwitch.on, animated: true)
         self.gender = (self.registerView.genderSwitch.on ? "m" : "f")
         self.headVC.switchActiveArray()
         self.bodyVC.switchActiveArray()
