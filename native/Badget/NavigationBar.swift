@@ -12,14 +12,6 @@ class NavigationBar: UINavigationBar {
     
     let addHeight:CGFloat = 31.0
     
-    /*
-    - (void)initialize {
-    
-    [self setTransform:CGAffineTransformMakeTranslation(0, -(VFSNavigationBarHeightIncrease))];
-    }
-
-*/
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.transform = CGAffineTransformMakeTranslation(0, -addHeight)
@@ -49,20 +41,4 @@ class NavigationBar: UINavigationBar {
             }
         }
     }
-    /*
-NSArray *classNamesToReposition = @[@"_UINavigationBarBackground"];
-
-for (UIView *view in [self subviews]) {
-
-if ([classNamesToReposition containsObject:NSStringFromClass([view class])]) {
-
-CGRect bounds = [self bounds];
-CGRect frame = [view frame];
-frame.origin.y = bounds.origin.y + VFSNavigationBarHeightIncrease - 20.f;
-frame.size.height = bounds.size.height + 20.f;
-
-[view setFrame:frame];
-}
-}
-*/
 }
