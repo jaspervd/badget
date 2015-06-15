@@ -1,0 +1,13 @@
+@import 'reset';
+@import 'mixins';
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1em;
+	font-family: Helvetica, Arial;
+}
+
+@include border-box-default;
