@@ -31,12 +31,19 @@ class NavigationBar: UINavigationBar {
         super.layoutSubviews()
         let classNames:Array<String> = ["_UINavigationBarBackground"]
         for view in self.subviews {
-            if(find(classNames, NSStringFromClass(view.classForCoder)) != nil) {
-                if let usingView = view as? UIView {
-                    var newFrame = usingView.frame
+            if let thisView = view as? UIView {
+                var newFrame = thisView.frame
+                if(NSStringFromClass(view.classForCoder) == "_UINavigationBarBackground") {
                     newFrame.origin.y = self.bounds.origin.y + addHeight - 20
-                    newFrame.size.height = bounds.size.height + 20
-                    usingView.frame = newFrame
+                    newFrame.size.height = self.bounds.size.height + 20
+                    thisView.frame = newFrame
+                } else if(NSStringFromClass(view.classForCoder) == "UINavigationButton") {
+                    newFrame.origin.y = 35
+                    thisView.frame = newFrame
+                } else if(NSStringFromClass(view.classForCoder) == "_UINavigationBarBackIndicatorView") {
+                    newFrame.origin.x = 15.5
+                    newFrame.origin.y = 34
+                    thisView.frame = newFrame
                 }
             }
         }
