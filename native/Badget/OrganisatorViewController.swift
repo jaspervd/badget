@@ -82,7 +82,9 @@ class OrganisatorViewController: UIViewController, UIImagePickerControllerDelega
             featureBounds.origin.y = self.image.size.height - featureBounds.origin.y - featureBounds.size.height
             
             let fView = UIView(frame: featureBounds)
-            fView.backgroundColor = UIColor(red: 73/255, green: 99/255, blue: 204/255, alpha: 0.6)
+            fView.layer.borderColor = UIColor.whiteColor().CGColor
+            fView.layer.borderWidth = 10
+            fView.layer.cornerRadius = 14
             
             self.facesArray.append(fView)
             self.organisatorView.imageView.addSubview(fView)
@@ -96,10 +98,11 @@ class OrganisatorViewController: UIViewController, UIImagePickerControllerDelega
         let imageRect = CGRectMake(0, 0, self.image.size.width, self.image.size.height)
         self.organisatorView.imageView.frame = imageRect
         self.organisatorView.imageView.image = self.image
-        self.organisatorView.scrollView.frame = self.view.frame
+        self.organisatorView.btnCamera.hidden = true
+        self.organisatorView.photoHolder.userInteractionEnabled = false
         
-        let scaleX = self.organisatorView.bounds.size.width / self.image.size.width
-        let scaleY = self.organisatorView.bounds.size.height / self.image.size.height
+        let scaleX = self.organisatorView.photoHolder.frame.size.width / self.image.size.width
+        let scaleY = self.organisatorView.photoHolder.frame.size.height / self.image.size.height
         let minZoomScale = max(scaleX, scaleY)
         self.organisatorView.scrollView.minimumZoomScale = minZoomScale
         self.organisatorView.scrollView.zoomScale = minZoomScale

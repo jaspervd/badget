@@ -32,7 +32,7 @@ class ChallengesView: UIView {
         let infoText = UITextView(frame: CGRectMake(50, frame.height - 80, frame.width - 100, 80))
         infoText.backgroundColor = nil
         infoText.editable = false
-        infoText.textColor = UIColor(red: 117/255, green: 192/255, blue: 204/255, alpha: 1)
+        infoText.textColor = Settings.blueColor
         infoText.font = UIFont.systemFontOfSize(14, weight: 700)
         infoText.text = "Ga naar de Randstad stand om de uitdaging aan te gaan."
         infoText.textAlignment = .Center
