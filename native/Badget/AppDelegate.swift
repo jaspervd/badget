@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let titleView = UIImageView(image: UIImage(named: "logo"))
-        titleView.center = CGPointMake(navController.navigationBar.frame.size.width / 2, navController.navigationBar.frame.size.height / 2 - 10)
+        titleView.center = CGPointMake(navController.navigationBar.frame.size.width / 2, navController.navigationBar.frame.size.height / 2 + 15)
         navController.navigationBar.addSubview(titleView)
         
         let headerBg = UIImage(named: "headerbg")!
