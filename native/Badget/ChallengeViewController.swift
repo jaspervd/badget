@@ -50,7 +50,7 @@ class ChallengeViewController: UIViewController {
     
     func setDone() {
         self.challengeView.toggleResult()
-        self.challengeView.imageView.image = UIImage(named: "manageruncolored") //\(self.header)
+        self.challengeView.imageView.image = UIImage(named: "\(self.header)uncolored")
         self.challengeView.headerView.image = UIImage(named: "\(self.header)functietitleuncolored")
     }
 

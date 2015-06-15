@@ -17,7 +17,7 @@ class BarmanView: UIView {
     override init(frame: CGRect) {
         self.titleView = UIImageView(image: UIImage(named: "barmantitle")!)
         self.instructionText = UITextView(frame: CGRectMake(0, 0, frame.width - 40, 75))
-        self.angleText = UILabel(frame: CGRectMake(10, frame.height / 2, 300, 40))
+        self.angleText = UILabel(frame: CGRectMake(0, 0, 300, 40))
         super.init(frame: frame)
         
         self.backgroundColor = Settings.bgColor
@@ -29,12 +29,32 @@ class BarmanView: UIView {
         self.instructionText.textAlignment = .Center
         self.instructionText.center = CGPointMake(frame.width / 2, self.titleView.frame.height * 2 + 120)
         
+        let challengeBg = UIImageView(image: UIImage(named: "barmanchallengebg"))
+        challengeBg.frame = CGRectMake(0, self.instructionText.frame.origin.y + self.instructionText.frame.size.height, challengeBg.image!.size.width, challengeBg.image!.size.width)
+        
+        let beerPlateau = UIImageView(image: UIImage(named: "barmantestplateau"))
+        beerPlateau.center = CGPointMake(challengeBg.frame.width / 2, challengeBg.frame.height / 2)
+        
+        let testText = UITextView(frame: CGRectMake(20, 30, frame.width - 40, 50))
+        testText.text = "Alvorens te beginnen kan je al eens testen hoe scheef je bent."
+        testText.backgroundColor = UIColor.clearColor()
+        
         self.angleText.text = "0°"
+        self.angleText.font = UIFont.systemFontOfSize(16, weight: 700)
         self.angleText.textAlignment = .Center
+        self.angleText.center = CGPointMake(challengeBg.frame.width / 2, challengeBg.frame.height / 2)
+        
+        let doneText = UITextView(frame: CGRectMake(20, beerPlateau.frame.height + beerPlateau.frame.origin.y, frame.width - 40, 50))
+        doneText.text = "Wanneer je aan de beurt bent en het parcours gaat afleggen, draai je je device om met het scherm naar beneden."
+        doneText.backgroundColor = UIColor.clearColor()
         
         self.addSubview(self.titleView)
         self.addSubview(self.instructionText)
-        self.addSubview(self.angleText)
+        self.addSubview(challengeBg)
+        challengeBg.addSubview(testText)
+        challengeBg.addSubview(beerPlateau)
+        challengeBg.addSubview(doneText)
+        challengeBg.addSubview(self.angleText)
     }
     
     required init(coder aDecoder: NSCoder) {

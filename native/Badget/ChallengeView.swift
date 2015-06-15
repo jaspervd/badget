@@ -21,7 +21,7 @@ class ChallengeView: UIView {
         self.btnContinue = UIButton()
         self.passHolder = UIImageView(image: UIImage(named: "uitdagingbg"))
         
-        let photo = UIImage(named: "managercolored")! // \(header)
+        let photo = UIImage(named: "\(header)colored")!
         self.imageView = UIImageView(image: photo)
         
         let headerImage = UIImage(named: "\(header)functietitlecolored")!
@@ -67,7 +67,7 @@ class ChallengeView: UIView {
     func toggleResult() {
         self.completedView.hidden = false
         self.btnResult.hidden = false
-        self.btnResult.hidden = false
+        self.btnContinue.hidden = true
     }
     
     required init(coder aDecoder: NSCoder) {
