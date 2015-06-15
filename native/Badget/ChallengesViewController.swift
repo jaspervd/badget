@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import CircularScrollView
 
-class ChallengesViewController: UIViewController, CLLocationManagerDelegate, CircularScrollViewDataSource, CircularScrollViewDelegate {
+class ChallengesViewController: UIViewController, CLLocationManagerDelegate, CircularScrollViewDataSource, CircularScrollViewDelegate, ChallengeDelegate {
     
     let organisatorVC = OrganisatorViewController()
     let coordinatorVC = CoordinatorViewController()
@@ -75,13 +75,35 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
     }
     
     func createPasses() {
-        self.challengeVCs = [ChallengeViewController(viewController: self.organisatorVC, navController: self.navigationController!, header: "organisator"), ChallengeViewController(viewController: self.coordinatorVC, navController: self.navigationController!, header: "coordinator"), ChallengeViewController(viewController: self.barmanVC, navController: self.navigationController!, header: "barman")]
+        let organisatorChallenge = ChallengeViewController(viewController: self.organisatorVC, navController: self.navigationController!, header: "organisator")
+        organisatorChallenge.delegate = self
+        let coordinatorChallenge = ChallengeViewController(viewController: self.coordinatorVC, navController: self.navigationController!, header: "coordinator")
+        coordinatorChallenge.delegate = self
+        let barmanChallenge = ChallengeViewController(viewController: self.barmanVC, navController: self.navigationController!, header: "barman")
+        barmanChallenge.delegate = self
+        self.challengeVCs = [organisatorChallenge, coordinatorChallenge, barmanChallenge]
         
         self.numberOfChallenges = self.challengeVCs.count
         
         self.automaticallyAdjustsScrollViewInsets = false
         self.challengesView.circularScrollView.delegate = self
         self.challengesView.circularScrollView.dataSource = self
+    }
+    
+    func willShowResult(challenge: ChallengeViewController) {
+        switch challenge.header {
+        case "organisator":
+            self.navigationController?.pushViewController(self.organisatorVC.scoreVC, animated: true)
+            
+        case "coordinator":
+            self.navigationController?.pushViewController(self.coordinatorVC.scoreVC, animated: true)
+            
+        case "barman":
+            self.navigationController?.pushViewController(self.barmanVC.scoreVC, animated: true)
+            
+        default:
+            self.navigationController?.pushViewController(challenge.viewController, animated: true)
+        }
     }
     
     func numberOfPagesInCircularScrollView(#scroll: CircularScrollView!) -> Int! {
@@ -186,18 +208,6 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
                 self.challengeVCs[2].setDone()
                 self.barmanVC.setScore(barman)
             }
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if(self.organisatorVC.started && !CGRectIntersectsRect(scrollView.bounds, self.organisatorVC.view.frame)) {
-            self.organisatorVC.didFinishChallenge()
-        }
-        if(self.coordinatorVC.started && !CGRectIntersectsRect(scrollView.bounds, self.coordinatorVC.view.frame)) {
-            self.coordinatorVC.didFinishChallenge()
-        }
-        if(self.barmanVC.started && !CGRectIntersectsRect(scrollView.bounds, self.barmanVC.view.frame)) {
-            self.barmanVC.didFinishChallenge()
         }
     }
     

@@ -11,7 +11,7 @@ import MapKit
 import Alamofire
 import CoreLocation
 
-class CoordinatorViewController: UIViewController, ChallengeProtocol, CLLocationManagerDelegate {
+class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     var instructionView:InstructionView!
     var started:Bool = false
     var timer:NSTimer = NSTimer()

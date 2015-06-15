@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class OrganisatorViewController: UIViewController, ChallengeProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class OrganisatorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     var started:Bool = false
     var facesArray:Array<UIView> = []
     var smiles:Int = 0

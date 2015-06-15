@@ -10,6 +10,7 @@ import UIKit
 
 class ChallengeViewController: UIViewController {
     
+    weak var delegate:ChallengeDelegate?
     let viewController:UIViewController
     let navController:UINavigationController
     let header:String
@@ -29,12 +30,17 @@ class ChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.challengeView.btnContinue.addTarget(self, action: "continueHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        self.challengeView.btnResult.addTarget(self, action: "resultHandler", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func continueHandler() {
         self.navController.pushViewController(self.viewController, animated: true)
+    }
+    
+    func resultHandler() {
+        self.delegate?.willShowResult(self)
     }
     
     override func loadView() {

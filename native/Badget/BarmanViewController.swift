@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 import Alamofire
 
-class BarmanViewController: UIViewController, ChallengeProtocol {
+class BarmanViewController: UIViewController {
     let motionManager = CMMotionManager()
     var instructionView:InstructionView!
     let device = UIDevice.currentDevice()
