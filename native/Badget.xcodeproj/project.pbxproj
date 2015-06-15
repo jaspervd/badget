@@ -51,7 +51,6 @@
 		A4B619F61B28F1AF00748A1D /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F51B28F1AF00748A1D /* ScoreView.swift */; };
 		A4B619F81B28F30200748A1D /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619F71B28F30200748A1D /* Badge.swift */; };
 		A4B619FB1B28FBF000748A1D /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619FA1B28FBF000748A1D /* ScoreViewController.swift */; };
-		A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B619FD1B29007400748A1D /* InstructionView.swift */; };
 		A4C03DC21B1F604B00C30B62 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C03DC11B1F604B00C30B62 /* FileUploader.swift */; };
 		A4DFB0C31B1914D6005FCF13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DFB0C21B1914D6005FCF13 /* MapKit.framework */; };
 		E85F6DF389BDADCADC749299 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5D2CC95AD2501AB8C96E3A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -119,7 +118,6 @@
 		A4B619F51B28F1AF00748A1D /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		A4B619F71B28F30200748A1D /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		A4B619FA1B28FBF000748A1D /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
-		A4B619FD1B29007400748A1D /* InstructionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		A4C03DC11B1F604B00C30B62 /* FileUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		A4DFB0C21B1914D6005FCF13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FB5D2CC95AD2501AB8C96E3A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,7 +189,6 @@
 				A429304F1B1F6A40009762F9 /* Classes */,
 				A4B619F21B28C49C00748A1D /* Info */,
 				A4AD989D1B179F14009ED7AE /* Badges */,
-				A4B619FC1B29005400748A1D /* Instruction */,
 				A4AD989C1B179F0D009ED7AE /* Challenges */,
 				A4892FE51B21BA59008C731B /* Countdown */,
 				A4AD989B1B179EF7009ED7AE /* Start */,
@@ -337,14 +334,6 @@
 				A4B619F51B28F1AF00748A1D /* ScoreView.swift */,
 			);
 			name = Score;
-			sourceTree = "<group>";
-		};
-		A4B619FC1B29005400748A1D /* Instruction */ = {
-			isa = PBXGroup;
-			children = (
-				A4B619FD1B29007400748A1D /* InstructionView.swift */,
-			);
-			name = Instruction;
 			sourceTree = "<group>";
 		};
 		CA53C15DB4BCA9FC63D08228 /* Pods */ = {
@@ -558,7 +547,6 @@
 				A48BC2431B20A8DA00B8A110 /* Organisator.swift in Sources */,
 				A43E0E671B1B939A0020713F /* CoordinatorViewController.swift in Sources */,
 				A49A82A41B2D8E9C009558CB /* ArrowButton.swift in Sources */,
-				A4B619FE1B29007400748A1D /* InstructionView.swift in Sources */,
 				A49A82A91B2ED775009558CB /* NavigationBar.swift in Sources */,
 				A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */,
 				A4AD989F1B17A358009ED7AE /* RegisterViewController.swift in Sources */,

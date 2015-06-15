@@ -10,18 +10,23 @@ import UIKit
 import CircularScrollView
 
 class ChallengesView: UIView {
-
+    
+    let titleView:UIImageView
     let circularScrollView:CircularScrollView
     let leftBtn:ArrowButton
     let rightBtn:ArrowButton
     
     override init(frame: CGRect) {
+        self.titleView = UIImageView(image: UIImage(named: "uitdagingentitle"))
         self.circularScrollView = CircularScrollView(frame: frame)
         self.leftBtn = ArrowButton()
         self.rightBtn = ArrowButton()
         super.init(frame: frame)
         
         self.backgroundColor = Settings.bgColor
+        
+        self.titleView.center = CGPointMake(frame.width / 2, self.titleView.frame.height / 2 + 110)
+        
         self.circularScrollView.backgroundColor = UIColor.clearColor()
         
         let infoText = UITextView(frame: CGRectMake(50, frame.height - 80, frame.width - 100, 80))
@@ -39,8 +44,9 @@ class ChallengesView: UIView {
         self.rightBtn.setDirection(.Right)
     
         let overviewBar = UIImageView(image: UIImage(named: "overviewbar"))
-        overviewBar.frame = CGRectMake((frame.width - overviewBar.frame.width) / 2, 80, overviewBar.frame.width, overviewBar.frame.height)
+        overviewBar.frame = CGRectMake((frame.width - overviewBar.frame.width) / 2, 110, overviewBar.frame.width, overviewBar.frame.height)
         
+        self.addSubview(self.titleView)
         self.addSubview(overviewBar)
         self.addSubview(self.circularScrollView)
         self.addSubview(self.leftBtn)

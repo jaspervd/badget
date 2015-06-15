@@ -12,7 +12,6 @@ import Alamofire
 
 class BarmanViewController: UIViewController {
     let motionManager = CMMotionManager()
-    var instructionView:InstructionView!
     let device = UIDevice.currentDevice()
     var startTime = NSDate()
     var anglesArray:Array<Double> = []
@@ -36,19 +35,13 @@ class BarmanViewController: UIViewController {
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = BarmanView(frame: bounds)
-        self.instructionView = InstructionView(frame: bounds)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.addSubview(self.instructionView)
-        
-        self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func didStartChallenge() {
-        self.instructionView.removeFromSuperview()
         self.anglesArray = []
         self.startTime = NSDate()
         self.started = true

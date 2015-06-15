@@ -9,6 +9,7 @@
 import UIKit
 
 class ChallengeView: UIView {
+    
     let btnContinue:UIButton
     let passHolder:UIImageView
     let imageView:UIImageView
@@ -34,7 +35,7 @@ class ChallengeView: UIView {
         
         self.backgroundColor = UIColor.clearColor()
         
-        self.passHolder.center = CGPointMake(frame.width / 2, frame.height / 2 + 18)
+        self.passHolder.center = CGPointMake(frame.width / 2, frame.height / 2 + 60)
         self.passHolder.userInteractionEnabled = true
         
         self.imageView.frame = CGRectMake((self.passHolder.frame.size.width - photo.size.width) / 2, 50, photo.size.width, photo.size.height)

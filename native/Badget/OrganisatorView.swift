@@ -20,7 +20,7 @@ class OrganisatorView: UIView {
 
     override init(frame: CGRect) {
         self.titleView = UIImageView(image: UIImage(named: "organisatortitle")!)
-        self.instructionText = UITextView(frame: CGRectMake(0, 0, 240, 75))
+        self.instructionText = UITextView(frame: CGRectMake(0, 0, frame.width - 40, 75))
         
         let photoBg = UIImageView(image: UIImage(named: "photobg")!)
         photoBg.frame = CGRectMake(0, self.instructionText.frame.size.height + 120, photoBg.frame.size.width, photoBg.frame.size.height)
@@ -35,12 +35,13 @@ class OrganisatorView: UIView {
         
         self.backgroundColor = Settings.bgColor
         
-        self.titleView.center = CGPointMake(frame.width / 2, self.titleView.frame.height / 2 + 80)
+        self.titleView.center = CGPointMake(frame.width / 2, self.titleView.frame.height / 2 + 110)
         
-        self.instructionText.text = "Probeer zo veel mogelijk vrienden en/of omstaanders mee op de foto te staan. Hoe meer mense, hoe beter!"
+        self.instructionText.text = "Probeer zo veel mogelijk vrienden en/of omstaanders mee op de foto te staan. Hoe meer mensen, hoe beter!"
         self.instructionText.font = UIFont.systemFontOfSize(14)
         self.instructionText.backgroundColor = UIColor.clearColor()
-        self.instructionText.center = CGPointMake(frame.width / 2, self.titleView.frame.height * 2 + 90)
+        self.instructionText.textAlignment = .Center
+        self.instructionText.center = CGPointMake(frame.width / 2, self.titleView.frame.height * 2 + 120)
         
         let cameraImage = UIImage(named: "fotobtn")!
         self.btnCamera.frame = CGRectMake((photoBg.frame.size.width - cameraImage.size.width) / 2, (photoBg.frame.size.height - cameraImage.size.height) / 2, cameraImage.size.width, cameraImage.size.height)

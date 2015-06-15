@@ -12,7 +12,6 @@ import Alamofire
 import CoreLocation
 
 class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
-    var instructionView:InstructionView!
     var started:Bool = false
     var timer:NSTimer = NSTimer()
     var milliseconds:CGFloat = 0
@@ -37,17 +36,12 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
         self.view = CoordinatorView(frame: bounds)
-        self.instructionView = InstructionView(frame: bounds)
         
         createLocations()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.addSubview(self.instructionView)
-        
-        self.instructionView.btnContinue.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func createLocations() {
@@ -62,7 +56,6 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func didStartChallenge() {
-        self.instructionView.removeFromSuperview()
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerHandler", userInfo: nil, repeats: true)
         self.started = true
             

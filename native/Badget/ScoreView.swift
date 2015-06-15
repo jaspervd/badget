@@ -19,8 +19,8 @@ class ScoreView: UIView {
         self.badgesView = UIView()
         
         super.init(frame: frame)
-
-        self.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        
+        self.backgroundColor = Settings.bgColor
         
         let scoreHolder = UIView(frame: CGRectMake(30, 40, frame.width - 60, 300))
         scoreHolder.backgroundColor = UIColor.whiteColor()
