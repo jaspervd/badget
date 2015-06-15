@@ -45,6 +45,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = ""
         self.countdown = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "countdownHandler", userInfo: nil, repeats: true)
     }
     

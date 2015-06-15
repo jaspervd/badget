@@ -37,6 +37,7 @@ class OrganisatorViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = ""
         self.organisatorView.btnCamera.addTarget(self, action: "didStartChallenge", forControlEvents: UIControlEvents.TouchUpInside)
         self.organisatorView.btnRetake.addTarget(self, action: "retakeHandler", forControlEvents: UIControlEvents.TouchUpInside)
         self.organisatorView.btnContinue.addTarget(self, action: "didFinishChallenge", forControlEvents: UIControlEvents.TouchUpInside)

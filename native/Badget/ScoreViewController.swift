@@ -37,6 +37,7 @@ class ScoreViewController: UIViewController {
             self.scoreView.showBadge(badgeVC.badgeView)
         }
         
+        self.title = ""
         self.scoreView.btnClose.addTarget(self, action: "closeHandler", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
