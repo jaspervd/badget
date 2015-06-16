@@ -40,7 +40,15 @@ class CountdownViewController: UIViewController {
         var minutes:Int = difference / 60 - (hours * 60 - days * 24 * 60 * 60)
         var seconds:Int = difference - (minutes * 60 + hours * 60 * 60 + days * 24 * 60 * 60)
         
-        self.countdownView.countdown.text = "Nog \(formatter.stringFromNumber(days)!) dagen, \(formatter.stringFromNumber(hours)!) uur, \(formatter.stringFromNumber(minutes)!) minuten en \(formatter.stringFromNumber(seconds)!) seconden"
+        self.countdownView.countdownDays.text = formatter.stringFromNumber(days)!
+        self.countdownView.countdownHours.text = formatter.stringFromNumber(hours)!
+        self.countdownView.countdownMinutes.text = formatter.stringFromNumber(minutes)!
+        self.countdownView.countdownSeconds.text = formatter.stringFromNumber(seconds)!
+        
+        self.countdownView.countdownDays.sizeToFit()
+        self.countdownView.countdownHours.sizeToFit()
+        self.countdownView.countdownMinutes.sizeToFit()
+        self.countdownView.countdownSeconds.sizeToFit()
     }
 
     override func didReceiveMemoryWarning() {

@@ -28,15 +28,6 @@ class RegisterView: UIView {
         self.characterView.addSubview(UIImageView(image: characterBg))
         self.characterView.addSubview(characterShade)
         
-        /*self.genderSwitch = UISwitch(frame: CGRectMake(10, self.characterView.frame.size.height + self.characterView.frame.origin.y, 44, 100))
-        self.genderSwitch.setOn(true, animated: false)
-        
-        self.genderSwitch = UISwitch(frame: CGRectMake(10, self.characterView.frame.size.height + self.characterView.frame.origin.y + 10, 44, 100))
-        self.genderSwitch.setOn(true, animated: false)
-        self.genderSwitch.onTintColor = UIColor(red: 79/255, green: 70/255, blue: 59/255, alpha: 1)
-        self.genderSwitch.tintColor = UIColor(red: 79/255, green: 70/255, blue: 59/255, alpha: 1)
-        self.genderSwitch.thumbTintColor = UIColor(red: 207/255, green: 88/255, blue: 74/255, alpha: 1)*/
-        
         self.genderSwitch = Switch(frame: CGRectMake((frame.width - 55) / 2, self.characterView.frame.size.height + self.characterView.frame.origin.y + 10, 55, 32))
         self.genderSwitch.setOn(true, animated: false)
         
