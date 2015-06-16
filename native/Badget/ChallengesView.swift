@@ -32,7 +32,7 @@ class ChallengesView: UIView {
         let infoText = UILabel(frame: CGRectMake(40, frame.height - 80, frame.width - 80, 80))
         infoText.numberOfLines = 0
         infoText.textColor = Settings.blueColor
-        infoText.font = UIFont(name: "Dosis-Medium", size: 18)
+        infoText.font = UIFont(name: "Dosis-Bold", size: 18)
         infoText.text = "Ga naar de Randstad stand om de uitdaging aan te gaan."
         infoText.textAlignment = .Center
         infoText.sizeToFit()
