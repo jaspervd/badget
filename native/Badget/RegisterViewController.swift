@@ -60,8 +60,17 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         self.registerView.inputName.delegate = self
         self.registerView.inputEmail.delegate = self
         
+        let tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func dismissKeyboard() {
+        self.registerView.inputName.resignFirstResponder()
+        self.registerView.inputEmail.resignFirstResponder()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -148,7 +157,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             self.presentViewController(alertController, animated: true, completion: nil)
         } else {
             saveUser()
-            self.navigationController?.pushViewController(ChallengesViewController(), animated: true)
+            self.navigationController?.setViewControllers([ChallengesViewController()], animated: true)
         }
     }
     

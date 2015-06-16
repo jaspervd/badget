@@ -58,14 +58,16 @@ class RegisterView: UIView {
         self.inputName = UITextField(frame: CGRectMake(15, 2, inputView.frame.size.width - 30, 45))
         self.inputName.placeholder = "Chokri Mahassine"
         self.inputName.autocapitalizationType = .Words
+        self.inputName.font = UIFont(name: "Dosis-Medium", size: 20)
         
         self.inputEmail = UITextField(frame: CGRectMake(15, 47, inputView.frame.size.width - 30, 45))
         self.inputEmail.placeholder = "chokri.mahassine@pukkelpop.be"
         self.inputEmail.autocapitalizationType = .None
         self.inputEmail.keyboardType = .EmailAddress
+        self.inputEmail.font = UIFont(name: "Dosis-Medium", size: 20)
         
         self.btnSave = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        self.btnSave.frame = CGRectMake((frame.size.width - 252) / 2, inputView.frame.origin.y + inputView.frame.height + 10, 252, 53)
+        self.btnSave.frame = CGRectMake((frame.size.width - 252) / 2, inputView.frame.origin.y + inputView.frame.height + 14, 252, 53)
         self.btnSave.setBackgroundImage(UIImage(named: "loginbtn"), forState: .Normal)
         
         super.init(frame: frame)

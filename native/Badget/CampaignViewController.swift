@@ -24,7 +24,7 @@ class CampaignViewController: UIViewController {
     
     func continueClicked() {
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "readCampaign")
-        self.navigationController?.pushViewController(RegisterViewController(), animated: true)
+        self.navigationController?.setViewControllers([RegisterViewController()], animated: true)
     }
     
     override func loadView() {
