@@ -12,11 +12,10 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 
 gulp.task('browser-sync', function() {
-  browserSync({
-    server: {
-       baseDir: "./"
-    }
-  });
+    browserSync({
+        host: "localhost",
+        port: 8888
+    });
 });
 
 gulp.task('bs-reload', function () {
