@@ -8,7 +8,7 @@
 		<key>goal</key>
 		<string>Trek een selfie!</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgeonafhankelijk</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -16,7 +16,7 @@
 		<key>goal</key>
 		<string>Trek een foto met meer dan 1 persoon.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgemoedig</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -24,7 +24,7 @@
 		<key>goal</key>
 		<string>Trek een foto met meer dan 5 mensen.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgesociaal</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -32,7 +32,7 @@
 		<key>goal</key>
 		<string>Trek een foto met meer dan 10 mensen.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgemensenkennis</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -40,7 +40,7 @@
 		<key>goal</key>
 		<string>Trek een foto met meer dan 15 mensen.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgeorganisatietalent</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -48,7 +48,7 @@
 		<key>goal</key>
 		<string>Wees sneller dan 20 minuten en leg een afstand af kleiner dan 1km.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgeefficient</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -56,7 +56,7 @@
 		<key>goal</key>
 		<string>Je doet er langer dan 20 minuten over, maar legt een kleinere afstand af dan 1km.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgedoelgericht</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -64,15 +64,7 @@
 		<key>goal</key>
 		<string>Wees sneller dan 20 minuten en leg een afstand af groter dan 1km.</string>
 		<key>image</key>
-		<string>av</string>
-	</dict>
-	<dict>
-		<key>title</key>
-		<string>Oriëntatievermogen</string>
-		<key>goal</key>
-		<string>Je geraakt er mits een langere tijd en grotere afstand af te leggen.</string>
-		<key>image</key>
-		<string>av</string>
+		<string>badgecreatief</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -80,7 +72,7 @@
 		<key>goal</key>
 		<string>Voer de opdracht zo recht en zo snel mogelijk uit (in minder dan een minuut).</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgemultitasken</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -88,7 +80,7 @@
 		<key>goal</key>
 		<string>Voer de opdracht zo recht mogelijk maar doet er langer dan een minuut over.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgeflexibel</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -96,7 +88,23 @@
 		<key>goal</key>
 		<string>Je toont ambitie en bent snel, maar maakt af en toe fouten.</string>
 		<key>image</key>
-		<string>av</string>
+		<string>badgeambitie</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Doorzettingsvermogen</string>
+		<key>goal</key>
+		<string>Voer elke dag elke opdracht uit.</string>
+		<key>image</key>
+		<string>badgedoorzettingsvermogen</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Leervermogen</string>
+		<key>goal</key>
+		<string>Je wordt beter en beter!</string>
+		<key>image</key>
+		<string>badgeleervermogen</string>
 	</dict>
 </array>
 </plist>

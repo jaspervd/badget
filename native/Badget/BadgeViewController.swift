@@ -35,7 +35,7 @@ class BadgeViewController: UIViewController {
     
     override func loadView() {
         let bounds = UIScreen.mainScreen().bounds
-        self.view = BadgeView(frame: bounds, badge: self.badge)
+        self.view = BadgeView(frame: CGRectMake(0, 0, 77, 87), badge: self.badge)
     }
 
     override func didReceiveMemoryWarning() {

@@ -90,7 +90,7 @@ class BarmanViewController: UIViewController {
     }
     
     func setScore(barman: Barman) {
-        self.scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je deed er \(barman.seconds) seconden over en had een hellings gemiddelde van \(barman.angle)!", badge: barman.badge)
+        self.scoreVC = ScoreViewController(feedback: "Je deed er \(barman.seconds) seconden over en had een hellings gemiddelde van \(barman.angle)!", badge: barman.badge)
     }
     
     func didFinishChallenge() {
@@ -107,11 +107,11 @@ class BarmanViewController: UIViewController {
             var badge = Badge()
             let badges = Badge.loadPlist()
             if(avg < 10 && seconds <= 60) { // if average angle was less than 10° and took less than 60 seconds
-                badge = badges[9]
+                badge = badges[8]
             } else if(avg < 10 && seconds > 60) { // if average angle was less than 10° but took more than 60 seconds
-                badge = badges[10]
+                badge = badges[9]
             } else if(avg > 10 && seconds < 60) { // if angle was bigger than 10° and took less than 60 seconds
-                badge = badges[11]
+                badge = badges[10]
             }
             
             var barman = Barman(date: Settings.currentDate, angle: Int(avg), seconds: Int(round(seconds)), badge: badge)

@@ -29,28 +29,28 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var maleHeads = [UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!]
-        var femaleHeads = [UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!]
-        self.headVC = CharacterPartViewController(maleArray: maleHeads, femaleArray: femaleHeads)
+        var maleHeads = [UIImage(named: "avatarhead1")!, UIImage(named: "avatarhead2")!, UIImage(named: "avatarhead3")!, UIImage(named: "avatarhead4")!, UIImage(named: "avatarhead5")!, UIImage(named: "avatarhead6")!]
+        //var femaleHeads = [UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!, UIImage(named: "avatarhead")!]
+        self.headVC = CharacterPartViewController(maleArray: maleHeads, femaleArray: maleHeads)
         self.addChildViewController(self.headVC)
         
-        var maleBodies = [UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!]
-        var femaleBodies = [UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!]
-        self.bodyVC = CharacterPartViewController(maleArray: maleBodies, femaleArray: femaleBodies)
+        var maleBodies = [UIImage(named: "avatartorso1")!, UIImage(named: "avatartorso2")!, UIImage(named: "avatartorso3")!, UIImage(named: "avatartorso4")!, UIImage(named: "avatartorso5")!, UIImage(named: "avatartorso6")!]
+        //var femaleBodies = [UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!, UIImage(named: "avatartorso")!]
+        self.bodyVC = CharacterPartViewController(maleArray: maleBodies, femaleArray: maleBodies)
         self.addChildViewController(self.bodyVC)
         
-        var maleLegs = [UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!]
-        var femaleLegs = [UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!]
-        self.legsVC = CharacterPartViewController(maleArray: maleLegs, femaleArray: femaleLegs)
+        var maleLegs = [UIImage(named: "avatarlegs1")!, UIImage(named: "avatarlegs2")!, UIImage(named: "avatarlegs3")!, UIImage(named: "avatarlegs4")!, UIImage(named: "avatarlegs5")!, UIImage(named: "avatarlegs6")!]
+        //var femaleLegs = [UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!, UIImage(named: "avatarlegs")!]
+        self.legsVC = CharacterPartViewController(maleArray: maleLegs, femaleArray: maleLegs)
         self.addChildViewController(self.legsVC)
         
-        self.headVC.view.frame.origin = CGPointMake(0, 35)
-        self.bodyVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + 35)
-        self.legsVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + maleBodies[0].size.height + 35)
+        self.headVC.view.frame.origin = CGPointMake(0, 30)
+        self.bodyVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + 25)
+        self.legsVC.view.frame.origin = CGPointMake(0, maleHeads[0].size.height + maleBodies[0].size.height + 22)
         
-        self.registerView.characterView.addSubview(self.headVC.view)
         self.registerView.characterView.addSubview(self.bodyVC.view)
         self.registerView.characterView.addSubview(self.legsVC.view)
+        self.registerView.characterView.addSubview(self.headVC.view)
         
         self.registerView.genderSwitch.addTarget(self, action: "switchHandler", forControlEvents: .TouchUpInside)
         self.registerView.maleBtn.addTarget(self, action: "switchMale", forControlEvents: .TouchUpInside)
@@ -171,9 +171,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         let fileUploader = FileUploader()
         
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.bodyVC.characterPartView.imageView.frame.size.width, self.registerView.characterView.frame.size.height), false, 1)
-        self.headVC.characterPartView.imageView.image?.drawInRect(CGRectMake((self.bodyVC.characterPartView.imageView.frame.size.width - self.headVC.characterPartView.imageView.frame.size.width) / 2, self.headVC.view.frame.origin.y, self.headVC.characterPartView.imageView.frame.width, self.headVC.characterPartView.imageView.frame.height))
         self.bodyVC.characterPartView.imageView.image?.drawInRect(CGRectMake(0, self.bodyVC.view.frame.origin.y, self.bodyVC.characterPartView.imageView.frame.width, self.bodyVC.characterPartView.imageView.frame.height))
         self.legsVC.characterPartView.imageView.image?.drawInRect(CGRectMake((self.bodyVC.characterPartView.imageView.frame.size.width - self.legsVC.characterPartView.imageView.frame.size.width) / 2, self.legsVC.view.frame.origin.y, self.legsVC.characterPartView.imageView.frame.width, self.legsVC.characterPartView.imageView.frame.height))
+        self.headVC.characterPartView.imageView.image?.drawInRect(CGRectMake((self.bodyVC.characterPartView.imageView.frame.size.width - self.headVC.characterPartView.imageView.frame.size.width) / 2, self.headVC.view.frame.origin.y, self.headVC.characterPartView.imageView.frame.width, self.headVC.characterPartView.imageView.frame.height))
         var image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

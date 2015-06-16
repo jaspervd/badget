@@ -45,7 +45,8 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         infoBtn.image = infoBtn.image?.imageWithRenderingMode(.AlwaysOriginal)
         self.navigationItem.leftBarButtonItem = infoBtn
         
-        let badgesBtn = UIBarButtonItem(title: "Badges", style: .Plain, target: self, action: "badgesHandler")
+        let badgesBtn = UIBarButtonItem(image: UIImage(named: "badgesbtn"), style: .Plain, target: self, action: "badgesHandler")
+        badgesBtn.image = badgesBtn.image?.imageWithRenderingMode(.AlwaysOriginal)
         self.navigationItem.rightBarButtonItem = badgesBtn
         
         let backBtn = UIImage(named: "backbtn")!.imageWithRenderingMode(.AlwaysOriginal)

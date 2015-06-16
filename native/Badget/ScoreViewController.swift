@@ -10,7 +10,6 @@ import UIKit
 
 class ScoreViewController: UIViewController {
     
-    let header:String
     let feedback:String
     let badge:Badge?
     
@@ -20,8 +19,7 @@ class ScoreViewController: UIViewController {
         }
     }
     
-    init(header: String, feedback: String, badge: Badge) {
-        self.header = header
+    init(feedback: String, badge: Badge) {
         self.feedback = feedback
         self.badge = badge
         
@@ -38,16 +36,17 @@ class ScoreViewController: UIViewController {
         }
         
         self.title = ""
-        self.scoreView.btnClose.addTarget(self, action: "closeHandler", forControlEvents: UIControlEvents.TouchUpInside)
+        self.scoreView.btnOk.addTarget(self, action: "closeHandler", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func closeHandler() {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        println("yow")
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func loadView() {
         var bounds = UIScreen.mainScreen().bounds
-        self.view = ScoreView(frame: bounds, header: self.header, feedback: self.feedback, badge: self.badge)
+        self.view = ScoreView(frame: bounds, feedback: self.feedback)
     }
 
     override func didReceiveMemoryWarning() {

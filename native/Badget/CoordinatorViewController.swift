@@ -128,7 +128,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setScore(coordinator: Coordinator) {
-        self.scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: coordinator.badge)
+        self.scoreVC = ScoreViewController(feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: coordinator.badge)
     }
     
     func didFinishChallenge() {
@@ -142,8 +142,6 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
             badge = badges[6]
         } else if(self.seconds < 1200 && self.distance > 1000) { // if faster than 20 min + distance was larger than 1km
             badge = badges[7]
-        } else if(self.seconds > 1200 && self.distance > 1000) {
-            badge = badges[8]
         }
         
         

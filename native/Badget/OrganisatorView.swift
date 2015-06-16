@@ -54,7 +54,7 @@ class OrganisatorView: UIView {
         self.friendsText.textColor = Settings.grayColor
         self.friendsText.sizeToFit()
         
-        let retakeImage = UIImage(named: "okbtn")!
+        let retakeImage = UIImage(named: "opnieuwbtn")!
         self.btnRetake = UIButton(frame: CGRectMake(35, self.photoHolder.frame.origin.y + self.photoHolder.frame.size.height + 65, retakeImage.size.width, retakeImage.size.height))
         self.btnRetake.setBackgroundImage(retakeImage, forState: .Normal)
         

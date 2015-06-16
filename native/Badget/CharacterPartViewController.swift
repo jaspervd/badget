@@ -51,7 +51,6 @@ class CharacterPartViewController: UIViewController {
         } else {
             currentIndex = newIndex
         }
-        println(newIndex)
         self.characterPartView.imageView.image = self.activeArray[newIndex]
     }
     
@@ -63,7 +62,6 @@ class CharacterPartViewController: UIViewController {
         } else {
             currentIndex = newIndex
         }
-        println(newIndex)
         self.characterPartView.imageView.image = self.activeArray[newIndex]
     }
     

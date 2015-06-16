@@ -17,7 +17,7 @@ class BadgeFactory: NSObject {
             let goal = badgeDict["goal"] as! String
             let image = badgeDict["image"] as! String
             
-            badgesArray.append(Badge(id: index, title: title, goal: goal, image: UIImage(named: image)!))
+            badgesArray.append(Badge(id: index, title: title, goal: goal, image: image))
         }
         
         return badgesArray

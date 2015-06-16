@@ -10,48 +10,53 @@ import UIKit
 
 class ScoreView: UIView {
 
-    let btnClose:UIButton!
+    let btnOk:UIButton!
     let badgesView:UIView
-    let badgeSize = CGSizeMake(50, 50)
+    let badgeSize = CGSizeMake(77, 87)
     
-    init(frame: CGRect, header: String, feedback: String, badge: Badge?) {
-        self.btnClose = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        self.badgesView = UIView()
+    init(frame: CGRect, feedback: String) {
+        let scoreHolder = UIImageView(image: UIImage(named: "resultaatbg"))
+        scoreHolder.center = CGPointMake(frame.width / 2, frame.height / 2 + 40)
+        scoreHolder.userInteractionEnabled = true
+        
+        let headerView = UIImageView(image: UIImage(named: "resultaattitle"))
+        headerView.frame = CGRectMake((scoreHolder.frame.width - headerView.frame.width) / 2, 45, headerView.frame.width, headerView.frame.height)
+        
+        let feedbackText = UILabel(frame: CGRectMake(0, 0, scoreHolder.frame.width - 30, 44))
+        feedbackText.text = feedback
+        feedbackText.font = UIFont(name: "Dosis-Bold", size: 16)
+        feedbackText.textColor = Settings.blueColor
+        feedbackText.numberOfLines = 0
+        feedbackText.textAlignment = .Center
+        feedbackText.sizeToFit()
+        feedbackText.frame.origin = CGPointMake((scoreHolder.frame.width - feedbackText.frame.width) / 2, headerView.frame.origin.y + headerView.frame.size.height + 15)
+        
+        self.badgesView = UIView(frame: CGRectMake((scoreHolder.frame.width - self.badgeSize.width) / 2, feedbackText.frame.origin.y + feedbackText.frame.size.height + 20, self.badgeSize.width, self.badgeSize.height))
+        
+        let okImage = UIImage(named: "okbtn")!
+        self.btnOk = UIButton(frame: CGRectMake((scoreHolder.frame.width - okImage.size.width) / 2, scoreHolder.frame.height - okImage.size.height - 50, okImage.size.width, okImage.size.height))
+        self.btnOk.setBackgroundImage(okImage, forState: .Normal)
         
         super.init(frame: frame)
         
         self.backgroundColor = Settings.bgColor
-        
-        let scoreHolder = UIView(frame: CGRectMake(30, 40, frame.width - 60, 300))
-        scoreHolder.backgroundColor = UIColor.whiteColor()
-        
-        let headerText = UILabel(frame: CGRectMake(10, 20, scoreHolder.frame.width - 20, 44))
-        headerText.text = header
-        headerText.textAlignment = .Center
-        
-        let feedbackText = UITextView(frame: CGRectMake(10, headerText.frame.origin.y + headerText.frame.size.height + 20, scoreHolder.frame.width - 20, 44))
-        feedbackText.text = feedback
-        feedbackText.backgroundColor = nil
-        feedbackText.editable = false
-        
-        self.badgesView.frame = CGRectMake(10, feedbackText.frame.origin.y + feedbackText.frame.size.height + 20, scoreHolder.frame.width - 20, self.badgeSize.height)
-        
-        self.btnClose.frame = CGRectMake(10, badgesView.frame.origin.y + badgesView.frame.height + 10, scoreHolder.frame.width - 20, 44)
-        self.btnClose.setTitle("Done!", forState: UIControlState.Normal)
-        
-        scoreHolder.frame.size.height = 40 + headerText.frame.size.height + 20 + feedbackText.frame.size.height + 10 + self.badgesView.frame.size.height + self.btnClose.frame.size.height
-        scoreHolder.center = CGPointMake(frame.width / 2, frame.height / 2)
-        
-        scoreHolder.addSubview(headerText)
+
+        scoreHolder.addSubview(headerView)
         scoreHolder.addSubview(feedbackText)
         scoreHolder.addSubview(self.badgesView)
-        scoreHolder.addSubview(self.btnClose)
+        scoreHolder.addSubview(self.btnOk)
         
         self.addSubview(scoreHolder)
     }
     
     func showBadge(badgeView:BadgeView) {
         self.badgesView.addSubview(badgeView)
+        badgeView.transform = CGAffineTransformMakeScale(1.5, 1.5)
+        badgeView.alpha = 0
+        UIView.animateWithDuration(1, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            badgeView.transform = CGAffineTransformMakeScale(1, 1)
+            badgeView.alpha = 1
+        }, completion: nil)
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -14,10 +14,10 @@ class BadgeView: UIView {
 
     init(frame: CGRect, badge: Badge) {
         self.badge = badge
-        self.imageBtn = UIButton(frame: CGRectMake(0, 0, 50, 50))
+        self.imageBtn = UIButton(frame: frame)
         super.init(frame: frame)
         
-        self.imageBtn.setBackgroundImage(badge.image, forState: UIControlState.Normal)
+        self.imageBtn.setBackgroundImage(UIImage(named: badge.image), forState: UIControlState.Normal)
         self.addSubview(self.imageBtn)
     }
 

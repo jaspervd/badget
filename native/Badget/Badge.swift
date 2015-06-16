@@ -14,7 +14,7 @@ class Badge: NSObject, NSCoding {
     let id:Int
     let title:String
     let goal:String
-    let image:UIImage
+    let image:String
     
     var appDelegate:AppDelegate {
         get {
@@ -22,7 +22,7 @@ class Badge: NSObject, NSCoding {
         }
     }
     
-    init(id: Int, title: String, goal: String, image: UIImage) {
+    init(id: Int, title: String, goal: String, image: String) {
         self.id = id
         self.title = title
         self.goal = goal
@@ -34,14 +34,14 @@ class Badge: NSObject, NSCoding {
         self.id = 0
         self.title = ""
         self.goal = ""
-        self.image = UIImage()
+        self.image = ""
     }
     
     required init(coder aDecoder: NSCoder) {
         self.id = aDecoder.decodeIntegerForKey("id")
         self.title = aDecoder.decodeObjectForKey("title") as! String
         self.goal = aDecoder.decodeObjectForKey("goal") as! String
-        self.image = aDecoder.decodeObjectForKey("image") as! UIImage
+        self.image = aDecoder.decodeObjectForKey("image") as! String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -67,7 +67,7 @@ class Badge: NSObject, NSCoding {
                 "user_id": NSUserDefaults.standardUserDefaults().integerForKey("userId"),
                 "title": self.title,
                 "goal": self.goal,
-                "photo_url": "\(self.title.lowercaseString).png"
+                "photo_url": "badge\(self.title.lowercaseString).png"
             ]
             Alamofire.request(.POST, Settings.apiUrl + "/badges", parameters: parameters as? [String : AnyObject])
         }

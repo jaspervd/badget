@@ -38,11 +38,11 @@ class NavigationBar: UINavigationBar {
                     newFrame.size.height = self.bounds.size.height + 20
                     thisView.frame = newFrame
                 } else if(NSStringFromClass(view.classForCoder) == "UINavigationButton") {
-                    newFrame.origin.y = 35
+                    newFrame.origin.y = 37
                     thisView.frame = newFrame
                 } else if(NSStringFromClass(view.classForCoder) == "_UINavigationBarBackIndicatorView") {
                     newFrame.origin.x = 15.5
-                    newFrame.origin.y = 34
+                    newFrame.origin.y = 36
                     thisView.frame = newFrame
                 }
             }

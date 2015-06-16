@@ -38,7 +38,6 @@ class BarmanView: UIView {
         testText.font = UIFont(name: "Dosis-Bold", size: 18)
         testText.textColor = UIColor.whiteColor()
         testText.textAlignment = .Center
-        //testText.sizeToFit()
         
         self.angleText = UILabel(frame: CGRectMake(0, 0, 300, 40))
         self.angleText.text = "0°"

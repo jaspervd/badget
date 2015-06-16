@@ -126,7 +126,7 @@ class OrganisatorViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func setScore(organisator: Organisator) {
-        self.scoreVC = ScoreViewController(header: "Resultaat", feedback: "Je had \(organisator.friends) vrienden bij je!", badge: organisator.badge)
+        self.scoreVC = ScoreViewController(feedback: "Je hebt \(organisator.friends) vrienden kunnen overtuigen om mee te komen, daarom heb je de badge \"\(organisator.badge.title.lowercaseString)\" gewonnen!", badge: organisator.badge)
     }
     
     func didFinishChallenge() {

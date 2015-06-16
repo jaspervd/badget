@@ -31,10 +31,19 @@ class BadgesViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: "Badge")
         var error:NSError?
         
+        var delay = 0.3
         let achievedBadges = appDelegate.managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]
         for badge in achievedBadges {
             var badgeVC = BadgeViewController(badge: possibleBadges[badge.valueForKey("plistId") as! Int])
             self.view.addSubview(badgeVC.view)
+            badgeVC.view.frame = CGRectMake(100, 100, 77, 87)
+            badgeVC.view.transform = CGAffineTransformMakeScale(1.5, 1.5)
+            badgeVC.view.alpha = 0.5
+            UIView.animateWithDuration(0.8, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                badgeVC.view.transform = CGAffineTransformMakeScale(1, 1)
+                badgeVC.view.alpha = 1
+                }, completion: nil)
+            delay += 0.3
             self.badges.append(badgeVC)
         }
     }
