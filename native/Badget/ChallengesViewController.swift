@@ -54,6 +54,8 @@ class ChallengesViewController: UIViewController, CLLocationManagerDelegate, Cir
         self.navigationController?.navigationBar.backIndicatorImage = backBtn
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backBtn
         
+        self.navigationController?.pushViewController(badgesVC, animated: false)
+        
         self.challengesView.leftBtn.addTarget(self, action: "leftBtnHandler", forControlEvents: UIControlEvents.TouchUpInside)
         self.challengesView.rightBtn.addTarget(self, action: "rightBtnHandler", forControlEvents: UIControlEvents.TouchUpInside)
         

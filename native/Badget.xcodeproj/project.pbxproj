@@ -20,6 +20,10 @@
 		A40D6D861B2C72F400E7D05F /* CharacterPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */; };
 		A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D871B2CA59900E7D05F /* Badget.xcdatamodeld */; };
 		A411DC3D1B3037B5002A2BC2 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411DC3C1B3037B5002A2BC2 /* InfoView.swift */; };
+		A411DC3F1B3052D5002A2BC2 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411DC3E1B3052D5002A2BC2 /* BadgesView.swift */; };
+		A411DC411B3058DA002A2BC2 /* BadgeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411DC401B3058DA002A2BC2 /* BadgeDelegate.swift */; };
+		A411DC431B3059AD002A2BC2 /* BadgeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411DC421B3059AD002A2BC2 /* BadgeDetailViewController.swift */; };
+		A411DC461B3059CA002A2BC2 /* BadgeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411DC451B3059CA002A2BC2 /* BadgeDetailView.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -87,6 +91,10 @@
 		A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartView.swift; sourceTree = "<group>"; };
 		A40D6D881B2CA59900E7D05F /* Badget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Badget.xcdatamodel; sourceTree = "<group>"; };
 		A411DC3C1B3037B5002A2BC2 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		A411DC3E1B3052D5002A2BC2 /* BadgesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
+		A411DC401B3058DA002A2BC2 /* BadgeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeDelegate.swift; sourceTree = "<group>"; };
+		A411DC421B3059AD002A2BC2 /* BadgeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeDetailViewController.swift; sourceTree = "<group>"; };
+		A411DC451B3059CA002A2BC2 /* BadgeDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeDetailView.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +171,15 @@
 			name = CharacterPart;
 			sourceTree = "<group>";
 		};
+		A411DC441B3059B5002A2BC2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A411DC421B3059AD002A2BC2 /* BadgeDetailViewController.swift */,
+				A411DC451B3059CA002A2BC2 /* BadgeDetailView.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		A429304F1B1F6A40009762F9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,11 +216,12 @@
 				A429304F1B1F6A40009762F9 /* Classes */,
 				A4B619F21B28C49C00748A1D /* Info */,
 				A4AD989D1B179F14009ED7AE /* Badges */,
+				A4B619F91B28FBD800748A1D /* Score */,
 				A4AD989C1B179F0D009ED7AE /* Challenges */,
 				A4892FE51B21BA59008C731B /* Countdown */,
 				A4AD989B1B179EF7009ED7AE /* Start */,
-				A418E9371B1F513A000BFC6D /* Settings.swift */,
 				A49A82A51B2D8EA6009558CB /* UI */,
+				A418E9371B1F513A000BFC6D /* Settings.swift */,
 				A43E13DC1B1667A9008B3823 /* AppDelegate.swift */,
 				A43E13E31B1667A9008B3823 /* Images.xcassets */,
 				A4480BD11B1F6CE30050C744 /* LaunchScreen.xib */,
@@ -322,13 +340,15 @@
 		A4AD989D1B179F14009ED7AE /* Badges */ = {
 			isa = PBXGroup;
 			children = (
+				A411DC441B3059B5002A2BC2 /* Detail */,
 				A48EABE71B1DEBD6008FEE12 /* BadgesViewController.swift */,
+				A411DC3E1B3052D5002A2BC2 /* BadgesView.swift */,
 				A499A2531B29C24E00D903F3 /* BadgeViewController.swift */,
 				A499A2511B29B88100D903F3 /* BadgeView.swift */,
 				A4B619F71B28F30200748A1D /* Badge.swift */,
 				A40D6D761B2C1D8400E7D05F /* Badges.plist */,
 				A40D6D781B2C297000E7D05F /* BadgeFactory.swift */,
-				A4B619F91B28FBD800748A1D /* Score */,
+				A411DC401B3058DA002A2BC2 /* BadgeDelegate.swift */,
 			);
 			name = Badges;
 			sourceTree = "<group>";
@@ -541,6 +561,8 @@
 				A49A82A01B2D8880009558CB /* CampaignView.swift in Sources */,
 				A411DC3D1B3037B5002A2BC2 /* InfoView.swift in Sources */,
 				A48BC2451B20AB8A00B8A110 /* Coordinator.swift in Sources */,
+				A411DC3F1B3052D5002A2BC2 /* BadgesView.swift in Sources */,
+				A411DC431B3059AD002A2BC2 /* BadgeDetailViewController.swift in Sources */,
 				A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */,
 				A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */,
 				A43E13DD1B1667A9008B3823 /* AppDelegate.swift in Sources */,
@@ -551,8 +573,10 @@
 				A4B619F11B28618C00748A1D /* ChallengeView.swift in Sources */,
 				A48EABE81B1DEBD6008FEE12 /* BadgesViewController.swift in Sources */,
 				A4B619FB1B28FBF000748A1D /* ScoreViewController.swift in Sources */,
+				A411DC461B3059CA002A2BC2 /* BadgeDetailView.swift in Sources */,
 				A4C03DC21B1F604B00C30B62 /* FileUploader.swift in Sources */,
 				A49A82AB1B2F4179009558CB /* Switch.swift in Sources */,
+				A411DC411B3058DA002A2BC2 /* BadgeDelegate.swift in Sources */,
 				A48BC23B1B20831F00B8A110 /* CoordinatorView.swift in Sources */,
 				A418E9381B1F513A000BFC6D /* Settings.swift in Sources */,
 				A48BC2411B208E8300B8A110 /* OrganisatorView.swift in Sources */,

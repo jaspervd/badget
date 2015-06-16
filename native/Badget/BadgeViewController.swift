@@ -10,6 +10,7 @@ import UIKit
 
 class BadgeViewController: UIViewController {
     
+    weak var delegate:BadgeDelegate?
     let badge:Badge
     
     var badgeView:BadgeView! {
@@ -30,7 +31,7 @@ class BadgeViewController: UIViewController {
     }
     
     func showDetails() {
-        println(badge.title, badge.goal)
+        self.delegate!.showDetails(self.badge)
     }
     
     override func loadView() {
