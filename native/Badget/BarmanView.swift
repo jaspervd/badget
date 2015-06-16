@@ -35,7 +35,7 @@ class BarmanView: UIView {
         let testText = UILabel(frame: CGRectMake(20, 30, frame.width - 40, 50))
         testText.text = "Voordat je begint kan je al testen hoe recht je je smartphone kan houden."
         testText.numberOfLines = 0
-        testText.font = UIFont(name: "Dosis-Medium", size: 18)
+        testText.font = UIFont(name: "Dosis-Bold", size: 18)
         testText.textColor = UIColor.whiteColor()
         testText.textAlignment = .Center
         //testText.sizeToFit()
@@ -51,7 +51,7 @@ class BarmanView: UIView {
         doneText.text = "Wanneer je aan de beurt bent en het parcours gaat afleggen, draai je je device om met het scherm naar beneden."
         doneText.numberOfLines = 0
         doneText.textAlignment = .Center
-        doneText.font = UIFont(name: "Dosis-Medium", size: 18)
+        doneText.font = UIFont(name: "Dosis-Bold", size: 18)
         doneText.textColor = UIColor.whiteColor()
         doneText.sizeToFit()
         
