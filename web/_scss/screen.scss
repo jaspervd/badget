@@ -1,1 +1,29 @@
 @import 'base';
+
+body {
+	background-color: #fbefde;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+	display: none;
+}
+
+.page {
+	min-height: 800px;
+}
+
+#home {
+	background-image: url('../images/bgintro.png');
+	background-size: cover;
+}
+
+#logo {
+	width: 60%;
+	margin: 0 auto;
+	display: block;
+	padding-top: 10%;
+
+	@include break-point("medium") { width: 40% };
+	@include break-point("large") { width: 25% };
+}

@@ -1,9 +1,10 @@
+//var apiUrl = "http://student.howest.be/jasper.van.damme/20142015/MA4/BADGET/api"
+var apiUrl = "../api"
+
 function init() {
-    $.get("../api/users", function(data) {
+    $.get(apiUrl + "/users", function(data) {
         $.each(data, function() {
-            $.each(this, function(k, v) {
-                console.log(k, v);
-            });
+            $('#users ul').append(data);
         });
     });
 }

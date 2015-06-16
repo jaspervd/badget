@@ -11,3 +11,15 @@
 	}
 
 }
+
+$sizes: (
+  small: 340px,
+  medium: 720px,
+  large: 1100px,
+  xlarge: 2000px
+);
+
+@mixin break-point($point) {
+    $converted: map-get($sizes, $point);
+    @media(min-width:$converted) {@content}
+}
