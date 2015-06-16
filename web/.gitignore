@@ -19,6 +19,7 @@ coverage
 .phpintel
 public/css
 public/js
+public/images
 uploads
 
 # node-waf configuration
