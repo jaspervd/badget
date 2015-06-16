@@ -42,7 +42,7 @@ class ScoreViewController: UIViewController {
     }
     
     func closeHandler() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func loadView() {
