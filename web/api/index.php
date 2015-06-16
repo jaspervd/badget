@@ -46,6 +46,12 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
     exit();
 });
 
+$app->get('/users/?', function() use ($usersDAO) {
+    header('Content-Type: application/json');
+    echo json_encode($usersDAO->selectAll());
+    exit;
+});
+
 $app->post('/organisator/?', function () use ($app, $organisatorDAO) {
     header('Content-Type: application/json');
     $post = $app->request->post();

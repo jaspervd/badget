@@ -28,4 +28,17 @@ class UsersDAO extends DAO {
 
         return array();
     }
+
+    public function selectAll() {
+        $sql = "SELECT * FROM `bg_users`";
+        $stmt = $this->pdo->prepare($sql);
+        if($stmt->execute()) {
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (!empty($users)) {
+                return $users;
+            }
+        }
+
+        return array();
+    }
 }

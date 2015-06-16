@@ -1,7 +1,11 @@
 function init() {
-	console.log("ahoi");
+    $.get("../api/users", function(data) {
+        $.each(data, function() {
+            $.each(this, function(k, v) {
+                console.log(k, v);
+            });
+        });
+    });
 }
-
-console.log("test");
 
 init();
