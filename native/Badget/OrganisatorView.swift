@@ -23,6 +23,7 @@ class OrganisatorView: UIView {
 
     override init(frame: CGRect) {
         self.titleView = UIImageView(image: UIImage(named: "organisatortitle")!)
+        self.titleView.center = CGPointMake(frame.width / 2, self.titleView.frame.height / 2 + 110)
         
         self.instructionText = UILabel(frame: CGRectMake(0, 0, frame.width - 40, 75))
         self.instructionText.text = "Probeer zo veel mogelijk vrienden en/of omstaanders mee op de foto te krijgen. Hoe meer mensen, hoe beter!"
@@ -42,8 +43,6 @@ class OrganisatorView: UIView {
         let cameraImage = UIImage(named: "fotobtn")!
         self.btnCamera = UIButton(frame: CGRectMake((self.photoHolder.frame.size.width - cameraImage.size.width) / 2, (self.photoHolder.frame.size.height - cameraImage.size.height) / 2, cameraImage.size.width, cameraImage.size.height))
         self.btnCamera.setBackgroundImage(cameraImage, forState: .Normal)
-        
-        self.titleView.center = CGPointMake(frame.width / 2, self.titleView.frame.height / 2 + 110)
         
         self.friendsImage = UIImageView(image: UIImage(named: "friendsicon"))
         self.friendsImage.frame.origin = CGPointMake(50, self.photoHolder.frame.origin.y + self.photoHolder.frame.height + 15)

@@ -19,6 +19,7 @@
 		A40D6D841B2C728F00E7D05F /* CharacterPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D831B2C728F00E7D05F /* CharacterPartViewController.swift */; };
 		A40D6D861B2C72F400E7D05F /* CharacterPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */; };
 		A40D6D891B2CA59900E7D05F /* Badget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40D6D871B2CA59900E7D05F /* Badget.xcdatamodeld */; };
+		A411DC3D1B3037B5002A2BC2 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411DC3C1B3037B5002A2BC2 /* InfoView.swift */; };
 		A418E9381B1F513A000BFC6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9371B1F513A000BFC6D /* Settings.swift */; };
 		A43E0E611B1B50C40020713F /* OrganisatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */; };
 		A43E0E651B1B93860020713F /* BarmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E0E641B1B93860020713F /* BarmanViewController.swift */; };
@@ -85,6 +86,7 @@
 		A40D6D831B2C728F00E7D05F /* CharacterPartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartViewController.swift; sourceTree = "<group>"; };
 		A40D6D851B2C72F400E7D05F /* CharacterPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartView.swift; sourceTree = "<group>"; };
 		A40D6D881B2CA59900E7D05F /* Badget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Badget.xcdatamodel; sourceTree = "<group>"; };
+		A411DC3C1B3037B5002A2BC2 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		A418E9371B1F513A000BFC6D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A43E0E601B1B50C40020713F /* OrganisatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrganisatorViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43E0E641B1B93860020713F /* BarmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarmanViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B619F31B28C4BC00748A1D /* InfoViewController.swift */,
+				A411DC3C1B3037B5002A2BC2 /* InfoView.swift */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				A4B619F41B28C4BC00748A1D /* InfoViewController.swift in Sources */,
 				A4B619F61B28F1AF00748A1D /* ScoreView.swift in Sources */,
 				A49A82A01B2D8880009558CB /* CampaignView.swift in Sources */,
+				A411DC3D1B3037B5002A2BC2 /* InfoView.swift in Sources */,
 				A48BC2451B20AB8A00B8A110 /* Coordinator.swift in Sources */,
 				A4892FE71B21BAC4008C731B /* CountdownView.swift in Sources */,
 				A499A2521B29B88100D903F3 /* BadgeView.swift in Sources */,

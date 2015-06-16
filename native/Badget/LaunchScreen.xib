@@ -15,9 +15,6 @@
                     <variation key="heightClass=regular" misplaced="YES">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                     </variation>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
-                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.98039215686274506" green="0.92549019607843142" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
