@@ -20,6 +20,7 @@ class BadgesView: UIView {
         self.badges = UIView(frame: CGRectMake((frame.width - 250) / 2, 150, 250, frame.height))
         super.init(frame: frame)
         
+        self.backgroundColor = Settings.bgColor
         self.addSubview(self.titleView)
         self.addSubview(self.badges)
     }

@@ -128,7 +128,7 @@ class CoordinatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setScore(coordinator: Coordinator) {
-        self.scoreVC = ScoreViewController(feedback: "Je legde in \(coordinator.time) een afstand van \(coordinator.distance)m af!", badge: coordinator.badge)
+        self.scoreVC = ScoreViewController(feedback: "Je hebt het parcours afgelegd in \(coordinator.distance)m en je deed er \(coordinator.time) over!", badge: coordinator.badge)
     }
     
     func didFinishChallenge() {

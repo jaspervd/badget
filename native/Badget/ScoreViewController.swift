@@ -40,7 +40,6 @@ class ScoreViewController: UIViewController {
     }
     
     func closeHandler() {
-        println("yow")
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
